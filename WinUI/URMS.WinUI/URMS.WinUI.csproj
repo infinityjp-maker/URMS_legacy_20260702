@@ -3,11 +3,25 @@
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>false</WindowsAppSDKSelfContained>
+    <SelfContained>false</SelfContained>
+    <UseRidGraph>true</UseRidGraph>
     <OutputType>WinExe</OutputType>
+    <ApplicationIcon>Assets\images\urms.ico</ApplicationIcon>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240404000" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260416003" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Remove="MainWindow_minimal.xaml" />
+    <None Include="MainWindow_minimal.xaml" />
+    <Page Remove="Pages\DashboardPage_backup.xaml" />
+    <None Include="Pages\DashboardPage_backup.xaml" />
+    <Compile Remove="MainWindow_simple.xaml.cs" />
+    <None Include="MainWindow_simple.xaml.cs" />
   </ItemGroup>
 </Project>

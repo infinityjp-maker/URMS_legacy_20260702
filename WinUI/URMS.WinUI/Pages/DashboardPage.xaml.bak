@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="URMS.WinUI.Pages.DashboardPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ctrl="using:URMS.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource AppBackgroundBrush}">
+
+  <Page.Resources>
+
+    <!-- ══ カードスタイル ══════════════════════════════════════════════════ -->
+    <Style x:Key="CardStyle" TargetType="Border">
+      <Setter Property="CornerRadius"    Value="14"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="BorderBrush"     Value="{ThemeResource CardBorderBrush}"/>
+      <Setter Property="Margin"          Value="7"/>
+    </Style>
+
+    <!-- ══ 折りたたみ可能サブカードスタイル ══════════════════════════════ -->
+    <Style x:Key="SubCardStyle" TargetType="Expander">
+      <Setter Property="HorizontalAlignment"         Value="Stretch"/>
+      <Setter Property="HorizontalContentAlignment"  Value="Stretch"/>
+      <Setter Property="Background"                  Value="{ThemeResource CardBackgroundBrush}"/>
+      <Setter Property="BorderBrush"                 Value="{ThemeResource CardBorderBrush}"/>
+      <Setter Property="BorderThickness"             Value="1"/>
+      <Setter Property="CornerRadius"                Value="14"/>
+      <Setter Property="Margin"                      Value="7,5"/>
+      <Setter Property="Padding"                     Value="4"/>
+    </Style>
+
+    <!-- ══ テキストスタイル ═══════════════════════════════════════════════ -->
+    <Style x:Key="CardTitleStyle" TargetType="TextBlock">
+      <Setter Property="FontSize"         Value="12"/>
+      <Setter Property="FontWeight"       Value="SemiBold"/>
+      <Setter Property="CharacterSpacing" Value="40"/>
+      <Setter Property="Foreground"       Value="{ThemeResource CardTitleBrush}"/>
+    </Style>
+    <Style x:Key="SectionLabelStyle" TargetType="TextBlock">
+      <Setter Property="FontSize"         Value="10"/>
+      <Setter Property="FontWeight"       Value="SemiBold"/>
+      <Setter Property="CharacterSpacing" Value="100"/>
+      <Setter Property="Foreground"       Value="{ThemeResource LabelBrush}"/>
+    </Style>
+    <Style x:Key="LabelStyle" TargetType="TextBlock">
+      <Setter Property="FontSize"   Value="11"/>
+      <Setter Property="Foreground" Value="{ThemeResource LabelBrush}"/>
+    </Style>
+    <Style x:Key="ValueStyle" TargetType="TextBlock">
+      <Setter Property="FontSize"   Value="13"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Foreground" Value="{ThemeResource ValueBrush}"/>
+    </Style>
+    <Style x:Key="MutedStyle" TargetType="TextBlock">
+      <Setter Property="FontSize"   Value="11"/>
+      <Setter Property="Foreground" Value="{ThemeResource SecondaryTextBrush}"/>
+    </Style>
+    <Style x:Key="BigNumStyle" TargetType="TextBlock">
+      <Setter Property="FontSize"   Value="38"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="LineHeight" Value="42"/>
+      <Setter Property="Foreground" Value="{ThemeResource ValueBrush}"/>
+    </Style>
+
+    <!-- ══ 区切り ════════════════════════════════════════════════════════ -->
+    <Style x:Key="DividerStyle" TargetType="Border">
+      <Setter Property="Height"     Value="1"/>
+      <Setter Property="Background" Value="{ThemeResource RowSeparatorBrush}"/>
+      <Setter Property="Margin"     Value="0,10,0,10"/>
+    </Style>
+
+    <!-- ══ ランチャーボタン ════════════════════════════════════════════ -->
+    <Style x:Key="LaunchBtnStyle" TargetType="Button">
+      <Setter Property="Background"          Value="{ThemeResource TagBgBrush}"/>
+      <Setter Property="Foreground"          Value="{ThemeResource CardTitleBrush}"/>
+      <Setter Property="BorderBrush"         Value="{ThemeResource CardBorderBrush}"/>
+      <Setter Property="BorderThickness"     Value="1"/>
+      <Setter Property="CornerRadius"        Value="9"/>
+      <Setter Property="Padding"             Value="12,9"/>
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="Margin"              Value="0,0,0,6"/>
+    </Style>
+
+    <!-- ══ ステータスバッジ ════════════════════════════════════════════ -->
+    <Style x:Key="BadgeGreen" TargetType="Border">
+      <Setter Property="Background"   Value="#1800e676"/>
+      <Setter Property="BorderBrush"  Value="#3000e676"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Padding"      Value="8,3"/>
+    </Style>
+    <Style x:Key="BadgeRed" TargetType="Border">
+      <Setter Property="Background"   Value="#28ff4060"/>
+      <Setter Property="BorderBrush"  Value="#40ff4060"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Padding"      Value="8,3"/>
+    </Style>
+    <Style x:Key="BadgeAmber" TargetType="Border">
+      <Setter Property="Background"   Value="#28f0a800"/>
+      <Setter Property="BorderBrush"  Value="#40f0a800"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Padding"      Value="8,3"/>
+    </Style>
+    <Style x:Key="BadgeCyan" TargetType="Border">
+      <Setter Property="Background"   Value="#1800d4f0"/>
+      <Setter Property="BorderBrush"  Value="#3000d4f0"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Padding"      Value="8,3"/>
+    </Style>
+
+  </Page.Resources>
+
+  <!-- ── 全体スクロール ── -->
+  <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="6,0">
+  <StackPanel>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ヒーローヘッダー
+    ══════════════════════════════════════════════════════════════════ -->
+    <Grid Margin="8,8,8,6">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      <StackPanel VerticalAlignment="Center">
+        <TextBlock x:Name="TxtHeroTitle"
+                   FontSize="20" FontWeight="SemiBold"
+                   FontFamily="Bahnschrift" CharacterSpacing="80"
+                   Foreground="{ThemeResource HeaderTitleBrush}"/>
+        <TextBlock x:Name="TxtHeroSubLabel"
+                   Text="INTEGRATED OPERATIONS DASHBOARD"
+                   FontSize="9" FontWeight="Bold" CharacterSpacing="120"
+                   Foreground="{ThemeResource LabelBrush}"
+                   Margin="1,2,0,0"/>
+      </StackPanel>
+      <StackPanel Grid.Column="1" HorizontalAlignment="Right"
+                  VerticalAlignment="Center" Spacing="2">
+        <TextBlock x:Name="TxtTodayDate"
+                   FontSize="13" FontWeight="SemiBold"
+                   Foreground="{ThemeResource AccentCyanBrush}"
+                   HorizontalAlignment="Right"/>
+        <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Right">
+          <Ellipse Width="7" Height="7" Fill="{ThemeResource AccentGreenBrush}"
+                   VerticalAlignment="Center"/>
+          <TextBlock Text="ALL SYSTEMS ONLINE" FontSize="9" FontWeight="Bold"
+                     CharacterSpacing="80"
+                     Foreground="{ThemeResource AccentGreenBrush}"/>
+        </StackPanel>
+      </StackPanel>
+    </Grid>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         第1階層：メインカード（生活系・常時表示）
+    ══════════════════════════════════════════════════════════════════ -->
+    <TextBlock Text="MAIN"
+               FontSize="9" FontWeight="Bold" CharacterSpacing="150"
+               Foreground="{ThemeResource LabelBrush}"
+               Margin="15,6,0,2"/>
+
+    <Grid Margin="0,0,0,4">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="2*"/>
+        <ColumnDefinition Width="1.5*"/>
+        <ColumnDefinition Width="1.4*"/>
+        <ColumnDefinition Width="1.4*"/>
+      </Grid.ColumnDefinitions>
+
+      <!-- ┌─────────────────────────────────────────────────────────────
+           │ カード①  今日の予定（Schedule）
+           └──────────────────────────────────────────────────────────── -->
+      <Border x:Name="CardSched" Grid.Column="0"
+              Style="{StaticResource CardStyle}"
+              PointerEntered="Card_PointerEntered"
+              PointerExited="Card_PointerExited">
+        <Border.RenderTransform><TranslateTransform/></Border.RenderTransform>
+        <Grid>
+          <!-- 立体背景 -->
+          <Border CornerRadius="14">
+            <Border.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#18102a" Offset="0"/>
+                <GradientStop Color="#0e0818" Offset="1"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
+          <!-- 上端グロー -->
+          <Border CornerRadius="14,14,0,0" Height="70" VerticalAlignment="Top" Opacity="0.08">
+            <Border.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#c060ff" Offset="0"/>
+                <GradientStop Color="#00000000" Offset="1"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
+          <!-- ホバーグロー -->
+          <Border x:Name="GlowSched" CornerRadius="14" BorderThickness="1.5"
+                  Opacity="0" IsHitTestVisible="False">
+            <Border.BorderBrush><SolidColorBrush Color="#c060ff"/></Border.BorderBrush>
+          </Border>
+          <!-- ネオンライン -->
+          <Rectangle VerticalAlignment="Top" Height="3" RadiusX="14" RadiusY="14">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#c060ff" Offset="0"/>
+                <GradientStop Color="#e080ff" Offset="0.5"/>
+                <GradientStop Color="#00c060ff" Offset="1"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <!-- コンテンツ -->
+          <StackPanel Margin="18,18,18,18">
+            <!-- ヘッダー -->
+            <Grid Margin="0,0,0,14">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+              </Grid.ColumnDefinitions>
+              <Ellipse Width="8" Height="8" Fill="#c060ff" VerticalAlignment="Center" Margin="0,0,10,0"/>
+              <StackPanel Grid.Column="1">
+                <TextBlock x:Name="TxtCardSchedule" Style="{StaticResource CardTitleStyle}"/>
+                <TextBlock x:Name="TxtTodayDateSub" Style="{StaticResource MutedStyle}" Margin="0,2,0,0"/>
+              </StackPanel>
+              <Border Grid.Column="2" Style="{StaticResource BadgeCyan}" VerticalAlignment="Center">
+                <TextBlock x:Name="TxtSchedNext" Text="次: 1h30m" FontSize="9" FontWeight="Bold"
+                           Foreground="{ThemeResource AccentCyanBrush}"/>
+              </Border>
+            </Grid>
+
+            <!-- 予定リスト -->
+            <StackPanel Spacing="6">
+              <!-- 完了 -->
+              <Border Background="#18c060ff" CornerRadius="8" Padding="12,9"
+                      BorderBrush="#28c060ff" BorderThickness="1">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <StackPanel Width="52">
+                    <TextBlock Text="09:00" FontSize="10" FontWeight="Bold"
+                               Foreground="{ThemeResource AccentPurpleBrush}"/>
+                    <TextBlock Text="10:00" FontSize="9"
+                               Foreground="{ThemeResource LabelBrush}"/>
+                  </StackPanel>
+                  <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="チームミーティング"
+                               FontSize="12" FontWeight="SemiBold"
+                               Foreground="{ThemeResource CardTitleBrush}"/>
+                    <TextBlock Text="オンライン / Teams" Style="{StaticResource MutedStyle}"/>
+                  </StackPanel>
+                  <Border Grid.Column="2" Style="{StaticResource BadgeCyan}" VerticalAlignment="Center" Margin="8,0,0,0">
+                    <TextBlock Text="完了" FontSize="9" FontWeight="Bold"
+                               Foreground="{ThemeResource AccentCyanBrush}"/>
+                  </Border>
+                </Grid>
+              </Border>
+              <!-- 進行中 -->
+              <Border Background="#1400d4f0" CornerRadius="8" Padding="12,9"
+                      BorderBrush="#2200d4f0" BorderThickness="1">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <StackPanel Width="52">
+                    <TextBlock Text="13:00" FontSize="10" FontWeight="Bold"
+                               Foreground="{ThemeResource AccentCyanBrush}"/>
+                    <TextBlock Text="14:30" FontSize="9"
+                               Foreground="{ThemeResource LabelBrush}"/>
+                  </StackPanel>
+                  <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="サーバーメンテナンス"
+                               FontSize="12" FontWeight="SemiBold"
+                               Foreground="{ThemeResource CardTitleBrush}"/>
+                    <TextBlock Text="Backend / 自動化スクリプト実行" Style="{StaticResource MutedStyle}"/>
+                  </StackPanel>
+                  <Border Grid.Column="2" Style="{StaticResource BadgeAmber}" VerticalAlignment="Center" Margin="8,0,0,0">
+                    <TextBlock Text="進行中" FontSize="9" FontWeight="Bold"
+                               Foreground="{ThemeResource AccentAmberBrush}"/>
+                  </Border>
+                </Grid>
+              </Border>
+              <!-- 予定 -->
+              <Border Background="#10ffffff" CornerRadius="8" Padding="12,9"
+                      BorderBrush="#16ffffff" BorderThickness="1">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+                  <StackPanel Width="52">
+                    <TextBlock Text="16:00" FontSize="10" FontWeight="Bold"
+                               Foreground="{ThemeResource SecondaryTextBrush}"/>
+                    <TextBlock Text="17:00" FontSize="9"
+                               Foreground="{ThemeResource LabelBrush}"/>
+                  </StackPanel>
+                  <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="週次レビュー"
+                               FontSize="12" FontWeight="SemiBold"
+                               Foreground="{ThemeResource CardTitleBrush}"/>
+                    <TextBlock Text="チーム全体" Style="{StaticResource MutedStyle}"/>
+                  </StackPanel>
+                </Grid>
+              </Border>
+            </StackPanel>
+
+            <Border Style="{StaticResource DividerStyle}"/>
+
+            <!-- 天気連動注意 -->
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <TextBlock Text="&#xE9CA;" FontFamily="Segoe MDL2 Assets"
+                         FontSize="14" Foreground="{ThemeResource AccentCyanBrush}"
+                         VerticalAlignment="Center"/>
+              <TextBlock x:Name="TxtWeatherAlert"
+                         Text="16:00 の外出時は傘を忘れずに"
+                         FontSize="11"
+                         Foreground="{ThemeResource AccentCyanBrush}"
+                         VerticalAlignment="Center"/>
+            </StackPanel>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <!-- ┌─────────────────────────────────────────────────────────────
+           │ カード②  天気（Weather）
+           └──────────────────────────────────────────────────────────── -->
+      <Border x:Name="CardWeather" Grid.Column="1"
+              Style="{StaticResource CardStyle}"
+              PointerEntered="Card_PointerEntered"
+              PointerExited="Card_PointerExited">
+        <Border.RenderTransform><TranslateTransform/></Border.RenderTransform>
+        <Grid>
+          <Border CornerRadius="14">
+            <Border.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#10182c" Offset="0"/>
+                <GradientStop Color="#080e1c" Offset="1"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
+          <Border CornerRadius="14,14,0,0" Height="70" VerticalAlignment="Top" Opacity="0.07">
+            <Border.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#3a8fff" Offset="0"/>
+                <GradientStop Color="#00000000" Offset="1"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
+          <Border x:Name="GlowWeather" CornerRadius="14" BorderThickness="1.5"
+                  Opacity="0" IsHitTestVisible="False">
+            <Border.BorderBrush><SolidColorBrush Color="#3a8fff"/></Border.BorderBrush>
+          </Border>
+          <Rectangle VerticalAlignment="Top" Height="3" RadiusX="14" RadiusY="14">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#3a8fff" Offset="0"/>
+                <GradientStop Color="#00bfff" Offset="0.5"/>
+                <GradientStop Color="#003a8fff" Offset="1"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <!-- コンテンツ -->
+          <StackPanel Margin="16,16,16,16">
+            <!-- ヘッダー -->
+            <Grid Margin="0,0,0,10">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Ellipse Width="8" Height="8" Fill="#3a8fff" VerticalAlignment="Center" Margin="0,0,10,0"/>
+              <StackPanel Grid.Column="1">
+                <TextBlock x:Name="TxtCardWeather" Style="{StaticResource CardTitleStyle}"/>
+                <TextBlock x:Name="TxtWeatherLocation" Text="東京・港区"
+                           FontSize="11" Foreground="{ThemeResource SecondaryTextBrush}"
+                           Margin="0,2,0,0"/>
+              </StackPanel>
+            </Grid>
+
+            <!-- 天気アニメーション + 気温 -->
+            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+              <ctrl:WeatherAnimation x:Name="WxAnim" Condition="partly_cloudy"
+                                     Width="80" Height="80"/>
+              <StackPanel VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock x:Name="TxtWeatherTemp" Text="22"
+                             FontSize="44" FontWeight="Bold"
+                             Foreground="{ThemeResource AccentBlueBrush}"
+                             LineHeight="48"/>
+                  <TextBlock Text="°C" FontSize="15" FontWeight="SemiBold"
+                             Foreground="{ThemeResource AccentBlueBrush}"
+                             VerticalAlignment="Bottom" Margin="2,0,0,8"/>
+                </StackPanel>
+                <TextBlock x:Name="TxtWeatherDesc" Text="晴れ時々くもり"
+                           FontSize="11"
+                           Foreground="{ThemeResource SecondaryTextBrush}"/>
+                <TextBlock x:Name="TxtFeelsLike" Text="体感 20°C"
+                           FontSize="11"
+                           Foreground="{ThemeResource LabelBrush}"
+                           Margin="0,2,0,0"/>
+              </StackPanel>
+            </StackPanel>
+
+            <!-- 詳細数値 -->
+            <Grid Margin="0,0,0,8">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition/><ColumnDefinition/><ColumnDefinition/>
+              </Grid.ColumnDefinitions>
+              <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                <TextBlock Text="&#xEB50;" FontFamily="Segoe MDL2 Assets"
+                           FontSize="16" Foreground="{ThemeResource AccentBlueBrush}"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="63%" FontSize="13" FontWeight="Bold"
+                           Foreground="{ThemeResource AccentBlueBrush}"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="湿度" Style="{StaticResource MutedStyle}"
+                           HorizontalAlignment="Center"/>
+              </StackPanel>
+              <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock Text="&#xE9C9;" FontFamily="Segoe MDL2 Assets"
+                           FontSize="16" Foreground="{ThemeResource AccentCyanBrush}"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="15%" FontSize="13" FontWeight="Bold"
+                           Foreground="{ThemeResource AccentCyanBrush}"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="降水確率" Style="{StaticResource MutedStyle}"
+                           HorizontalAlignment="Center"/>
+              </StackPanel>
+              <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                <TextBlock Text="&#xE9D9;" FontFamily="Segoe MDL2 Assets"
+                           FontSize="16" Foreground="{ThemeResource AccentTealBrush}"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="3.2m/s" FontSize="13" FontWeight="Bold"
+                           Foreground="{ThemeResource AccentTealBrush}"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="風速" Style="{StaticResource MutedStyle}"
+                           HorizontalAlignment="Center"/>
+              </StackPanel>
+            </Grid>
+
+            <Border Style="{StaticResource DividerStyle}"/>
+
+            <!-- 週間予報 -->
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition/><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/>
+              </Grid.ColumnDefinitions>
+              <!-- 今日 -->
+              <StackPanel Grid.Column="0" HorizontalAlignment="Center" Spacing="3">
+                <TextBlock Text="今日" Style="{StaticResource MutedStyle}" HorizontalAlignment="Center"/>
+                <TextBlock Text="&#xE9CA;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                           Foreground="#5bc8ff" HorizontalAlignment="Center"/>
+                <TextBlock Text="22°/17°" Style="{StaticResource SectionLabelStyle}"
+                           HorizontalAlignment="Center"/>
+              </StackPanel>
+              <!-- 明日 -->
+              <StackPanel Grid.Column="1" HorizontalAlignment="Center" Spacing="3">
+                <TextBlock Text="明日" Style="{StaticResource MutedStyle}" HorizontalAlignment="Center"/>
+                <TextBlock Text="&#xE9C6;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                           Foreground="#80b0e0" HorizontalAlignment="Center"/>
+                <TextBlock Text="19°/14°" Style="{StaticResource SectionLabelStyle}"
+                           HorizontalAlignment="Center"/>
+              </StackPanel>
+              <!-- 月 -->
+              <StackPanel Grid.Column="2" HorizontalAlignment="Center" Spacing="3">
+                <TextBlock Text="月" Style="{StaticResource MutedStyle}" HorizontalAlignment="Center"/>
+                <TextBlock Text="&#xE9CA;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                           Foreground="#5bc8ff" HorizontalAlignment="Center"/>
+                <TextBlock Text="23°/15°" Style="{StaticResource SectionLabelStyle}"
+                           HorizontalAlignment="Center"/>
+              </StackPanel>
+              <!-- 火 -->
+              <StackPanel Grid.Column="3" HorizontalAlignment="Center" Spacing="3">
+                <TextBlock Text="火" Style="{StaticResource MutedStyle}" HorizontalAlignment="Center"/>
+                <TextBlock Text="&#xE9C4;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                           Foreground="#80a8d0" HorizontalAlignment="Center"/>
+                <TextBlock Text="18°/11°" Style="{StaticResource SectionLabelStyle}"
+                           HorizontalAlignment="Center"/>
+              </StackPanel>
+            </Grid>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <!-- ┌─────────────────────────────────────────────────────────────
+           │ カード③  タスク（Personal Tasks）
+           └──────────────────────────────────────────────────────────── -->
+      <Border x:Name="CardTask" Grid.Column="2"
+              Style="{StaticResource CardStyle}"
+              PointerEntered="Card_PointerEntered"
+              PointerExited="Card_PointerExited">
+        <Border.RenderTransform><TranslateTransform/></Border.RenderTransform>
+        <Grid>
+          <Border CornerRadius="14">
+            <Border.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#0d2018" Offset="0"/>
+                <GradientStop Color="#08130f" Offset="1"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
+          <Border CornerRadius="14,14,0,0" Height="70" VerticalAlignment="Top" Opacity="0.09">
+            <Border.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#00e676" Offset="0"/>
+                <GradientStop Color="#00000000" Offset="1"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
+          <Border x:Name="GlowTask" CornerRadius="14" BorderThickness="1.5"
+                  Opacity="0" IsHitTestVisible="False">
+            <Border.BorderBrush><SolidColorBrush Color="#00e676"/></Border.BorderBrush>
+          </Border>
+          <Rectangle VerticalAlignment="Top" Height="3" RadiusX="14" RadiusY="14">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#00e676" Offset="0"/>
+                <GradientStop Color="#00ffaa" Offset="0.5"/>
+                <GradientStop Color="#0000e676" Offset="1"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <StackPanel Margin="16,16,16,16">
+            <!-- ヘッダー -->
+            <Grid Margin="0,0,0,12">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Ellipse Width="8" Height="8" Fill="#00e676" VerticalAlignment="Center" Margin="0,0,10,0"/>
+              <TextBlock Grid.Column="1" x:Name="TxtCardTask"
+                         Style="{StaticResource CardTitleStyle}" VerticalAlignment="Center"/>
+            </Grid>
+
+            <!-- 完了率ゲージ -->
+            <StackPanel Margin="0,0,0,12">
+              <Grid Margin="0,0,0,4">
+                <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <TextBlock Text="今日の完了率" Style="{StaticResource LabelStyle}"/>
+                <TextBlock x:Name="TxtTaskPct" Text="5 / 8" Grid.Column="1"
+                           FontSize="12" FontWeight="Bold"
+                           Foreground="{ThemeResource AccentGreenBrush}"/>
+              </Grid>
+              <ProgressBar x:Name="BarTaskPct" Value="62" Height="6" Maximum="100"
+                           Foreground="{ThemeResource AccentGreenBrush}"
+                           Background="{ThemeResource ProgressTrackBrush}"/>
+            </StackPanel>
+
+            <!-- タスクリスト -->
+            <StackPanel Spacing="5">
+              <!-- 進行中 -->
+              <Border Background="#1400d4f0" CornerRadius="7" Padding="10,8"
+                      BorderBrush="#2000d4f0" BorderThickness="1">
+                <StackPanel>
+                  <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <TextBlock Text="CI パイプライン修正" FontSize="11" FontWeight="SemiBold"
+                               Foreground="{ThemeResource CardTitleBrush}"/>
+                    <Border Grid.Column="1" Style="{StaticResource BadgeAmber}">
+                      <TextBlock Text="進行" FontSize="9" FontWeight="Bold"
+                                 Foreground="{ThemeResource AccentAmberBrush}"/>
+                    </Border>
+                  </Grid>
+                  <TextBlock Text="期限: 今日 18:00" Style="{StaticResource MutedStyle}" Margin="0,2,0,0"/>
+                </StackPanel>
+              </Border>
+              <!-- 期限近い -->
+              <Border Background="#28ff4060" CornerRadius="7" Padding="10,8"
+                      BorderBrush="#40ff4060" BorderThickness="1">
+                <StackPanel>
+                  <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <TextBlock Text="週次レポート作成" FontSize="11" FontWeight="SemiBold"
+                               Foreground="{ThemeResource CardTitleBrush}"/>
+                    <Border Grid.Column="1" Style="{StaticResource BadgeRed}">
+                      <TextBlock Text="期限近!" FontSize="9" FontWeight="Bold"
+                                 Foreground="{ThemeResource AccentRedBrush}"/>
+                    </Border>
+                  </Grid>
+                  <TextBlock Text="期限: 今日 20:00" Style="{StaticResource MutedStyle}" Margin="0,2,0,0"/>
+                </StackPanel>
+              </Border>
+              <!-- 通常 -->
+              <Border Background="#10ffffff" CornerRadius="7" Padding="10,8"
+                      BorderBrush="#16ffffff" BorderThickness="1">
+                <TextBlock Text="ダッシュボード UI レビュー" FontSize="11"
+                           Foreground="{ThemeResource LabelBrush}"/>
+              </Border>
+            </StackPanel>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <!-- ┌─────────────────────────────────────────────────────────────
+           │ カード④  ショートカット（Quick Actions）
+           └──────────────────────────────────────────────────────────── -->
+      <Border x:Name="CardLaunch" Grid.Column="3"
+              Style="{StaticResource CardStyle}"
+              PointerEntered="Card_PointerEntered"
+              PointerExited="Card_PointerExited">
+        <Border.RenderTransform><TranslateTransform/></Border.RenderTransform>
+        <Grid>
+          <Border CornerRadius="14">
+            <Border.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#22101c" Offset="0"/>
+                <GradientStop Color="#140810" Offset="1"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
+          <Border CornerRadius="14,14,0,0" Height="70" VerticalAlignment="Top" Opacity="0.08">
+            <Border.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#ff70b0" Offset="0"/>
+                <GradientStop Color="#00000000" Offset="1"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
+          <Border x:Name="GlowLaunch" CornerRadius="14" BorderThickness="1.5"
+                  Opacity="0" IsHitTestVisible="False">
+            <Border.BorderBrush><SolidColorBrush Color="#ff70b0"/></Border.BorderBrush>
+          </Border>
+          <Rectangle VerticalAlignment="Top" Height="3" RadiusX="14" RadiusY="14">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#ff70b0" Offset="0"/>
+                <GradientStop Color="#ff90c0" Offset="0.5"/>
+                <GradientStop Color="#00ff70b0" Offset="1"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <StackPanel Margin="14,16,14,16">
+            <Grid Margin="0,0,0,12">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Ellipse Width="8" Height="8" Fill="#ff70b0" VerticalAlignment="Center" Margin="0,0,10,0"/>
+              <TextBlock Grid.Column="1" x:Name="TxtCardLauncher"
+                         Style="{StaticResource CardTitleStyle}" VerticalAlignment="Center"/>
+            </Grid>
+            <!-- アプリ -->
+            <TextBlock Text="アプリ" Style="{StaticResource SectionLabelStyle}" Margin="0,0,0,6"/>
+            <Grid Margin="0,0,0,10">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition/><ColumnDefinition/><ColumnDefinition/>
+              </Grid.ColumnDefinitions>
+              <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource LaunchBtnStyle}" Padding="6" Margin="3,3">
+                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                  <TextBlock Text="&#xE756;" FontFamily="Segoe MDL2 Assets" FontSize="20"
+                             Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/>
+                  <TextBlock Text="VS Code" FontSize="9"
+                             Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                </StackPanel>
+              </Button>
+              <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource LaunchBtnStyle}" Padding="6" Margin="3,3">
+                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                  <TextBlock Text="&#xE8A5;" FontFamily="Segoe MDL2 Assets" FontSize="20"
+                             Foreground="{ThemeResource AccentGreenBrush}" HorizontalAlignment="Center"/>
+                  <TextBlock Text="ログ" FontSize="9"
+                             Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                </StackPanel>
+              </Button>
+              <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource LaunchBtnStyle}" Padding="6" Margin="3,3">
+                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                  <TextBlock Text="&#xEDB1;" FontFamily="Segoe MDL2 Assets" FontSize="20"
+                             Foreground="{ThemeResource AccentPurpleBrush}" HorizontalAlignment="Center"/>
+                  <TextBlock Text="PowerShell" FontSize="9"
+                             Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                </StackPanel>
+              </Button>
+              <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource LaunchBtnStyle}" Padding="6" Margin="3,3">
+                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                  <TextBlock Text="&#xE8B7;" FontFamily="Segoe MDL2 Assets" FontSize="20"
+                             Foreground="{ThemeResource AccentAmberBrush}" HorizontalAlignment="Center"/>
+                  <TextBlock Text="資産管理" FontSize="9"
+                             Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                </StackPanel>
+              </Button>
+              <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource LaunchBtnStyle}" Padding="6" Margin="3,3">
+                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                  <TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="20"
+                             Foreground="{ThemeResource AccentTealBrush}" HorizontalAlignment="Center"/>
+                  <TextBlock Text="設定" FontSize="9"
+                             Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                </StackPanel>
+              </Button>
+              <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource LaunchBtnStyle}" Padding="6" Margin="3,3">
+                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                  <TextBlock Text="&#xEA8A;" FontFamily="Segoe MDL2 Assets" FontSize="20"
+                             Foreground="{ThemeResource AccentPinkBrush}" HorizontalAlignment="Center"/>
+                  <TextBlock Text="CI/CD" FontSize="9"
+                             Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                </StackPanel>
+              </Button>
+            </Grid>
+            <Border Style="{StaticResource DividerStyle}"/>
+            <!-- スクリプト -->
+            <TextBlock Text="スクリプト" Style="{StaticResource SectionLabelStyle}" Margin="0,0,0,6"/>
+            <Button Style="{StaticResource LaunchBtnStyle}">
+              <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="&#xEDB1;" FontFamily="Segoe MDL2 Assets" FontSize="14"
+                           Foreground="{ThemeResource AccentCyanBrush}" VerticalAlignment="Center"/>
+                <TextBlock x:Name="TxtLaunchFiles" Style="{StaticResource ValueStyle}" VerticalAlignment="Center"/>
+              </StackPanel>
+            </Button>
+            <Button Style="{StaticResource LaunchBtnStyle}">
+              <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="&#xE8A5;" FontFamily="Segoe MDL2 Assets" FontSize="14"
+                           Foreground="{ThemeResource AccentGreenBrush}" VerticalAlignment="Center"/>
+                <TextBlock x:Name="TxtLaunchLogs" Style="{StaticResource ValueStyle}" VerticalAlignment="Center"/>
+              </StackPanel>
+            </Button>
+            <Button Style="{StaticResource LaunchBtnStyle}" Margin="0">
+              <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="14"
+                           Foreground="{ThemeResource AccentTealBrush}" VerticalAlignment="Center"/>
+                <TextBlock x:Name="TxtLaunchSettings" Style="{StaticResource ValueStyle}" VerticalAlignment="Center"/>
+              </StackPanel>
+            </Button>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+    </Grid><!-- /メインカードGrid -->
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         第2階層：サブカード（運用系・2列×複数行グリッドレイアウト）
+         実装は次フェーズで実施予定
+    ══════════════════════════════════════════════════════════════════ -->
+
+    <!-- 下余白 -->
+    <Border Height="16"/>
+
+  </StackPanel>
+  </ScrollViewer>
+</Page>
