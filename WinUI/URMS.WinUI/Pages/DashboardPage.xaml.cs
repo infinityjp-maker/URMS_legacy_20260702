@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -6,18 +7,22 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using Windows.UI;
 using URMS.WinUI.Services;
+using URMS.WinUI.ViewModels;
 
 namespace URMS.WinUI.Pages
 {
     public sealed partial class DashboardPage : Page
     {
-        private readonly LanguageService _lang = LanguageService.Instance;
-        private DispatcherQueueTimer? _waveTimer;
-        private double _wavePhase;
+        private readonly LanguageService    _lang = LanguageService.Instance;
+        private readonly DashboardViewModel _vm   = new();
+        private DispatcherQueueTimer?       _waveTimer;
+        private double                      _wavePhase;
 
         public DashboardPage()
         {
             this.InitializeComponent();
+
+            _vm.PropertyChanged += OnVmPropertyChanged;
 
             _lang.LanguageChanged              += (_, _) => Apply();
             ThemeService.Instance.ThemeChanged += (_, _) => Apply();
@@ -30,18 +35,50 @@ namespace URMS.WinUI.Pages
         {
             Apply();
             InitNetWave();
+            _vm.StartRefresh(DispatcherQueue.GetForCurrentThread());
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             _waveTimer?.Stop();
             _waveTimer = null;
+            _vm.StopRefresh();
+            _vm.Dispose();
+        }
+
+        /// <summary>ViewModel プロパティ変更 → 対応 UI 要素を同期</summary>
+        private void OnVmPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(DashboardViewModel.CpuUsage):
+                    GaugeCpu.Value = _vm.CpuUsage; break;
+                case nameof(DashboardViewModel.RamUsage):
+                    GaugeRam.Value = _vm.RamUsage; break;
+                case nameof(DashboardViewModel.GpuUsage):
+                    GaugeGpu.Value = _vm.GpuUsage; break;
+                case nameof(DashboardViewModel.DiskC):
+                    BarDiskC.Value = _vm.DiskC; break;
+                case nameof(DashboardViewModel.DiskCText):
+                    TxtDiskC.Text  = _vm.DiskCText; break;
+                case nameof(DashboardViewModel.DiskD):
+                    BarDiskD.Value = _vm.DiskD; break;
+                case nameof(DashboardViewModel.DiskDText):
+                    TxtDiskD.Text  = _vm.DiskDText; break;
+                case nameof(DashboardViewModel.NetLatency):
+                    // NetWaveCanvas のラベルは波形アニメで更新、ここは将来拡張用
+                    break;
+                case nameof(DashboardViewModel.NetStatus):
+                    TxtSubNetwork.Text = _vm.NetStatus; break;
+                case nameof(DashboardViewModel.CiCdStatus):
+                    TxtSubCiCd.Text = _vm.CiCdStatus; break;
+            }
         }
 
         private void Apply()
         {
             var L = _lang;
-            TxtSessionId.Text    = "URX-" + Guid.NewGuid().ToString("N")[..5].ToUpper();
+            TxtSessionId.Text    = _vm.SessionId;
             TxtCardSchedule.Text = L.Get("CardSchedule");
             TxtCardWeather.Text  = L.Get("CardWeather");
             TxtCardTask.Text     = L.Get("CardTask");
@@ -51,18 +88,19 @@ namespace URMS.WinUI.Pages
             TxtWeatherTemp.Text = "22°C";
             TxtWeatherDesc.Text = "Tokyo · Minato";
 
-            GaugeCpu.Value = 72;
-            GaugeRam.Value = 58;
-            GaugeGpu.Value = 45;
+            // 初期表示値（VM が未取得の間のフォールバック）
+            GaugeCpu.Value = 0;
+            GaugeRam.Value = 0;
+            GaugeGpu.Value = 0;
 
             BarTaskPct.Value = 62;
 
-            BarDiskC.Value   = 68;
-            TxtDiskC.Text    = "68%";
-            BarDiskD.Value   = 42;
-            TxtDiskD.Text    = "42%";
-            BarDiskNas.Value = 31;
-            TxtDiskNas.Text  = "31%";
+            BarDiskC.Value   = 0;
+            TxtDiskC.Text    = "—";
+            BarDiskD.Value   = 0;
+            TxtDiskD.Text    = "—";
+            BarDiskNas.Value = 0;
+            TxtDiskNas.Text  = "—";
         }
 
         private void InitNetWave()
