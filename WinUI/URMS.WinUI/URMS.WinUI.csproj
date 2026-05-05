@@ -17,6 +17,14 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260416003" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\images\urms.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\images\urms-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Page Remove="MainWindow_minimal.xaml" />
     <None Include="MainWindow_minimal.xaml" />
     <Page Remove="Pages\DashboardPage_backup.xaml" />

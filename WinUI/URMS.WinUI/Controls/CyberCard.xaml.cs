@@ -118,6 +118,10 @@ namespace URMS.WinUI.Controls
                 _hoverScale.ScaleX = 1 + 0.025 * _hoverProgress;
                 _hoverScale.ScaleY = 1 + 0.025 * _hoverProgress;
                 this.Translation = new Vector3(0, 0, (float)(20 * _hoverProgress));
+
+                // サイバーグロー (#00E0FF, Opacity 0.25, フェーズ5)
+                HoverGlow.Opacity = 0.25 * _hoverProgress;
+
                 if (_hoverProgress <= 0 || _hoverProgress >= 1)
                     _hoverTimer!.Stop();
             };

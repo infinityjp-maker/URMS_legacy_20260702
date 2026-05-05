@@ -33,6 +33,7 @@ namespace URMS.WinUI.Pages
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
+            App.RecordDashboardLoaded(); // フェーズ4: 起動時間計測
             Apply();
             InitNetWave();
             _vm.StartRefresh(DispatcherQueue.GetForCurrentThread());

@@ -26,7 +26,7 @@
       <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
         <Rectangle.Fill>
           <RadialGradientBrush Center="0.15,0.3" GradientOrigin="0.15,0.3" RadiusX="0.55" RadiusY="0.4">
-            <GradientStop Color="#1c0064b4" Offset="0"/>
+            <GradientStop Color="#200064b4" Offset="0"/>
             <GradientStop Color="Transparent" Offset="1"/>
           </RadialGradientBrush>
         </Rectangle.Fill>
@@ -35,7 +35,7 @@
       <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
         <Rectangle.Fill>
           <RadialGradientBrush Center="0.85,0.7" GradientOrigin="0.85,0.7" RadiusX="0.5" RadiusY="0.35">
-            <GradientStop Color="#168c00dc" Offset="0"/>
+            <GradientStop Color="#1A8c00dc" Offset="0"/>
             <GradientStop Color="Transparent" Offset="1"/>
           </RadialGradientBrush>
         </Rectangle.Fill>
@@ -44,7 +44,7 @@
       <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
         <Rectangle.Fill>
           <RadialGradientBrush Center="0.5,0.08" GradientOrigin="0.5,0.08" RadiusX="0.45" RadiusY="0.3">
-            <GradientStop Color="#1200c8a0" Offset="0"/>
+            <GradientStop Color="#1600c8a0" Offset="0"/>
             <GradientStop Color="Transparent" Offset="1"/>
           </RadialGradientBrush>
         </Rectangle.Fill>
@@ -53,7 +53,7 @@
       <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
         <Rectangle.Fill>
           <RadialGradientBrush Center="0.7,0.9" GradientOrigin="0.7,0.9" RadiusX="0.5" RadiusY="0.25">
-            <GradientStop Color="#140096ff" Offset="0"/>
+            <GradientStop Color="#180096ff" Offset="0"/>
             <GradientStop Color="Transparent" Offset="1"/>
           </RadialGradientBrush>
         </Rectangle.Fill>
@@ -212,6 +212,8 @@
     <!-- ─── コンテンツエリア ─── -->
     <Grid Grid.Row="1">
       <Frame x:Name="ContentFrame"/>
+      <!-- Boot オーバーレイ（BootHudPage を全面表示、遷移後に Children.Remove） -->
+      <Grid x:Name="BootOverlayGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 
     <!-- ─── スキャンライン (全画面, z-top) ─── -->

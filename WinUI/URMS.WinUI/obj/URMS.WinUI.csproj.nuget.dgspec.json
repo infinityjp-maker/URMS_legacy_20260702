@@ -48,7 +48,7 @@
           "dependencies": {
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
-              "version": "[1.5.240404000, )"
+              "version": "[1.8.260416003, )"
             }
           },
           "imports": [
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

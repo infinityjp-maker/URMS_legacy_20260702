@@ -61,6 +61,12 @@ namespace URMS.WinUI
 
         public static MainWindow? CurrentWindow { get; private set; }
 
+        /// <summary>Boot オーバーレイ要素を追加する</summary>
+        public void AddBootOverlay(UIElement element) => BootOverlayGrid.Children.Add(element);
+
+        /// <summary>Boot オーバーレイ要素を削除する</summary>
+        public void RemoveBootOverlay(UIElement element) => BootOverlayGrid.Children.Remove(element);
+
         private AppWindow? _appWindow;
         private IntPtr _hwnd = IntPtr.Zero;
         private bool _uiInitialized;
@@ -77,6 +83,11 @@ namespace URMS.WinUI
         private DispatcherQueueTimer? _starTimer;
         private DispatcherQueueTimer? _matrixTimer;
         private DispatcherQueueTimer? _nebulaTimer;
+
+        // ── FPS 監視（フェーズ3） ─────────────────────
+        private DateTime _lastFrameTime = DateTime.UtcNow;
+        private double   _avgFrameMs    = 8.0;
+        private bool     _fpsFallback   = false;
 
         // ── 状態 ──────────────────────────────────
         private double _radarAngle = 0;
@@ -311,7 +322,7 @@ namespace URMS.WinUI
             if (w <= 0) w = 1280;
             if (h <= 0) h = 720;
 
-            int n = Math.Clamp((int)(w * h / 3800), 80, 300);
+            int n = Math.Clamp((int)(w * h / 2600), 80, 420); // 1.46x 密度増加（フェーズ2）
             _starEllipses = new Ellipse[n];
             _starA  = new double[n];
             _starDA = new double[n];
@@ -381,7 +392,7 @@ namespace URMS.WinUI
         private static Line MkLine(double x1, double y1, double x2, double y2, Color c)
             => new() { X1=x1, Y1=y1, X2=x2, Y2=y2,
                        Stroke = new SolidColorBrush(c),
-                       StrokeThickness = 0.8,
+                       StrokeThickness = 0.35, // 0.5px → 0.35px（フェーズ2）
                        IsHitTestVisible = false };
 
         // ══════════════════════════════════════
@@ -502,41 +513,41 @@ namespace URMS.WinUI
             TickClock();
 
             _spectrumTimer = q.CreateTimer();
-            _spectrumTimer.Interval = TimeSpan.FromMilliseconds(120);
+            _spectrumTimer.Interval = TimeSpan.FromMilliseconds(109); // 1.1x 速く
             _spectrumTimer.Tick += (_, _) => TickSpectrum();
             _spectrumTimer.Start();
 
             _radarTimer = q.CreateTimer();
-            _radarTimer.Interval = TimeSpan.FromMilliseconds(30);
+            _radarTimer.Interval = TimeSpan.FromMilliseconds(27); // 1.1x 速く
             _radarTimer.Tick += (_, _) => TickRadar();
             _radarTimer.Start();
 
             _statusTimer = q.CreateTimer();
-            _statusTimer.Interval = TimeSpan.FromMilliseconds(2600);
+            _statusTimer.Interval = TimeSpan.FromMilliseconds(2360); // 1.1x 速く
             _statusTimer.Tick += (_, _) => TickStatus();
             _statusTimer.Start();
 
-            // 16ms: スキャンライン + パースペクティブグリッド
+            // 8ms ≈ 120fps: スキャンライン + パースペクティブグリッド（フェーズ3）
             _scanlineTimer = q.CreateTimer();
-            _scanlineTimer.Interval = TimeSpan.FromMilliseconds(16);
-            _scanlineTimer.Tick += (_, _) => { TickScanline(); TickPersp(); };
+            _scanlineTimer.Interval = TimeSpan.FromMilliseconds(8);
+            _scanlineTimer.Tick += (_, _) => { TickFpsMonitor(); TickScanline(); TickPersp(); };
             _scanlineTimer.Start();
 
-            // 50ms: 星空
+            // 16ms: 星空（フェーズ3 高密度対応）
             _starTimer = q.CreateTimer();
-            _starTimer.Interval = TimeSpan.FromMilliseconds(50);
+            _starTimer.Interval = TimeSpan.FromMilliseconds(16);
             _starTimer.Tick += (_, _) => TickStars();
             _starTimer.Start();
 
-            // 50ms: マトリクス
+            // 16ms: マトリクス
             _matrixTimer = q.CreateTimer();
-            _matrixTimer.Interval = TimeSpan.FromMilliseconds(50);
+            _matrixTimer.Interval = TimeSpan.FromMilliseconds(16);
             _matrixTimer.Tick += (_, _) => TickMatrix();
             _matrixTimer.Start();
 
-            // 100ms: Nebulaパルス (12s イーズインアウト alternate, opacity 0.8→1.0)
+            // 91ms: Nebulaパルス（1.1x 速く）
             _nebulaTimer = q.CreateTimer();
-            _nebulaTimer.Interval = TimeSpan.FromMilliseconds(100);
+            _nebulaTimer.Interval = TimeSpan.FromMilliseconds(91);
             _nebulaTimer.Tick += (_, _) => TickNebula();
             _nebulaTimer.Start();
         }
@@ -598,9 +609,36 @@ namespace URMS.WinUI
         private void TickNebula()
         {
             // CSS nebulapulse: opacity 0.8→1.0→0.8 を 12s alternateで再現
-            _nebulaT = (_nebulaT + 1.0 / 120.0) % 2.0; // 100ms × 120 = 12s呼吸
-            double s = Math.Sin(_nebulaT * Math.PI);    // 0→1→0
-            NebulaGrid.Opacity = 0.8 + 0.2 * s;
+            // Nebula Alpha +12%（フェーズ2）: 0.8→0.9 base range, max 1.0
+            _nebulaT = (_nebulaT + 1.0 / 120.0) % 2.0;
+            double s = Math.Sin(_nebulaT * Math.PI);
+            NebulaGrid.Opacity = 0.9 + 0.1 * s; // 底上げ +10%
+        }
+
+        // ─────────────────────────────────────────────
+        // FPS 監視（フェーズ3）: 高負荷時 120→60fps フォールバック
+        // ─────────────────────────────────────────────
+        private void TickFpsMonitor()
+        {
+            var now = DateTime.UtcNow;
+            double ms = (now - _lastFrameTime).TotalMilliseconds;
+            _lastFrameTime = now;
+
+            // 指数移動平均でフレーム時間を平滑化
+            _avgFrameMs = 0.9 * _avgFrameMs + 0.1 * ms;
+
+            if (!_fpsFallback && _avgFrameMs > 13.0)
+            {
+                // 13ms 超過 → 16ms (60fps) にフォールバック
+                _fpsFallback = true;
+                _scanlineTimer!.Interval = TimeSpan.FromMilliseconds(16);
+            }
+            else if (_fpsFallback && _avgFrameMs < 9.0)
+            {
+                // 9ms 未満 → 120fps に復帰
+                _fpsFallback = false;
+                _scanlineTimer!.Interval = TimeSpan.FromMilliseconds(8);
+            }
         }
     }
 }
