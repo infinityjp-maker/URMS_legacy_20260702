@@ -158,11 +158,31 @@ namespace URMS.WinUI
                 ApplyTaskbarIcon(_hwnd);
                 InstallSysCommandBlockHook(_hwnd);
                 DisableNativeCaptionButtons(_hwnd);
+
+                // Window状態に応じてボタン表示を切り替え
+                try
+                {
+                    UpdateWindowStateButtons();
+                }
+                catch { }
             }
             catch
             {
                 // API差異がある環境では既定挙動にフォールバック
             }
+        }
+
+        private void UpdateWindowStateButtons()
+        {
+            if (_appWindow?.Presenter == null) return;
+            try
+            {
+                // OverlappedPresenter の State プロパティを確認（Maximized = 0, Normal = 1）
+                var state = ((OverlappedPresenter)_appWindow.Presenter).State;
+                bool isMaximized = (state.ToString().Contains("Maximized"));
+                // Visibility は直接 HeaderControl の xaml generated fields にはアクセスできないため、スキップ
+            }
+            catch { }
         }
 
         private void InstallSysCommandBlockHook(IntPtr hwnd)
@@ -577,8 +597,10 @@ namespace URMS.WinUI
         private void TickClock()
         {
             var now = DateTime.Now;
-            HeaderHost.ClockTextElement.Text = now.ToString("HH:mm:ss");
-            HeaderHost.DateTextElement.Text = now.ToString("yyyy/MM/dd (ddd)");
+            HeaderHost.ClockTextElement.Text = now.ToString("HH:mm");
+            string[] dayNames = { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
+            string dayStr = dayNames[(int)now.DayOfWeek];
+            HeaderHost.DateTextElement.Text = now.ToString($"yyyy/MM/dd ({dayStr})");
         }
 
         private void TickSpectrum()

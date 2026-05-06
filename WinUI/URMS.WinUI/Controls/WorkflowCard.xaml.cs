@@ -33,25 +33,28 @@ namespace URMS.WinUI.Controls
 
         private void ApplyStepState(int step)
         {
-            var dots = new[] { Dot0, Dot1, Dot2, Dot3, Dot4, Dot5 };
-            var texts = new[] { Txt0, Txt1, Txt2, Txt3, Txt4, Txt5 };
+            var dots = new[] { DotCommit, DotBuild, DotTest, DotCI, DotCD, DotPR };
+            var texts = new[] { TxtCommit, TxtBuild, TxtTest, TxtCI, TxtCD, TxtPR };
+            var currentColor = Microsoft.UI.ColorHelper.FromArgb(255, 0, 224, 255);
+            var passedColor = Microsoft.UI.ColorHelper.FromArgb(102, 0, 224, 255);
+            var futureColor = Microsoft.UI.ColorHelper.FromArgb(102, 255, 255, 255);
 
             for (int i = 0; i < dots.Length; i++)
             {
                 if (i < step)
                 {
-                    dots[i].Fill = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(102, 0, 224, 255));
-                    texts[i].Foreground = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(102, 0, 224, 255));
+                    dots[i].Fill = new SolidColorBrush(passedColor);
+                    texts[i].Foreground = new SolidColorBrush(passedColor);
                 }
                 else if (i == step)
                 {
-                    dots[i].Fill = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(255, 0, 224, 255));
-                    texts[i].Foreground = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(255, 0, 224, 255));
+                    dots[i].Fill = new SolidColorBrush(currentColor);
+                    texts[i].Foreground = new SolidColorBrush(currentColor);
                 }
                 else
                 {
-                    dots[i].Fill = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(51, 255, 255, 255));
-                    texts[i].Foreground = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(51, 255, 255, 255));
+                    dots[i].Fill = new SolidColorBrush(futureColor);
+                    texts[i].Foreground = new SolidColorBrush(futureColor);
                 }
             }
         }

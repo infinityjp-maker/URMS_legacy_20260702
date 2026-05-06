@@ -75,7 +75,8 @@ namespace URMS.WinUI.Pages
                     // NetWaveCanvas のラベルは波形アニメで更新、ここは将来拡張用
                     break;
                 case nameof(DashboardViewModel.NetStatus):
-                    TxtSubNetwork.Text = _vm.NetStatus; break;
+                    // Subsystem layer カード更新は以降で処理
+                    break;
                 case nameof(DashboardViewModel.CiCdStatus):
                     TxtSubCiCd.Text = _vm.CiCdStatus; break;
             }

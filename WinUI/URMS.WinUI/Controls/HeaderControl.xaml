@@ -23,46 +23,53 @@
           <ColumnDefinition Width="*"/>
           <ColumnDefinition Width="Auto"/>
           <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Image Grid.Column="0" Width="48" Height="48" Margin="16,0,12,0" VerticalAlignment="Center"
+        <!-- Logo -->
+        <Image Grid.Column="0" Width="44" Height="44" Margin="14,0,12,0" VerticalAlignment="Center"
                Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo_hd_96dpi.png"/>
 
+        <!-- Title + Subtitle + Spectrum -->
         <Grid Grid.Column="1" VerticalAlignment="Center">
-          <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="2">
-            <TextBlock Text="URMS" FontFamily="Consolas" FontSize="18" FontWeight="Bold"
-                       CharacterSpacing="280" Foreground="#FFB9EFFF" HorizontalAlignment="Center"/>
+          <StackPanel VerticalAlignment="Center" Spacing="0" Margin="8,0,0,0">
+            <TextBlock Text="URMS" FontFamily="Consolas" FontSize="22" FontWeight="Bold"
+                       CharacterSpacing="280" Foreground="#FFB9EFFF"/>
             <TextBlock Text="Unified Resource Management System"
-                       FontFamily="Consolas" FontSize="10"
-                       CharacterSpacing="100" Foreground="#FFB9EFFF" HorizontalAlignment="Center"/>
+                       FontFamily="Consolas" FontSize="11"
+                       CharacterSpacing="100" Foreground="#FF8899BB" Margin="0,-2,0,0"/>
           </StackPanel>
           <StackPanel x:Name="SpectrumPanel" Orientation="Horizontal"
-                      VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="18" Margin="0,0,0,2"/>
+                      VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="16" Margin="8,0,0,2"/>
         </Grid>
 
-        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Spacing="6" Margin="0,0,12,0">
-          <Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="#FF00E0FF" VerticalAlignment="Center"/>
-          <TextBlock x:Name="TxtStatus" Text="SYS_NOMINAL" FontFamily="Consolas" FontSize="10"
-                     CharacterSpacing="120" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
+        <!-- Status + Radar -->
+        <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center" Spacing="0" Margin="0,0,16,0">
+          <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="6">
+            <Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="#FF00E0FF" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TxtStatus" Text="SYS_NOMINAL" FontFamily="Consolas" FontSize="9"
+                       CharacterSpacing="100" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
+          </StackPanel>
+          <Canvas Width="32" Height="32" VerticalAlignment="Center" Margin="0,2,0,0">
+            <Ellipse Canvas.Left="0" Canvas.Top="0" Width="32" Height="32" Stroke="#2600E0FF" StrokeThickness="1"/>
+            <Path Data="M16,16 L30,16 A16,16 0 0 0 28,10 Z" Fill="#1A00E0FF">
+              <Path.RenderTransform>
+                <RotateTransform x:Name="RadarRotate" CenterX="16" CenterY="16"/>
+              </Path.RenderTransform>
+            </Path>
+            <Ellipse x:Name="RadarBlip0" Canvas.Left="20" Canvas.Top="9" Width="3" Height="3" Fill="#CC00E0FF" Opacity="0"/>
+            <Ellipse x:Name="RadarBlip1" Canvas.Left="9" Canvas.Top="21" Width="2.5" Height="2.5" Fill="#9900E0FF" Opacity="0"/>
+          </Canvas>
         </StackPanel>
 
-        <Canvas Grid.Column="3" Width="36" Height="36" VerticalAlignment="Center" Margin="0,0,12,0">
-          <Ellipse Canvas.Left="1" Canvas.Top="1" Width="34" Height="34" Stroke="#2600E0FF" StrokeThickness="1"/>
-          <Path Data="M18,18 L35,18 A17,17 0 0 0 32,10 Z" Fill="#1A00E0FF">
-            <Path.RenderTransform>
-              <RotateTransform x:Name="RadarRotate" CenterX="18" CenterY="18"/>
-            </Path.RenderTransform>
-          </Path>
-          <Ellipse x:Name="RadarBlip0" Canvas.Left="22" Canvas.Top="10" Width="3" Height="3" Fill="#CC00E0FF" Opacity="0"/>
-          <Ellipse x:Name="RadarBlip1" Canvas.Left="11" Canvas.Top="23" Width="2.5" Height="2.5" Fill="#9900E0FF" Opacity="0"/>
-        </Canvas>
-
-        <StackPanel Grid.Column="4" VerticalAlignment="Center" Spacing="1" Margin="0,0,14,0">
-          <TextBlock x:Name="TxtClock" Text="--:--:--" FontFamily="Consolas" FontSize="18" Foreground="#FF00E0FF"/>
-          <TextBlock x:Name="TxtDate" Text="----/--/-- (---)" FontFamily="Consolas" FontSize="10" Foreground="#FF00E0FF"/>
+        <!-- Date + Clock -->
+        <StackPanel Grid.Column="3" VerticalAlignment="Center" Spacing="0" Margin="0,0,16,0" HorizontalAlignment="Right">
+          <TextBlock x:Name="TxtClock" Text="HH:mm" FontFamily="Consolas" FontSize="18" FontWeight="Bold" Foreground="#FF00E0FF"/>
+          <TextBlock x:Name="TxtDate" Text="yyyy/MM/dd (DDD)" FontFamily="Consolas" FontSize="10" Foreground="#FF00E0FF" Margin="0,-2,0,0"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="5" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,16,0" Spacing="6">
+        <!-- Window Control Buttons -->
+        <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,14,0" Spacing="4">
           <Grid>
             <Rectangle x:Name="MinimizeGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
             <Button x:Name="MinimizeButton" Width="36" Height="36"

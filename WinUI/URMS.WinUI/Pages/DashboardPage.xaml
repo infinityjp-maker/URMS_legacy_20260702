@@ -124,7 +124,7 @@
           </Grid>
         </Grid>
 
-        <TextBlock Text="SYSTEM LAYER" FontFamily="Consolas" FontSize="10" CharacterSpacing="180" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,10,0,8"/>
+        <TextBlock Text="SYSTEM LAYER / システムレイヤー" FontFamily="Consolas" FontSize="11" CharacterSpacing="100" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,10,0,12"/>
 
         <Grid ColumnSpacing="10">
           <Grid.ColumnDefinitions>
@@ -349,9 +349,9 @@
           </ctrl:CyberCard>
         </Grid>
 
-        <TextBlock Text="SUBSYSTEM LAYER" FontFamily="Consolas" FontSize="10" CharacterSpacing="180" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,24,0,8"/>
+        <TextBlock Text="SUBSYSTEM LAYER / サブシステムレイヤー" FontFamily="Consolas" FontSize="11" CharacterSpacing="100" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,32,0,12"/>
 
-        <Grid Margin="0" ColumnSpacing="8">
+        <Grid Margin="0" ColumnSpacing="10">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -360,77 +360,96 @@
             <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
 
-          <ctrl:CyberCard x:Name="SubNetwork" Grid.Column="0" Margin="0">
-            <StackPanel Spacing="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,8,10,6">
-              <TextBlock Text="NETWORK" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900f7ff"/>
-              <TextBlock x:Name="TxtSubNetwork" Text="稼働中" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="7" CharacterSpacing="50" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+          <ctrl:CyberCard x:Name="SubAsset" Grid.Column="0" Margin="0">
+            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
+              <TextBlock Text="ASSET" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900f7ff"/>
+              <TextBlock x:Name="TxtSubAsset" Text="Management" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
+              <TextBlock x:Name="TxtAssetStatus" Text="稼働中" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
+              <TextBlock Text="127 items" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
 
-          <ctrl:CyberCard x:Name="SubSecurity" Grid.Column="1" Margin="0">
-            <StackPanel Spacing="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,8,10,6">
-              <TextBlock Text="SECURITY" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900ff88"/>
-              <TextBlock x:Name="TxtSubSecurity" Text="保護中" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
-              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="7" CharacterSpacing="50" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+          <ctrl:CyberCard x:Name="SubDisk" Grid.Column="1" Margin="0">
+            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
+              <TextBlock Text="DISK" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#99ff9800"/>
+              <TextBlock x:Name="TxtSubDisk" Text="Management" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
+              <TextBlock x:Name="TxtDiskStatus" Text="監視中" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
+              <TextBlock Text="3 volumes" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
 
-          <ctrl:CyberCard x:Name="SubLog" Grid.Column="2" Margin="0">
-            <StackPanel Spacing="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,8,10,6">
-              <TextBlock Text="LOG" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#99ffb800"/>
-              <TextBlock x:Name="TxtSubLog" Text="監視中" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
-              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="7" CharacterSpacing="50" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+          <ctrl:CyberCard x:Name="SubContent" Grid.Column="2" Margin="0">
+            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
+              <TextBlock Text="CONTENT" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900ff88"/>
+              <TextBlock x:Name="TxtSubContent" Text="Management" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
+              <TextBlock x:Name="TxtContentStatus" Text="同期中" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
+              <TextBlock Text="2.4 TB" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
 
           <ctrl:CyberCard x:Name="SubCiCd" Grid.Column="3" Margin="0">
-            <StackPanel Spacing="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,8,10,6">
+            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
               <TextBlock Text="CI/CD" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#99c060ff"/>
-              <TextBlock x:Name="TxtSubCiCd" Text="稼働中" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentPurpleBrush}"/>
-              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="7" CharacterSpacing="50" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock x:Name="TxtSubCiCd" Text="Pipeline" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
+              <TextBlock x:Name="TxtCiCdStatus" Text="稼働中" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentPurpleBrush}"/>
+              <TextBlock Text="12 builds" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
 
           <ctrl:CyberCard x:Name="SubE2E" Grid.Column="4" Margin="0">
-            <StackPanel Spacing="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,8,10,6">
-              <TextBlock Text="E2E TEST" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900ffcc"/>
-              <TextBlock x:Name="TxtSubE2E" Text="待機中" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentTealBrush}"/>
-              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="7" CharacterSpacing="50" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
+              <TextBlock Text="E2E" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900ffcc"/>
+              <TextBlock x:Name="TxtSubE2E" Text="Testing" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
+              <TextBlock x:Name="TxtE2EStatus" Text="待機中" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentTealBrush}"/>
+              <TextBlock Text="24 tests" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
         </Grid>
 
-        <TextBlock Text="OPERATION LAYER" FontFamily="Consolas" FontSize="10" CharacterSpacing="180" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,24,0,8"/>
+        <TextBlock Text="OPERATION LAYER / 運用レイヤー" FontFamily="Consolas" FontSize="11" CharacterSpacing="100" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,32,0,12"/>
 
         <Grid ColumnSpacing="10">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1.8*"/>
           </Grid.ColumnDefinitions>
 
           <ctrl:CyberCard x:Name="OperationStateCard" Grid.Column="0" Margin="0">
-            <StackPanel Spacing="6" Padding="10,8,10,6">
-              <TextBlock Text="SYSTEM HEALTH" FontFamily="Consolas" FontSize="9" CharacterSpacing="120" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <TextBlock x:Name="TxtOpHealth" Text="NOMINAL" FontFamily="Consolas" FontSize="18" Foreground="{ThemeResource AccentGreenBrush}"/>
-              <TextBlock x:Name="TxtOpAlerts" Text="Alerts: 0" FontFamily="Consolas" FontSize="10" Foreground="{ThemeResource LabelBrush}"/>
-              <TextBlock x:Name="TxtOpTasks" Text="Running Tasks: 2" FontFamily="Consolas" FontSize="10" Foreground="{ThemeResource LabelBrush}"/>
+            <StackPanel Spacing="8" Padding="14,12,14,10">
+              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
+              <StackPanel Spacing="6">
+                <StackPanel Spacing="3">
+                  <TextBlock Text="HEALTH" FontFamily="Consolas" FontSize="8" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock x:Name="TxtOpHealth" Text="NOMINAL" FontFamily="Consolas" FontSize="14" FontWeight="SemiBold" Foreground="{ThemeResource AccentGreenBrush}"/>
+                </StackPanel>
+                <StackPanel Spacing="3">
+                  <TextBlock Text="ALERTS" FontFamily="Consolas" FontSize="8" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock x:Name="TxtOpAlerts" Text="0" FontFamily="Consolas" FontSize="16" Foreground="{ThemeResource AccentCyanBrush}"/>
+                </StackPanel>
+                <StackPanel Spacing="3">
+                  <TextBlock Text="TASKS" FontFamily="Consolas" FontSize="8" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock x:Name="TxtOpTasks" Text="2 active" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource ValueBrush}"/>
+                </StackPanel>
+              </StackPanel>
             </StackPanel>
           </ctrl:CyberCard>
 
-          <ctrl:CyberCard x:Name="OperationActionCard" Grid.Column="1" Margin="0">
-            <StackPanel Spacing="8" Padding="10,8,10,6">
-              <TextBlock Text="ACTIONS" FontFamily="Consolas" FontSize="9" CharacterSpacing="120" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <Button x:Name="BtnOpStart" Content="Start" FontFamily="Consolas" FontSize="11" Height="30" Background="#0A00F7FF" BorderBrush="#3300E0FF" BorderThickness="1" CornerRadius="4"/>
-              <Button x:Name="BtnOpStop" Content="Stop" FontFamily="Consolas" FontSize="11" Height="30" Background="#0A00F7FF" BorderBrush="#3300E0FF" BorderThickness="1" CornerRadius="4"/>
-              <Button x:Name="BtnOpDeploy" Content="Deploy" FontFamily="Consolas" FontSize="11" Height="30" Background="#0A00F7FF" BorderBrush="#3300E0FF" BorderThickness="1" CornerRadius="4"/>
-              <Button x:Name="BtnOpSync" Content="Sync" FontFamily="Consolas" FontSize="11" Height="30" Background="#0A00F7FF" BorderBrush="#3300E0FF" BorderThickness="1" CornerRadius="4"/>
+          <ctrl:CyberCard x:Name="OperationWorkflowCard" Grid.Column="1" Margin="0">
+            <StackPanel Spacing="8" Padding="14,12,14,10">
+              <TextBlock Text="WORKFLOW" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
+              <ctrl:WorkflowCard x:Name="OpWorkflowCard"/>
             </StackPanel>
           </ctrl:CyberCard>
 
-          <ctrl:CyberCard x:Name="OperationWorkflowCard" Grid.Column="2" Margin="0">
-            <ctrl:WorkflowCard x:Name="OpWorkflowCard"/>
+          <ctrl:CyberCard x:Name="OperationActionCard" Grid.Column="2" Margin="0">
+            <StackPanel Spacing="6" Padding="14,12,14,10">
+              <TextBlock Text="ACTIONS" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
+              <Button x:Name="BtnOpStart" Content="▶ Start" FontFamily="Consolas" FontSize="10" Height="28" Background="#0A00F7FF" BorderBrush="#3300E0FF" BorderThickness="1" CornerRadius="3"/>
+              <Button x:Name="BtnOpStop" Content="⏹ Stop" FontFamily="Consolas" FontSize="10" Height="28" Background="#0AFF3A3A" BorderBrush="#33FF3A3A" BorderThickness="1" CornerRadius="3"/>
+              <Button x:Name="BtnOpDeploy" Content="↑ Deploy" FontFamily="Consolas" FontSize="10" Height="28" Background="#0AC060FF" BorderBrush="#33C060FF" BorderThickness="1" CornerRadius="3"/>
+              <Button x:Name="BtnOpSync" Content="⟲ Sync" FontFamily="Consolas" FontSize="10" Height="28" Background="#0AFF9800" BorderBrush="#33FF9800" BorderThickness="1" CornerRadius="3"/>
+            </StackPanel>
           </ctrl:CyberCard>
         </Grid>
 
