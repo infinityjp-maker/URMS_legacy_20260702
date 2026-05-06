@@ -77,8 +77,6 @@ namespace URMS.WinUI.Pages
                 case nameof(DashboardViewModel.NetStatus):
                     // Subsystem layer カード更新は以降で処理
                     break;
-                case nameof(DashboardViewModel.CiCdStatus):
-                    TxtSubCiCd.Text = _vm.CiCdStatus; break;
             }
         }
 
@@ -110,8 +108,8 @@ namespace URMS.WinUI.Pages
             TxtDiskNas.Text  = "—";
 
             TxtOpHealth.Text = "NOMINAL";
-            TxtOpAlerts.Text = "Alerts: 0";
-            TxtOpTasks.Text = "Running Tasks: 2";
+            TxtOpAlerts.Text = "0";
+            TxtOpTasks.Text = "2 active";
             OpWorkflowCard.CurrentStep = 0;
         }
 
@@ -127,7 +125,7 @@ namespace URMS.WinUI.Pages
 
         private void UpdateOperationLayer()
         {
-            _workflowStep = (_workflowStep + 1) % 6;
+            _workflowStep = (_workflowStep + 1) % 7;
             OpWorkflowCard.CurrentStep = _workflowStep;
 
             TxtOpHealth.Text = _workflowStep >= 4 ? "ELEVATED" : "NOMINAL";

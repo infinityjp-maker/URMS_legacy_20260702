@@ -31,6 +31,19 @@
         <!-- コンテンツ -->
         <ContentPresenter x:Name="InnerContent" Margin="10,8,10,6"/>
 
+        <!-- 微細ノイズレイヤー -->
+        <Rectangle IsHitTestVisible="False" Opacity="0.06">
+          <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+              <GradientStop Color="#66FFFFFF" Offset="0"/>
+              <GradientStop Color="#11000000" Offset="0.25"/>
+              <GradientStop Color="#44FFFFFF" Offset="0.5"/>
+              <GradientStop Color="#11000000" Offset="0.75"/>
+              <GradientStop Color="#66FFFFFF" Offset="1"/>
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+
         <!-- スイープ光 -->
         <Path x:Name="SweepPath"
               Stretch="None"

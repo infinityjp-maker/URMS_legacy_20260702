@@ -40,7 +40,7 @@
                        CharacterSpacing="100" Foreground="#FF8899BB" Margin="0,-2,0,0"/>
           </StackPanel>
           <StackPanel x:Name="SpectrumPanel" Orientation="Horizontal"
-                      VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="16" Margin="8,0,0,2"/>
+                      VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="16" Margin="0,0,0,2"/>
         </Grid>
 
         <!-- Status + Radar -->
