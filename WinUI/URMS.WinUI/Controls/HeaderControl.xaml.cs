@@ -24,6 +24,13 @@ namespace URMS.WinUI.Controls
         public HeaderControl()
         {
             this.InitializeComponent();
+            SetMaximizedState(false);
+        }
+
+        public void SetMaximizedState(bool isMaximized)
+        {
+            MaximizeButton.Visibility = isMaximized ? Visibility.Collapsed : Visibility.Visible;
+            RestoreButton.Visibility = isMaximized ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void OnMinimizeClicked(object sender, RoutedEventArgs e)

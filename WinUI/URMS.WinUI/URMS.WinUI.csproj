@@ -26,6 +26,9 @@
     <Content Include="Assets\images\urms_logo_hd_96dpi.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\images\urms_logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Page Remove="MainWindow_minimal.xaml" />

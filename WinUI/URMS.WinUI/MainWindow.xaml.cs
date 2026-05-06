@@ -177,10 +177,9 @@ namespace URMS.WinUI
             if (_appWindow?.Presenter == null) return;
             try
             {
-                // OverlappedPresenter の State プロパティを確認（Maximized = 0, Normal = 1）
                 var state = ((OverlappedPresenter)_appWindow.Presenter).State;
                 bool isMaximized = (state.ToString().Contains("Maximized"));
-                // Visibility は直接 HeaderControl の xaml generated fields にはアクセスできないため、スキップ
+                HeaderHost.SetMaximizedState(isMaximized);
             }
             catch { }
         }
@@ -265,6 +264,8 @@ namespace URMS.WinUI
                 presenter.Restore();
             else
                 presenter.Maximize();
+
+            UpdateWindowStateButtons();
         }
 
         public void CloseWindow()
@@ -286,12 +287,16 @@ namespace URMS.WinUI
         {
             if (_appWindow?.Presenter is OverlappedPresenter presenter)
                 presenter.Maximize();
+
+            UpdateWindowStateButtons();
         }
 
         private void OnHeaderRestoreClicked(object sender, RoutedEventArgs e)
         {
             if (_appWindow?.Presenter is OverlappedPresenter presenter)
                 presenter.Restore();
+
+            UpdateWindowStateButtons();
         }
 
         private void OnHeaderCloseClicked(object sender, RoutedEventArgs e)
@@ -304,10 +309,18 @@ namespace URMS.WinUI
         {
             this.Activated -= OnWindowLoaded;
 
+            try
+            {
+                this.ExtendsContentIntoTitleBar = true;
+                this.SetTitleBar(AppTitleBar);
+            }
+            catch { }
+
             if (_hwnd != IntPtr.Zero)
                 DisableNativeCaptionButtons(_hwnd);
 
             InitializeUiOnce();
+            UpdateWindowStateButtons();
         }
 
         private void InitializeUiOnce()

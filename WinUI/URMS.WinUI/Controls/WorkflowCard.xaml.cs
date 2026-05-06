@@ -42,40 +42,61 @@ namespace URMS.WinUI.Controls
             var dots = new[] { DotCommit, DotBuild, DotTest, DotCI, DotCD, DotDeploy, DotPR };
             var texts = new[] { TxtCommit, TxtBuild, TxtTest, TxtCI, TxtCD, TxtDeploy, TxtPR };
             var icons = new[] { IcoCommit, IcoBuild, IcoTest, IcoCI, IcoCD, IcoDeploy, IcoPR };
+            var metas = new[] { TxtMetaCommit, TxtMetaBuild, TxtMetaTest, TxtMetaCI, TxtMetaCD, TxtMetaDeploy, TxtMetaPR };
+            string[] times = { "12s", "31s", "54s", "19s", "22s", "17s", "9s" };
+            string[] counts = { "5 commits", "1 build", "42 tests", "8 jobs", "3 packs", "2 nodes", "1 PR" };
             var currentColor = Microsoft.UI.ColorHelper.FromArgb(255, 0, 224, 255);
             var passedColor = Microsoft.UI.ColorHelper.FromArgb(255, 0, 224, 255);
             var futureColor = Microsoft.UI.ColorHelper.FromArgb(255, 255, 255, 255);
+            var failColor = Microsoft.UI.ColorHelper.FromArgb(255, 255, 106, 106);
 
             for (int i = 0; i < dots.Length; i++)
             {
                 if (i < step)
                 {
+                    bool failed = (i == 2 && step > 3);
                     dots[i].Fill = new SolidColorBrush(passedColor);
                     texts[i].Foreground = new SolidColorBrush(passedColor);
                     icons[i].Foreground = new SolidColorBrush(passedColor);
+                    metas[i].Foreground = new SolidColorBrush(passedColor);
                     dots[i].Opacity = 0.4;
                     texts[i].Opacity = 0.4;
                     icons[i].Opacity = 0.4;
+                    metas[i].Opacity = 0.4;
                     dots[i].RenderTransform = null;
+                    metas[i].Text = failed ? $"FAIL {times[i]} {counts[i]}" : $"OK {times[i]} {counts[i]}";
+                    if (failed)
+                    {
+                        dots[i].Fill = new SolidColorBrush(failColor);
+                        texts[i].Foreground = new SolidColorBrush(failColor);
+                        icons[i].Foreground = new SolidColorBrush(failColor);
+                        metas[i].Foreground = new SolidColorBrush(failColor);
+                    }
                 }
                 else if (i == step)
                 {
                     dots[i].Fill = new SolidColorBrush(currentColor);
                     texts[i].Foreground = new SolidColorBrush(currentColor);
                     icons[i].Foreground = new SolidColorBrush(currentColor);
+                    metas[i].Foreground = new SolidColorBrush(currentColor);
                     dots[i].Opacity = 1.0;
                     texts[i].Opacity = 1.0;
                     icons[i].Opacity = 1.0;
+                    metas[i].Opacity = 1.0;
+                    metas[i].Text = $"RUN {times[i]} {counts[i]}";
                 }
                 else
                 {
                     dots[i].Fill = new SolidColorBrush(futureColor);
                     texts[i].Foreground = new SolidColorBrush(futureColor);
                     icons[i].Foreground = new SolidColorBrush(futureColor);
+                    metas[i].Foreground = new SolidColorBrush(futureColor);
                     dots[i].Opacity = 0.2;
                     texts[i].Opacity = 0.2;
                     icons[i].Opacity = 0.2;
+                    metas[i].Opacity = 0.2;
                     dots[i].RenderTransform = null;
+                    metas[i].Text = $"WAIT 0s {counts[i]}";
                 }
             }
         }
@@ -96,6 +117,19 @@ namespace URMS.WinUI.Controls
                     double pulse = 1.0 + 0.15 * (0.5 + 0.5 * Math.Sin(_pulseT));
                     dots[i].RenderTransformOrigin = new Windows.Foundation.Point(0.5, 0.5);
                     dots[i].RenderTransform = new ScaleTransform { ScaleX = pulse, ScaleY = pulse };
+                }
+
+                var sweep = new[] { TxtMetaCommit, TxtMetaBuild, TxtMetaTest, TxtMetaCI, TxtMetaCD, TxtMetaDeploy, TxtMetaPR };
+                for (int i = 0; i < sweep.Length; i++)
+                {
+                    if (i == step)
+                    {
+                        sweep[i].CharacterSpacing = 70;
+                    }
+                    else
+                    {
+                        sweep[i].CharacterSpacing = 0;
+                    }
                 }
             };
             _pulseTimer.Start();

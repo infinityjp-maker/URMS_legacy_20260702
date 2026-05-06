@@ -13,6 +13,7 @@
           Fill="{ThemeResource CardBackgroundBrush}"
           Stroke="{ThemeResource CardBorderBrush}"
           StrokeThickness="1"
+          Opacity="0.88"
           Stretch="None"
           Width="0" Height="0"
           HorizontalAlignment="Left" VerticalAlignment="Top"
@@ -21,7 +22,8 @@
         <Border x:Name="CardBorder"
           Background="Transparent"
           CornerRadius="10"
-            BorderThickness="0">
+            BorderThickness="0"
+            Translation="0,0,24">
           <Border.Shadow>
             <ThemeShadow/>
           </Border.Shadow>
@@ -32,7 +34,7 @@
         <ContentPresenter x:Name="InnerContent" Margin="10,8,10,6"/>
 
         <!-- 微細ノイズレイヤー -->
-        <Rectangle IsHitTestVisible="False" Opacity="0.06">
+        <Rectangle IsHitTestVisible="False" Opacity="0.04">
           <Rectangle.Fill>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
               <GradientStop Color="#66FFFFFF" Offset="0"/>
@@ -88,10 +90,11 @@
                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                    IsHitTestVisible="False" Opacity="0">
           <Rectangle.Fill>
-            <RadialGradientBrush Center="0.5,0.5" RadiusX="0.7" RadiusY="0.7">
-              <GradientStop Color="#4000E0FF" Offset="0.0"/>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <GradientStop Color="#5000E0FF" Offset="0.0"/>
+              <GradientStop Color="#2800E0FF" Offset="0.35"/>
               <GradientStop Color="Transparent" Offset="1.0"/>
-            </RadialGradientBrush>
+            </LinearGradientBrush>
           </Rectangle.Fill>
         </Rectangle>
 

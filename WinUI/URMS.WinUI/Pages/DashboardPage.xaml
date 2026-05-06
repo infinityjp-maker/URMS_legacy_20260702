@@ -253,28 +253,68 @@
 
         <Grid ColumnSpacing="10">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.85*"/>
-            <ColumnDefinition Width="2.25*"/>
-            <ColumnDefinition Width="1.05*"/>
+            <ColumnDefinition Width="1.1*"/>
+            <ColumnDefinition Width="2.1*"/>
+            <ColumnDefinition Width="1.1*"/>
           </Grid.ColumnDefinitions>
 
-          <ctrl:CyberCard x:Name="CardLauncher" Grid.Column="0" Margin="0">
-            <StackPanel Spacing="0">
-              <Grid Margin="0,0,0,0">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="14"/><ColumnDefinition Width="6"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="0" Height="1" Fill="{ThemeResource AccentCyanBrush}" Opacity="0.7" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="2" x:Name="TxtCardLauncher" Style="{StaticResource CardTitleStyle}" Text="QUICK LAUNCH"/>
-                <Rectangle Grid.Column="3" Height="1" VerticalAlignment="Center" Margin="6,0,0,0" Opacity="0.4"><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#2e00f7ff" Offset="0"/><GradientStop Color="Transparent" Offset="1"/></LinearGradientBrush></Rectangle.Fill></Rectangle>
-              </Grid>
-              <Rectangle Style="{StaticResource HudLineStyle}"/>
-              <Grid Margin="0,4,0,0">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Content="📁 Files" FontSize="10" Padding="6,7" Margin="0,0,3,3" HorizontalAlignment="Stretch" Background="#0a00f7ff" BorderBrush="#2500f7ff" BorderThickness="1" CornerRadius="4" Foreground="{ThemeResource AccentCyanBrush}"/>
-                <Button Grid.Row="0" Grid.Column="1" Content="📋 Logs" FontSize="10" Padding="6,7" Margin="3,0,0,3" HorizontalAlignment="Stretch" Background="#0a00ff88" BorderBrush="#2500ff88" BorderThickness="1" CornerRadius="4" Foreground="{ThemeResource AccentGreenBrush}"/>
-                <Button Grid.Row="1" Grid.Column="0" Content="⚙ Config" FontSize="10" Padding="6,7" Margin="0,0,3,0" HorizontalAlignment="Stretch" Background="#0ac060ff" BorderBrush="#25c060ff" BorderThickness="1" CornerRadius="4" Foreground="{ThemeResource AccentPurpleBrush}"/>
-                <Button Grid.Row="1" Grid.Column="1" Content="📊 Report" FontSize="10" Padding="6,7" Margin="3,0,0,0" HorizontalAlignment="Stretch" Background="#0affb800" BorderBrush="#25ffb800" BorderThickness="1" CornerRadius="4" Foreground="{ThemeResource AccentAmberBrush}"/>
-              </Grid>
+          <ctrl:CyberCard x:Name="CardCalendar" Grid.Column="0" Margin="0">
+            <StackPanel Spacing="6" Padding="12,10,12,8">
+              <TextBlock Text="CALENDAR" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
+              <TextBlock x:Name="TxtCalendarMonth" Text="2026/05" FontFamily="Consolas" FontSize="10" FontWeight="SemiBold" Foreground="{ThemeResource LabelBrush}"/>
+              <Border Background="#14FFFFFF" BorderBrush="#3300E0FF" BorderThickness="1" CornerRadius="8" Padding="8,8,8,8">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+                  </Grid.RowDefinitions>
+                  <TextBlock Grid.Row="0" Grid.Column="0" Text="S" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <TextBlock Grid.Row="0" Grid.Column="1" Text="M" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="0" Grid.Column="2" Text="T" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="0" Grid.Column="3" Text="W" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="0" Grid.Column="4" Text="T" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="0" Grid.Column="5" Text="F" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="0" Grid.Column="6" Text="S" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <TextBlock Grid.Row="1" Grid.Column="4" Text="1" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="1" Grid.Column="5" Text="2" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="1" Grid.Column="6" Text="3" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <TextBlock Grid.Row="2" Grid.Column="0" Text="4" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <TextBlock Grid.Row="2" Grid.Column="1" Text="5" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="2" Grid.Column="2" Text="6" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <Border Grid.Row="2" Grid.Column="3" Background="#2400E0FF" BorderBrush="#7700E0FF" BorderThickness="1" CornerRadius="3" Width="18" Height="16" HorizontalAlignment="Center">
+                    <TextBlock Text="7" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF00E0FF" FontWeight="Bold"/>
+                  </Border>
+                  <TextBlock Grid.Row="2" Grid.Column="4" Text="8" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="2" Grid.Column="5" Text="9" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="2" Grid.Column="6" Text="10" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <TextBlock Grid.Row="3" Grid.Column="0" Text="11" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <TextBlock Grid.Row="3" Grid.Column="1" Text="12" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="3" Grid.Column="2" Text="13" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="3" Grid.Column="3" Text="14" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="3" Grid.Column="4" Text="15" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="3" Grid.Column="5" Text="16" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="3" Grid.Column="6" Text="17" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <TextBlock Grid.Row="4" Grid.Column="0" Text="18" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <TextBlock Grid.Row="4" Grid.Column="1" Text="19" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="4" Grid.Column="2" Text="20" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="4" Grid.Column="3" Text="21" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="4" Grid.Column="4" Text="22" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="4" Grid.Column="5" Text="23" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="4" Grid.Column="6" Text="24" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <TextBlock Grid.Row="5" Grid.Column="0" Text="25" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <TextBlock Grid.Row="5" Grid.Column="1" Text="26" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="5" Grid.Column="2" Text="27" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="5" Grid.Column="3" Text="28" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="5" Grid.Column="4" Text="29" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="5" Grid.Column="5" Text="30" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="5" Grid.Column="6" Text="31" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+                  <Ellipse Grid.Row="2" Grid.Column="5" Width="3" Height="3" Fill="{ThemeResource AccentAmberBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
+                  <Ellipse Grid.Row="3" Grid.Column="2" Width="3" Height="3" Fill="{ThemeResource AccentGreenBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
+                  <Ellipse Grid.Row="4" Grid.Column="4" Width="3" Height="3" Fill="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
+                </Grid>
+              </Border>
             </StackPanel>
           </ctrl:CyberCard>
 
@@ -355,83 +395,6 @@
             </StackPanel>
           </ctrl:CyberCard>
         </Grid>
-
-        <!-- System Layer: Calendar -->
-        <ctrl:CyberCard x:Name="CardCalendar" Margin="0,12,0,0">
-          <StackPanel Spacing="6" Padding="14,12,14,10">
-            <TextBlock Text="CALENDAR" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
-            <TextBlock x:Name="TxtCalendarMonth" Text="2026/05" FontFamily="Consolas" FontSize="10" FontWeight="SemiBold" Foreground="{ThemeResource LabelBrush}"/>
-            <Grid>
-              <Border Background="#0EFFFFFF" BorderBrush="#3300E0FF" BorderThickness="1" CornerRadius="8" Padding="10,8,10,8">
-                <Grid>
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
-                  </Grid.ColumnDefinitions>
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
-                  </Grid.RowDefinitions>
-              <!-- Day headers -->
-                  <TextBlock Grid.Row="0" Grid.Column="0" Text="Sun" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="0" Grid.Column="1" Text="Mon" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="0" Grid.Column="2" Text="Tue" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="0" Grid.Column="3" Text="Wed" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="0" Grid.Column="4" Text="Thu" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="0" Grid.Column="5" Text="Fri" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="0" Grid.Column="6" Text="Sat" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-              <!-- Calendar dates (sample: May 2026) -->
-                  <TextBlock Grid.Row="1" Grid.Column="3" Text="1" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="1" Grid.Column="4" Text="2" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="1" Grid.Column="5" Text="3" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="1" Grid.Column="6" Text="4" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="2" Grid.Column="0" Text="5" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="2" Grid.Column="1" Text="6" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="2" Grid.Column="2" Text="7" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-              <!-- Today: 7th -->
-                  <Border Grid.Row="2" Grid.Column="2" Background="#1A00E0FF" BorderBrush="#4400E0FF" BorderThickness="1" CornerRadius="3" HorizontalAlignment="Center" Width="24" Height="20">
-                    <TextBlock Text="7" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF00E0FF" FontWeight="Bold"/>
-                  </Border>
-                  <TextBlock Grid.Row="2" Grid.Column="3" Text="8" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="2" Grid.Column="4" Text="9" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="2" Grid.Column="5" Text="10" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="2" Grid.Column="6" Text="11" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-              <!-- Continue with rest of dates... (simplified) -->
-                  <TextBlock Grid.Row="3" Grid.Column="0" Text="12" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="3" Grid.Column="1" Text="13" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="3" Grid.Column="2" Text="14" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="3" Grid.Column="3" Text="15" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="3" Grid.Column="4" Text="16" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="3" Grid.Column="5" Text="17" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="3" Grid.Column="6" Text="18" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="4" Grid.Column="0" Text="19" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="4" Grid.Column="1" Text="20" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="4" Grid.Column="2" Text="21" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="4" Grid.Column="3" Text="22" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="4" Grid.Column="4" Text="23" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="4" Grid.Column="5" Text="24" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="4" Grid.Column="6" Text="25" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="5" Grid.Column="0" Text="26" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="5" Grid.Column="1" Text="27" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="5" Grid.Column="2" Text="28" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="5" Grid.Column="3" Text="29" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="5" Grid.Column="4" Text="30" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="5" Grid.Column="5" Text="31" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-
-                  <Ellipse Grid.Row="2" Grid.Column="5" Width="4" Height="4" Fill="{ThemeResource AccentAmberBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
-                  <Ellipse Grid.Row="3" Grid.Column="1" Width="4" Height="4" Fill="{ThemeResource AccentGreenBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
-                  <Ellipse Grid.Row="4" Grid.Column="4" Width="4" Height="4" Fill="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
-                </Grid>
-              </Border>
-              <Rectangle Height="5" VerticalAlignment="Top" Margin="2,1,2,0" Opacity="0.08" IsHitTestVisible="False">
-                <Rectangle.Fill>
-                  <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="White" Offset="0"/>
-                    <GradientStop Color="Transparent" Offset="1"/>
-                  </LinearGradientBrush>
-                </Rectangle.Fill>
-              </Rectangle>
-            </Grid>
-          </StackPanel>
-        </ctrl:CyberCard>
 
         <Rectangle Height="1" Margin="0,26,0,0" Opacity="0.25">
           <Rectangle.Fill>

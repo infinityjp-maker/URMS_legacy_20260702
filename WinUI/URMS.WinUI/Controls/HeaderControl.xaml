@@ -27,8 +27,8 @@
         </Grid.ColumnDefinitions>
 
         <!-- Logo -->
-        <Image Grid.Column="0" Width="44" Height="44" Margin="14,0,12,0" VerticalAlignment="Center"
-               Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo_hd_96dpi.png"/>
+         <Image Grid.Column="0" Width="44" Height="44" Margin="14,0,12,0" VerticalAlignment="Center"
+           Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
 
         <!-- Title + Subtitle + Spectrum -->
         <Grid Grid.Column="1" VerticalAlignment="Center">
@@ -72,42 +72,42 @@
         <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,14,0" Spacing="4">
           <Grid>
             <Rectangle x:Name="MinimizeGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
-            <Button x:Name="MinimizeButton" Width="36" Height="36"
+            <Button x:Name="MinimizeButton" Width="32" Height="32"
                     Background="#660A0F1A" BorderBrush="#66112233" BorderThickness="1"
                     CornerRadius="4"
                     PointerEntered="OnMinimizePointerEntered" PointerExited="OnMinimizePointerExited"
                     Click="OnMinimizeClicked">
-              <FontIcon Glyph="&#xE921;" FontSize="20" Foreground="#FFB9EFFF"/>
+              <FontIcon Glyph="&#xE921;" FontSize="18" Foreground="#FFB9EFFF"/>
             </Button>
           </Grid>
           <Grid>
             <Rectangle x:Name="MaximizeGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
-            <Button x:Name="MaximizeButton" Width="36" Height="36"
+            <Button x:Name="MaximizeButton" Width="32" Height="32"
                     Background="#660A0F1A" BorderBrush="#66112233" BorderThickness="1"
                     CornerRadius="4"
                     PointerEntered="OnMaximizePointerEntered" PointerExited="OnMaximizePointerExited"
                     Click="OnMaximizeClicked">
-              <FontIcon Glyph="&#xE922;" FontSize="20" Foreground="#FFB9EFFF"/>
+              <FontIcon Glyph="&#xE922;" FontSize="18" Foreground="#FFB9EFFF"/>
             </Button>
           </Grid>
           <Grid>
             <Rectangle x:Name="RestoreGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
-            <Button x:Name="RestoreButton" Width="36" Height="36"
+            <Button x:Name="RestoreButton" Width="32" Height="32"
                     Background="#660A0F1A" BorderBrush="#66112233" BorderThickness="1"
                     CornerRadius="4"
                     PointerEntered="OnRestorePointerEntered" PointerExited="OnRestorePointerExited"
                     Click="OnRestoreClicked">
-              <FontIcon Glyph="&#xE923;" FontSize="20" Foreground="#FFB9EFFF"/>
+              <FontIcon Glyph="&#xE923;" FontSize="18" Foreground="#FFB9EFFF"/>
             </Button>
           </Grid>
           <Grid>
             <Rectangle x:Name="CloseGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
-            <Button x:Name="CloseButton" Width="36" Height="36"
+            <Button x:Name="CloseButton" Width="32" Height="32"
                     Background="#660A0F1A" BorderBrush="#66112233" BorderThickness="1"
                     CornerRadius="4"
                     PointerEntered="OnClosePointerEntered" PointerExited="OnClosePointerExited"
                     Click="OnCloseClicked">
-              <FontIcon Glyph="&#xE8BB;" FontSize="20" Foreground="#FFFFA3A3"/>
+              <FontIcon Glyph="&#xE8BB;" FontSize="18" Foreground="#FFFFA3A3"/>
             </Button>
           </Grid>
         </StackPanel>

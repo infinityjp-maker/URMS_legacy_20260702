@@ -87,7 +87,6 @@ namespace URMS.WinUI.Pages
             TxtCardSchedule.Text = L.Get("CardSchedule");
             TxtCardWeather.Text  = L.Get("CardWeather");
             TxtCardTask.Text     = L.Get("CardTask");
-            TxtCardLauncher.Text = L.Get("CardLauncher");
 
             WxAnim.Condition    = "partly_cloudy";
             TxtWeatherTemp.Text = "22°C";
