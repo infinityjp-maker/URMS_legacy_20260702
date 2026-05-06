@@ -20,7 +20,11 @@
 
         <Border x:Name="CardBorder"
           Background="Transparent"
+          CornerRadius="10"
             BorderThickness="0">
+          <Border.Shadow>
+            <ThemeShadow/>
+          </Border.Shadow>
 
       <Grid>
 
@@ -59,10 +63,10 @@
           </Rectangle.Fill>
         </Rectangle>
 
-        <!-- 上部反射帯（6% 白帯, フェーズ5）-->
+        <!-- 上部反射帯（8% 白帯, フェーズ5）-->
         <Rectangle Height="6" VerticalAlignment="Top"
                    HorizontalAlignment="Stretch" IsHitTestVisible="False"
-                   Opacity="0.06">
+                   Opacity="0.08">
           <Rectangle.Fill><SolidColorBrush Color="White"/></Rectangle.Fill>
         </Rectangle>
 

@@ -356,99 +356,45 @@
             <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
 
-          <Grid x:Name="SubNetwork" Grid.Column="0" Margin="0">
-            <Border Background="#AD040914" BorderBrush="#2A00f7ff" BorderThickness="1">
-              <Grid>
-                <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
-                  <TextBlock Text="🌐" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
-                  <TextBlock Text="NETWORK" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#8000f7ff"/>
-                  <TextBlock x:Name="TxtSubNetwork" Text="稼働中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
-                </StackPanel>
-                <Ellipse Width="5" Height="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,7,0,0" Fill="{ThemeResource AccentCyanBrush}" IsHitTestVisible="False"/>
-                <Rectangle Height="1" VerticalAlignment="Bottom" IsHitTestVisible="False" Margin="14,0">
-                  <Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="Transparent" Offset="0.0"/><GradientStop Color="#B300f7ff" Offset="0.5"/><GradientStop Color="Transparent" Offset="1.0"/></LinearGradientBrush></Rectangle.Fill>
-                </Rectangle>
-                <Rectangle IsHitTestVisible="False" VerticalAlignment="Bottom" Height="80" Opacity="0.5">
-                  <Rectangle.Fill><RadialGradientBrush Center="0.5,1.0" GradientOrigin="0.5,1.0" RadiusX="0.7" RadiusY="0.7"><GradientStop Color="#2200f7ff" Offset="0.0"/><GradientStop Color="Transparent" Offset="1.0"/></RadialGradientBrush></Rectangle.Fill>
-                </Rectangle>
-              </Grid>
-            </Border>
-          </Grid>
+          <ctrl:CyberCard x:Name="SubNetwork" Grid.Column="0" Margin="0">
+            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
+              <TextBlock Text="🌐" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
+              <TextBlock Text="NETWORK" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#8000f7ff"/>
+              <TextBlock x:Name="TxtSubNetwork" Text="稼働中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
+            </StackPanel>
+          </ctrl:CyberCard>
 
-          <Grid x:Name="SubSecurity" Grid.Column="1" Margin="0">
-            <Border Background="#AD040914" BorderBrush="#2A00ff88" BorderThickness="1">
-              <Grid>
-                <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
-                  <TextBlock Text="🔒" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
-                  <TextBlock Text="SECURITY" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#8000ff88"/>
-                  <TextBlock x:Name="TxtSubSecurity" Text="保護中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
-                </StackPanel>
-                <Ellipse Width="5" Height="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,7,0,0" Fill="{ThemeResource AccentGreenBrush}" IsHitTestVisible="False"/>
-                <Rectangle Height="1" VerticalAlignment="Bottom" IsHitTestVisible="False" Margin="14,0">
-                  <Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="Transparent" Offset="0.0"/><GradientStop Color="#B300ff88" Offset="0.5"/><GradientStop Color="Transparent" Offset="1.0"/></LinearGradientBrush></Rectangle.Fill>
-                </Rectangle>
-                <Rectangle IsHitTestVisible="False" VerticalAlignment="Bottom" Height="80" Opacity="0.5">
-                  <Rectangle.Fill><RadialGradientBrush Center="0.5,1.0" GradientOrigin="0.5,1.0" RadiusX="0.7" RadiusY="0.7"><GradientStop Color="#2200ff88" Offset="0.0"/><GradientStop Color="Transparent" Offset="1.0"/></RadialGradientBrush></Rectangle.Fill>
-                </Rectangle>
-              </Grid>
-            </Border>
-          </Grid>
+          <ctrl:CyberCard x:Name="SubSecurity" Grid.Column="1" Margin="0">
+            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
+              <TextBlock Text="🔒" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
+              <TextBlock Text="SECURITY" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#8000ff88"/>
+              <TextBlock x:Name="TxtSubSecurity" Text="保護中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
+            </StackPanel>
+          </ctrl:CyberCard>
 
-          <Grid x:Name="SubLog" Grid.Column="2" Margin="0">
-            <Border Background="#AD040914" BorderBrush="#2Affb800" BorderThickness="1">
-              <Grid>
-                <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
-                  <TextBlock Text="📝" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
-                  <TextBlock Text="LOG" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#80ffb800"/>
-                  <TextBlock x:Name="TxtSubLog" Text="監視中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
-                </StackPanel>
-                <Ellipse Width="5" Height="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,7,0,0" Fill="{ThemeResource AccentAmberBrush}" IsHitTestVisible="False"/>
-                <Rectangle Height="1" VerticalAlignment="Bottom" IsHitTestVisible="False" Margin="14,0">
-                  <Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="Transparent" Offset="0.0"/><GradientStop Color="#B3ffb800" Offset="0.5"/><GradientStop Color="Transparent" Offset="1.0"/></LinearGradientBrush></Rectangle.Fill>
-                </Rectangle>
-                <Rectangle IsHitTestVisible="False" VerticalAlignment="Bottom" Height="80" Opacity="0.5">
-                  <Rectangle.Fill><RadialGradientBrush Center="0.5,1.0" GradientOrigin="0.5,1.0" RadiusX="0.7" RadiusY="0.7"><GradientStop Color="#22ffb800" Offset="0.0"/><GradientStop Color="Transparent" Offset="1.0"/></RadialGradientBrush></Rectangle.Fill>
-                </Rectangle>
-              </Grid>
-            </Border>
-          </Grid>
+          <ctrl:CyberCard x:Name="SubLog" Grid.Column="2" Margin="0">
+            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
+              <TextBlock Text="📝" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
+              <TextBlock Text="LOG" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#80ffb800"/>
+              <TextBlock x:Name="TxtSubLog" Text="監視中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
+            </StackPanel>
+          </ctrl:CyberCard>
 
-          <Grid x:Name="SubCiCd" Grid.Column="3" Margin="0">
-            <Border Background="#AD040914" BorderBrush="#2Ac060ff" BorderThickness="1">
-              <Grid>
-                <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
-                  <TextBlock Text="⚡" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentPurpleBrush}"/>
-                  <TextBlock Text="CI/CD" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#80c060ff"/>
-                  <TextBlock x:Name="TxtSubCiCd" Text="稼働中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentPurpleBrush}"/>
-                </StackPanel>
-                <Ellipse Width="5" Height="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,7,0,0" Fill="{ThemeResource AccentPurpleBrush}" IsHitTestVisible="False"/>
-                <Rectangle Height="1" VerticalAlignment="Bottom" IsHitTestVisible="False" Margin="14,0">
-                  <Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="Transparent" Offset="0.0"/><GradientStop Color="#B3c060ff" Offset="0.5"/><GradientStop Color="Transparent" Offset="1.0"/></LinearGradientBrush></Rectangle.Fill>
-                </Rectangle>
-                <Rectangle IsHitTestVisible="False" VerticalAlignment="Bottom" Height="80" Opacity="0.5">
-                  <Rectangle.Fill><RadialGradientBrush Center="0.5,1.0" GradientOrigin="0.5,1.0" RadiusX="0.7" RadiusY="0.7"><GradientStop Color="#22c060ff" Offset="0.0"/><GradientStop Color="Transparent" Offset="1.0"/></RadialGradientBrush></Rectangle.Fill>
-                </Rectangle>
-              </Grid>
-            </Border>
-          </Grid>
+          <ctrl:CyberCard x:Name="SubCiCd" Grid.Column="3" Margin="0">
+            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
+              <TextBlock Text="⚡" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentPurpleBrush}"/>
+              <TextBlock Text="CI/CD" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#80c060ff"/>
+              <TextBlock x:Name="TxtSubCiCd" Text="稼働中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentPurpleBrush}"/>
+            </StackPanel>
+          </ctrl:CyberCard>
 
-          <Grid x:Name="SubE2E" Grid.Column="4" Margin="0">
-            <Border Background="#AD040914" BorderBrush="#2A00ffcc" BorderThickness="1">
-              <Grid>
-                <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">                  <TextBlock Text="🎭" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentTealBrush}"/>
-                  <TextBlock Text="E2E TEST" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#8000ffcc"/>
-                  <TextBlock x:Name="TxtSubE2E" Text="待機中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentTealBrush}"/>
-                </StackPanel>
-                <Ellipse Width="5" Height="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,7,0,0" Fill="{ThemeResource AccentTealBrush}" IsHitTestVisible="False"/>
-                <Rectangle Height="1" VerticalAlignment="Bottom" IsHitTestVisible="False" Margin="14,0">
-                  <Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="Transparent" Offset="0.0"/><GradientStop Color="#B300ffcc" Offset="0.5"/><GradientStop Color="Transparent" Offset="1.0"/></LinearGradientBrush></Rectangle.Fill>
-                </Rectangle>
-                <Rectangle IsHitTestVisible="False" VerticalAlignment="Bottom" Height="80" Opacity="0.5">
-                  <Rectangle.Fill><RadialGradientBrush Center="0.5,1.0" GradientOrigin="0.5,1.0" RadiusX="0.7" RadiusY="0.7"><GradientStop Color="#2200ffcc" Offset="0.0"/><GradientStop Color="Transparent" Offset="1.0"/></RadialGradientBrush></Rectangle.Fill>
-                </Rectangle>
-              </Grid>
-            </Border>
-          </Grid>
+          <ctrl:CyberCard x:Name="SubE2E" Grid.Column="4" Margin="0">
+            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
+              <TextBlock Text="🎭" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentTealBrush}"/>
+              <TextBlock Text="E2E TEST" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#8000ffcc"/>
+              <TextBlock x:Name="TxtSubE2E" Text="待機中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentTealBrush}"/>
+            </StackPanel>
+          </ctrl:CyberCard>
         </Grid>
 
         <Border Height="6"/>

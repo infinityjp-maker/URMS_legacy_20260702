@@ -31,5 +31,9 @@
     <None Include="Pages\DashboardPage_backup.xaml" />
     <Compile Remove="MainWindow_simple.xaml.cs" />
     <None Include="MainWindow_simple.xaml.cs" />
+    <!-- Views/Cards/ (旧UI残骸) 除外 -->
+    <Page Remove="Views\**\*.xaml" />
+    <Compile Remove="Views\**\*.cs" />
+    <None Remove="Views\**\*.*" />
   </ItemGroup>
 </Project>
