@@ -48,13 +48,13 @@ namespace URMS.WinUI.Controls
         private static void ApplyHover(Button button, Rectangle glow)
         {
             glow.Opacity = 0.25;
-            button.Background = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(102, 17, 34, 51));
+            button.Background = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(51, 0, 224, 255));
         }
 
         private static void ClearHover(Button button, Rectangle glow)
         {
             glow.Opacity = 0.0;
-            button.Background = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(102, 10, 15, 26));
+            button.Background = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(0, 0, 0, 0));
         }
 
         private void OnMinimizePointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)

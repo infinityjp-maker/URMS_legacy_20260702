@@ -142,7 +142,7 @@ namespace URMS.WinUI
 
                 // 白い既定タイトルバーを透明化し、既定ボタンは不可視にする
                 this.ExtendsContentIntoTitleBar = true;
-                this.SetTitleBar(AppTitleBar);
+                this.SetTitleBar(HeaderHost);
                 var tb = _appWindow.TitleBar;
                 tb.BackgroundColor = Color.FromArgb(0, 0, 0, 0);
                 tb.InactiveBackgroundColor = Color.FromArgb(0, 0, 0, 0);
@@ -312,7 +312,7 @@ namespace URMS.WinUI
             try
             {
                 this.ExtendsContentIntoTitleBar = true;
-                this.SetTitleBar(AppTitleBar);
+                this.SetTitleBar(HeaderHost);
             }
             catch { }
 
