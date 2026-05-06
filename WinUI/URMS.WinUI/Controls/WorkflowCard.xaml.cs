@@ -33,8 +33,8 @@ namespace URMS.WinUI.Controls
 
         private void ApplyStepState(int step)
         {
-            var dots = new[] { DotCommit, DotBuild, DotTest, DotCI, DotCD, DotPR };
-            var texts = new[] { TxtCommit, TxtBuild, TxtTest, TxtCI, TxtCD, TxtPR };
+            var dots = new[] { DotCommit, DotBuild, DotTest, DotCI, DotCD, DotDeploy, DotPR };
+            var texts = new[] { TxtCommit, TxtBuild, TxtTest, TxtCI, TxtCD, TxtDeploy, TxtPR };
             var currentColor = Microsoft.UI.ColorHelper.FromArgb(255, 0, 224, 255);
             var passedColor = Microsoft.UI.ColorHelper.FromArgb(102, 0, 224, 255);
             var futureColor = Microsoft.UI.ColorHelper.FromArgb(102, 255, 255, 255);

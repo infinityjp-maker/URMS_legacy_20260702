@@ -598,7 +598,7 @@ namespace URMS.WinUI
         {
             var now = DateTime.Now;
             HeaderHost.ClockTextElement.Text = now.ToString("HH:mm");
-            string[] dayNames = { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
+            string[] dayNames = { "日", "月", "火", "水", "木", "金", "土" };
             string dayStr = dayNames[(int)now.DayOfWeek];
             HeaderHost.DateTextElement.Text = now.ToString($"yyyy/MM/dd ({dayStr})");
         }

@@ -63,7 +63,13 @@
 
   </Page.Resources>
 
-  <Grid Background="Transparent">
+  <Grid>
+    <Grid.Background>
+      <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#FF0A0F1A" Offset="0"/>
+        <GradientStop Color="#FF0F1A2A" Offset="1"/>
+      </LinearGradientBrush>
+    </Grid.Background>
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
       <StackPanel Spacing="10" Padding="24,20" MaxWidth="1800" HorizontalAlignment="Center">
@@ -126,12 +132,13 @@
 
         <TextBlock Text="SYSTEM LAYER / システムレイヤー" FontFamily="Consolas" FontSize="11" CharacterSpacing="100" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,10,0,12"/>
 
-        <Grid ColumnSpacing="10">
+        <!-- System Top Row: Schedule, Weather, Tasks, Security -->
+        <Grid ColumnSpacing="10" Margin="0,0,0,12">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
           </Grid.ColumnDefinitions>
 
           <ctrl:CyberCard x:Name="CardSchedule" Grid.Column="0" Margin="0">
@@ -349,6 +356,67 @@
           </ctrl:CyberCard>
         </Grid>
 
+        <!-- System Layer: Calendar -->
+        <ctrl:CyberCard x:Name="CardCalendar" Margin="0,12,0,0">
+          <StackPanel Spacing="6" Padding="14,12,14,10">
+            <TextBlock Text="CALENDAR" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
+            <TextBlock x:Name="TxtCalendarMonth" Text="2026/05" FontFamily="Consolas" FontSize="10" FontWeight="SemiBold" Foreground="{ThemeResource LabelBrush}"/>
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+              <!-- Day headers -->
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="Sun" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+              <TextBlock Grid.Row="0" Grid.Column="1" Text="Mon" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="0" Grid.Column="2" Text="Tue" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="0" Grid.Column="3" Text="Wed" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="0" Grid.Column="4" Text="Thu" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="0" Grid.Column="5" Text="Fri" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="0" Grid.Column="6" Text="Sat" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+              <!-- Calendar dates (sample: May 2026) -->
+              <TextBlock Grid.Row="1" Grid.Column="3" Text="1" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="1" Grid.Column="4" Text="2" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="1" Grid.Column="5" Text="3" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="1" Grid.Column="6" Text="4" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+              <TextBlock Grid.Row="2" Grid.Column="0" Text="5" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+              <TextBlock Grid.Row="2" Grid.Column="1" Text="6" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="2" Grid.Column="2" Text="7" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <!-- Today: 7th -->
+              <Border Grid.Row="2" Grid.Column="2" Background="#1A00E0FF" BorderBrush="#4400E0FF" BorderThickness="1" CornerRadius="3" HorizontalAlignment="Center" Width="24" Height="20">
+                <TextBlock Text="7" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF00E0FF" FontWeight="Bold"/>
+              </Border>
+              <TextBlock Grid.Row="2" Grid.Column="3" Text="8" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="2" Grid.Column="4" Text="9" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="2" Grid.Column="5" Text="10" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="2" Grid.Column="6" Text="11" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+              <!-- Continue with rest of dates... (simplified) -->
+              <TextBlock Grid.Row="3" Grid.Column="0" Text="12" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+              <TextBlock Grid.Row="3" Grid.Column="1" Text="13" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="3" Grid.Column="2" Text="14" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="3" Grid.Column="3" Text="15" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="3" Grid.Column="4" Text="16" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="3" Grid.Column="5" Text="17" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="3" Grid.Column="6" Text="18" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+              <TextBlock Grid.Row="4" Grid.Column="0" Text="19" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+              <TextBlock Grid.Row="4" Grid.Column="1" Text="20" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="4" Grid.Column="2" Text="21" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="4" Grid.Column="3" Text="22" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="4" Grid.Column="4" Text="23" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="4" Grid.Column="5" Text="24" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="4" Grid.Column="6" Text="25" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+              <TextBlock Grid.Row="5" Grid.Column="0" Text="26" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
+              <TextBlock Grid.Row="5" Grid.Column="1" Text="27" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="5" Grid.Column="2" Text="28" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="5" Grid.Column="3" Text="29" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="5" Grid.Column="4" Text="30" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Grid.Row="5" Grid.Column="5" Text="31" FontFamily="Consolas" FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+            </Grid>
+          </StackPanel>
+        </ctrl:CyberCard>
+
         <TextBlock Text="SUBSYSTEM LAYER / サブシステムレイヤー" FontFamily="Consolas" FontSize="11" CharacterSpacing="100" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,32,0,12"/>
 
         <Grid Margin="0" ColumnSpacing="10">
@@ -398,10 +466,10 @@
 
           <ctrl:CyberCard x:Name="SubE2E" Grid.Column="4" Margin="0">
             <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
-              <TextBlock Text="E2E" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900ffcc"/>
-              <TextBlock x:Name="TxtSubE2E" Text="Testing" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
-              <TextBlock x:Name="TxtE2EStatus" Text="待機中" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentTealBrush}"/>
-              <TextBlock Text="24 tests" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Text="LOG" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#99ffb800"/>
+              <TextBlock x:Name="TxtSubLog" Text="Management" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
+              <TextBlock x:Name="TxtLogStatus" Text="監視中" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
+              <TextBlock Text="254 events" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
         </Grid>

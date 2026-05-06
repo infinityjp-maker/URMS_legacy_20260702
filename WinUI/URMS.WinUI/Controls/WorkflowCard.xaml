@@ -8,50 +8,58 @@
   <StackPanel Spacing="8">
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="0">
       <!-- Commit -->
-      <Grid HorizontalAlignment="Center" MinWidth="65">
+      <Grid HorizontalAlignment="Center" MinWidth="60">
         <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
-        <Ellipse x:Name="DotCommit" Grid.Row="0" Width="14" Height="14" Fill="#FF00E0FF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
-        <TextBlock x:Name="TxtCommit" Grid.Row="1" Text="Commit" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FF00E0FF" CharacterSpacing="50"/>
+        <Ellipse x:Name="DotCommit" Grid.Row="0" Width="12" Height="12" Fill="#FF00E0FF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
+        <TextBlock x:Name="TxtCommit" Grid.Row="1" Text="Commit" FontFamily="Consolas" FontSize="7" HorizontalAlignment="Center" Foreground="#FF00E0FF" CharacterSpacing="30"/>
       </Grid>
-      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="12" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
+      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="10" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
       
       <!-- Build -->
-      <Grid HorizontalAlignment="Center" MinWidth="65">
+      <Grid HorizontalAlignment="Center" MinWidth="60">
         <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
-        <Ellipse x:Name="DotBuild" Grid.Row="0" Width="14" Height="14" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
-        <TextBlock x:Name="TxtBuild" Grid.Row="1" Text="Build" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="50"/>
+        <Ellipse x:Name="DotBuild" Grid.Row="0" Width="12" Height="12" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
+        <TextBlock x:Name="TxtBuild" Grid.Row="1" Text="Build" FontFamily="Consolas" FontSize="7" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="30"/>
       </Grid>
-      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="12" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
+      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="10" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
       
       <!-- Test -->
-      <Grid HorizontalAlignment="Center" MinWidth="65">
+      <Grid HorizontalAlignment="Center" MinWidth="60">
         <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
-        <Ellipse x:Name="DotTest" Grid.Row="0" Width="14" Height="14" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
-        <TextBlock x:Name="TxtTest" Grid.Row="1" Text="Test" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="50"/>
+        <Ellipse x:Name="DotTest" Grid.Row="0" Width="12" Height="12" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
+        <TextBlock x:Name="TxtTest" Grid.Row="1" Text="Test" FontFamily="Consolas" FontSize="7" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="30"/>
       </Grid>
-      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="12" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
+      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="10" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
       
       <!-- CI -->
-      <Grid HorizontalAlignment="Center" MinWidth="65">
+      <Grid HorizontalAlignment="Center" MinWidth="60">
         <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
-        <Ellipse x:Name="DotCI" Grid.Row="0" Width="14" Height="14" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
-        <TextBlock x:Name="TxtCI" Grid.Row="1" Text="CI" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="50"/>
+        <Ellipse x:Name="DotCI" Grid.Row="0" Width="12" Height="12" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
+        <TextBlock x:Name="TxtCI" Grid.Row="1" Text="CI" FontFamily="Consolas" FontSize="7" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="30"/>
       </Grid>
-      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="12" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
+      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="10" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
       
       <!-- CD -->
-      <Grid HorizontalAlignment="Center" MinWidth="65">
+      <Grid HorizontalAlignment="Center" MinWidth="60">
         <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
-        <Ellipse x:Name="DotCD" Grid.Row="0" Width="14" Height="14" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
-        <TextBlock x:Name="TxtCD" Grid.Row="1" Text="CD" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="50"/>
+        <Ellipse x:Name="DotCD" Grid.Row="0" Width="12" Height="12" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
+        <TextBlock x:Name="TxtCD" Grid.Row="1" Text="CD" FontFamily="Consolas" FontSize="7" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="30"/>
       </Grid>
-      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="12" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
+      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="10" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
+      
+      <!-- Deploy -->
+      <Grid HorizontalAlignment="Center" MinWidth="60">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <Ellipse x:Name="DotDeploy" Grid.Row="0" Width="12" Height="12" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
+        <TextBlock x:Name="TxtDeploy" Grid.Row="1" Text="Deploy" FontFamily="Consolas" FontSize="7" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="30"/>
+      </Grid>
+      <TextBlock HorizontalAlignment="Center" Text="→" FontFamily="Consolas" FontSize="10" Foreground="#44FFFFFF" VerticalAlignment="Center" Margin="2,0"/>
       
       <!-- PR -->
-      <Grid HorizontalAlignment="Center" MinWidth="65">
+      <Grid HorizontalAlignment="Center" MinWidth="60">
         <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
-        <Ellipse x:Name="DotPR" Grid.Row="0" Width="14" Height="14" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
-        <TextBlock x:Name="TxtPR" Grid.Row="1" Text="PR" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="50"/>
+        <Ellipse x:Name="DotPR" Grid.Row="0" Width="12" Height="12" Fill="#66FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,2"/>
+        <TextBlock x:Name="TxtPR" Grid.Row="1" Text="PR" FontFamily="Consolas" FontSize="7" HorizontalAlignment="Center" Foreground="#66FFFFFF" CharacterSpacing="30"/>
       </Grid>
     </StackPanel>
   </StackPanel>
