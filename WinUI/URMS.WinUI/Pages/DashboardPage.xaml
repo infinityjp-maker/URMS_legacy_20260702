@@ -357,42 +357,42 @@
           </Grid.ColumnDefinitions>
 
           <ctrl:CyberCard x:Name="SubNetwork" Grid.Column="0" Margin="0">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
-              <TextBlock Text="🌐" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <TextBlock Text="NETWORK" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#8000f7ff"/>
-              <TextBlock x:Name="TxtSubNetwork" Text="稼働中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
+            <StackPanel Spacing="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,8,10,6">
+              <TextBlock Text="NETWORK" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900f7ff"/>
+              <TextBlock x:Name="TxtSubNetwork" Text="稼働中" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
+              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="7" CharacterSpacing="50" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
 
           <ctrl:CyberCard x:Name="SubSecurity" Grid.Column="1" Margin="0">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
-              <TextBlock Text="🔒" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
-              <TextBlock Text="SECURITY" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#8000ff88"/>
-              <TextBlock x:Name="TxtSubSecurity" Text="保護中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
+            <StackPanel Spacing="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,8,10,6">
+              <TextBlock Text="SECURITY" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900ff88"/>
+              <TextBlock x:Name="TxtSubSecurity" Text="保護中" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
+              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="7" CharacterSpacing="50" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
 
           <ctrl:CyberCard x:Name="SubLog" Grid.Column="2" Margin="0">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
-              <TextBlock Text="📝" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
-              <TextBlock Text="LOG" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#80ffb800"/>
-              <TextBlock x:Name="TxtSubLog" Text="監視中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
+            <StackPanel Spacing="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,8,10,6">
+              <TextBlock Text="LOG" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#99ffb800"/>
+              <TextBlock x:Name="TxtSubLog" Text="監視中" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
+              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="7" CharacterSpacing="50" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
 
           <ctrl:CyberCard x:Name="SubCiCd" Grid.Column="3" Margin="0">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
-              <TextBlock Text="⚡" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentPurpleBrush}"/>
-              <TextBlock Text="CI/CD" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#80c060ff"/>
-              <TextBlock x:Name="TxtSubCiCd" Text="稼働中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentPurpleBrush}"/>
+            <StackPanel Spacing="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,8,10,6">
+              <TextBlock Text="CI/CD" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#99c060ff"/>
+              <TextBlock x:Name="TxtSubCiCd" Text="稼働中" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentPurpleBrush}"/>
+              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="7" CharacterSpacing="50" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
 
           <ctrl:CyberCard x:Name="SubE2E" Grid.Column="4" Margin="0">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8,6">
-              <TextBlock Text="🎭" FontFamily="Segoe UI Emoji" FontSize="22" HorizontalAlignment="Center" Foreground="{ThemeResource AccentTealBrush}"/>
-              <TextBlock Text="E2E TEST" FontFamily="Consolas" FontSize="8" CharacterSpacing="40" HorizontalAlignment="Center" Foreground="#8000ffcc"/>
-              <TextBlock x:Name="TxtSubE2E" Text="待機中" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentTealBrush}"/>
+            <StackPanel Spacing="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10,8,10,6">
+              <TextBlock Text="E2E TEST" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900ffcc"/>
+              <TextBlock x:Name="TxtSubE2E" Text="待機中" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentTealBrush}"/>
+              <TextBlock Text="STATUS" FontFamily="Consolas" FontSize="7" CharacterSpacing="50" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </ctrl:CyberCard>
         </Grid>

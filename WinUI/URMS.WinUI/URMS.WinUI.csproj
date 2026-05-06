@@ -23,6 +23,9 @@
     <Content Include="Assets\images\urms-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\images\urms_logo_hd_96dpi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Page Remove="MainWindow_minimal.xaml" />
@@ -32,8 +35,8 @@
     <Compile Remove="MainWindow_simple.xaml.cs" />
     <None Include="MainWindow_simple.xaml.cs" />
     <!-- Views/Cards/ (旧UI残骸) 除外 -->
-    <Page Remove="Views\**\*.xaml" />
-    <Compile Remove="Views\**\*.cs" />
-    <None Remove="Views\**\*.*" />
+    <Page Remove="Views/**/*.xaml" />
+    <Compile Remove="Views/**/*.cs" />
+    <None Remove="Views/**/*.*" />
   </ItemGroup>
 </Project>

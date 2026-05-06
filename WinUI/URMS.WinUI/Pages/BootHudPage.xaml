@@ -52,7 +52,7 @@
               Background="#140B1218" HorizontalAlignment="Center">
         <Image x:Name="UrmsLogo" Stretch="Uniform" Margin="14" Opacity="0">
           <Image.Source>
-            <BitmapImage UriSource="ms-appx:///Assets/images/urms-icon.png"
+            <BitmapImage UriSource="ms-appx:///Assets/images/urms_logo_hd_96dpi.png"
                          DecodePixelWidth="512" DecodePixelHeight="512"/>
           </Image.Source>
         </Image>
