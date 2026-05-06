@@ -142,6 +142,7 @@ namespace URMS.WinUI
 
                 // 白い既定タイトルバーを透明化し、既定ボタンは不可視にする
                 this.ExtendsContentIntoTitleBar = true;
+                this.SetTitleBar(AppTitleBar);
                 var tb = _appWindow.TitleBar;
                 tb.BackgroundColor = Color.FromArgb(0, 0, 0, 0);
                 tb.InactiveBackgroundColor = Color.FromArgb(0, 0, 0, 0);
@@ -258,8 +259,20 @@ namespace URMS.WinUI
         private void OnWinCloseClick(object sender, RoutedEventArgs e)
             => CloseWindow();
 
-        private void OnHeaderSettingsClicked(object sender, RoutedEventArgs e)
-            => ContentFrame.Navigate(typeof(Pages.SettingsPage));
+        private void OnHeaderMinimizeClicked(object sender, RoutedEventArgs e)
+            => MinimizeWindow();
+
+        private void OnHeaderMaximizeClicked(object sender, RoutedEventArgs e)
+        {
+            if (_appWindow?.Presenter is OverlappedPresenter presenter)
+                presenter.Maximize();
+        }
+
+        private void OnHeaderRestoreClicked(object sender, RoutedEventArgs e)
+        {
+            if (_appWindow?.Presenter is OverlappedPresenter presenter)
+                presenter.Restore();
+        }
 
         private void OnHeaderCloseClicked(object sender, RoutedEventArgs e)
             => CloseWindow();
@@ -565,8 +578,7 @@ namespace URMS.WinUI
         {
             var now = DateTime.Now;
             HeaderHost.ClockTextElement.Text = now.ToString("HH:mm:ss");
-            string[] days = ["日", "月", "火", "水", "木", "金", "土"];
-            HeaderHost.DateTextElement.Text = $"{now.Month}月{now.Day}日({days[(int)now.DayOfWeek]})"; 
+            HeaderHost.DateTextElement.Text = now.ToString("yyyy/MM/dd (ddd)");
         }
 
         private void TickSpectrum()

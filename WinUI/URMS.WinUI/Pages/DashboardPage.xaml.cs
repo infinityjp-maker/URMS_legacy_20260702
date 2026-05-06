@@ -16,7 +16,9 @@ namespace URMS.WinUI.Pages
         private readonly LanguageService    _lang = LanguageService.Instance;
         private readonly DashboardViewModel _vm   = new();
         private DispatcherQueueTimer?       _waveTimer;
+        private DispatcherQueueTimer?       _operationTimer;
         private double                      _wavePhase;
+        private int                         _workflowStep;
 
         public DashboardPage()
         {
@@ -36,6 +38,7 @@ namespace URMS.WinUI.Pages
             App.RecordDashboardLoaded(); // フェーズ4: 起動時間計測
             Apply();
             InitNetWave();
+            InitOperationLayer();
             _vm.StartRefresh(DispatcherQueue.GetForCurrentThread());
         }
 
@@ -43,6 +46,8 @@ namespace URMS.WinUI.Pages
         {
             _waveTimer?.Stop();
             _waveTimer = null;
+            _operationTimer?.Stop();
+            _operationTimer = null;
             _vm.StopRefresh();
             _vm.Dispose();
         }
@@ -102,6 +107,31 @@ namespace URMS.WinUI.Pages
             TxtDiskD.Text    = "—";
             BarDiskNas.Value = 0;
             TxtDiskNas.Text  = "—";
+
+            TxtOpHealth.Text = "NOMINAL";
+            TxtOpAlerts.Text = "Alerts: 0";
+            TxtOpTasks.Text = "Running Tasks: 2";
+            OpWorkflowCard.CurrentStep = 0;
+        }
+
+        private void InitOperationLayer()
+        {
+            var q = DispatcherQueue.GetForCurrentThread();
+            _operationTimer = q.CreateTimer();
+            _operationTimer.Interval = TimeSpan.FromSeconds(2);
+            _operationTimer.Tick += (_, _) => UpdateOperationLayer();
+            _operationTimer.Start();
+            UpdateOperationLayer();
+        }
+
+        private void UpdateOperationLayer()
+        {
+            _workflowStep = (_workflowStep + 1) % 6;
+            OpWorkflowCard.CurrentStep = _workflowStep;
+
+            TxtOpHealth.Text = _workflowStep >= 4 ? "ELEVATED" : "NOMINAL";
+            TxtOpAlerts.Text = $"Alerts: {(_workflowStep >= 4 ? 2 : 0)}";
+            TxtOpTasks.Text = $"Running Tasks: {2 + _workflowStep}";
         }
 
         private void InitNetWave()

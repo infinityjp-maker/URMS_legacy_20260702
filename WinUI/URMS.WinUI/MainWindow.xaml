@@ -107,10 +107,14 @@
     </Grid>
 
     <!-- ─── ヘッダー ─── -->
-    <controls:HeaderControl x:Name="HeaderHost" Grid.Row="0"
-                            DoubleTapped="OnHeaderDoubleTapped"
-                            SettingsClicked="OnHeaderSettingsClicked"
-                            CloseClicked="OnHeaderCloseClicked"/>
+    <Grid x:Name="AppTitleBar" Grid.Row="0">
+      <controls:HeaderControl x:Name="HeaderHost"
+                              DoubleTapped="OnHeaderDoubleTapped"
+                              MinimizeClicked="OnHeaderMinimizeClicked"
+                              MaximizeClicked="OnHeaderMaximizeClicked"
+                              RestoreClicked="OnHeaderRestoreClicked"
+                              CloseClicked="OnHeaderCloseClicked"/>
+    </Grid>
 
     <!-- ─── コンテンツエリア ─── -->
     <Grid Grid.Row="1">

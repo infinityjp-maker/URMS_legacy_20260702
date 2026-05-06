@@ -23,28 +23,27 @@
           <ColumnDefinition Width="*"/>
           <ColumnDefinition Width="Auto"/>
           <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0,12,0" Spacing="12">
-          <Image Width="42" Height="42" Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo_hd_96dpi.png"/>
-          <TextBlock Text="Unified Resource Management System (URMS)"
-                     VerticalAlignment="Center"
-                     FontFamily="Consolas"
-                     FontSize="16"
-                     FontWeight="SemiBold"
-                     Foreground="#FFB9EFFF"
-                     CharacterSpacing="40"/>
-        </StackPanel>
+        <Image Grid.Column="0" Width="48" Height="48" Margin="16,0,12,0" VerticalAlignment="Center"
+               Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo_hd_96dpi.png"/>
 
-        <StackPanel x:Name="SpectrumPanel" Grid.Column="1" Orientation="Horizontal"
-                    VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="24" Margin="0,0,0,6"/>
+        <Grid Grid.Column="1" VerticalAlignment="Center">
+          <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="2">
+            <TextBlock Text="URMS" FontFamily="Consolas" FontSize="18" FontWeight="Bold"
+                       CharacterSpacing="280" Foreground="#FFB9EFFF" HorizontalAlignment="Center"/>
+            <TextBlock Text="Unified Resource Management System"
+                       FontFamily="Consolas" FontSize="10"
+                       CharacterSpacing="100" Foreground="#FFB9EFFF" HorizontalAlignment="Center"/>
+          </StackPanel>
+          <StackPanel x:Name="SpectrumPanel" Orientation="Horizontal"
+                      VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="18" Margin="0,0,0,2"/>
+        </Grid>
 
         <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Spacing="6" Margin="0,0,12,0">
           <Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="#FF00E0FF" VerticalAlignment="Center"/>
           <TextBlock x:Name="TxtStatus" Text="SYS_NOMINAL" FontFamily="Consolas" FontSize="10"
-                     CharacterSpacing="120" Foreground="#FF8FC8D8" VerticalAlignment="Center"/>
+                     CharacterSpacing="120" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
         </StackPanel>
 
         <Canvas Grid.Column="3" Width="36" Height="36" VerticalAlignment="Center" Margin="0,0,12,0">
@@ -58,26 +57,47 @@
           <Ellipse x:Name="RadarBlip1" Canvas.Left="11" Canvas.Top="23" Width="2.5" Height="2.5" Fill="#9900E0FF" Opacity="0"/>
         </Canvas>
 
-        <StackPanel Grid.Column="4" VerticalAlignment="Center" Spacing="0" Margin="0,0,12,0">
-          <TextBlock x:Name="TxtClock" Text="--:--:--" FontFamily="Consolas" FontSize="20" Foreground="#FF00E0FF"/>
-          <TextBlock x:Name="TxtDate" Text="---" FontFamily="Consolas" FontSize="10" Foreground="#FF8FC8D8"/>
+        <StackPanel Grid.Column="4" VerticalAlignment="Center" Spacing="1" Margin="0,0,14,0">
+          <TextBlock x:Name="TxtClock" Text="--:--:--" FontFamily="Consolas" FontSize="18" Foreground="#FF00E0FF"/>
+          <TextBlock x:Name="TxtDate" Text="----/--/-- (---)" FontFamily="Consolas" FontSize="10" Foreground="#FF00E0FF"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="5" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,18,0" Spacing="8">
+        <StackPanel Grid.Column="5" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,16,0" Spacing="6">
           <Grid>
-            <Rectangle x:Name="SettingsGlow" RadiusX="8" RadiusY="8" Fill="#4000E0FF" Opacity="0"/>
-            <Button x:Name="SettingsButton" Width="40" Height="40"
+            <Rectangle x:Name="MinimizeGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
+            <Button x:Name="MinimizeButton" Width="36" Height="36"
                     Background="#660A0F1A" BorderBrush="#66112233" BorderThickness="1"
-                    PointerEntered="OnSettingsPointerEntered" PointerExited="OnSettingsPointerExited"
-                    Click="OnSettingsClicked">
-              <FontIcon Glyph="&#xE713;" FontSize="20" Foreground="#FFB9EFFF"/>
+                    CornerRadius="4"
+                    PointerEntered="OnMinimizePointerEntered" PointerExited="OnMinimizePointerExited"
+                    Click="OnMinimizeClicked">
+              <FontIcon Glyph="&#xE921;" FontSize="20" Foreground="#FFB9EFFF"/>
             </Button>
           </Grid>
-
           <Grid>
-            <Rectangle x:Name="CloseGlow" RadiusX="8" RadiusY="8" Fill="#4000E0FF" Opacity="0"/>
-            <Button x:Name="CloseButton" Width="40" Height="40"
+            <Rectangle x:Name="MaximizeGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
+            <Button x:Name="MaximizeButton" Width="36" Height="36"
                     Background="#660A0F1A" BorderBrush="#66112233" BorderThickness="1"
+                    CornerRadius="4"
+                    PointerEntered="OnMaximizePointerEntered" PointerExited="OnMaximizePointerExited"
+                    Click="OnMaximizeClicked">
+              <FontIcon Glyph="&#xE922;" FontSize="20" Foreground="#FFB9EFFF"/>
+            </Button>
+          </Grid>
+          <Grid>
+            <Rectangle x:Name="RestoreGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
+            <Button x:Name="RestoreButton" Width="36" Height="36"
+                    Background="#660A0F1A" BorderBrush="#66112233" BorderThickness="1"
+                    CornerRadius="4"
+                    PointerEntered="OnRestorePointerEntered" PointerExited="OnRestorePointerExited"
+                    Click="OnRestoreClicked">
+              <FontIcon Glyph="&#xE923;" FontSize="20" Foreground="#FFB9EFFF"/>
+            </Button>
+          </Grid>
+          <Grid>
+            <Rectangle x:Name="CloseGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
+            <Button x:Name="CloseButton" Width="36" Height="36"
+                    Background="#660A0F1A" BorderBrush="#66112233" BorderThickness="1"
+                    CornerRadius="4"
                     PointerEntered="OnClosePointerEntered" PointerExited="OnClosePointerExited"
                     Click="OnCloseClicked">
               <FontIcon Glyph="&#xE8BB;" FontSize="20" Foreground="#FFFFA3A3"/>
