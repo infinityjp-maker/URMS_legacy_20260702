@@ -258,6 +258,12 @@ namespace URMS.WinUI
         private void OnWinCloseClick(object sender, RoutedEventArgs e)
             => CloseWindow();
 
+        private void OnHeaderSettingsClicked(object sender, RoutedEventArgs e)
+            => ContentFrame.Navigate(typeof(Pages.SettingsPage));
+
+        private void OnHeaderCloseClicked(object sender, RoutedEventArgs e)
+            => CloseWindow();
+
         private void OnHeaderDoubleTapped(object sender, Microsoft.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
             => ToggleMaximizeWindow();
 
@@ -293,7 +299,7 @@ namespace URMS.WinUI
         // ══════════════════════════════════════
         private void InitSpectrumBars()
         {
-            SpectrumPanel.Children.Clear();
+            HeaderHost.SpectrumPanelElement.Children.Clear();
             for (int i = 0; i < 13; i++)
             {
                 var st = new ScaleTransform { ScaleX = 1.0, ScaleY = 0.3 };
@@ -309,7 +315,7 @@ namespace URMS.WinUI
                     Tag = new double[] { _rng.NextDouble() * Math.PI * 2,
                                          0.35 + _rng.NextDouble() * 0.65 }
                 };
-                SpectrumPanel.Children.Add(rect);
+                HeaderHost.SpectrumPanelElement.Children.Add(rect);
             }
         }
 
@@ -558,15 +564,15 @@ namespace URMS.WinUI
         private void TickClock()
         {
             var now = DateTime.Now;
-            TxtClock.Text = now.ToString("HH:mm:ss");
+            HeaderHost.ClockTextElement.Text = now.ToString("HH:mm:ss");
             string[] days = ["日", "月", "火", "水", "木", "金", "土"];
-            TxtDate.Text = $"{now.Month}月{now.Day}日({days[(int)now.DayOfWeek]})"; 
+            HeaderHost.DateTextElement.Text = $"{now.Month}月{now.Day}日({days[(int)now.DayOfWeek]})"; 
         }
 
         private void TickSpectrum()
         {
             double t = DateTime.Now.TimeOfDay.TotalSeconds;
-            foreach (UIElement child in SpectrumPanel.Children)
+            foreach (UIElement child in HeaderHost.SpectrumPanelElement.Children)
             {
                 if (child is Rectangle bar
                     && bar.RenderTransform is ScaleTransform st
@@ -582,19 +588,19 @@ namespace URMS.WinUI
         private void TickRadar()
         {
             _radarAngle = (_radarAngle + 1.5) % 360;
-            RadarRotate.Angle = _radarAngle;
+            HeaderHost.RadarRotateElement.Angle = _radarAngle;
             double b0 = Math.Max(0, 1.0 - ((_radarAngle - 60  + 360) % 360) / 90.0);
             double b1 = Math.Max(0, 1.0 - ((_radarAngle - 200 + 360) % 360) / 90.0);
-            RadarBlip0.Opacity = b0;
-            RadarBlip1.Opacity = b1;
+            HeaderHost.RadarBlip0Element.Opacity = b0;
+            HeaderHost.RadarBlip1Element.Opacity = b1;
         }
 
         private void TickStatus()
         {
             _statusPhase = (_statusPhase + 1) % StatusMessages.Length;
-            TxtStatus.Text = StatusMessages[_statusPhase];
+            HeaderHost.StatusTextElement.Text = StatusMessages[_statusPhase];
             _dotVisible = !_dotVisible;
-            StatusDot.Opacity = _dotVisible ? 1.0 : 0.4;
+            HeaderHost.StatusDotElement.Opacity = _dotVisible ? 1.0 : 0.4;
         }
 
         private void TickScanline()
