@@ -6,7 +6,7 @@
     Margin="0"
     Background="Transparent">
 
-  <Grid Height="72" Margin="0">
+  <Grid Height="72" Margin="0" Padding="0">
     <Border Background="Transparent" BorderThickness="0" Padding="0" Margin="0" CornerRadius="0" Translation="0,0,16">
       <Border.Shadow>
         <ThemeShadow/>

@@ -7,12 +7,24 @@
   xmlns:controls="using:URMS.WinUI.Controls"
     Title="URMS">
 
-  <Grid Background="{ThemeResource AppBackgroundBrush}">
+  <Grid>
     <Grid.KeyboardAccelerators>
       <KeyboardAccelerator Key="Q" Modifiers="Control" Invoked="OnKeyboardAccelerator_Q"/>
       <KeyboardAccelerator Key="E" Modifiers="Control" Invoked="OnKeyboardAccelerator_E"/>
       <KeyboardAccelerator Key="W" Modifiers="Control" Invoked="OnKeyboardAccelerator_W"/>
     </Grid.KeyboardAccelerators>
+
+    <Grid x:Name="AppTitleBar" Margin="0" Background="Transparent">
+      <controls:HeaderControl x:Name="HeaderHost"
+                              Margin="0"
+                              DoubleTapped="OnHeaderDoubleTapped"
+                              MinimizeClicked="OnHeaderMinimizeClicked"
+                              MaximizeClicked="OnHeaderMaximizeClicked"
+                              RestoreClicked="OnHeaderRestoreClicked"
+                              CloseClicked="OnHeaderCloseClicked"/>
+    </Grid>
+
+    <Grid Background="{ThemeResource AppBackgroundBrush}">
     <Grid.RowDefinitions>
       <RowDefinition Height="72"/>
       <RowDefinition Height="*"/>
@@ -106,17 +118,6 @@
       </Canvas>
     </Grid>
 
-    <!-- ─── ヘッダー ─── -->
-    <Grid x:Name="AppTitleBar" Grid.Row="0" Margin="0" Background="Transparent">
-      <controls:HeaderControl x:Name="HeaderHost"
-                              Margin="0"
-                              DoubleTapped="OnHeaderDoubleTapped"
-                              MinimizeClicked="OnHeaderMinimizeClicked"
-                              MaximizeClicked="OnHeaderMaximizeClicked"
-                              RestoreClicked="OnHeaderRestoreClicked"
-                              CloseClicked="OnHeaderCloseClicked"/>
-    </Grid>
-
     <!-- ─── コンテンツエリア ─── -->
     <Grid Grid.Row="1">
       <Frame x:Name="ContentFrame"/>
@@ -142,5 +143,6 @@
       </Rectangle.RenderTransform>
     </Rectangle>
 
+  </Grid>
   </Grid>
 </Window>
