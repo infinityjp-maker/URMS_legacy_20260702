@@ -44,41 +44,5 @@ namespace URMS.WinUI.Controls
 
         private void OnCloseClicked(object sender, RoutedEventArgs e)
             => CloseClicked?.Invoke(this, e);
-
-        private static void ApplyHover(Button button, Rectangle glow)
-        {
-            glow.Opacity = 0.25;
-            button.Background = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(51, 0, 224, 255));
-        }
-
-        private static void ClearHover(Button button, Rectangle glow)
-        {
-            glow.Opacity = 0.0;
-            button.Background = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(0, 0, 0, 0));
-        }
-
-        private void OnMinimizePointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-            => ApplyHover(MinimizeButton, MinimizeGlow);
-
-        private void OnMinimizePointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-            => ClearHover(MinimizeButton, MinimizeGlow);
-
-        private void OnMaximizePointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-            => ApplyHover(MaximizeButton, MaximizeGlow);
-
-        private void OnMaximizePointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-            => ClearHover(MaximizeButton, MaximizeGlow);
-
-        private void OnRestorePointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-            => ApplyHover(RestoreButton, MaximizeGlow);
-
-        private void OnRestorePointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-            => ClearHover(RestoreButton, MaximizeGlow);
-
-        private void OnClosePointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-            => ApplyHover(CloseButton, CloseGlow);
-
-        private void OnClosePointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-            => ClearHover(CloseButton, CloseGlow);
     }
 }

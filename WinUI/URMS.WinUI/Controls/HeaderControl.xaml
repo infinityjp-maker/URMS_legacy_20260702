@@ -79,47 +79,56 @@
 
         <!-- Date + Clock -->
         <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Spacing="24" Margin="0,0,24,0" HorizontalAlignment="Right">
-          <TextBlock x:Name="TxtClock" Text="HH:mm" FontFamily="Consolas" FontSize="18" FontWeight="Bold" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
           <TextBlock x:Name="TxtDate" Text="yyyy/MM/dd (DDD)" FontFamily="Consolas" FontSize="10" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
+          <TextBlock x:Name="TxtClock" Text="HH:mm" FontFamily="Consolas" FontSize="18" FontWeight="Bold" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
         </StackPanel>
 
         <!-- Window Control Buttons -->
         <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,16,0" Spacing="24">
           <Grid>
-            <Rectangle x:Name="MinimizeGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
-            <Button x:Name="MinimizeButton" Width="32" Height="32"
+            <Button x:Name="MinimizeButton" Width="28" Height="28" MinWidth="28" MinHeight="28" Padding="0"
                     Background="Transparent" BorderBrush="Transparent" BorderThickness="0"
-                    CornerRadius="4"
-                    PointerEntered="OnMinimizePointerEntered" PointerExited="OnMinimizePointerExited"
+                    CornerRadius="2"
                     Click="OnMinimizeClicked">
-              <FontIcon Glyph="&#xE921;" FontSize="18" Foreground="#FFB9EFFF"/>
+              <Button.Resources>
+                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#22FFFFFF"/>
+                <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#22FFFFFF"/>
+              </Button.Resources>
+              <FontIcon Glyph="&#xE921;" FontSize="14" Foreground="#FFB9EFFF"/>
             </Button>
           </Grid>
           <Grid>
-            <Rectangle x:Name="MaximizeGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
-            <Button x:Name="MaximizeButton" Width="32" Height="32"
+            <Button x:Name="MaximizeButton" Width="28" Height="28" MinWidth="28" MinHeight="28" Padding="0"
                     Background="Transparent" BorderBrush="Transparent" BorderThickness="0"
-                    CornerRadius="4"
-                    PointerEntered="OnMaximizePointerEntered" PointerExited="OnMaximizePointerExited"
+                    CornerRadius="2"
                     Click="OnMaximizeClicked">
-              <FontIcon Glyph="&#xE922;" FontSize="18" Foreground="#FFB9EFFF"/>
+              <Button.Resources>
+                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#22FFFFFF"/>
+                <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#22FFFFFF"/>
+              </Button.Resources>
+              <FontIcon Glyph="&#xE922;" FontSize="14" Foreground="#FFB9EFFF"/>
             </Button>
-            <Button x:Name="RestoreButton" Width="32" Height="32"
+            <Button x:Name="RestoreButton" Width="28" Height="28" MinWidth="28" MinHeight="28" Padding="0"
                     Background="Transparent" BorderBrush="Transparent" BorderThickness="0"
-                    CornerRadius="4"
-                    PointerEntered="OnRestorePointerEntered" PointerExited="OnRestorePointerExited"
+                    CornerRadius="2"
                     Click="OnRestoreClicked">
-              <FontIcon Glyph="&#xE923;" FontSize="18" Foreground="#FFB9EFFF"/>
+              <Button.Resources>
+                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#22FFFFFF"/>
+                <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#22FFFFFF"/>
+              </Button.Resources>
+              <FontIcon Glyph="&#xE923;" FontSize="14" Foreground="#FFB9EFFF"/>
             </Button>
           </Grid>
           <Grid>
-            <Rectangle x:Name="CloseGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
-            <Button x:Name="CloseButton" Width="32" Height="32"
+            <Button x:Name="CloseButton" Width="28" Height="28" MinWidth="28" MinHeight="28" Padding="0"
                     Background="Transparent" BorderBrush="Transparent" BorderThickness="0"
-                    CornerRadius="4"
-                    PointerEntered="OnClosePointerEntered" PointerExited="OnClosePointerExited"
+                    CornerRadius="2"
                     Click="OnCloseClicked">
-              <FontIcon Glyph="&#xE8BB;" FontSize="18" Foreground="#FFFFA3A3"/>
+              <Button.Resources>
+                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#22FFFFFF"/>
+                <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#22FFFFFF"/>
+              </Button.Resources>
+              <FontIcon Glyph="&#xE8BB;" FontSize="14" Foreground="#FFB9EFFF"/>
             </Button>
           </Grid>
         </StackPanel>
