@@ -70,10 +70,10 @@ namespace URMS.WinUI.Controls
             => ClearHover(MaximizeButton, MaximizeGlow);
 
         private void OnRestorePointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-            => ApplyHover(RestoreButton, RestoreGlow);
+            => ApplyHover(RestoreButton, MaximizeGlow);
 
         private void OnRestorePointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-            => ClearHover(RestoreButton, RestoreGlow);
+            => ClearHover(RestoreButton, MaximizeGlow);
 
         private void OnClosePointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
             => ApplyHover(CloseButton, CloseGlow);

@@ -144,6 +144,23 @@ namespace URMS.WinUI
                 this.ExtendsContentIntoTitleBar = true;
                 this.SetTitleBar(HeaderHost);
                 var tb = _appWindow.TitleBar;
+                try
+                {
+                    var extendsProp = tb.GetType().GetProperty("ExtendsContentIntoTitleBar");
+                    extendsProp?.SetValue(tb, true);
+                }
+                catch { }
+                try
+                {
+                    var preferredHeightProp = tb.GetType().GetProperty("PreferredHeightOption");
+                    var enumType = preferredHeightProp?.PropertyType;
+                    if (preferredHeightProp != null && enumType != null)
+                    {
+                        var tallValue = Enum.Parse(enumType, "Tall");
+                        preferredHeightProp.SetValue(tb, tallValue);
+                    }
+                }
+                catch { }
                 tb.BackgroundColor = Color.FromArgb(0, 0, 0, 0);
                 tb.InactiveBackgroundColor = Color.FromArgb(0, 0, 0, 0);
                 tb.ButtonBackgroundColor = Color.FromArgb(0, 0, 0, 0);
@@ -155,6 +172,15 @@ namespace URMS.WinUI
                 tb.ButtonHoverForegroundColor = Color.FromArgb(0, 0, 0, 0);
                 tb.ButtonPressedBackgroundColor = Color.FromArgb(0, 0, 0, 0);
                 tb.ButtonPressedForegroundColor = Color.FromArgb(0, 0, 0, 0);
+                if (_appWindow.Presenter is OverlappedPresenter presenter)
+                {
+                    try
+                    {
+                        var method = presenter.GetType().GetMethod("SetBorderAndTitleBar");
+                        method?.Invoke(presenter, new object[] { false, false });
+                    }
+                    catch { }
+                }
                 ApplyTaskbarIcon(_hwnd);
                 InstallSysCommandBlockHook(_hwnd);
                 DisableNativeCaptionButtons(_hwnd);
@@ -313,6 +339,20 @@ namespace URMS.WinUI
             {
                 this.ExtendsContentIntoTitleBar = true;
                 this.SetTitleBar(HeaderHost);
+                if (_appWindow?.TitleBar != null)
+                {
+                    try
+                    {
+                        var preferredHeightProp = _appWindow.TitleBar.GetType().GetProperty("PreferredHeightOption");
+                        var enumType = preferredHeightProp?.PropertyType;
+                        if (preferredHeightProp != null && enumType != null)
+                        {
+                            var tallValue = Enum.Parse(enumType, "Tall");
+                            preferredHeightProp.SetValue(_appWindow.TitleBar, tallValue);
+                        }
+                    }
+                    catch { }
+                }
             }
             catch { }
 

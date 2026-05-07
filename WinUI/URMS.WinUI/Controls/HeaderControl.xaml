@@ -26,9 +26,24 @@
           <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+        <Rectangle IsHitTestVisible="False" Opacity="0.03">
+          <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+              <GradientStop Color="#55FFFFFF" Offset="0.0"/>
+              <GradientStop Color="#14000000" Offset="0.25"/>
+              <GradientStop Color="#33FFFFFF" Offset="0.5"/>
+              <GradientStop Color="#14000000" Offset="0.75"/>
+              <GradientStop Color="#55FFFFFF" Offset="1.0"/>
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+
         <!-- Logo -->
-         <Image Grid.Column="0" Width="48" Height="48" Margin="16,0,16,0" VerticalAlignment="Center"
-           Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
+        <Grid Grid.Column="0" Width="48" Height="48" Margin="16,0,16,0" VerticalAlignment="Center">
+          <Ellipse Width="54" Height="54" Fill="#5500CFFF" Opacity="0.35" IsHitTestVisible="False"/>
+          <Image Width="48" Height="48" VerticalAlignment="Center"
+                 Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
+        </Grid>
 
         <!-- Title + Subtitle + Spectrum -->
         <Grid Grid.Column="1" VerticalAlignment="Center">
@@ -89,9 +104,6 @@
                     Click="OnMaximizeClicked">
               <FontIcon Glyph="&#xE922;" FontSize="18" Foreground="#FFB9EFFF"/>
             </Button>
-          </Grid>
-          <Grid>
-            <Rectangle x:Name="RestoreGlow" RadiusX="4" RadiusY="4" Fill="#4000E0FF" Opacity="0"/>
             <Button x:Name="RestoreButton" Width="32" Height="32"
                     Background="Transparent" BorderBrush="Transparent" BorderThickness="0"
                     CornerRadius="4"
@@ -112,7 +124,7 @@
           </Grid>
         </StackPanel>
 
-        <Rectangle VerticalAlignment="Bottom" Height="2" Fill="#B200E8FF"/>
+        <Rectangle VerticalAlignment="Bottom" Height="2" Fill="#FF00E8FF"/>
         <Rectangle VerticalAlignment="Bottom" Height="6" Margin="0,2,0,0" IsHitTestVisible="False" Opacity="0.15">
           <Rectangle.Fill>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
