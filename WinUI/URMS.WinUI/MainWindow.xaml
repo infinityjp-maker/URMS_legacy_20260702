@@ -133,7 +133,7 @@
     <!-- ─── スキャンライン (全画面, z-top) ─── -->
     <Rectangle x:Name="ScanLine" Grid.Row="1" Grid.RowSpan="2"
                HorizontalAlignment="Stretch" Height="3"
-               VerticalAlignment="Top" IsHitTestVisible="False" Opacity="0.6">
+               VerticalAlignment="Bottom" IsHitTestVisible="False" Opacity="0.6">
       <Rectangle.Fill>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
           <GradientStop Color="Transparent" Offset="0.0"/>
