@@ -107,8 +107,9 @@
     </Grid>
 
     <!-- ─── ヘッダー ─── -->
-    <Grid x:Name="AppTitleBar" Grid.Row="0" Background="Transparent">
+    <Grid x:Name="AppTitleBar" Grid.Row="0" Margin="0" Background="Transparent">
       <controls:HeaderControl x:Name="HeaderHost"
+                              Margin="0"
                               DoubleTapped="OnHeaderDoubleTapped"
                               MinimizeClicked="OnHeaderMinimizeClicked"
                               MaximizeClicked="OnHeaderMaximizeClicked"

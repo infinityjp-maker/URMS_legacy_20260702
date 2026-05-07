@@ -3,10 +3,11 @@
     x:Class="URMS.WinUI.Controls.HeaderControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Margin="0"
     Background="Transparent">
 
-  <Grid Height="72">
-    <Border Background="Transparent" CornerRadius="0" Translation="0,0,16">
+  <Grid Height="72" Margin="0">
+    <Border Background="Transparent" BorderThickness="0" Padding="0" Margin="0" CornerRadius="0" Translation="0,0,16">
       <Border.Shadow>
         <ThemeShadow/>
       </Border.Shadow>

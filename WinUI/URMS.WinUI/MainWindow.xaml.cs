@@ -70,6 +70,7 @@ namespace URMS.WinUI
         private AppWindow? _appWindow;
         private IntPtr _hwnd = IntPtr.Zero;
         private bool _uiInitialized;
+        private bool _titleBarSettingsApplied;
         private SubclassProc? _subclassProc;
 
         // ── 基本タイマー ────────────────────────────
@@ -127,6 +128,7 @@ namespace URMS.WinUI
             CurrentWindow = this;
             this.InitializeComponent();
             InitializeWindowChrome();
+            this.Activated += (_, __) => ApplyTitleBarSettings();
             this.Activated += OnWindowLoaded;
             // Activated 未発火環境でも初期化を実行する
             DispatcherQueue.GetForCurrentThread()?.TryEnqueue(InitializeUiOnce);
@@ -139,21 +141,6 @@ namespace URMS.WinUI
                 _hwnd = WindowNative.GetWindowHandle(this);
                 var id = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(_hwnd);
                 _appWindow = AppWindow.GetFromWindowId(id);
-
-                // 白い既定タイトルバーを透明化し、既定ボタンは不可視にする
-                ApplyHeaderTitleBarSettings();
-                var tb = _appWindow.TitleBar;
-                tb.BackgroundColor = Color.FromArgb(0, 0, 0, 0);
-                tb.InactiveBackgroundColor = Color.FromArgb(0, 0, 0, 0);
-                tb.ButtonBackgroundColor = Color.FromArgb(0, 0, 0, 0);
-                tb.ButtonInactiveBackgroundColor = Color.FromArgb(0, 0, 0, 0);
-                tb.ForegroundColor = Color.FromArgb(0, 0, 0, 0);
-                tb.ButtonForegroundColor = Color.FromArgb(0, 0, 0, 0);
-                tb.ButtonInactiveForegroundColor = Color.FromArgb(0, 0, 0, 0);
-                tb.ButtonHoverBackgroundColor = Color.FromArgb(0, 0, 0, 0);
-                tb.ButtonHoverForegroundColor = Color.FromArgb(0, 0, 0, 0);
-                tb.ButtonPressedBackgroundColor = Color.FromArgb(0, 0, 0, 0);
-                tb.ButtonPressedForegroundColor = Color.FromArgb(0, 0, 0, 0);
                 if (_appWindow.Presenter is OverlappedPresenter presenter)
                 {
                     try
@@ -316,12 +303,6 @@ namespace URMS.WinUI
         private void OnWindowLoaded(object sender, WindowActivatedEventArgs e)
         {
             this.Activated -= OnWindowLoaded;
-
-            try
-            {
-                ApplyHeaderTitleBarSettings();
-            }
-            catch { }
 
             if (_hwnd != IntPtr.Zero)
                 DisableNativeCaptionButtons(_hwnd);
@@ -621,15 +602,29 @@ namespace URMS.WinUI
             HeaderHost.DateTextElement.Text = now.ToString("yyyy/MM/dd (ddd)");
         }
 
-        private void ApplyHeaderTitleBarSettings()
+        private void ApplyTitleBarSettings()
         {
-            if (_appWindow?.TitleBar == null)
+            if (_titleBarSettingsApplied)
                 return;
 
+            var appWindow = AppWindow;
+            var titleBar = appWindow.TitleBar;
+
+            // OS標準タイトルバーを完全に無効化
+            titleBar.ExtendsContentIntoTitleBar = true;
+            titleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+
+            // OS標準ボタンの描画を完全に透明化
+            titleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
+            titleBar.ButtonForegroundColor = Microsoft.UI.Colors.Transparent;
+            titleBar.ButtonInactiveForegroundColor = Microsoft.UI.Colors.Transparent;
+
+            // URMSヘッダーをタイトルバーとして登録
             this.ExtendsContentIntoTitleBar = true;
             this.SetTitleBar(HeaderHost);
-            _appWindow.TitleBar.ExtendsContentIntoTitleBar = true;
-            _appWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+
+            _titleBarSettingsApplied = true;
         }
 
         private void TickSpectrum()
