@@ -614,6 +614,10 @@ namespace URMS.WinUI
             titleBar.ExtendsContentIntoTitleBar = true;
             titleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
 
+            // OS標準タイトルバーの地色を透明化
+            titleBar.BackgroundColor = Microsoft.UI.Colors.Transparent;
+            titleBar.InactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
+
             // OS標準ボタンの描画を完全に透明化
             titleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
