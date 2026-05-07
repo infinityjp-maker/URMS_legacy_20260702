@@ -39,7 +39,7 @@
     <Canvas x:Name="BgStarsCanvas"  Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False"/>
 
     <!-- ─── 背景 z:1: Nebula 放射グラデーション (nebulapulse 12s) ─── -->
-    <Grid x:Name="NebulaGrid" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False">
+    <Grid x:Name="NebulaGrid" Grid.Row="1" Grid.RowSpan="2" IsHitTestVisible="False">
       <!-- レイヤー 1: 左上ブルー rgba(0,100,180,.11) -->
       <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
         <Rectangle.Fill>
@@ -88,7 +88,7 @@
     <Canvas x:Name="BgMatrixCanvas" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" Opacity="0.14"/>
 
     <!-- ─── HUD 4 コーナーブラケット ─── -->
-    <Grid Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False">
+    <Grid Grid.Row="1" IsHitTestVisible="False">
       <!-- 左上 -->
       <Canvas Width="70" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
         <Line X1="0" Y1="70" X2="0" Y2="0" Stroke="#4d00f7ff" StrokeThickness="2"/>
@@ -131,7 +131,7 @@
     </Grid>
 
     <!-- ─── スキャンライン (全画面, z-top) ─── -->
-    <Rectangle x:Name="ScanLine" Grid.Row="0" Grid.RowSpan="2"
+    <Rectangle x:Name="ScanLine" Grid.Row="1" Grid.RowSpan="2"
                HorizontalAlignment="Stretch" Height="3"
                VerticalAlignment="Top" IsHitTestVisible="False" Opacity="0.6">
       <Rectangle.Fill>
