@@ -16,10 +16,10 @@
       </RadialGradientBrush>
     </Grid.Background>
 
-    <!-- ── 微細ノイズオーバーレイ (Opacity 0.04) ── -->
+    <!-- ── 微細ノイズオーバーレイ (Opacity 0.02) ── -->
     <Rectangle x:Name="NoiseOverlay"
                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-               IsHitTestVisible="False" Opacity="0.04">
+               IsHitTestVisible="False" Opacity="0.02">
       <Rectangle.Fill>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
           <GradientStop Color="#FF3A6080" Offset="0.0"/>
@@ -30,6 +30,19 @@
         </LinearGradientBrush>
       </Rectangle.Fill>
     </Rectangle>
+
+    <!-- ── 縦方向シェーディング ── -->
+    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False" Opacity="0.26">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+          <GradientStop Color="#3300B8D8" Offset="0"/>
+          <GradientStop Color="#12081016" Offset="0.45"/>
+          <GradientStop Color="#00000000" Offset="1"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <Rectangle VerticalAlignment="Top" Height="2" Fill="#5500E8FF" IsHitTestVisible="False"/>
 
     <!-- ── パーティクルキャンバス ── -->
     <Canvas x:Name="BootParticleCanvas" IsHitTestVisible="False"/>
@@ -50,12 +63,15 @@
       <Border Width="184" Height="184" CornerRadius="6"
               BorderBrush="#3300E0FF" BorderThickness="1"
               Background="#140B1218" HorizontalAlignment="Center">
-        <Image x:Name="UrmsLogo" Stretch="Uniform" Margin="14" Opacity="0">
-          <Image.Source>
-            <BitmapImage UriSource="ms-appx:///Assets/images/urms_logo.png"
-                         DecodePixelWidth="512" DecodePixelHeight="512"/>
-          </Image.Source>
-        </Image>
+        <Grid>
+          <Ellipse x:Name="LogoGlowPulse" Width="150" Height="150" Fill="#6600D8FF" Opacity="0" IsHitTestVisible="False"/>
+          <Image x:Name="UrmsLogo" Stretch="Uniform" Margin="14" Opacity="0">
+            <Image.Source>
+              <BitmapImage UriSource="ms-appx:///Assets/images/urms_logo.png"
+                           DecodePixelWidth="512" DecodePixelHeight="512"/>
+            </Image.Source>
+          </Image>
+        </Grid>
       </Border>
 
       <TextBlock Text="UNIFIED RUNNER MANAGEMENT SYSTEM"

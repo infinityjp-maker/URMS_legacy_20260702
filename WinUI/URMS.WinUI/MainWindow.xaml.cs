@@ -141,11 +141,8 @@ namespace URMS.WinUI
                 _appWindow = AppWindow.GetFromWindowId(id);
 
                 // 白い既定タイトルバーを透明化し、既定ボタンは不可視にする
-                this.ExtendsContentIntoTitleBar = true;
-                this.SetTitleBar(HeaderHost);
+                ApplyHeaderTitleBarSettings();
                 var tb = _appWindow.TitleBar;
-                tb.ExtendsContentIntoTitleBar = true;
-                tb.PreferredHeightOption = TitleBarHeightOption.Tall;
                 tb.BackgroundColor = Color.FromArgb(0, 0, 0, 0);
                 tb.InactiveBackgroundColor = Color.FromArgb(0, 0, 0, 0);
                 tb.ButtonBackgroundColor = Color.FromArgb(0, 0, 0, 0);
@@ -322,13 +319,7 @@ namespace URMS.WinUI
 
             try
             {
-                this.ExtendsContentIntoTitleBar = true;
-                this.SetTitleBar(HeaderHost);
-                if (_appWindow?.TitleBar != null)
-                {
-                    _appWindow.TitleBar.ExtendsContentIntoTitleBar = true;
-                    _appWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-                }
+                ApplyHeaderTitleBarSettings();
             }
             catch { }
 
@@ -626,10 +617,19 @@ namespace URMS.WinUI
         private void TickClock()
         {
             var now = DateTime.Now;
-            HeaderHost.ClockTextElement.Text = now.ToString("HH:mm");
-            string[] dayNames = { "日", "月", "火", "水", "木", "金", "土" };
-            string dayStr = dayNames[(int)now.DayOfWeek];
-            HeaderHost.DateTextElement.Text = now.ToString($"yyyy/MM/dd ({dayStr})");
+            HeaderHost.ClockTextElement.Text = now.ToString("HH:mm:ss");
+            HeaderHost.DateTextElement.Text = now.ToString("yyyy/MM/dd (ddd)");
+        }
+
+        private void ApplyHeaderTitleBarSettings()
+        {
+            if (_appWindow?.TitleBar == null)
+                return;
+
+            this.ExtendsContentIntoTitleBar = true;
+            this.SetTitleBar(HeaderHost);
+            _appWindow.TitleBar.ExtendsContentIntoTitleBar = true;
+            _appWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
         }
 
         private void TickSpectrum()

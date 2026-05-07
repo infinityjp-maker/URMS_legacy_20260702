@@ -40,7 +40,7 @@
 
         <!-- Logo -->
         <Grid Grid.Column="0" Width="48" Height="48" Margin="16,0,16,0" VerticalAlignment="Center">
-          <Ellipse Width="54" Height="54" Fill="#5500CFFF" Opacity="0.35" IsHitTestVisible="False"/>
+          <Ellipse Width="48" Height="48" Fill="#5500CFFF" Opacity="0.25" IsHitTestVisible="False"/>
           <Image Width="48" Height="48" VerticalAlignment="Center"
                  Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
         </Grid>
@@ -79,8 +79,8 @@
 
         <!-- Date + Clock -->
         <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Spacing="24" Margin="0,0,24,0" HorizontalAlignment="Right">
-          <TextBlock x:Name="TxtDate" Text="yyyy/MM/dd (DDD)" FontFamily="Consolas" FontSize="10" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
-          <TextBlock x:Name="TxtClock" Text="HH:mm" FontFamily="Consolas" FontSize="18" FontWeight="Bold" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
+          <TextBlock x:Name="TxtDate" Text="yyyy/MM/dd (ddd)" FontFamily="Consolas" FontSize="16" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
+          <TextBlock x:Name="TxtClock" Text="HH:mm:ss" FontFamily="Consolas" FontSize="16" FontWeight="Bold" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
         </StackPanel>
 
         <!-- Window Control Buttons -->

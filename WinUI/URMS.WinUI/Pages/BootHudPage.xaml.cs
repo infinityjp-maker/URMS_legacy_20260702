@@ -4,26 +4,18 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using System;
-using System.IO;
 using System.Threading.Tasks;
-using Windows.Foundation;
 
 namespace URMS.WinUI.Pages
 {
     public sealed partial class BootHudPage : Page
     {
-        // ─── ステータス文字列（パルス） ──────────────────────────────────────
-        private static readonly string[] _statusSeq =
-        [
-            "INITIALIZING", "LOADING MODULES", "SYNC NODES",
-            "CALIBRATING", "ACTIVATING HUD", "SYSTEM READY"
-        ];
-        private int _statusIdx = 0;
-
         private DispatcherQueueTimer? _statusPulseTimer;
         private DispatcherQueueTimer? _scaleTimer;
+        private DispatcherQueueTimer? _glowPulseTimer;
         private double _scaleT = 0;
         private bool   _scaleUp = true;
+        private double _glowPhase = 0;
 
         // ─── 完了コールバック ────────────────────────────────────────────────
         /// <summary>フェードアウト完了後に親パネルへ通知するアクション</summary>
@@ -54,11 +46,12 @@ namespace URMS.WinUI.Pages
             // ① BootContentPanel フェードイン
             await FadeAsync(BootContentPanel, 0, 1, 220);
 
-            // ② ロゴ フェードイン (300ms)
-            await FadeAsync(UrmsLogo, 0, 1, 300);
+            // ② ロゴ フェードイン (600ms)
+            await FadeAsync(UrmsLogo, 0, 1, 600);
 
             // ③ スケールパルス開始
             StartScalePulse();
+            StartLogoGlowPulse();
 
             // ④ ステータスパルス開始
             StartStatusPulse();
@@ -66,9 +59,12 @@ namespace URMS.WinUI.Pages
             // ⑤ Boot シーケンス完走 (~2s)
             await Task.Delay(2000);
 
-            // ⑥ 全ステータスを "SYSTEM READY" に
-            BootStatusText.Text = "SYSTEM READY";
-            await Task.Delay(400);
+            // ⑥ "SYSTEM ONLINE" をフェードイン
+            _statusPulseTimer?.Stop();
+            BootStatusText.Opacity = 0;
+            BootStatusText.Text = "SYSTEM ONLINE";
+            await FadeAsync(BootStatusText, 0, 1, 500);
+            await Task.Delay(250);
 
             // ⑦ BootContentPanel フェードアウト → 遷移完了
             await AnimateOpacityToDashboardAsync();
@@ -84,7 +80,8 @@ namespace URMS.WinUI.Pages
             _scaleTimer.Interval = TimeSpan.FromMilliseconds(20);
             _scaleTimer.Tick += (_, _) =>
             {
-                double step = 0.004;
+                // 0.4s 周期 (20ms x 20 tick)
+                double step = 0.10;
                 if (_scaleUp)
                 {
                     _scaleT += step;
@@ -102,6 +99,21 @@ namespace URMS.WinUI.Pages
             _scaleTimer.Start();
         }
 
+        private void StartLogoGlowPulse()
+        {
+            var q = DispatcherQueue.GetForCurrentThread();
+            _glowPulseTimer = q.CreateTimer();
+            _glowPulseTimer.Interval = TimeSpan.FromMilliseconds(40);
+            _glowPulseTimer.Tick += (_, _) =>
+            {
+                // 1.2s で 0.3 -> 0.0 を往復ではなく減衰ループ
+                _glowPhase += (2 * Math.PI) / 30.0;
+                double pulse = (Math.Sin(_glowPhase) + 1.0) * 0.5;
+                LogoGlowPulse.Opacity = 0.3 * pulse;
+            };
+            _glowPulseTimer.Start();
+        }
+
         // ═══════════════════════════════════════════════════
         // ステータスパルス
         // ═══════════════════════════════════════════════════
@@ -109,12 +121,11 @@ namespace URMS.WinUI.Pages
         {
             var q = DispatcherQueue.GetForCurrentThread();
             _statusPulseTimer = q.CreateTimer();
-            _statusPulseTimer.Interval = TimeSpan.FromMilliseconds(400);
+            _statusPulseTimer.Interval = TimeSpan.FromMilliseconds(300);
             _statusPulseTimer.Tick += (_, _) =>
             {
-                _statusIdx = (_statusIdx + 1) % _statusSeq.Length;
-                BootStatusText.Text = _statusSeq[_statusIdx];
-                BootStatusText.Opacity = BootStatusText.Opacity > 0.5 ? 0.55 : 1.0;
+                BootStatusText.Text = "INITIALIZING";
+                BootStatusText.Opacity = BootStatusText.Opacity > 0.6 ? 0.35 : 1.0;
             };
             _statusPulseTimer.Start();
         }
@@ -126,8 +137,9 @@ namespace URMS.WinUI.Pages
         {
             _statusPulseTimer?.Stop();
             _scaleTimer?.Stop();
+            _glowPulseTimer?.Stop();
 
-            await FadeAsync(BootContentPanel, 1, 0, 500);
+            await FadeAsync(this, 1, 0, 400);
 
             // 起動完了時刻を記録
             App.RecordBootTransitionComplete();
