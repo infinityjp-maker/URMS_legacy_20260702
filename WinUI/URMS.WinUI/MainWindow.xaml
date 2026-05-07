@@ -14,7 +14,12 @@
       <KeyboardAccelerator Key="W" Modifiers="Control" Invoked="OnKeyboardAccelerator_W"/>
     </Grid.KeyboardAccelerators>
 
-    <Grid x:Name="AppTitleBar" Margin="0" Background="Transparent">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Grid x:Name="AppTitleBar" Grid.Row="0" Margin="0" Background="Transparent">
       <controls:HeaderControl x:Name="HeaderHost"
                               Margin="0"
                               DoubleTapped="OnHeaderDoubleTapped"
@@ -24,7 +29,7 @@
                               CloseClicked="OnHeaderCloseClicked"/>
     </Grid>
 
-    <Grid Background="{ThemeResource AppBackgroundBrush}">
+    <Grid Grid.Row="1" Background="{ThemeResource AppBackgroundBrush}">
     <Grid.RowDefinitions>
       <RowDefinition Height="72"/>
       <RowDefinition Height="*"/>
