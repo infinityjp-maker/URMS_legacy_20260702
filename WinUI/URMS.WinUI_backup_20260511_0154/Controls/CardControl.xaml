@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="URMS.WinUI.Controls.CardControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="Transparent"
+    PointerEntered="OnPointerEntered"
+    PointerExited="OnPointerExited"
+    PointerPressed="OnPointerPressed"
+    PointerReleased="OnPointerReleased">
+
+  <Grid Background="Transparent">
+    <Grid x:Name="DeepShadowHost" IsHitTestVisible="False"/>
+    <Grid x:Name="MidShadowHost" IsHitTestVisible="False"/>
+    <Grid x:Name="LiftShadowHost" IsHitTestVisible="False"/>
+
+    <Border x:Name="CardRoot"
+            Background="Transparent"
+            CornerRadius="10"
+            Translation="0,0,12">
+      <Grid>
+        <Grid x:Name="MaterialLayer" IsHitTestVisible="False">
+          <Rectangle x:Name="CardBackdropBlur" Margin="2" RadiusX="9" RadiusY="9" Opacity="0.34">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#32111B2A" Offset="0"/>
+                <GradientStop Color="#24101926" Offset="0.55"/>
+                <GradientStop Color="#2C0A111B" Offset="1"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+
+            <Border x:Name="CardBackground"
+              Margin="1"
+                  BorderBrush="#3850678D"
+                  BorderThickness="1"
+                  CornerRadius="9">
+            <Border.Background>
+              <LinearGradientBrush x:Name="CardBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop x:Name="BgStopTop" Color="#FF101826" Offset="0"/>
+                <GradientStop x:Name="BgStopMid" Color="#FF0C1320" Offset="0.55"/>
+                <GradientStop x:Name="BgStopBottom" Color="#FF08101A" Offset="1"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
+
+          <Rectangle x:Name="NoiseLayer" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.014" Fill="{ThemeResource GlobalNoiseBrush}"/>
+
+          <Rectangle x:Name="SatinReflection" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.04">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#3DFFFFFF" Offset="0.0"/>
+                <GradientStop Color="#0AFFFFFF" Offset="0.24"/>
+                <GradientStop Color="#12B6D8F5" Offset="0.58"/>
+                <GradientStop Color="#08FFFFFF" Offset="1.0"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+
+          <Border x:Name="InnerGlow"
+                  Margin="2"
+                  CornerRadius="8"
+                  BorderThickness="3"
+                  Opacity="0.085"
+                  BorderBrush="#55D5E6F7"/>
+
+          <Border x:Name="MaterialFrame"
+                  Margin="1"
+                  CornerRadius="9"
+                  BorderThickness="1"
+                  BorderBrush="#1218212D"/>
+        </Grid>
+
+        <Grid x:Name="OpticalLayer" IsHitTestVisible="False">
+          <Border x:Name="TopHighlight"
+                  Margin="2,2,2,0"
+                  Height="20"
+                  VerticalAlignment="Top"
+                  CornerRadius="9,9,5,5"
+                  Opacity="0.34">
+            <Border.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#5EFFFFFF" Offset="0.0"/>
+                <GradientStop Color="#15FFFFFF" Offset="0.42"/>
+                <GradientStop Color="#38B7D9F4" Offset="0.78"/>
+                <GradientStop Color="#00FFFFFF" Offset="1.0"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
+
+          <Border x:Name="SoftInnerReflection"
+                  Margin="2"
+                  CornerRadius="8"
+                  BorderThickness="1.6"
+                  Opacity="0.11"
+                  BorderBrush="#7DEAF5FF"/>
+
+          <Border x:Name="DeepOuterShadow"
+                  Margin="0"
+                  CornerRadius="10"
+                  BorderThickness="1"
+                  Opacity="0.12"
+                  BorderBrush="#1C070A0F"/>
+        </Grid>
+
+        <Grid x:Name="ContentLayer" Margin="52,44,52,44">
+          <StackPanel x:Name="InfoPanel" Spacing="18">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+
+              <Border Grid.Column="0"
+                      Width="34"
+                      Height="34"
+                      CornerRadius="17"
+                      Background="#1630445B"
+                      BorderBrush="#2F7FA7C0"
+                      BorderThickness="1">
+                <FontIcon x:Name="InfoIcon"
+                          FontSize="15"
+                          Glyph="&#xE946;"
+                          Foreground="#A8DCEBFA"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"/>
+              </Border>
+
+              <StackPanel Grid.Column="2" Spacing="6">
+                <TextBlock x:Name="TitleTextBlock"
+                           Text="{x:Bind TitleText, Mode=OneWay}"
+                           CharacterSpacing="180"
+                           FontSize="12"
+                           FontWeight="SemiBold"
+                           Foreground="#A6B7CBDE"
+                           TextTrimming="CharacterEllipsis"/>
+                <Rectangle Height="1" HorizontalAlignment="Stretch" Opacity="0.42">
+                  <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                      <GradientStop Color="#4AA5C5DF" Offset="0"/>
+                      <GradientStop Color="Transparent" Offset="1"/>
+                    </LinearGradientBrush>
+                  </Rectangle.Fill>
+                </Rectangle>
+              </StackPanel>
+            </Grid>
+
+            <TextBlock x:Name="MainValueTextBlock"
+                       Text="{x:Bind MainValueText, Mode=OneWay}"
+                       CharacterSpacing="26"
+                       FontSize="32"
+                       FontWeight="SemiBold"
+                       Foreground="#FFF1F6FB"
+                       TextTrimming="CharacterEllipsis"/>
+
+            <TextBlock x:Name="SubInfoTextBlock"
+                       Text="{x:Bind SubInfoText, Mode=OneWay}"
+                       FontSize="13"
+                       LineHeight="24"
+                       Foreground="#8FA2B7C9"
+                       TextWrapping="WrapWholeWords"/>
+
+            <ContentPresenter x:Name="InnerContent"/>
+          </StackPanel>
+        </Grid>
+
+        <Grid x:Name="OverlayLayer" IsHitTestVisible="False">
+          <Ellipse x:Name="ActiveOverlay"
+                   Width="420"
+                   Height="420"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Opacity="0.0">
+            <Ellipse.Fill>
+              <RadialGradientBrush RadiusX="0.75" RadiusY="0.75">
+                <GradientStop Color="#16DBF1FF" Offset="0.0"/>
+                <GradientStop Color="#0CD6EAF8" Offset="0.42"/>
+                <GradientStop Color="#00000000" Offset="1.0"/>
+              </RadialGradientBrush>
+            </Ellipse.Fill>
+          </Ellipse>
+
+          <Rectangle x:Name="ReflectionWave"
+                     Margin="1"
+                     RadiusX="9"
+                     RadiusY="9"
+                     Opacity="0.0">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,-0.2" EndPoint="1,1.2">
+                <GradientStop Color="#00FFFFFF" Offset="0.0"/>
+                <GradientStop Color="#14FFFFFF" Offset="0.38"/>
+                <GradientStop Color="#00FFFFFF" Offset="0.7"/>
+                <GradientStop Color="#0FD4EBFF" Offset="1.0"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+
+          <Border x:Name="GlowBorder"
+                  Margin="0"
+                  CornerRadius="10"
+                  BorderThickness="1.5"
+                  BorderBrush="#4E8FB7CF"
+                  Opacity="0.16"/>
+        </Grid>
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>

@@ -243,12 +243,12 @@ namespace URMS.WinUI.Controls
         private void ApplyState(bool isHover, bool isActive)
         {
             var profile = BuildProfile();
-            var emphasis = IsPrimaryTone ? 1.15f : 1.0f;
+            var emphasis = IsPrimaryTone ? 1.30f : 1.20f;
             var targetScale = isHover ? 1.008f * emphasis : 1.0f;
             var targetY = isHover ? -2.4f * emphasis : 0.0f;
             var targetGlow = (float)(isHover ? HoverGlowOpacity : BaseGlowOpacity);
             var targetOverlay = (float)(isActive ? profile.ActiveOverlayOpacity : 0.0);
-            var targetSatin = (float)(profile.SatinOpacity + (isHover ? 0.03 : 0.0));
+            var targetSatin = (float)(profile.SatinOpacity + (isHover ? 0.05 : 0.0));
             var targetInner = (float)(profile.SoftInnerReflectionOpacity + (isHover ? 0.03 : 0.0));
             var targetWave = (float)(isHover ? 0.09 : 0.0);
             var targetBlur = (float)(profile.BlurOpacity + (isHover ? 0.04 : 0.0));
@@ -348,7 +348,7 @@ namespace URMS.WinUI.Controls
         private CardProfile BuildProfile()
         {
             var primaryBoost = IsPrimaryTone ? 1.2 : 1.0;
-            var material = Math.Clamp(MaterialIntensity * primaryBoost, 0.75, 1.8);
+            var material = Math.Clamp(MaterialIntensity * primaryBoost, 0.8, 2.0);
             var optical = Math.Clamp(OpticalDepth * (IsPrimaryTone ? 1.3 : 1.0), 0.65, 1.9);
             var shadow = Math.Clamp(ShadowDepth * (IsPrimaryTone ? 1.4 : 1.0), 0.7, 2.2);
             var density = Math.Clamp(InfoDensity, 0.8, 1.2);
@@ -358,17 +358,17 @@ namespace URMS.WinUI.Controls
             var baseBottom = IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x09, 0x11, 0x1B) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x08, 0x10, 0x1A);
 
             return new CardProfile(
-                NoiseOpacity: 0.012 * material,
-                SatinOpacity: 0.035 * material,
-                InnerGlowOpacity: 0.080 * material,
-                BlurOpacity: 0.30 + ((material - 1.0) * 0.08),
+                NoiseOpacity: 0.015 + ((material - 1.0) * 0.005),
+                SatinOpacity: 0.040 + ((material - 1.0) * 0.02),
+                InnerGlowOpacity: 0.095 + ((material - 1.0) * 0.03),
+                BlurOpacity: 0.40 + ((material - 1.0) * 0.08),
                 TopHighlightOpacity: 0.28 * optical,
                 SoftInnerReflectionOpacity: 0.085 * optical,
-                ActiveOverlayOpacity: IsPrimaryTone ? 0.076 : 0.058,
-                MainValueFontSize: IsPrimaryTone ? 36 + ((density - 1.0) * 4) : 32 + ((density - 1.0) * 3),
-                TitleFontSize: 12,
-                SubInfoFontSize: 13,
-                SubInfoLineHeight: 24,
+                ActiveOverlayOpacity: IsPrimaryTone ? 0.09 : 0.065,
+                MainValueFontSize: IsPrimaryTone ? 38 + ((density - 1.0) * 2) : 34 + ((density - 1.0) * 2),
+                TitleFontSize: 14,
+                SubInfoFontSize: 12,
+                SubInfoLineHeight: 26,
                 BackgroundTop: baseTop,
                 BackgroundMid: baseMid,
                 BackgroundBottom: baseBottom,
@@ -376,9 +376,9 @@ namespace URMS.WinUI.Controls
                 FrameColor: Microsoft.UI.ColorHelper.FromArgb(0x20, 0x16, 0x20, 0x2D),
                 DeepOuterShadowColor: Microsoft.UI.ColorHelper.FromArgb(0x2D, 0x07, 0x0A, 0x0F),
                 DeepShadow: new ShadowSpec(
-                    BlurRadius: 18f + (float)((shadow - 1.0) * 6.0),
+                    BlurRadius: 24f + (float)((shadow - 1.0) * 8.0),
                     Opacity: 0.30f,
-                    OffsetY: 12f + (float)((shadow - 1.0) * 4.0),
+                    OffsetY: 16f + (float)((shadow - 1.0) * 4.0),
                     Color: Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x05, 0x08, 0x10)),
                 MidShadow: new ShadowSpec(
                     BlurRadius: 12f + (float)((shadow - 1.0) * 4.0),

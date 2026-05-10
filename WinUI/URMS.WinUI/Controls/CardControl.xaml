@@ -20,7 +20,7 @@
             Translation="0,0,12">
       <Grid>
         <Grid x:Name="MaterialLayer" IsHitTestVisible="False">
-          <Rectangle x:Name="CardBackdropBlur" Margin="2" RadiusX="9" RadiusY="9" Opacity="0.34">
+          <Rectangle x:Name="CardBackdropBlur" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.44">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="#32111B2A" Offset="0"/>
@@ -44,9 +44,9 @@
             </Border.Background>
           </Border>
 
-          <Rectangle x:Name="NoiseLayer" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.014" Fill="{ThemeResource GlobalNoiseBrush}"/>
+          <Rectangle x:Name="NoiseLayer" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.018" Fill="{ThemeResource GlobalNoiseBrush}"/>
 
-          <Rectangle x:Name="SatinReflection" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.04">
+          <Rectangle x:Name="SatinReflection" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.05">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="#3DFFFFFF" Offset="0.0"/>
@@ -60,8 +60,8 @@
           <Border x:Name="InnerGlow"
                   Margin="2"
                   CornerRadius="8"
-                  BorderThickness="3"
-                  Opacity="0.085"
+                  BorderThickness="5"
+                  Opacity="0.11"
                   BorderBrush="#55D5E6F7"/>
 
           <Border x:Name="MaterialFrame"
@@ -91,8 +91,8 @@
           <Border x:Name="SoftInnerReflection"
                   Margin="2"
                   CornerRadius="8"
-                  BorderThickness="1.6"
-                  Opacity="0.11"
+                  BorderThickness="4"
+                  Opacity="0.13"
                   BorderBrush="#7DEAF5FF"/>
 
           <Border x:Name="DeepOuterShadow"
@@ -127,11 +127,11 @@
                           VerticalAlignment="Center"/>
               </Border>
 
-              <StackPanel Grid.Column="2" Spacing="6">
+              <StackPanel Grid.Column="2" Spacing="6" Margin="0,4,0,0">
                 <TextBlock x:Name="TitleTextBlock"
                            Text="{x:Bind TitleText, Mode=OneWay}"
                            CharacterSpacing="180"
-                           FontSize="12"
+                           FontSize="14"
                            FontWeight="SemiBold"
                            Foreground="#A6B7CBDE"
                            TextTrimming="CharacterEllipsis"/>
@@ -149,15 +149,15 @@
             <TextBlock x:Name="MainValueTextBlock"
                        Text="{x:Bind MainValueText, Mode=OneWay}"
                        CharacterSpacing="26"
-                       FontSize="32"
+                       FontSize="34"
                        FontWeight="SemiBold"
                        Foreground="#FFF1F6FB"
                        TextTrimming="CharacterEllipsis"/>
 
             <TextBlock x:Name="SubInfoTextBlock"
                        Text="{x:Bind SubInfoText, Mode=OneWay}"
-                       FontSize="13"
-                       LineHeight="24"
+                       FontSize="12"
+                       LineHeight="26"
                        Foreground="#8FA2B7C9"
                        TextWrapping="WrapWholeWords"/>
 
