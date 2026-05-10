@@ -39,18 +39,38 @@
           </Rectangle.Fill>
         </Rectangle>
 
+        <Rectangle IsHitTestVisible="False" Opacity="0.02" Fill="{ThemeResource GlobalNoiseBrush}"/>
+
+        <Rectangle VerticalAlignment="Top" Height="14" IsHitTestVisible="False" Opacity="0.05">
+          <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <GradientStop Color="#55FFFFFF" Offset="0"/>
+              <GradientStop Color="#00FFFFFF" Offset="1"/>
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle VerticalAlignment="Top" Height="24" IsHitTestVisible="False" Opacity="0.035">
+          <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+              <GradientStop Color="#33A7D0E8" Offset="0"/>
+              <GradientStop Color="#00A7D0E8" Offset="1"/>
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+
         <!-- Logo -->
         <Grid Grid.Column="0" Width="48" Height="48" Margin="16,0,16,0" VerticalAlignment="Center">
-          <Ellipse Width="48" Height="48" Fill="#5500CFFF" Opacity="0.25" IsHitTestVisible="False"/>
+          <Ellipse Width="48" Height="48" Fill="#4066A7C8" Opacity="0.18" IsHitTestVisible="False"/>
           <Image Width="48" Height="48" VerticalAlignment="Center"
                  Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
         </Grid>
 
         <!-- Title + Subtitle + Spectrum -->
         <Grid Grid.Column="1" VerticalAlignment="Center">
-          <StackPanel VerticalAlignment="Center" Spacing="0" Margin="8,0,0,0">
+          <StackPanel VerticalAlignment="Center" Spacing="0" Margin="14,0,0,0">
             <TextBlock Text="URMS" FontFamily="Consolas" FontSize="23" FontWeight="ExtraBold"
-                       CharacterSpacing="280" Foreground="#FFB9EFFF"/>
+                       CharacterSpacing="280" Foreground="#FFE1EDF8"/>
             <TextBlock Text="Unified Resource Management System"
                        FontFamily="Consolas" FontSize="11"
                        CharacterSpacing="100" Foreground="#FF8899BB" Margin="0,-2,0,0"/>
@@ -60,32 +80,32 @@
         </Grid>
 
         <!-- Status + Radar -->
-        <StackPanel Grid.Column="3" Orientation="Vertical" VerticalAlignment="Center" Spacing="0" Margin="0,0,24,0">
+        <StackPanel Grid.Column="3" Orientation="Vertical" VerticalAlignment="Center" Spacing="0" Margin="0,0,30,0">
           <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="6">
-            <Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="#FF00E0FF" VerticalAlignment="Center"/>
+            <Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="#FF6EAFC8" VerticalAlignment="Center"/>
             <TextBlock x:Name="TxtStatus" Text="SCAN_DONE" FontFamily="Consolas" FontSize="10"
-                       CharacterSpacing="80" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
+                       CharacterSpacing="80" Foreground="#FF8FB5C9" VerticalAlignment="Center"/>
           </StackPanel>
           <Canvas Width="32" Height="32" VerticalAlignment="Center" Margin="0,2,0,0">
-            <Ellipse Canvas.Left="0" Canvas.Top="0" Width="32" Height="32" Stroke="#2600E0FF" StrokeThickness="1"/>
-            <Path Data="M16,16 L30,16 A16,16 0 0 0 28,10 Z" Fill="#1A00E0FF">
+            <Ellipse Canvas.Left="0" Canvas.Top="0" Width="32" Height="32" Stroke="#306EAFC8" StrokeThickness="1"/>
+            <Path Data="M16,16 L30,16 A16,16 0 0 0 28,10 Z" Fill="#146EAFC8">
               <Path.RenderTransform>
                 <RotateTransform x:Name="RadarRotate" CenterX="16" CenterY="16"/>
               </Path.RenderTransform>
             </Path>
-            <Ellipse x:Name="RadarBlip0" Canvas.Left="20" Canvas.Top="9" Width="3" Height="3" Fill="#CC00E0FF" Opacity="0"/>
-            <Ellipse x:Name="RadarBlip1" Canvas.Left="9" Canvas.Top="21" Width="2.5" Height="2.5" Fill="#9900E0FF" Opacity="0"/>
+            <Ellipse x:Name="RadarBlip0" Canvas.Left="20" Canvas.Top="9" Width="3" Height="3" Fill="#CC6EAFC8" Opacity="0"/>
+            <Ellipse x:Name="RadarBlip1" Canvas.Left="9" Canvas.Top="21" Width="2.5" Height="2.5" Fill="#996EAFC8" Opacity="0"/>
           </Canvas>
         </StackPanel>
 
         <!-- Date + Clock -->
-        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Spacing="24" Margin="0,0,24,0" HorizontalAlignment="Right">
-          <TextBlock x:Name="TxtDate" Text="yyyy/MM/dd (ddd)" FontFamily="Consolas" FontSize="16" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
-          <TextBlock x:Name="TxtClock" Text="HH:mm:ss" FontFamily="Consolas" FontSize="16" FontWeight="Bold" Foreground="#FF00E0FF" VerticalAlignment="Center"/>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Spacing="24" Margin="0,0,30,0" HorizontalAlignment="Right">
+          <TextBlock x:Name="TxtDate" Text="yyyy/MM/dd (ddd)" FontFamily="Consolas" FontSize="16" Foreground="#FF8FB5C9" VerticalAlignment="Center"/>
+          <TextBlock x:Name="TxtClock" Text="HH:mm:ss" FontFamily="Consolas" FontSize="16" FontWeight="Bold" Foreground="#FF8FB5C9" VerticalAlignment="Center"/>
         </StackPanel>
 
         <!-- Window Control Buttons -->
-        <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,16,0" Spacing="24">
+        <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,22,0" Spacing="24">
           <Grid>
             <Button x:Name="MinimizeButton" Width="28" Height="28" MinWidth="28" MinHeight="28" Padding="0"
                     Background="Transparent" BorderBrush="Transparent" BorderThickness="0"
@@ -95,7 +115,7 @@
                 <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#22FFFFFF"/>
                 <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#22FFFFFF"/>
               </Button.Resources>
-              <FontIcon Glyph="&#xE921;" FontSize="14" Foreground="#FFB9EFFF"/>
+              <FontIcon Glyph="&#xE921;" FontSize="14" Foreground="#FFD8E6F4"/>
             </Button>
           </Grid>
           <Grid>
@@ -107,7 +127,7 @@
                 <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#22FFFFFF"/>
                 <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#22FFFFFF"/>
               </Button.Resources>
-              <FontIcon Glyph="&#xE922;" FontSize="14" Foreground="#FFB9EFFF"/>
+              <FontIcon Glyph="&#xE922;" FontSize="14" Foreground="#FFD8E6F4"/>
             </Button>
             <Button x:Name="RestoreButton" Width="28" Height="28" MinWidth="28" MinHeight="28" Padding="0"
                     Background="Transparent" BorderBrush="Transparent" BorderThickness="0"
@@ -117,7 +137,7 @@
                 <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#22FFFFFF"/>
                 <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#22FFFFFF"/>
               </Button.Resources>
-              <FontIcon Glyph="&#xE923;" FontSize="14" Foreground="#FFB9EFFF"/>
+              <FontIcon Glyph="&#xE923;" FontSize="14" Foreground="#FFD8E6F4"/>
             </Button>
           </Grid>
           <Grid>
@@ -129,16 +149,16 @@
                 <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#22FFFFFF"/>
                 <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#22FFFFFF"/>
               </Button.Resources>
-              <FontIcon Glyph="&#xE8BB;" FontSize="14" Foreground="#FFB9EFFF"/>
+              <FontIcon Glyph="&#xE8BB;" FontSize="14" Foreground="#FFD8E6F4"/>
             </Button>
           </Grid>
         </StackPanel>
 
-        <Rectangle VerticalAlignment="Bottom" Height="2" Fill="#FF00E8FF"/>
-        <Rectangle VerticalAlignment="Bottom" Height="6" Margin="0,2,0,0" IsHitTestVisible="False" Opacity="0.15">
+        <Rectangle VerticalAlignment="Bottom" Height="2" Fill="#C76EAFC8"/>
+        <Rectangle VerticalAlignment="Bottom" Height="6" Margin="0,2,0,0" IsHitTestVisible="False" Opacity="0.10">
           <Rectangle.Fill>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-              <GradientStop Color="#6600E8FF" Offset="0"/>
+              <GradientStop Color="#2F6EAFC8" Offset="0"/>
               <GradientStop Color="#00000000" Offset="1"/>
             </LinearGradientBrush>
           </Rectangle.Fill>

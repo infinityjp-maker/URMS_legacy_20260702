@@ -7,238 +7,107 @@
 
   <Page.Resources>
     <Style x:Key="CatButtonStyle" TargetType="Button">
-      <Setter Property="HorizontalAlignment"        Value="Stretch"/>
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
       <Setter Property="HorizontalContentAlignment" Value="Left"/>
-      <Setter Property="Background"                 Value="Transparent"/>
-      <Setter Property="BorderThickness"            Value="0"/>
-      <Setter Property="Foreground"                 Value="{ThemeResource LabelBrush}"/>
-      <Setter Property="FontFamily"                 Value="Consolas"/>
-      <Setter Property="FontSize"                   Value="12"/>
-      <Setter Property="CharacterSpacing"           Value="60"/>
-      <Setter Property="Padding"                    Value="14,10"/>
-      <Setter Property="CornerRadius"               Value="6"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Foreground" Value="{ThemeResource LabelBrush}"/>
+      <Setter Property="FontFamily" Value="Consolas"/>
+      <Setter Property="FontSize" Value="12"/>
+      <Setter Property="Padding" Value="12,8"/>
+      <Setter Property="CornerRadius" Value="6"/>
     </Style>
     <Style x:Key="CatButtonActiveStyle" TargetType="Button" BasedOn="{StaticResource CatButtonStyle}">
-      <Setter Property="Background" Value="#1800E0FF"/>
+      <Setter Property="Background" Value="#1A2C4058"/>
       <Setter Property="Foreground" Value="{ThemeResource AccentCyanBrush}"/>
-    </Style>
-    <Style x:Key="SectionCardStyle" TargetType="Border">
-      <Setter Property="CornerRadius"    Value="10"/>
-      <Setter Property="BorderThickness" Value="1"/>
-      <Setter Property="BorderBrush"     Value="{ThemeResource CardBorderBrush}"/>
-      <Setter Property="Margin"          Value="0,0,0,14"/>
-      <Setter Property="Padding"         Value="18"/>
-      <Setter Property="Background"      Value="{ThemeResource CardBackgroundBrush}"/>
-    </Style>
-    <Style x:Key="SectionTitleStyle" TargetType="TextBlock">
-      <Setter Property="FontFamily"       Value="Consolas"/>
-      <Setter Property="FontSize"         Value="10"/>
-      <Setter Property="FontWeight"       Value="Bold"/>
-      <Setter Property="CharacterSpacing" Value="150"/>
-      <Setter Property="Foreground"       Value="{ThemeResource AccentCyanBrush}"/>
-      <Setter Property="Margin"           Value="0,0,0,12"/>
-    </Style>
-    <Style x:Key="RowLabelStyle" TargetType="TextBlock">
-      <Setter Property="FontSize"          Value="13"/>
-      <Setter Property="Foreground"        Value="{ThemeResource LabelBrush}"/>
-      <Setter Property="VerticalAlignment" Value="Center"/>
-    </Style>
-    <Style x:Key="ValueStyle" TargetType="TextBlock">
-      <Setter Property="FontSize"          Value="12"/>
-      <Setter Property="Foreground"        Value="{ThemeResource ValueBrush}"/>
-      <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
   </Page.Resources>
 
-  <Grid>
+  <Grid Margin="24">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
       <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <!-- ページヘッダー -->
-    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="20,16,20,10">
-      <Button x:ConnectionId='28' x:Name="BtnBack"               
-              Background="Transparent" BorderThickness="0"
-              Foreground="{ThemeResource AccentCyanBrush}"
-              FontSize="18" Padding="4" VerticalAlignment="Center">
-        &#xE76B;
-      </Button>
-      <TextBlock Text="SETTINGS" FontFamily="Consolas" FontSize="22" FontWeight="ExtraBold"
-                 CharacterSpacing="100" Foreground="{ThemeResource HeaderTitleBrush}"
-                 VerticalAlignment="Center"/>
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="0,0,0,16">
+      <Button x:ConnectionId='28' x:Name="BtnBack"                Background="Transparent" BorderThickness="0" Foreground="{ThemeResource AccentCyanBrush}" FontSize="18" Padding="4">&#xE76B;</Button>
+      <TextBlock Text="SETTINGS" FontFamily="Consolas" FontSize="22" FontWeight="Bold" Foreground="{ThemeResource HeaderTitleBrush}" VerticalAlignment="Center"/>
     </StackPanel>
 
-    <!-- ─── 2カラム本体 ─── -->
     <Grid Grid.Row="1">
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="200"/>
+        <ColumnDefinition Width="180"/>
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
 
-      <!-- 左: カテゴリリスト -->
-      <Border Grid.Column="0" BorderBrush="{ThemeResource CardBorderBrush}"
-              BorderThickness="0,0,1,0" Padding="12,8,8,8">
-        <StackPanel Spacing="4">
-          <Button x:ConnectionId='24' x:Name="BtnCatGeneral"   Content="GENERAL"   Style="{StaticResource CatButtonActiveStyle}"                     />
-          <Button x:ConnectionId='25' x:Name="BtnCatUI"        Content="UI"         Style="{StaticResource CatButtonStyle}"                      />
-          <Button x:ConnectionId='26' x:Name="BtnCatSystem"    Content="SYSTEM"     Style="{StaticResource CatButtonStyle}"                          />
-          <Button x:ConnectionId='27' x:Name="BtnCatDeveloper" Content="DEVELOPER"  Style="{StaticResource CatButtonStyle}"                             />
+      <Border Grid.Column="0" BorderBrush="{ThemeResource CardBorderBrush}" BorderThickness="0,0,1,0" Padding="0,0,12,0">
+        <StackPanel Spacing="6">
+          <Button x:ConnectionId='24' x:Name="BtnCatGeneral" Content="GENERAL" Style="{StaticResource CatButtonActiveStyle}"                     />
+          <Button x:ConnectionId='25' x:Name="BtnCatUI" Content="UI" Style="{StaticResource CatButtonStyle}"                />
+          <Button x:ConnectionId='26' x:Name="BtnCatSystem" Content="SYSTEM" Style="{StaticResource CatButtonStyle}"                    />
+          <Button x:ConnectionId='27' x:Name="BtnCatDeveloper" Content="DEVELOPER" Style="{StaticResource CatButtonStyle}"                       />
         </StackPanel>
       </Border>
 
-      <!-- 右: カテゴリ別コンテンツ -->
-      <ScrollViewer Grid.Column="1" Padding="20,8,20,20" VerticalScrollBarVisibility="Auto">
-        <StackPanel Spacing="0">
-
-          <!-- ════ GENERAL ════ -->
-          <StackPanel x:ConnectionId='3' x:Name="PanelGeneral" Spacing="0">
-            <Border Style="{StaticResource SectionCardStyle}">
-              <StackPanel>
-                <TextBlock Text="DISPLAY" Style="{StaticResource SectionTitleStyle}"/>
-                <Grid Margin="0,0,0,14">
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="テーマ" Style="{StaticResource RowLabelStyle}"/>
-                  <ComboBox x:ConnectionId='20' x:Name="CmbTheme" Grid.Column="1" Width="180"                                  >
-                    <ComboBoxItem x:ConnectionId='21' x:Name="CmbThemeFuturistic" Content="未来 (Futuristic)"/>
-                    <ComboBoxItem x:ConnectionId='22' x:Name="CmbThemeDark"       Content="ダーク (Dark)"/>
-                    <ComboBoxItem x:ConnectionId='23' x:Name="CmbThemeLight"      Content="ライト (Light)"/>
-                  </ComboBox>
-                </Grid>
-                <Grid>
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="言語 / Language" Style="{StaticResource RowLabelStyle}"/>
-                  <ComboBox x:ConnectionId='19' x:Name="CmbLanguage" Grid.Column="1" Width="180"                                     >
-                    <ComboBoxItem Content="日本語"/>
-                    <ComboBoxItem Content="English"/>
-                  </ComboBox>
-                </Grid>
-              </StackPanel>
-            </Border>
-            <Border Style="{StaticResource SectionCardStyle}">
-              <StackPanel Spacing="10">
-                <TextBlock Text="ABOUT" Style="{StaticResource SectionTitleStyle}"/>
-                <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="アプリケーション" Style="{StaticResource RowLabelStyle}"/>
-                  <TextBlock Grid.Column="1" Text="URMS" Style="{StaticResource ValueStyle}"/></Grid>
-                <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="バージョン" Style="{StaticResource RowLabelStyle}"/>
-                  <TextBlock x:ConnectionId='18' x:Name="TxtVersion" Grid.Column="1" Text="1.0.0" Style="{StaticResource ValueStyle}"/></Grid>
-                <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="フレームワーク" Style="{StaticResource RowLabelStyle}"/>
-                  <TextBlock Grid.Column="1" Text="WinUI 3 / .NET 8" Style="{StaticResource ValueStyle}"/></Grid>
-                <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="ビルド日時" Style="{StaticResource RowLabelStyle}"/>
-                  <TextBlock x:ConnectionId='17' x:Name="TxtBuildDate" Grid.Column="1" Text="-" Style="{StaticResource ValueStyle}"/></Grid>
-              </StackPanel>
-            </Border>
+      <ScrollViewer Grid.Column="1" Margin="20,0,0,0" VerticalScrollBarVisibility="Auto">
+        <StackPanel Spacing="14">
+          <StackPanel x:ConnectionId='3' x:Name="PanelGeneral" Spacing="10">
+            <TextBlock Text="General" FontFamily="Consolas" FontSize="14" Foreground="{ThemeResource SectionHeaderBrush}"/>
+            <ComboBox x:ConnectionId='17' x:Name="CmbTheme"                                   Width="220">
+              <ComboBoxItem x:ConnectionId='21' x:Name="CmbThemeFuturistic" Content="Futuristic"/>
+              <ComboBoxItem x:ConnectionId='22' x:Name="CmbThemeDark" Content="Dark"/>
+              <ComboBoxItem x:ConnectionId='23' x:Name="CmbThemeLight" Content="Light"/>
+            </ComboBox>
+            <ComboBox x:ConnectionId='18' x:Name="CmbLanguage"                                      Width="220">
+              <ComboBoxItem Content="Japanese"/>
+              <ComboBoxItem Content="English"/>
+            </ComboBox>
+            <TextBlock Text="Version:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:ConnectionId='19' x:Name="TxtVersion" Text="1.0.0" Foreground="{ThemeResource ValueBrush}"/>
+            <TextBlock Text="Build Date:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:ConnectionId='20' x:Name="TxtBuildDate" Text="-" Foreground="{ThemeResource ValueBrush}"/>
           </StackPanel>
 
-          <!-- ════ UI ════ -->
-          <StackPanel x:ConnectionId='4' x:Name="PanelUI" Spacing="0" Visibility="Collapsed">
-            <Border Style="{StaticResource SectionCardStyle}">
-              <StackPanel>
-                <TextBlock Text="UI COLOR" Style="{StaticResource SectionTitleStyle}"/>
-                <Grid Margin="0,0,0,14">
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="アクセントカラー" Style="{StaticResource RowLabelStyle}"/>
-                  <ComboBox x:ConnectionId='16' x:Name="CmbAccentColor" Grid.Column="1" Width="200"                                        >
-                    <ComboBoxItem Content="Cyan   #00F7FF" Tag="#00F7FF"/>
-                    <ComboBoxItem Content="Green  #00FF88" Tag="#00FF88"/>
-                    <ComboBoxItem Content="Magenta #FF00CC" Tag="#FF00CC"/>
-                    <ComboBoxItem Content="Amber  #FFB800" Tag="#FFB800"/>
-                    <ComboBoxItem Content="Purple #C060FF" Tag="#C060FF"/>
-                  </ComboBox>
-                </Grid>
-              </StackPanel>
-            </Border>
-            <Border Style="{StaticResource SectionCardStyle}">
-              <StackPanel>
-                <TextBlock Text="ANIMATION" Style="{StaticResource SectionTitleStyle}"/>
-                <Grid Margin="0,0,0,8">
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="アニメ強度" Style="{StaticResource RowLabelStyle}"/>
-                  <TextBlock x:ConnectionId='15' x:Name="TxtAnimIntensity" Grid.Column="1" Text="1.0×" Style="{StaticResource ValueStyle}"/>
-                </Grid>
-                <Slider x:ConnectionId='13' x:Name="SliderAnimIntensity" Minimum="0" Maximum="2" StepFrequency="0.1"
-                        Value="1.0"                                      />
-                <Grid Margin="0,14,0,0">
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="目標FPS" Style="{StaticResource RowLabelStyle}"/>
-                  <ComboBox x:ConnectionId='14' x:Name="CmbTargetFps" Grid.Column="1" Width="120"                                      >
-                    <ComboBoxItem Content="60 fps"  Tag="60"/>
-                    <ComboBoxItem Content="90 fps"  Tag="90"/>
-                    <ComboBoxItem Content="120 fps" Tag="120"/>
-                  </ComboBox>
-                </Grid>
-              </StackPanel>
-            </Border>
+          <StackPanel x:ConnectionId='4' x:Name="PanelUI" Spacing="10" Visibility="Collapsed">
+            <TextBlock Text="UI" FontFamily="Consolas" FontSize="14" Foreground="{ThemeResource SectionHeaderBrush}"/>
+            <ComboBox x:ConnectionId='13' x:Name="CmbAccentColor"                                         Width="220">
+              <ComboBoxItem Content="Cyan" Tag="#00F7FF"/>
+              <ComboBoxItem Content="Green" Tag="#00FF88"/>
+              <ComboBoxItem Content="Magenta" Tag="#FF00CC"/>
+            </ComboBox>
+            <Slider x:ConnectionId='14' x:Name="SliderAnimIntensity" Minimum="0" Maximum="2" StepFrequency="0.1" Value="1.0"                                       Width="260"/>
+            <TextBlock x:ConnectionId='15' x:Name="TxtAnimIntensity" Text="1.0x" Foreground="{ThemeResource ValueBrush}"/>
+            <ComboBox x:ConnectionId='16' x:Name="CmbTargetFps"                                       Width="220">
+              <ComboBoxItem Content="60 fps" Tag="60"/>
+              <ComboBoxItem Content="90 fps" Tag="90"/>
+              <ComboBoxItem Content="120 fps" Tag="120"/>
+            </ComboBox>
           </StackPanel>
 
-          <!-- ════ SYSTEM ════ -->
-          <StackPanel x:ConnectionId='5' x:Name="PanelSystem" Spacing="0" Visibility="Collapsed">
-            <Border Style="{StaticResource SectionCardStyle}">
-              <StackPanel>
-                <TextBlock Text="BOOT" Style="{StaticResource SectionTitleStyle}"/>
-                <Grid Margin="0,0,0,10">
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="Boot 演出を表示" Style="{StaticResource RowLabelStyle}"/>
-                  <ToggleSwitch x:ConnectionId='12' x:Name="TogBootAnim" IsOn="True"                            
-                                OnContent="" OffContent="" Margin="0,-6,0,0"/>
-                </Grid>
-                <TextBlock Text="※ 次回起動から適用されます" FontSize="11"
-                           Foreground="{ThemeResource LabelBrush}" Opacity="0.7"/>
-              </StackPanel>
-            </Border>
-            <Border Style="{StaticResource SectionCardStyle}">
-              <StackPanel Spacing="10">
-                <TextBlock Text="BOOT TIMES" Style="{StaticResource SectionTitleStyle}"/>
-                <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="起動開始" Style="{StaticResource RowLabelStyle}"/>
-                  <TextBlock x:ConnectionId='11' x:Name="TxtBootLaunch" Grid.Column="1" Text="—" Style="{StaticResource ValueStyle}"/></Grid>
-                <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="Dashboard Loaded" Style="{StaticResource RowLabelStyle}"/>
-                  <TextBlock x:ConnectionId='10' x:Name="TxtBootDash" Grid.Column="1" Text="—" Style="{StaticResource ValueStyle}"/></Grid>
-                <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="Boot 遷移完了" Style="{StaticResource RowLabelStyle}"/>
-                  <TextBlock x:ConnectionId='9' x:Name="TxtBootComplete" Grid.Column="1" Text="—" Style="{StaticResource ValueStyle}"/></Grid>
-              </StackPanel>
-            </Border>
+          <StackPanel x:ConnectionId='5' x:Name="PanelSystem" Spacing="10" Visibility="Collapsed">
+            <TextBlock Text="System" FontFamily="Consolas" FontSize="14" Foreground="{ThemeResource SectionHeaderBrush}"/>
+            <ToggleSwitch x:ConnectionId='9' x:Name="TogBootAnim" IsOn="True"                            />
+            <TextBlock Text="Launch:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:ConnectionId='10' x:Name="TxtBootLaunch" Text="-" Foreground="{ThemeResource ValueBrush}"/>
+            <TextBlock Text="Dashboard:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:ConnectionId='11' x:Name="TxtBootDash" Text="-" Foreground="{ThemeResource ValueBrush}"/>
+            <TextBlock Text="Complete:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:ConnectionId='12' x:Name="TxtBootComplete" Text="-" Foreground="{ThemeResource ValueBrush}"/>
           </StackPanel>
 
-          <!-- ════ DEVELOPER ════ -->
-          <StackPanel x:ConnectionId='6' x:Name="PanelDeveloper" Spacing="0" Visibility="Collapsed">
-            <Border Style="{StaticResource SectionCardStyle}">
-              <StackPanel>
-                <TextBlock Text="DEBUG" Style="{StaticResource SectionTitleStyle}"/>
-                <Grid Margin="0,0,0,10">
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="デバッグログ出力" Style="{StaticResource RowLabelStyle}"/>
-                  <ToggleSwitch x:ConnectionId='8' x:Name="TogDebugLog" IsOn="False"                            
-                                OnContent="" OffContent="" Margin="0,-6,0,0"/>
-                </Grid>
-                <Grid>
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="設定ファイルパス" Style="{StaticResource RowLabelStyle}"/>
-                  <TextBlock x:ConnectionId='7' x:Name="TxtSettingsPath" Grid.Column="1" Text="—"
-                             Style="{StaticResource ValueStyle}" FontSize="10" TextWrapping="Wrap" MaxWidth="300"/>
-                </Grid>
-              </StackPanel>
-            </Border>
+          <StackPanel x:ConnectionId='6' x:Name="PanelDeveloper" Spacing="10" Visibility="Collapsed">
+            <TextBlock Text="Developer" FontFamily="Consolas" FontSize="14" Foreground="{ThemeResource SectionHeaderBrush}"/>
+            <ToggleSwitch x:ConnectionId='7' x:Name="TogDebugLog" IsOn="False"                            />
+            <TextBlock Text="Settings Path:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:ConnectionId='8' x:Name="TxtSettingsPath" Text="-" Foreground="{ThemeResource ValueBrush}"/>
           </StackPanel>
-
         </StackPanel>
       </ScrollViewer>
     </Grid>
 
-    <!-- ステータスバー -->
-    <Border Grid.Row="2" Margin="20,0,20,14" Padding="10,8"
-            CornerRadius="8" BorderThickness="1"
-            BorderBrush="{ThemeResource CardBorderBrush}" Background="#1A00f7ff">
-      <TextBlock x:ConnectionId='2' x:Name="TxtApplyStatus" Text="待機中"
-                 FontFamily="Consolas" FontSize="11" CharacterSpacing="20"
-                 Foreground="{ThemeResource AccentCyanBrush}"/>
+    <Border Grid.Row="2" Margin="0,14,0,0" Padding="10" CornerRadius="6" Background="#1422354A" BorderThickness="1" BorderBrush="{ThemeResource CardBorderBrush}">
+      <TextBlock x:ConnectionId='2' x:Name="TxtApplyStatus" Text="Idle" Foreground="{ThemeResource ValueBrush}"/>
     </Border>
   </Grid>
 </Page>

@@ -13,58 +13,60 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Default">
                     <!-- Backgrounds -->
-                    <SolidColorBrush x:Key="AppBackgroundBrush"      Color="#03050a"/>
-                    <SolidColorBrush x:Key="HeaderBackgroundBrush"   Color="#020408"/>
+                    <SolidColorBrush x:Key="AppBackgroundBrush"      Color="#090F1A"/>
+                    <SolidColorBrush x:Key="HeaderBackgroundBrush"   Color="#090F1A"/>
                     <!-- Text -->
-                    <SolidColorBrush x:Key="HeaderTitleBrush"        Color="#00f7ff"/>
-                    <SolidColorBrush x:Key="HeaderSubtitleBrush"     Color="#1a3050"/>
-                    <SolidColorBrush x:Key="LabelBrush"              Color="#2a4060"/>
-                    <SolidColorBrush x:Key="ValueBrush"              Color="#c8d8f8"/>
-                    <SolidColorBrush x:Key="CardTitleBrush"          Color="#4a70a0"/>
+                    <SolidColorBrush x:Key="HeaderTitleBrush"        Color="#BFD3EA"/>
+                    <SolidColorBrush x:Key="HeaderSubtitleBrush"     Color="#6E809A"/>
+                    <SolidColorBrush x:Key="LabelBrush"              Color="#6E8097"/>
+                    <SolidColorBrush x:Key="ValueBrush"              Color="#C7D2E0"/>
+                    <SolidColorBrush x:Key="CardTitleBrush"          Color="#90A8C6"/>
                     <!-- Hero -->
-                    <SolidColorBrush x:Key="HeroCyanBrush"           Color="#00f7ff"/>
-                    <SolidColorBrush x:Key="HeroSubBrush"            Color="#2a4060"/>
+                    <SolidColorBrush x:Key="HeroCyanBrush"           Color="#78B9D6"/>
+                    <SolidColorBrush x:Key="HeroSubBrush"            Color="#7B8FA9"/>
                     <!-- Accents -->
-                    <SolidColorBrush x:Key="AccentCyanBrush"         Color="#00f7ff"/>
-                    <SolidColorBrush x:Key="AccentGreenBrush"        Color="#00ff88"/>
-                    <SolidColorBrush x:Key="AccentAmberBrush"        Color="#ffb800"/>
-                    <SolidColorBrush x:Key="AccentMagentaBrush"      Color="#ff00cc"/>
-                    <SolidColorBrush x:Key="AccentPurpleBrush"       Color="#c060ff"/>
-                    <SolidColorBrush x:Key="AccentRedBrush"          Color="#ff4080"/>
-                    <SolidColorBrush x:Key="AccentTealBrush"         Color="#00ffcc"/>
+                    <SolidColorBrush x:Key="AccentCyanBrush"         Color="#4DAFD4"/>
+                    <SolidColorBrush x:Key="AccentGreenBrush"        Color="#5EBB98"/>
+                    <SolidColorBrush x:Key="AccentAmberBrush"        Color="#C89A58"/>
+                    <SolidColorBrush x:Key="AccentMagentaBrush"      Color="#B37AA8"/>
+                    <SolidColorBrush x:Key="AccentPurpleBrush"       Color="#837FBD"/>
+                    <SolidColorBrush x:Key="AccentRedBrush"          Color="#C06C7D"/>
+                    <SolidColorBrush x:Key="AccentTealBrush"         Color="#59A7A3"/>
                     <!-- Cards / UI Elements -->
-                    <SolidColorBrush x:Key="CardBackgroundBrush"     Color="#04090f"/>
-                    <SolidColorBrush x:Key="CardBorderBrush"         Color="#1400f7ff"/>
-                    <SolidColorBrush x:Key="CardHeaderBrush"         Color="#0a1825"/>
-                    <SolidColorBrush x:Key="CardValueBrush"          Color="#00f7ff"/>
-                    <SolidColorBrush x:Key="CardLabelBrush"          Color="#1a3050"/>
-                    <SolidColorBrush x:Key="SectionHeaderBrush"      Color="#00f7ff"/>
-                    <SolidColorBrush x:Key="ProgressTrackBrush"      Color="#081420"/>
+                    <SolidColorBrush x:Key="CardBackgroundBrush"     Color="#0B1019"/>
+                    <SolidColorBrush x:Key="CardBorderBrush"         Color="#25384F"/>
+                    <SolidColorBrush x:Key="CardHeaderBrush"         Color="#111929"/>
+                    <SolidColorBrush x:Key="CardValueBrush"          Color="#CFE4F8"/>
+                    <SolidColorBrush x:Key="CardLabelBrush"          Color="#7388A8"/>
+                    <SolidColorBrush x:Key="SectionHeaderBrush"      Color="#9DB3CF"/>
+                    <SolidColorBrush x:Key="ProgressTrackBrush"      Color="#1A2434"/>
+                    <SolidColorBrush x:Key="GlobalNoiseBrush"       Color="#03FFFFFF"/>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="AppBackgroundBrush"      Color="#03050a"/>
-                    <SolidColorBrush x:Key="HeaderBackgroundBrush"   Color="#020408"/>
-                    <SolidColorBrush x:Key="HeaderTitleBrush"        Color="#00f7ff"/>
-                    <SolidColorBrush x:Key="HeaderSubtitleBrush"     Color="#1a3050"/>
-                    <SolidColorBrush x:Key="LabelBrush"              Color="#2a4060"/>
-                    <SolidColorBrush x:Key="ValueBrush"              Color="#c8d8f8"/>
-                    <SolidColorBrush x:Key="CardTitleBrush"          Color="#4a70a0"/>
-                    <SolidColorBrush x:Key="HeroCyanBrush"           Color="#00f7ff"/>
-                    <SolidColorBrush x:Key="HeroSubBrush"            Color="#2a4060"/>
-                    <SolidColorBrush x:Key="AccentCyanBrush"         Color="#00f7ff"/>
-                    <SolidColorBrush x:Key="AccentGreenBrush"        Color="#00ff88"/>
-                    <SolidColorBrush x:Key="AccentAmberBrush"        Color="#ffb800"/>
-                    <SolidColorBrush x:Key="AccentMagentaBrush"      Color="#ff00cc"/>
-                    <SolidColorBrush x:Key="AccentPurpleBrush"       Color="#c060ff"/>
-                    <SolidColorBrush x:Key="AccentRedBrush"          Color="#ff4080"/>
-                    <SolidColorBrush x:Key="AccentTealBrush"         Color="#00ffcc"/>
-                    <SolidColorBrush x:Key="CardBackgroundBrush"     Color="#04090f"/>
-                    <SolidColorBrush x:Key="CardBorderBrush"         Color="#1400f7ff"/>
-                    <SolidColorBrush x:Key="CardHeaderBrush"         Color="#0a1825"/>
-                    <SolidColorBrush x:Key="CardValueBrush"          Color="#00f7ff"/>
-                    <SolidColorBrush x:Key="CardLabelBrush"          Color="#1a3050"/>
-                    <SolidColorBrush x:Key="SectionHeaderBrush"      Color="#00f7ff"/>
-                    <SolidColorBrush x:Key="ProgressTrackBrush"      Color="#081420"/>
+                    <SolidColorBrush x:Key="AppBackgroundBrush"      Color="#090F1A"/>
+                    <SolidColorBrush x:Key="HeaderBackgroundBrush"   Color="#090F1A"/>
+                    <SolidColorBrush x:Key="HeaderTitleBrush"        Color="#BFD3EA"/>
+                    <SolidColorBrush x:Key="HeaderSubtitleBrush"     Color="#6E809A"/>
+                    <SolidColorBrush x:Key="LabelBrush"              Color="#6E8097"/>
+                    <SolidColorBrush x:Key="ValueBrush"              Color="#C7D2E0"/>
+                    <SolidColorBrush x:Key="CardTitleBrush"          Color="#90A8C6"/>
+                    <SolidColorBrush x:Key="HeroCyanBrush"           Color="#78B9D6"/>
+                    <SolidColorBrush x:Key="HeroSubBrush"            Color="#7B8FA9"/>
+                    <SolidColorBrush x:Key="AccentCyanBrush"         Color="#4DAFD4"/>
+                    <SolidColorBrush x:Key="AccentGreenBrush"        Color="#5EBB98"/>
+                    <SolidColorBrush x:Key="AccentAmberBrush"        Color="#C89A58"/>
+                    <SolidColorBrush x:Key="AccentMagentaBrush"      Color="#B37AA8"/>
+                    <SolidColorBrush x:Key="AccentPurpleBrush"       Color="#837FBD"/>
+                    <SolidColorBrush x:Key="AccentRedBrush"          Color="#C06C7D"/>
+                    <SolidColorBrush x:Key="AccentTealBrush"         Color="#59A7A3"/>
+                    <SolidColorBrush x:Key="CardBackgroundBrush"     Color="#0B1019"/>
+                    <SolidColorBrush x:Key="CardBorderBrush"         Color="#25384F"/>
+                    <SolidColorBrush x:Key="CardHeaderBrush"         Color="#111929"/>
+                    <SolidColorBrush x:Key="CardValueBrush"          Color="#CFE4F8"/>
+                    <SolidColorBrush x:Key="CardLabelBrush"          Color="#7388A8"/>
+                    <SolidColorBrush x:Key="SectionHeaderBrush"      Color="#9DB3CF"/>
+                    <SolidColorBrush x:Key="ProgressTrackBrush"      Color="#1A2434"/>
+                    <SolidColorBrush x:Key="GlobalNoiseBrush"       Color="#03FFFFFF"/>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="AppBackgroundBrush"      Color="Black"/>
@@ -90,6 +92,7 @@
                     <SolidColorBrush x:Key="CardLabelBrush"          Color="White"/>
                     <SolidColorBrush x:Key="SectionHeaderBrush"      Color="White"/>
                     <SolidColorBrush x:Key="ProgressTrackBrush"      Color="White"/>
+                    <SolidColorBrush x:Key="GlobalNoiseBrush"        Color="#00FFFFFF"/>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>

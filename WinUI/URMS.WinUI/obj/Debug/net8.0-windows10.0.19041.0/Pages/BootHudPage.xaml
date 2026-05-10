@@ -10,16 +10,25 @@
     <!-- 不透明背景 — Dashboard が透けないよう Alpha=FF 必須 -->
     <Grid.Background>
       <RadialGradientBrush Center="0.5,0.45" RadiusX="0.9" RadiusY="0.8">
-        <GradientStop Color="#FF0A1721" Offset="0"/>
-        <GradientStop Color="#FF060B10" Offset="0.48"/>
-        <GradientStop Color="#FF05080A" Offset="1"/>
+        <GradientStop Color="#FF0C1621" Offset="0"/>
+        <GradientStop Color="#FF090E16" Offset="0.48"/>
+        <GradientStop Color="#FF05090E" Offset="1"/>
       </RadialGradientBrush>
     </Grid.Background>
 
-    <!-- ── 微細ノイズオーバーレイ (Opacity 0.04) ── -->
+    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="180" IsHitTestVisible="False" Opacity="0.08">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+          <GradientStop Color="#66A3CCE6" Offset="0"/>
+          <GradientStop Color="#0093B9D4" Offset="1"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- ── 微細ノイズオーバーレイ (Opacity 0.02) ── -->
     <Rectangle x:ConnectionId='3' x:Name="NoiseOverlay"
                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-               IsHitTestVisible="False" Opacity="0.04">
+           IsHitTestVisible="False" Opacity="0.011">
       <Rectangle.Fill>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
           <GradientStop Color="#FF3A6080" Offset="0.0"/>
@@ -31,6 +40,19 @@
       </Rectangle.Fill>
     </Rectangle>
 
+    <!-- ── 縦方向シェーディング ── -->
+    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False" Opacity="0.14">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+          <GradientStop Color="#1A547D95" Offset="0"/>
+          <GradientStop Color="#12081016" Offset="0.45"/>
+          <GradientStop Color="#00000000" Offset="1"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <Rectangle VerticalAlignment="Top" Height="2" Fill="#2E6EAFC8" IsHitTestVisible="False"/>
+
     <!-- ── パーティクルキャンバス ── -->
     <Canvas x:ConnectionId='4' x:Name="BootParticleCanvas" IsHitTestVisible="False"/>
 
@@ -38,7 +60,7 @@
     <StackPanel x:ConnectionId='5' x:Name="BootContentPanel"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Spacing="12"
+                Spacing="18"
                 Opacity="0">
 
       <StackPanel.RenderTransform>
@@ -48,14 +70,17 @@
 
       <!-- ロゴ枠 -->
       <Border Width="184" Height="184" CornerRadius="6"
-              BorderBrush="#3300E0FF" BorderThickness="1"
+              BorderBrush="#336EAFC8" BorderThickness="1"
               Background="#140B1218" HorizontalAlignment="Center">
-        <Image x:ConnectionId='8' x:Name="UrmsLogo" Stretch="Uniform" Margin="14" Opacity="0">
-          <Image.Source>
-            <BitmapImage UriSource="ms-appx:///Assets/images/urms-icon.png"
-                         DecodePixelWidth="512" DecodePixelHeight="512"/>
-          </Image.Source>
-        </Image>
+        <Grid>
+          <Ellipse x:ConnectionId='8' x:Name="LogoGlowPulse" Width="150" Height="150" Fill="#406EAFC8" Opacity="0" IsHitTestVisible="False"/>
+          <Image x:ConnectionId='9' x:Name="UrmsLogo" Stretch="Uniform" Margin="14" Opacity="0">
+            <Image.Source>
+              <BitmapImage UriSource="ms-appx:///Assets/images/urms_logo.png"
+                           DecodePixelWidth="512" DecodePixelHeight="512"/>
+            </Image.Source>
+          </Image>
+        </Grid>
       </Border>
 
       <TextBlock Text="UNIFIED RUNNER MANAGEMENT SYSTEM"

@@ -19,7 +19,7 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <Grid x:Name="AppTitleBar" Grid.Row="0" Margin="0" Background="Transparent">
+    <Grid x:Name="AppTitleBar" Grid.Row="0" Margin="0,2,0,2" Background="Transparent">
       <controls:HeaderControl x:Name="HeaderHost"
                               Margin="0"
                               DoubleTapped="OnHeaderDoubleTapped"
@@ -29,7 +29,7 @@
                               CloseClicked="OnHeaderCloseClicked"/>
     </Grid>
 
-    <Grid Grid.Row="1" Background="{ThemeResource AppBackgroundBrush}">
+    <Grid Grid.Row="1" Background="{ThemeResource AppBackgroundBrush}" Margin="2,0,2,2">
     <Grid.RowDefinitions>
       <RowDefinition Height="72"/>
       <RowDefinition Height="*"/>
@@ -44,16 +44,16 @@
       <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
         <Rectangle.Fill>
           <RadialGradientBrush Center="0.15,0.3" GradientOrigin="0.15,0.3" RadiusX="0.55" RadiusY="0.4">
-            <GradientStop Color="#200064b4" Offset="0"/>
+            <GradientStop Color="#1A0E3452" Offset="0"/>
             <GradientStop Color="Transparent" Offset="1"/>
           </RadialGradientBrush>
         </Rectangle.Fill>
       </Rectangle>
-      <!-- レイヤー 2: 右下パープル rgba(140,0,220,.09) -->
+      <!-- レイヤー 2: 右下インディゴ -->
       <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
         <Rectangle.Fill>
           <RadialGradientBrush Center="0.85,0.7" GradientOrigin="0.85,0.7" RadiusX="0.5" RadiusY="0.35">
-            <GradientStop Color="#1A8c00dc" Offset="0"/>
+            <GradientStop Color="#18283F65" Offset="0"/>
             <GradientStop Color="Transparent" Offset="1"/>
           </RadialGradientBrush>
         </Rectangle.Fill>
@@ -62,7 +62,7 @@
       <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
         <Rectangle.Fill>
           <RadialGradientBrush Center="0.5,0.08" GradientOrigin="0.5,0.08" RadiusX="0.45" RadiusY="0.3">
-            <GradientStop Color="#1600c8a0" Offset="0"/>
+            <GradientStop Color="#15305E74" Offset="0"/>
             <GradientStop Color="Transparent" Offset="1"/>
           </RadialGradientBrush>
         </Rectangle.Fill>
@@ -71,7 +71,7 @@
       <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
         <Rectangle.Fill>
           <RadialGradientBrush Center="0.7,0.9" GradientOrigin="0.7,0.9" RadiusX="0.5" RadiusY="0.25">
-            <GradientStop Color="#180096ff" Offset="0"/>
+            <GradientStop Color="#18364D73" Offset="0"/>
             <GradientStop Color="Transparent" Offset="1"/>
           </RadialGradientBrush>
         </Rectangle.Fill>
@@ -85,40 +85,43 @@
     <Canvas x:Name="BgPerspCanvas"  Grid.Row="1" IsHitTestVisible="False"/>
 
     <!-- ─── 背景 z:3: マトリクス文字 ─── -->
-    <Canvas x:Name="BgMatrixCanvas" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" Opacity="0.14"/>
+    <Canvas x:Name="BgMatrixCanvas" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" Opacity="0.05"/>
+
+    <!-- ─── 背景 z:4: 微細ノイズレイヤー ─── -->
+    <Rectangle Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" Opacity="0.01" Fill="{ThemeResource GlobalNoiseBrush}"/>
 
     <!-- ─── HUD 4 コーナーブラケット ─── -->
     <Grid Grid.Row="1" IsHitTestVisible="False">
       <!-- 左上 -->
       <Canvas Width="70" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
-        <Line X1="0" Y1="70" X2="0" Y2="0" Stroke="#4d00f7ff" StrokeThickness="2"/>
-        <Line X1="0" Y1="0" X2="70" Y2="0" Stroke="#4d00f7ff" StrokeThickness="2"/>
+        <Line X1="0" Y1="70" X2="0" Y2="0" Stroke="#336EAFC8" StrokeThickness="2"/>
+        <Line X1="0" Y1="0" X2="70" Y2="0" Stroke="#336EAFC8" StrokeThickness="2"/>
         <Ellipse Canvas.Left="-3" Canvas.Top="-3" Width="7" Height="7">
-          <Ellipse.Fill><SolidColorBrush Color="#00f7ff" Opacity="0.8"/></Ellipse.Fill>
+          <Ellipse.Fill><SolidColorBrush Color="#6EAFC8" Opacity="0.55"/></Ellipse.Fill>
         </Ellipse>
       </Canvas>
       <!-- 右上 -->
       <Canvas Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0">
-        <Line X1="70" Y1="70" X2="70" Y2="0" Stroke="#4d00f7ff" StrokeThickness="2"/>
-        <Line X1="0"  Y1="0"  X2="70" Y2="0" Stroke="#4d00f7ff" StrokeThickness="2"/>
+        <Line X1="70" Y1="70" X2="70" Y2="0" Stroke="#336EAFC8" StrokeThickness="2"/>
+        <Line X1="0"  Y1="0"  X2="70" Y2="0" Stroke="#336EAFC8" StrokeThickness="2"/>
         <Ellipse Canvas.Left="66" Canvas.Top="-3" Width="7" Height="7">
-          <Ellipse.Fill><SolidColorBrush Color="#00f7ff" Opacity="0.8"/></Ellipse.Fill>
+          <Ellipse.Fill><SolidColorBrush Color="#6EAFC8" Opacity="0.55"/></Ellipse.Fill>
         </Ellipse>
       </Canvas>
       <!-- 左下 -->
       <Canvas Width="70" Height="70" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10">
-        <Line X1="0" Y1="0" X2="0"  Y2="70" Stroke="#4d00f7ff" StrokeThickness="2"/>
-        <Line X1="0" Y1="70" X2="70" Y2="70" Stroke="#4d00f7ff" StrokeThickness="2"/>
+        <Line X1="0" Y1="0" X2="0"  Y2="70" Stroke="#336EAFC8" StrokeThickness="2"/>
+        <Line X1="0" Y1="70" X2="70" Y2="70" Stroke="#336EAFC8" StrokeThickness="2"/>
         <Ellipse Canvas.Left="-3" Canvas.Top="66" Width="7" Height="7">
-          <Ellipse.Fill><SolidColorBrush Color="#00f7ff" Opacity="0.8"/></Ellipse.Fill>
+          <Ellipse.Fill><SolidColorBrush Color="#6EAFC8" Opacity="0.55"/></Ellipse.Fill>
         </Ellipse>
       </Canvas>
       <!-- 右下 -->
       <Canvas Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10">
-        <Line X1="70" Y1="0" X2="70" Y2="70" Stroke="#4d00f7ff" StrokeThickness="2"/>
-        <Line X1="0"  Y1="70" X2="70" Y2="70" Stroke="#4d00f7ff" StrokeThickness="2"/>
+        <Line X1="70" Y1="0" X2="70" Y2="70" Stroke="#336EAFC8" StrokeThickness="2"/>
+        <Line X1="0"  Y1="70" X2="70" Y2="70" Stroke="#336EAFC8" StrokeThickness="2"/>
         <Ellipse Canvas.Left="66" Canvas.Top="66" Width="7" Height="7">
-          <Ellipse.Fill><SolidColorBrush Color="#00f7ff" Opacity="0.8"/></Ellipse.Fill>
+          <Ellipse.Fill><SolidColorBrush Color="#6EAFC8" Opacity="0.55"/></Ellipse.Fill>
         </Ellipse>
       </Canvas>
     </Grid>
@@ -137,9 +140,9 @@
       <Rectangle.Fill>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
           <GradientStop Color="Transparent" Offset="0.0"/>
-          <GradientStop Color="#7f00f7ff"   Offset="0.4"/>
-          <GradientStop Color="#e500f7ff"   Offset="0.5"/>
-          <GradientStop Color="#7f00f7ff"   Offset="0.6"/>
+          <GradientStop Color="#5A6EAFC8"   Offset="0.4"/>
+          <GradientStop Color="#956EAFC8"   Offset="0.5"/>
+          <GradientStop Color="#5A6EAFC8"   Offset="0.6"/>
           <GradientStop Color="Transparent" Offset="1.0"/>
         </LinearGradientBrush>
       </Rectangle.Fill>

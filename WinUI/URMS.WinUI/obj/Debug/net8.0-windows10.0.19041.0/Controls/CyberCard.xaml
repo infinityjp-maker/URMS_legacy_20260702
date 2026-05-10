@@ -13,6 +13,7 @@
           Fill="{ThemeResource CardBackgroundBrush}"
           Stroke="{ThemeResource CardBorderBrush}"
           StrokeThickness="1"
+          Opacity="0.88"
           Stretch="None"
           Width="0" Height="0"
           HorizontalAlignment="Left" VerticalAlignment="Top"
@@ -20,12 +21,30 @@
 
         <Border x:ConnectionId='3' x:Name="CardBorder"
           Background="Transparent"
-            BorderThickness="0">
+          CornerRadius="10"
+            BorderThickness="0"
+            Translation="0,0,24">
+          <Border.Shadow>
+            <ThemeShadow/>
+          </Border.Shadow>
 
       <Grid>
 
         <!-- コンテンツ -->
         <ContentPresenter x:ConnectionId='4' x:Name="InnerContent" Margin="10,8,10,6"/>
+
+        <!-- 微細ノイズレイヤー -->
+        <Rectangle IsHitTestVisible="False" Opacity="0.04">
+          <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+              <GradientStop Color="#66FFFFFF" Offset="0"/>
+              <GradientStop Color="#11000000" Offset="0.25"/>
+              <GradientStop Color="#44FFFFFF" Offset="0.5"/>
+              <GradientStop Color="#11000000" Offset="0.75"/>
+              <GradientStop Color="#66FFFFFF" Offset="1"/>
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
 
         <!-- スイープ光 -->
         <Path x:ConnectionId='5' x:Name="SweepPath"
@@ -59,10 +78,10 @@
           </Rectangle.Fill>
         </Rectangle>
 
-        <!-- 上部反射帯（6% 白帯, フェーズ5）-->
+        <!-- 上部反射帯（8% 白帯, フェーズ5）-->
         <Rectangle Height="6" VerticalAlignment="Top"
                    HorizontalAlignment="Stretch" IsHitTestVisible="False"
-                   Opacity="0.06">
+                   Opacity="0.08">
           <Rectangle.Fill><SolidColorBrush Color="White"/></Rectangle.Fill>
         </Rectangle>
 
@@ -71,10 +90,11 @@
                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                    IsHitTestVisible="False" Opacity="0">
           <Rectangle.Fill>
-            <RadialGradientBrush Center="0.5,0.5" RadiusX="0.7" RadiusY="0.7">
-              <GradientStop Color="#4000E0FF" Offset="0.0"/>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <GradientStop Color="#5000E0FF" Offset="0.0"/>
+              <GradientStop Color="#2800E0FF" Offset="0.35"/>
               <GradientStop Color="Transparent" Offset="1.0"/>
-            </RadialGradientBrush>
+            </LinearGradientBrush>
           </Rectangle.Fill>
         </Rectangle>
 

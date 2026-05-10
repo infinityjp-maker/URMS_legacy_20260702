@@ -226,7 +226,7 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
         
         private void InitTypeTables()
         {
-            _typeNameTable = new string[52];
+            _typeNameTable = new string[41];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -237,50 +237,39 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
             _typeNameTable[7] = "String";
             _typeNameTable[8] = "Windows.UI.Color";
             _typeNameTable[9] = "System.ValueType";
-            _typeNameTable[10] = "Microsoft.UI.Xaml.Media.RadialGradientBrush";
-            _typeNameTable[11] = "Microsoft.UI.Xaml.Media.XamlCompositionBrushBase";
-            _typeNameTable[12] = "Windows.Foundation.Collections.IObservableVector`1<Microsoft.UI.Xaml.Media.GradientStop>";
-            _typeNameTable[13] = "Microsoft.UI.Xaml.Media.GradientStop";
-            _typeNameTable[14] = "Windows.Foundation.Point";
-            _typeNameTable[15] = "Microsoft.UI.Composition.CompositionColorSpace";
-            _typeNameTable[16] = "System.Enum";
-            _typeNameTable[17] = "Microsoft.UI.Xaml.Media.BrushMappingMode";
-            _typeNameTable[18] = "Microsoft.UI.Xaml.Media.GradientSpreadMethod";
-            _typeNameTable[19] = "URMS.WinUI.Controls.CyberCard";
-            _typeNameTable[20] = "URMS.WinUI.Controls.WeatherAnimation";
-            _typeNameTable[21] = "URMS.WinUI.MainWindow";
-            _typeNameTable[22] = "Microsoft.UI.Xaml.Window";
-            _typeNameTable[23] = "URMS.WinUI.Pages.BootHudPage";
-            _typeNameTable[24] = "Microsoft.UI.Xaml.Controls.Page";
-            _typeNameTable[25] = "Microsoft.UI.Xaml.Controls.ProgressBar";
-            _typeNameTable[26] = "Microsoft.UI.Xaml.Controls.Primitives.RangeBase";
-            _typeNameTable[27] = "Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings";
-            _typeNameTable[28] = "Microsoft.UI.Xaml.DependencyObject";
-            _typeNameTable[29] = "URMS.WinUI.Pages.DashboardPage";
-            _typeNameTable[30] = "URMS.WinUI.Pages.SettingsPage";
-            _typeNameTable[31] = "URMS.WinUI.Views.Cards.AISummaryCard";
-            _typeNameTable[32] = "URMS.WinUI.Views.Cards.AssetManagerCard";
-            _typeNameTable[33] = "URMS.WinUI.Views.Cards.CalendarCard";
-            _typeNameTable[34] = "URMS.WinUI.Views.Cards.CurrentStatusCard";
-            _typeNameTable[35] = "URMS.WinUI.Views.Cards.ErrorsTrendCard";
-            _typeNameTable[36] = "URMS.WinUI.Views.Cards.FileOrganizerCard";
-            _typeNameTable[37] = "URMS.WinUI.Views.Cards.LanguageSwitchCard";
-            _typeNameTable[38] = "URMS.WinUI.Views.Cards.LatestResultCard";
-            _typeNameTable[39] = "URMS.WinUI.Views.Cards.LauncherCard";
-            _typeNameTable[40] = "URMS.WinUI.Views.Cards.NotificationsCard";
-            _typeNameTable[41] = "URMS.WinUI.Views.Cards.RunTriageCard";
-            _typeNameTable[42] = "URMS.WinUI.Views.Cards.SeverityTrendCard";
-            _typeNameTable[43] = "URMS.WinUI.Views.Cards.ShortcutsCard";
-            _typeNameTable[44] = "URMS.WinUI.Views.Cards.SystemCard";
-            _typeNameTable[45] = "URMS.WinUI.Views.Cards.TagsTrendCard";
-            _typeNameTable[46] = "URMS.WinUI.Views.Cards.ThemeSwitchCard";
-            _typeNameTable[47] = "URMS.WinUI.Views.Cards.VersionCard";
-            _typeNameTable[48] = "URMS.WinUI.Views.Cards.WeatherCard";
-            _typeNameTable[49] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
-            _typeNameTable[50] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
-            _typeNameTable[51] = "Int32";
+            _typeNameTable[10] = "URMS.WinUI.Controls.CardControl";
+            _typeNameTable[11] = "URMS.WinUI.Controls.CyberCard";
+            _typeNameTable[12] = "URMS.WinUI.Controls.HeaderControl";
+            _typeNameTable[13] = "Microsoft.UI.Xaml.Controls.StackPanel";
+            _typeNameTable[14] = "Microsoft.UI.Xaml.Controls.TextBlock";
+            _typeNameTable[15] = "Microsoft.UI.Xaml.Media.RotateTransform";
+            _typeNameTable[16] = "Microsoft.UI.Xaml.Shapes.Ellipse";
+            _typeNameTable[17] = "URMS.WinUI.Controls.WeatherAnimation";
+            _typeNameTable[18] = "URMS.WinUI.Controls.WorkflowCard";
+            _typeNameTable[19] = "Int32";
+            _typeNameTable[20] = "Microsoft.UI.Xaml.Media.RadialGradientBrush";
+            _typeNameTable[21] = "Microsoft.UI.Xaml.Media.XamlCompositionBrushBase";
+            _typeNameTable[22] = "Windows.Foundation.Collections.IObservableVector`1<Microsoft.UI.Xaml.Media.GradientStop>";
+            _typeNameTable[23] = "Microsoft.UI.Xaml.Media.GradientStop";
+            _typeNameTable[24] = "Windows.Foundation.Point";
+            _typeNameTable[25] = "Microsoft.UI.Composition.CompositionColorSpace";
+            _typeNameTable[26] = "System.Enum";
+            _typeNameTable[27] = "Microsoft.UI.Xaml.Media.BrushMappingMode";
+            _typeNameTable[28] = "Microsoft.UI.Xaml.Media.GradientSpreadMethod";
+            _typeNameTable[29] = "URMS.WinUI.MainWindow";
+            _typeNameTable[30] = "Microsoft.UI.Xaml.Window";
+            _typeNameTable[31] = "URMS.WinUI.Pages.BootHudPage";
+            _typeNameTable[32] = "Microsoft.UI.Xaml.Controls.Page";
+            _typeNameTable[33] = "Microsoft.UI.Xaml.Controls.ProgressBar";
+            _typeNameTable[34] = "Microsoft.UI.Xaml.Controls.Primitives.RangeBase";
+            _typeNameTable[35] = "Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings";
+            _typeNameTable[36] = "Microsoft.UI.Xaml.DependencyObject";
+            _typeNameTable[37] = "URMS.WinUI.Pages.DashboardPage";
+            _typeNameTable[38] = "URMS.WinUI.Pages.SettingsPage";
+            _typeNameTable[39] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
+            _typeNameTable[40] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
 
-            _typeTable = new global::System.Type[52];
+            _typeTable = new global::System.Type[41];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -291,48 +280,37 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
             _typeTable[7] = typeof(global::System.String);
             _typeTable[8] = typeof(global::Windows.UI.Color);
             _typeTable[9] = typeof(global::System.ValueType);
-            _typeTable[10] = typeof(global::Microsoft.UI.Xaml.Media.RadialGradientBrush);
-            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.Media.XamlCompositionBrushBase);
-            _typeTable[12] = typeof(global::Windows.Foundation.Collections.IObservableVector<global::Microsoft.UI.Xaml.Media.GradientStop>);
-            _typeTable[13] = typeof(global::Microsoft.UI.Xaml.Media.GradientStop);
-            _typeTable[14] = typeof(global::Windows.Foundation.Point);
-            _typeTable[15] = typeof(global::Microsoft.UI.Composition.CompositionColorSpace);
-            _typeTable[16] = typeof(global::System.Enum);
-            _typeTable[17] = typeof(global::Microsoft.UI.Xaml.Media.BrushMappingMode);
-            _typeTable[18] = typeof(global::Microsoft.UI.Xaml.Media.GradientSpreadMethod);
-            _typeTable[19] = typeof(global::URMS.WinUI.Controls.CyberCard);
-            _typeTable[20] = typeof(global::URMS.WinUI.Controls.WeatherAnimation);
-            _typeTable[21] = typeof(global::URMS.WinUI.MainWindow);
-            _typeTable[22] = typeof(global::Microsoft.UI.Xaml.Window);
-            _typeTable[23] = typeof(global::URMS.WinUI.Pages.BootHudPage);
-            _typeTable[24] = typeof(global::Microsoft.UI.Xaml.Controls.Page);
-            _typeTable[25] = typeof(global::Microsoft.UI.Xaml.Controls.ProgressBar);
-            _typeTable[26] = typeof(global::Microsoft.UI.Xaml.Controls.Primitives.RangeBase);
-            _typeTable[27] = typeof(global::Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings);
-            _typeTable[28] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
-            _typeTable[29] = typeof(global::URMS.WinUI.Pages.DashboardPage);
-            _typeTable[30] = typeof(global::URMS.WinUI.Pages.SettingsPage);
-            _typeTable[31] = typeof(global::URMS.WinUI.Views.Cards.AISummaryCard);
-            _typeTable[32] = typeof(global::URMS.WinUI.Views.Cards.AssetManagerCard);
-            _typeTable[33] = typeof(global::URMS.WinUI.Views.Cards.CalendarCard);
-            _typeTable[34] = typeof(global::URMS.WinUI.Views.Cards.CurrentStatusCard);
-            _typeTable[35] = typeof(global::URMS.WinUI.Views.Cards.ErrorsTrendCard);
-            _typeTable[36] = typeof(global::URMS.WinUI.Views.Cards.FileOrganizerCard);
-            _typeTable[37] = typeof(global::URMS.WinUI.Views.Cards.LanguageSwitchCard);
-            _typeTable[38] = typeof(global::URMS.WinUI.Views.Cards.LatestResultCard);
-            _typeTable[39] = typeof(global::URMS.WinUI.Views.Cards.LauncherCard);
-            _typeTable[40] = typeof(global::URMS.WinUI.Views.Cards.NotificationsCard);
-            _typeTable[41] = typeof(global::URMS.WinUI.Views.Cards.RunTriageCard);
-            _typeTable[42] = typeof(global::URMS.WinUI.Views.Cards.SeverityTrendCard);
-            _typeTable[43] = typeof(global::URMS.WinUI.Views.Cards.ShortcutsCard);
-            _typeTable[44] = typeof(global::URMS.WinUI.Views.Cards.SystemCard);
-            _typeTable[45] = typeof(global::URMS.WinUI.Views.Cards.TagsTrendCard);
-            _typeTable[46] = typeof(global::URMS.WinUI.Views.Cards.ThemeSwitchCard);
-            _typeTable[47] = typeof(global::URMS.WinUI.Views.Cards.VersionCard);
-            _typeTable[48] = typeof(global::URMS.WinUI.Views.Cards.WeatherCard);
-            _typeTable[49] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
-            _typeTable[50] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
-            _typeTable[51] = typeof(global::System.Int32);
+            _typeTable[10] = typeof(global::URMS.WinUI.Controls.CardControl);
+            _typeTable[11] = typeof(global::URMS.WinUI.Controls.CyberCard);
+            _typeTable[12] = typeof(global::URMS.WinUI.Controls.HeaderControl);
+            _typeTable[13] = typeof(global::Microsoft.UI.Xaml.Controls.StackPanel);
+            _typeTable[14] = typeof(global::Microsoft.UI.Xaml.Controls.TextBlock);
+            _typeTable[15] = typeof(global::Microsoft.UI.Xaml.Media.RotateTransform);
+            _typeTable[16] = typeof(global::Microsoft.UI.Xaml.Shapes.Ellipse);
+            _typeTable[17] = typeof(global::URMS.WinUI.Controls.WeatherAnimation);
+            _typeTable[18] = typeof(global::URMS.WinUI.Controls.WorkflowCard);
+            _typeTable[19] = typeof(global::System.Int32);
+            _typeTable[20] = typeof(global::Microsoft.UI.Xaml.Media.RadialGradientBrush);
+            _typeTable[21] = typeof(global::Microsoft.UI.Xaml.Media.XamlCompositionBrushBase);
+            _typeTable[22] = typeof(global::Windows.Foundation.Collections.IObservableVector<global::Microsoft.UI.Xaml.Media.GradientStop>);
+            _typeTable[23] = typeof(global::Microsoft.UI.Xaml.Media.GradientStop);
+            _typeTable[24] = typeof(global::Windows.Foundation.Point);
+            _typeTable[25] = typeof(global::Microsoft.UI.Composition.CompositionColorSpace);
+            _typeTable[26] = typeof(global::System.Enum);
+            _typeTable[27] = typeof(global::Microsoft.UI.Xaml.Media.BrushMappingMode);
+            _typeTable[28] = typeof(global::Microsoft.UI.Xaml.Media.GradientSpreadMethod);
+            _typeTable[29] = typeof(global::URMS.WinUI.MainWindow);
+            _typeTable[30] = typeof(global::Microsoft.UI.Xaml.Window);
+            _typeTable[31] = typeof(global::URMS.WinUI.Pages.BootHudPage);
+            _typeTable[32] = typeof(global::Microsoft.UI.Xaml.Controls.Page);
+            _typeTable[33] = typeof(global::Microsoft.UI.Xaml.Controls.ProgressBar);
+            _typeTable[34] = typeof(global::Microsoft.UI.Xaml.Controls.Primitives.RangeBase);
+            _typeTable[35] = typeof(global::Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings);
+            _typeTable[36] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
+            _typeTable[37] = typeof(global::URMS.WinUI.Pages.DashboardPage);
+            _typeTable[38] = typeof(global::URMS.WinUI.Pages.SettingsPage);
+            _typeTable[39] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
+            _typeTable[40] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -369,69 +347,39 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
 
         private object Activate_0_XamlControlsResources() { return new global::Microsoft.UI.Xaml.Controls.XamlControlsResources(); }
         private object Activate_4_AnalogGauge() { return new global::URMS.WinUI.Controls.AnalogGauge(); }
-        private object Activate_10_RadialGradientBrush() { return new global::Microsoft.UI.Xaml.Media.RadialGradientBrush(); }
-        private object Activate_19_CyberCard() { return new global::URMS.WinUI.Controls.CyberCard(); }
-        private object Activate_20_WeatherAnimation() { return new global::URMS.WinUI.Controls.WeatherAnimation(); }
-        private object Activate_21_MainWindow() { return new global::URMS.WinUI.MainWindow(); }
-        private object Activate_23_BootHudPage() { return new global::URMS.WinUI.Pages.BootHudPage(); }
-        private object Activate_25_ProgressBar() { return new global::Microsoft.UI.Xaml.Controls.ProgressBar(); }
-        private object Activate_29_DashboardPage() { return new global::URMS.WinUI.Pages.DashboardPage(); }
-        private object Activate_30_SettingsPage() { return new global::URMS.WinUI.Pages.SettingsPage(); }
-        private object Activate_31_AISummaryCard() { return new global::URMS.WinUI.Views.Cards.AISummaryCard(); }
-        private object Activate_32_AssetManagerCard() { return new global::URMS.WinUI.Views.Cards.AssetManagerCard(); }
-        private object Activate_33_CalendarCard() { return new global::URMS.WinUI.Views.Cards.CalendarCard(); }
-        private object Activate_34_CurrentStatusCard() { return new global::URMS.WinUI.Views.Cards.CurrentStatusCard(); }
-        private object Activate_35_ErrorsTrendCard() { return new global::URMS.WinUI.Views.Cards.ErrorsTrendCard(); }
-        private object Activate_36_FileOrganizerCard() { return new global::URMS.WinUI.Views.Cards.FileOrganizerCard(); }
-        private object Activate_37_LanguageSwitchCard() { return new global::URMS.WinUI.Views.Cards.LanguageSwitchCard(); }
-        private object Activate_38_LatestResultCard() { return new global::URMS.WinUI.Views.Cards.LatestResultCard(); }
-        private object Activate_39_LauncherCard() { return new global::URMS.WinUI.Views.Cards.LauncherCard(); }
-        private object Activate_40_NotificationsCard() { return new global::URMS.WinUI.Views.Cards.NotificationsCard(); }
-        private object Activate_41_RunTriageCard() { return new global::URMS.WinUI.Views.Cards.RunTriageCard(); }
-        private object Activate_42_SeverityTrendCard() { return new global::URMS.WinUI.Views.Cards.SeverityTrendCard(); }
-        private object Activate_43_ShortcutsCard() { return new global::URMS.WinUI.Views.Cards.ShortcutsCard(); }
-        private object Activate_44_SystemCard() { return new global::URMS.WinUI.Views.Cards.SystemCard(); }
-        private object Activate_45_TagsTrendCard() { return new global::URMS.WinUI.Views.Cards.TagsTrendCard(); }
-        private object Activate_46_ThemeSwitchCard() { return new global::URMS.WinUI.Views.Cards.ThemeSwitchCard(); }
-        private object Activate_47_VersionCard() { return new global::URMS.WinUI.Views.Cards.VersionCard(); }
-        private object Activate_48_WeatherCard() { return new global::URMS.WinUI.Views.Cards.WeatherCard(); }
-        private object Activate_49_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
+        private object Activate_10_CardControl() { return new global::URMS.WinUI.Controls.CardControl(); }
+        private object Activate_11_CyberCard() { return new global::URMS.WinUI.Controls.CyberCard(); }
+        private object Activate_12_HeaderControl() { return new global::URMS.WinUI.Controls.HeaderControl(); }
+        private object Activate_17_WeatherAnimation() { return new global::URMS.WinUI.Controls.WeatherAnimation(); }
+        private object Activate_18_WorkflowCard() { return new global::URMS.WinUI.Controls.WorkflowCard(); }
+        private object Activate_20_RadialGradientBrush() { return new global::Microsoft.UI.Xaml.Media.RadialGradientBrush(); }
+        private object Activate_29_MainWindow() { return new global::URMS.WinUI.MainWindow(); }
+        private object Activate_31_BootHudPage() { return new global::URMS.WinUI.Pages.BootHudPage(); }
+        private object Activate_33_ProgressBar() { return new global::Microsoft.UI.Xaml.Controls.ProgressBar(); }
+        private object Activate_37_DashboardPage() { return new global::URMS.WinUI.Pages.DashboardPage(); }
+        private object Activate_38_SettingsPage() { return new global::URMS.WinUI.Pages.SettingsPage(); }
+        private object Activate_39_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
         private void StaticInitializer_0_XamlControlsResources() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources).TypeHandle);
         private void StaticInitializer_4_AnalogGauge() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Controls.AnalogGauge).TypeHandle);
         private void StaticInitializer_8_Color() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Windows.UI.Color).TypeHandle);
         private void StaticInitializer_9_ValueType() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.ValueType).TypeHandle);
-        private void StaticInitializer_10_RadialGradientBrush() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Media.RadialGradientBrush).TypeHandle);
-        private void StaticInitializer_12_IObservableVector() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Windows.Foundation.Collections.IObservableVector<global::Microsoft.UI.Xaml.Media.GradientStop>).TypeHandle);
-        private void StaticInitializer_15_CompositionColorSpace() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Composition.CompositionColorSpace).TypeHandle);
-        private void StaticInitializer_16_Enum() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Enum).TypeHandle);
-        private void StaticInitializer_19_CyberCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Controls.CyberCard).TypeHandle);
-        private void StaticInitializer_20_WeatherAnimation() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Controls.WeatherAnimation).TypeHandle);
-        private void StaticInitializer_21_MainWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.MainWindow).TypeHandle);
-        private void StaticInitializer_23_BootHudPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Pages.BootHudPage).TypeHandle);
-        private void StaticInitializer_25_ProgressBar() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ProgressBar).TypeHandle);
-        private void StaticInitializer_27_ProgressBarTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings).TypeHandle);
-        private void StaticInitializer_29_DashboardPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Pages.DashboardPage).TypeHandle);
-        private void StaticInitializer_30_SettingsPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Pages.SettingsPage).TypeHandle);
-        private void StaticInitializer_31_AISummaryCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.AISummaryCard).TypeHandle);
-        private void StaticInitializer_32_AssetManagerCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.AssetManagerCard).TypeHandle);
-        private void StaticInitializer_33_CalendarCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.CalendarCard).TypeHandle);
-        private void StaticInitializer_34_CurrentStatusCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.CurrentStatusCard).TypeHandle);
-        private void StaticInitializer_35_ErrorsTrendCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.ErrorsTrendCard).TypeHandle);
-        private void StaticInitializer_36_FileOrganizerCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.FileOrganizerCard).TypeHandle);
-        private void StaticInitializer_37_LanguageSwitchCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.LanguageSwitchCard).TypeHandle);
-        private void StaticInitializer_38_LatestResultCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.LatestResultCard).TypeHandle);
-        private void StaticInitializer_39_LauncherCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.LauncherCard).TypeHandle);
-        private void StaticInitializer_40_NotificationsCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.NotificationsCard).TypeHandle);
-        private void StaticInitializer_41_RunTriageCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.RunTriageCard).TypeHandle);
-        private void StaticInitializer_42_SeverityTrendCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.SeverityTrendCard).TypeHandle);
-        private void StaticInitializer_43_ShortcutsCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.ShortcutsCard).TypeHandle);
-        private void StaticInitializer_44_SystemCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.SystemCard).TypeHandle);
-        private void StaticInitializer_45_TagsTrendCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.TagsTrendCard).TypeHandle);
-        private void StaticInitializer_46_ThemeSwitchCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.ThemeSwitchCard).TypeHandle);
-        private void StaticInitializer_47_VersionCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.VersionCard).TypeHandle);
-        private void StaticInitializer_48_WeatherCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Views.Cards.WeatherCard).TypeHandle);
-        private void StaticInitializer_49_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
-        private void StaticInitializer_50_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
+        private void StaticInitializer_10_CardControl() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Controls.CardControl).TypeHandle);
+        private void StaticInitializer_11_CyberCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Controls.CyberCard).TypeHandle);
+        private void StaticInitializer_12_HeaderControl() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Controls.HeaderControl).TypeHandle);
+        private void StaticInitializer_17_WeatherAnimation() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Controls.WeatherAnimation).TypeHandle);
+        private void StaticInitializer_18_WorkflowCard() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Controls.WorkflowCard).TypeHandle);
+        private void StaticInitializer_20_RadialGradientBrush() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Media.RadialGradientBrush).TypeHandle);
+        private void StaticInitializer_22_IObservableVector() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Windows.Foundation.Collections.IObservableVector<global::Microsoft.UI.Xaml.Media.GradientStop>).TypeHandle);
+        private void StaticInitializer_25_CompositionColorSpace() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Composition.CompositionColorSpace).TypeHandle);
+        private void StaticInitializer_26_Enum() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Enum).TypeHandle);
+        private void StaticInitializer_29_MainWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.MainWindow).TypeHandle);
+        private void StaticInitializer_31_BootHudPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Pages.BootHudPage).TypeHandle);
+        private void StaticInitializer_33_ProgressBar() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ProgressBar).TypeHandle);
+        private void StaticInitializer_35_ProgressBarTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings).TypeHandle);
+        private void StaticInitializer_37_DashboardPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Pages.DashboardPage).TypeHandle);
+        private void StaticInitializer_38_SettingsPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::URMS.WinUI.Pages.SettingsPage).TypeHandle);
+        private void StaticInitializer_39_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
+        private void StaticInitializer_40_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -439,13 +387,13 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
         }
-        private void VectorAdd_12_IObservableVector(object instance, object item)
+        private void VectorAdd_22_IObservableVector(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Media.GradientStop>)instance;
             var newItem = (global::Microsoft.UI.Xaml.Media.GradientStop)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_50_IList(object instance, object item)
+        private void VectorAdd_40_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Controls.TreeViewNode>)instance;
             var newItem = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)item;
@@ -520,45 +468,126 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 10:   //  Microsoft.UI.Xaml.Media.RadialGradientBrush
+            case 10:   //  URMS.WinUI.Controls.CardControl
+                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_10_CardControl;
+                userType.StaticInitializer = StaticInitializer_10_CardControl;
+                userType.SetContentPropertyName("URMS.WinUI.Controls.CardControl.CardContent");
+                userType.AddMemberName("CardContent");
+                userType.AddMemberName("TitleText");
+                userType.AddMemberName("MainValueText");
+                userType.AddMemberName("SubInfoText");
+                userType.AddMemberName("IconGlyph");
+                userType.AddMemberName("BaseGlowOpacity");
+                userType.AddMemberName("HoverGlowOpacity");
+                userType.AddMemberName("IsPrimaryTone");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 11:   //  URMS.WinUI.Controls.CyberCard
+                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_11_CyberCard;
+                userType.StaticInitializer = StaticInitializer_11_CyberCard;
+                userType.SetContentPropertyName("URMS.WinUI.Controls.CyberCard.CardContent");
+                userType.AddMemberName("CardContent");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 12:   //  URMS.WinUI.Controls.HeaderControl
+                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_12_HeaderControl;
+                userType.StaticInitializer = StaticInitializer_12_HeaderControl;
+                userType.AddMemberName("SpectrumPanelElement");
+                userType.AddMemberName("ClockTextElement");
+                userType.AddMemberName("DateTextElement");
+                userType.AddMemberName("RadarRotateElement");
+                userType.AddMemberName("RadarBlip0Element");
+                userType.AddMemberName("RadarBlip1Element");
+                userType.AddMemberName("StatusTextElement");
+                userType.AddMemberName("StatusDotElement");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 13:   //  Microsoft.UI.Xaml.Controls.StackPanel
+                xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 14:   //  Microsoft.UI.Xaml.Controls.TextBlock
+                xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 15:   //  Microsoft.UI.Xaml.Media.RotateTransform
+                xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 16:   //  Microsoft.UI.Xaml.Shapes.Ellipse
+                xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 17:   //  URMS.WinUI.Controls.WeatherAnimation
+                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_17_WeatherAnimation;
+                userType.StaticInitializer = StaticInitializer_17_WeatherAnimation;
+                userType.AddMemberName("Condition");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 18:   //  URMS.WinUI.Controls.WorkflowCard
+                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_18_WorkflowCard;
+                userType.StaticInitializer = StaticInitializer_18_WorkflowCard;
+                userType.AddMemberName("CurrentStep");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 19:   //  Int32
+                xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 20:   //  Microsoft.UI.Xaml.Media.RadialGradientBrush
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Media.XamlCompositionBrushBase"));
-                userType.Activator = Activate_10_RadialGradientBrush;
-                userType.StaticInitializer = StaticInitializer_10_RadialGradientBrush;
+                userType.Activator = Activate_20_RadialGradientBrush;
+                userType.StaticInitializer = StaticInitializer_20_RadialGradientBrush;
                 userType.SetContentPropertyName("Microsoft.UI.Xaml.Media.RadialGradientBrush.GradientStops");
                 userType.AddMemberName("GradientStops");
                 userType.AddMemberName("Center");
+                userType.AddMemberName("GradientOrigin");
                 userType.AddMemberName("RadiusX");
                 userType.AddMemberName("RadiusY");
-                userType.AddMemberName("GradientOrigin");
                 userType.AddMemberName("InterpolationSpace");
                 userType.AddMemberName("MappingMode");
                 userType.AddMemberName("SpreadMethod");
                 xamlType = userType;
                 break;
 
-            case 11:   //  Microsoft.UI.Xaml.Media.XamlCompositionBrushBase
+            case 21:   //  Microsoft.UI.Xaml.Media.XamlCompositionBrushBase
                 xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  Windows.Foundation.Collections.IObservableVector`1<Microsoft.UI.Xaml.Media.GradientStop>
+            case 22:   //  Windows.Foundation.Collections.IObservableVector`1<Microsoft.UI.Xaml.Media.GradientStop>
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.StaticInitializer = StaticInitializer_12_IObservableVector;
-                userType.CollectionAdd = VectorAdd_12_IObservableVector;
+                userType.StaticInitializer = StaticInitializer_22_IObservableVector;
+                userType.CollectionAdd = VectorAdd_22_IObservableVector;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 13:   //  Microsoft.UI.Xaml.Media.GradientStop
+            case 23:   //  Microsoft.UI.Xaml.Media.GradientStop
                 xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 14:   //  Windows.Foundation.Point
+            case 24:   //  Windows.Foundation.Point
                 xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 15:   //  Microsoft.UI.Composition.CompositionColorSpace
+            case 25:   //  Microsoft.UI.Composition.CompositionColorSpace
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_15_CompositionColorSpace;
+                userType.StaticInitializer = StaticInitializer_25_CompositionColorSpace;
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Composition.CompositionColorSpace.Auto);
                 userType.AddEnumValue("Hsl", global::Microsoft.UI.Composition.CompositionColorSpace.Hsl);
                 userType.AddEnumValue("Rgb", global::Microsoft.UI.Composition.CompositionColorSpace.Rgb);
@@ -567,67 +596,48 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 16:   //  System.Enum
+            case 26:   //  System.Enum
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
-                userType.StaticInitializer = StaticInitializer_16_Enum;
+                userType.StaticInitializer = StaticInitializer_26_Enum;
                 xamlType = userType;
                 break;
 
-            case 17:   //  Microsoft.UI.Xaml.Media.BrushMappingMode
+            case 27:   //  Microsoft.UI.Xaml.Media.BrushMappingMode
                 xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 18:   //  Microsoft.UI.Xaml.Media.GradientSpreadMethod
+            case 28:   //  Microsoft.UI.Xaml.Media.GradientSpreadMethod
                 xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 19:   //  URMS.WinUI.Controls.CyberCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_19_CyberCard;
-                userType.StaticInitializer = StaticInitializer_19_CyberCard;
-                userType.SetContentPropertyName("URMS.WinUI.Controls.CyberCard.CardContent");
-                userType.AddMemberName("CardContent");
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 20:   //  URMS.WinUI.Controls.WeatherAnimation
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_20_WeatherAnimation;
-                userType.StaticInitializer = StaticInitializer_20_WeatherAnimation;
-                userType.AddMemberName("Condition");
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 21:   //  URMS.WinUI.MainWindow
+            case 29:   //  URMS.WinUI.MainWindow
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_21_MainWindow;
-                userType.StaticInitializer = StaticInitializer_21_MainWindow;
+                userType.Activator = Activate_29_MainWindow;
+                userType.StaticInitializer = StaticInitializer_29_MainWindow;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 22:   //  Microsoft.UI.Xaml.Window
+            case 30:   //  Microsoft.UI.Xaml.Window
                 xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 23:   //  URMS.WinUI.Pages.BootHudPage
+            case 31:   //  URMS.WinUI.Pages.BootHudPage
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_23_BootHudPage;
-                userType.StaticInitializer = StaticInitializer_23_BootHudPage;
+                userType.Activator = Activate_31_BootHudPage;
+                userType.StaticInitializer = StaticInitializer_31_BootHudPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 24:   //  Microsoft.UI.Xaml.Controls.Page
+            case 32:   //  Microsoft.UI.Xaml.Controls.Page
                 xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 25:   //  Microsoft.UI.Xaml.Controls.ProgressBar
+            case 33:   //  Microsoft.UI.Xaml.Controls.ProgressBar
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Primitives.RangeBase"));
-                userType.Activator = Activate_25_ProgressBar;
-                userType.StaticInitializer = StaticInitializer_25_ProgressBar;
+                userType.Activator = Activate_33_ProgressBar;
+                userType.StaticInitializer = StaticInitializer_33_ProgressBar;
                 userType.AddMemberName("IsIndeterminate");
                 userType.AddMemberName("ShowError");
                 userType.AddMemberName("ShowPaused");
@@ -635,185 +645,41 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 26:   //  Microsoft.UI.Xaml.Controls.Primitives.RangeBase
+            case 34:   //  Microsoft.UI.Xaml.Controls.Primitives.RangeBase
                 xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 27:   //  Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings
+            case 35:   //  Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.StaticInitializer = StaticInitializer_27_ProgressBarTemplateSettings;
+                userType.StaticInitializer = StaticInitializer_35_ProgressBarTemplateSettings;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 28:   //  Microsoft.UI.Xaml.DependencyObject
+            case 36:   //  Microsoft.UI.Xaml.DependencyObject
                 xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 29:   //  URMS.WinUI.Pages.DashboardPage
+            case 37:   //  URMS.WinUI.Pages.DashboardPage
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_29_DashboardPage;
-                userType.StaticInitializer = StaticInitializer_29_DashboardPage;
+                userType.Activator = Activate_37_DashboardPage;
+                userType.StaticInitializer = StaticInitializer_37_DashboardPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 30:   //  URMS.WinUI.Pages.SettingsPage
+            case 38:   //  URMS.WinUI.Pages.SettingsPage
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_30_SettingsPage;
-                userType.StaticInitializer = StaticInitializer_30_SettingsPage;
+                userType.Activator = Activate_38_SettingsPage;
+                userType.StaticInitializer = StaticInitializer_38_SettingsPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 31:   //  URMS.WinUI.Views.Cards.AISummaryCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_31_AISummaryCard;
-                userType.StaticInitializer = StaticInitializer_31_AISummaryCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 32:   //  URMS.WinUI.Views.Cards.AssetManagerCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_32_AssetManagerCard;
-                userType.StaticInitializer = StaticInitializer_32_AssetManagerCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 33:   //  URMS.WinUI.Views.Cards.CalendarCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_33_CalendarCard;
-                userType.StaticInitializer = StaticInitializer_33_CalendarCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 34:   //  URMS.WinUI.Views.Cards.CurrentStatusCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_34_CurrentStatusCard;
-                userType.StaticInitializer = StaticInitializer_34_CurrentStatusCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 35:   //  URMS.WinUI.Views.Cards.ErrorsTrendCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_35_ErrorsTrendCard;
-                userType.StaticInitializer = StaticInitializer_35_ErrorsTrendCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 36:   //  URMS.WinUI.Views.Cards.FileOrganizerCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_36_FileOrganizerCard;
-                userType.StaticInitializer = StaticInitializer_36_FileOrganizerCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 37:   //  URMS.WinUI.Views.Cards.LanguageSwitchCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_37_LanguageSwitchCard;
-                userType.StaticInitializer = StaticInitializer_37_LanguageSwitchCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 38:   //  URMS.WinUI.Views.Cards.LatestResultCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_38_LatestResultCard;
-                userType.StaticInitializer = StaticInitializer_38_LatestResultCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 39:   //  URMS.WinUI.Views.Cards.LauncherCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_39_LauncherCard;
-                userType.StaticInitializer = StaticInitializer_39_LauncherCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 40:   //  URMS.WinUI.Views.Cards.NotificationsCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_40_NotificationsCard;
-                userType.StaticInitializer = StaticInitializer_40_NotificationsCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 41:   //  URMS.WinUI.Views.Cards.RunTriageCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_41_RunTriageCard;
-                userType.StaticInitializer = StaticInitializer_41_RunTriageCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 42:   //  URMS.WinUI.Views.Cards.SeverityTrendCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_42_SeverityTrendCard;
-                userType.StaticInitializer = StaticInitializer_42_SeverityTrendCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 43:   //  URMS.WinUI.Views.Cards.ShortcutsCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_43_ShortcutsCard;
-                userType.StaticInitializer = StaticInitializer_43_ShortcutsCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 44:   //  URMS.WinUI.Views.Cards.SystemCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_44_SystemCard;
-                userType.StaticInitializer = StaticInitializer_44_SystemCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 45:   //  URMS.WinUI.Views.Cards.TagsTrendCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_45_TagsTrendCard;
-                userType.StaticInitializer = StaticInitializer_45_TagsTrendCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 46:   //  URMS.WinUI.Views.Cards.ThemeSwitchCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_46_ThemeSwitchCard;
-                userType.StaticInitializer = StaticInitializer_46_ThemeSwitchCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 47:   //  URMS.WinUI.Views.Cards.VersionCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_47_VersionCard;
-                userType.StaticInitializer = StaticInitializer_47_VersionCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 48:   //  URMS.WinUI.Views.Cards.WeatherCard
-                userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_48_WeatherCard;
-                userType.StaticInitializer = StaticInitializer_48_WeatherCard;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 49:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
+            case 39:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_49_TreeViewNode;
-                userType.StaticInitializer = StaticInitializer_49_TreeViewNode;
+                userType.Activator = Activate_39_TreeViewNode;
+                userType.StaticInitializer = StaticInitializer_39_TreeViewNode;
                 userType.AddMemberName("Children");
                 userType.AddMemberName("Content");
                 userType.AddMemberName("Depth");
@@ -825,16 +691,12 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 50:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
+            case 40:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
                 userType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.StaticInitializer = StaticInitializer_50_IList;
-                userType.CollectionAdd = VectorAdd_50_IList;
+                userType.StaticInitializer = StaticInitializer_40_IList;
+                userType.CollectionAdd = VectorAdd_40_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
-                break;
-
-            case 51:   //  Int32
-                xamlType = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
             return xamlType;
@@ -945,80 +807,85 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
             var that = (global::URMS.WinUI.Controls.AnalogGauge)instance;
             that.Unit = (global::System.String)Value;
         }
-        private object get_5_RadialGradientBrush_GradientStops(object instance)
+        private object get_5_CardControl_CardContent(object instance)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            return that.GradientStops;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            return that.CardContent;
         }
-        private object get_6_RadialGradientBrush_Center(object instance)
+        private void set_5_CardControl_CardContent(object instance, object Value)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            return that.Center;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            that.CardContent = (global::System.Object)Value;
         }
-        private void set_6_RadialGradientBrush_Center(object instance, object Value)
+        private object get_6_CardControl_TitleText(object instance)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            that.Center = (global::Windows.Foundation.Point)Value;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            return that.TitleText;
         }
-        private object get_7_RadialGradientBrush_RadiusX(object instance)
+        private void set_6_CardControl_TitleText(object instance, object Value)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            return that.RadiusX;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            that.TitleText = (global::System.String)Value;
         }
-        private void set_7_RadialGradientBrush_RadiusX(object instance, object Value)
+        private object get_7_CardControl_MainValueText(object instance)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            that.RadiusX = (global::System.Double)Value;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            return that.MainValueText;
         }
-        private object get_8_RadialGradientBrush_RadiusY(object instance)
+        private void set_7_CardControl_MainValueText(object instance, object Value)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            return that.RadiusY;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            that.MainValueText = (global::System.String)Value;
         }
-        private void set_8_RadialGradientBrush_RadiusY(object instance, object Value)
+        private object get_8_CardControl_SubInfoText(object instance)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            that.RadiusY = (global::System.Double)Value;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            return that.SubInfoText;
         }
-        private object get_9_RadialGradientBrush_GradientOrigin(object instance)
+        private void set_8_CardControl_SubInfoText(object instance, object Value)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            return that.GradientOrigin;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            that.SubInfoText = (global::System.String)Value;
         }
-        private void set_9_RadialGradientBrush_GradientOrigin(object instance, object Value)
+        private object get_9_CardControl_IconGlyph(object instance)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            that.GradientOrigin = (global::Windows.Foundation.Point)Value;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            return that.IconGlyph;
         }
-        private object get_10_RadialGradientBrush_InterpolationSpace(object instance)
+        private void set_9_CardControl_IconGlyph(object instance, object Value)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            return that.InterpolationSpace;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            that.IconGlyph = (global::System.String)Value;
         }
-        private void set_10_RadialGradientBrush_InterpolationSpace(object instance, object Value)
+        private object get_10_CardControl_BaseGlowOpacity(object instance)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            that.InterpolationSpace = (global::Microsoft.UI.Composition.CompositionColorSpace)Value;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            return that.BaseGlowOpacity;
         }
-        private object get_11_RadialGradientBrush_MappingMode(object instance)
+        private void set_10_CardControl_BaseGlowOpacity(object instance, object Value)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            return that.MappingMode;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            that.BaseGlowOpacity = (global::System.Double)Value;
         }
-        private void set_11_RadialGradientBrush_MappingMode(object instance, object Value)
+        private object get_11_CardControl_HoverGlowOpacity(object instance)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            that.MappingMode = (global::Microsoft.UI.Xaml.Media.BrushMappingMode)Value;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            return that.HoverGlowOpacity;
         }
-        private object get_12_RadialGradientBrush_SpreadMethod(object instance)
+        private void set_11_CardControl_HoverGlowOpacity(object instance, object Value)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            return that.SpreadMethod;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            that.HoverGlowOpacity = (global::System.Double)Value;
         }
-        private void set_12_RadialGradientBrush_SpreadMethod(object instance, object Value)
+        private object get_12_CardControl_IsPrimaryTone(object instance)
         {
-            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
-            that.SpreadMethod = (global::Microsoft.UI.Xaml.Media.GradientSpreadMethod)Value;
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            return that.IsPrimaryTone;
+        }
+        private void set_12_CardControl_IsPrimaryTone(object instance, object Value)
+        {
+            var that = (global::URMS.WinUI.Controls.CardControl)instance;
+            that.IsPrimaryTone = (global::System.Boolean)Value;
         }
         private object get_13_CyberCard_CardContent(object instance)
         {
@@ -1030,97 +897,222 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
             var that = (global::URMS.WinUI.Controls.CyberCard)instance;
             that.CardContent = (global::System.Object)Value;
         }
-        private object get_14_WeatherAnimation_Condition(object instance)
+        private object get_14_HeaderControl_SpectrumPanelElement(object instance)
+        {
+            var that = (global::URMS.WinUI.Controls.HeaderControl)instance;
+            return that.SpectrumPanelElement;
+        }
+        private object get_15_HeaderControl_ClockTextElement(object instance)
+        {
+            var that = (global::URMS.WinUI.Controls.HeaderControl)instance;
+            return that.ClockTextElement;
+        }
+        private object get_16_HeaderControl_DateTextElement(object instance)
+        {
+            var that = (global::URMS.WinUI.Controls.HeaderControl)instance;
+            return that.DateTextElement;
+        }
+        private object get_17_HeaderControl_RadarRotateElement(object instance)
+        {
+            var that = (global::URMS.WinUI.Controls.HeaderControl)instance;
+            return that.RadarRotateElement;
+        }
+        private object get_18_HeaderControl_RadarBlip0Element(object instance)
+        {
+            var that = (global::URMS.WinUI.Controls.HeaderControl)instance;
+            return that.RadarBlip0Element;
+        }
+        private object get_19_HeaderControl_RadarBlip1Element(object instance)
+        {
+            var that = (global::URMS.WinUI.Controls.HeaderControl)instance;
+            return that.RadarBlip1Element;
+        }
+        private object get_20_HeaderControl_StatusTextElement(object instance)
+        {
+            var that = (global::URMS.WinUI.Controls.HeaderControl)instance;
+            return that.StatusTextElement;
+        }
+        private object get_21_HeaderControl_StatusDotElement(object instance)
+        {
+            var that = (global::URMS.WinUI.Controls.HeaderControl)instance;
+            return that.StatusDotElement;
+        }
+        private object get_22_WeatherAnimation_Condition(object instance)
         {
             var that = (global::URMS.WinUI.Controls.WeatherAnimation)instance;
             return that.Condition;
         }
-        private void set_14_WeatherAnimation_Condition(object instance, object Value)
+        private void set_22_WeatherAnimation_Condition(object instance, object Value)
         {
             var that = (global::URMS.WinUI.Controls.WeatherAnimation)instance;
             that.Condition = (global::System.String)Value;
         }
-        private object get_15_ProgressBar_IsIndeterminate(object instance)
+        private object get_23_WorkflowCard_CurrentStep(object instance)
+        {
+            var that = (global::URMS.WinUI.Controls.WorkflowCard)instance;
+            return that.CurrentStep;
+        }
+        private void set_23_WorkflowCard_CurrentStep(object instance, object Value)
+        {
+            var that = (global::URMS.WinUI.Controls.WorkflowCard)instance;
+            that.CurrentStep = (global::System.Int32)Value;
+        }
+        private object get_24_RadialGradientBrush_GradientStops(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            return that.GradientStops;
+        }
+        private object get_25_RadialGradientBrush_Center(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            return that.Center;
+        }
+        private void set_25_RadialGradientBrush_Center(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            that.Center = (global::Windows.Foundation.Point)Value;
+        }
+        private object get_26_RadialGradientBrush_GradientOrigin(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            return that.GradientOrigin;
+        }
+        private void set_26_RadialGradientBrush_GradientOrigin(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            that.GradientOrigin = (global::Windows.Foundation.Point)Value;
+        }
+        private object get_27_RadialGradientBrush_RadiusX(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            return that.RadiusX;
+        }
+        private void set_27_RadialGradientBrush_RadiusX(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            that.RadiusX = (global::System.Double)Value;
+        }
+        private object get_28_RadialGradientBrush_RadiusY(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            return that.RadiusY;
+        }
+        private void set_28_RadialGradientBrush_RadiusY(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            that.RadiusY = (global::System.Double)Value;
+        }
+        private object get_29_RadialGradientBrush_InterpolationSpace(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            return that.InterpolationSpace;
+        }
+        private void set_29_RadialGradientBrush_InterpolationSpace(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            that.InterpolationSpace = (global::Microsoft.UI.Composition.CompositionColorSpace)Value;
+        }
+        private object get_30_RadialGradientBrush_MappingMode(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            return that.MappingMode;
+        }
+        private void set_30_RadialGradientBrush_MappingMode(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            that.MappingMode = (global::Microsoft.UI.Xaml.Media.BrushMappingMode)Value;
+        }
+        private object get_31_RadialGradientBrush_SpreadMethod(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            return that.SpreadMethod;
+        }
+        private void set_31_RadialGradientBrush_SpreadMethod(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.RadialGradientBrush)instance;
+            that.SpreadMethod = (global::Microsoft.UI.Xaml.Media.GradientSpreadMethod)Value;
+        }
+        private object get_32_ProgressBar_IsIndeterminate(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.ProgressBar)instance;
             return that.IsIndeterminate;
         }
-        private void set_15_ProgressBar_IsIndeterminate(object instance, object Value)
+        private void set_32_ProgressBar_IsIndeterminate(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.ProgressBar)instance;
             that.IsIndeterminate = (global::System.Boolean)Value;
         }
-        private object get_16_ProgressBar_ShowError(object instance)
+        private object get_33_ProgressBar_ShowError(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.ProgressBar)instance;
             return that.ShowError;
         }
-        private void set_16_ProgressBar_ShowError(object instance, object Value)
+        private void set_33_ProgressBar_ShowError(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.ProgressBar)instance;
             that.ShowError = (global::System.Boolean)Value;
         }
-        private object get_17_ProgressBar_ShowPaused(object instance)
+        private object get_34_ProgressBar_ShowPaused(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.ProgressBar)instance;
             return that.ShowPaused;
         }
-        private void set_17_ProgressBar_ShowPaused(object instance, object Value)
+        private void set_34_ProgressBar_ShowPaused(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.ProgressBar)instance;
             that.ShowPaused = (global::System.Boolean)Value;
         }
-        private object get_18_ProgressBar_TemplateSettings(object instance)
+        private object get_35_ProgressBar_TemplateSettings(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.ProgressBar)instance;
             return that.TemplateSettings;
         }
-        private object get_19_TreeViewNode_Children(object instance)
+        private object get_36_TreeViewNode_Children(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Children;
         }
-        private object get_20_TreeViewNode_Content(object instance)
+        private object get_37_TreeViewNode_Content(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Content;
         }
-        private void set_20_TreeViewNode_Content(object instance, object Value)
+        private void set_37_TreeViewNode_Content(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.Content = (global::System.Object)Value;
         }
-        private object get_21_TreeViewNode_Depth(object instance)
+        private object get_38_TreeViewNode_Depth(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Depth;
         }
-        private object get_22_TreeViewNode_HasChildren(object instance)
+        private object get_39_TreeViewNode_HasChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasChildren;
         }
-        private object get_23_TreeViewNode_HasUnrealizedChildren(object instance)
+        private object get_40_TreeViewNode_HasUnrealizedChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasUnrealizedChildren;
         }
-        private void set_23_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
+        private void set_40_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.HasUnrealizedChildren = (global::System.Boolean)Value;
         }
-        private object get_24_TreeViewNode_IsExpanded(object instance)
+        private object get_41_TreeViewNode_IsExpanded(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.IsExpanded;
         }
-        private void set_24_TreeViewNode_IsExpanded(object instance, object Value)
+        private void set_41_TreeViewNode_IsExpanded(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.IsExpanded = (global::System.Boolean)Value;
         }
-        private object get_25_TreeViewNode_Parent(object instance)
+        private object get_42_TreeViewNode_Parent(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Parent;
@@ -1168,60 +1160,61 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
                 xamlMember.Getter = get_4_AnalogGauge_Unit;
                 xamlMember.Setter = set_4_AnalogGauge_Unit;
                 break;
-            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.GradientStops":
-                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
-                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "GradientStops", "Windows.Foundation.Collections.IObservableVector`1<Microsoft.UI.Xaml.Media.GradientStop>");
-                xamlMember.Getter = get_5_RadialGradientBrush_GradientStops;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.Center":
-                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
-                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "Center", "Windows.Foundation.Point");
+            case "URMS.WinUI.Controls.CardControl.CardContent":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.CardControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "CardContent", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_6_RadialGradientBrush_Center;
-                xamlMember.Setter = set_6_RadialGradientBrush_Center;
+                xamlMember.Getter = get_5_CardControl_CardContent;
+                xamlMember.Setter = set_5_CardControl_CardContent;
                 break;
-            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.RadiusX":
-                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
-                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "RadiusX", "Double");
+            case "URMS.WinUI.Controls.CardControl.TitleText":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.CardControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "TitleText", "String");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_7_RadialGradientBrush_RadiusX;
-                xamlMember.Setter = set_7_RadialGradientBrush_RadiusX;
+                xamlMember.Getter = get_6_CardControl_TitleText;
+                xamlMember.Setter = set_6_CardControl_TitleText;
                 break;
-            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.RadiusY":
-                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
-                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "RadiusY", "Double");
+            case "URMS.WinUI.Controls.CardControl.MainValueText":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.CardControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "MainValueText", "String");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_8_RadialGradientBrush_RadiusY;
-                xamlMember.Setter = set_8_RadialGradientBrush_RadiusY;
+                xamlMember.Getter = get_7_CardControl_MainValueText;
+                xamlMember.Setter = set_7_CardControl_MainValueText;
                 break;
-            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.GradientOrigin":
-                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
-                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "GradientOrigin", "Windows.Foundation.Point");
+            case "URMS.WinUI.Controls.CardControl.SubInfoText":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.CardControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "SubInfoText", "String");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_9_RadialGradientBrush_GradientOrigin;
-                xamlMember.Setter = set_9_RadialGradientBrush_GradientOrigin;
+                xamlMember.Getter = get_8_CardControl_SubInfoText;
+                xamlMember.Setter = set_8_CardControl_SubInfoText;
                 break;
-            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.InterpolationSpace":
-                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
-                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "InterpolationSpace", "Microsoft.UI.Composition.CompositionColorSpace");
+            case "URMS.WinUI.Controls.CardControl.IconGlyph":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.CardControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "IconGlyph", "String");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_10_RadialGradientBrush_InterpolationSpace;
-                xamlMember.Setter = set_10_RadialGradientBrush_InterpolationSpace;
+                xamlMember.Getter = get_9_CardControl_IconGlyph;
+                xamlMember.Setter = set_9_CardControl_IconGlyph;
                 break;
-            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.MappingMode":
-                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
-                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "MappingMode", "Microsoft.UI.Xaml.Media.BrushMappingMode");
+            case "URMS.WinUI.Controls.CardControl.BaseGlowOpacity":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.CardControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "BaseGlowOpacity", "Double");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_11_RadialGradientBrush_MappingMode;
-                xamlMember.Setter = set_11_RadialGradientBrush_MappingMode;
+                xamlMember.Getter = get_10_CardControl_BaseGlowOpacity;
+                xamlMember.Setter = set_10_CardControl_BaseGlowOpacity;
                 break;
-            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.SpreadMethod":
-                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
-                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "SpreadMethod", "Microsoft.UI.Xaml.Media.GradientSpreadMethod");
+            case "URMS.WinUI.Controls.CardControl.HoverGlowOpacity":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.CardControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "HoverGlowOpacity", "Double");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_12_RadialGradientBrush_SpreadMethod;
-                xamlMember.Setter = set_12_RadialGradientBrush_SpreadMethod;
+                xamlMember.Getter = get_11_CardControl_HoverGlowOpacity;
+                xamlMember.Setter = set_11_CardControl_HoverGlowOpacity;
+                break;
+            case "URMS.WinUI.Controls.CardControl.IsPrimaryTone":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.CardControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "IsPrimaryTone", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_12_CardControl_IsPrimaryTone;
+                xamlMember.Setter = set_12_CardControl_IsPrimaryTone;
                 break;
             case "URMS.WinUI.Controls.CyberCard.CardContent":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.CyberCard");
@@ -1230,84 +1223,194 @@ namespace URMS.WinUI.URMS_WinUI_XamlTypeInfo
                 xamlMember.Getter = get_13_CyberCard_CardContent;
                 xamlMember.Setter = set_13_CyberCard_CardContent;
                 break;
+            case "URMS.WinUI.Controls.HeaderControl.SpectrumPanelElement":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.HeaderControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "SpectrumPanelElement", "Microsoft.UI.Xaml.Controls.StackPanel");
+                xamlMember.Getter = get_14_HeaderControl_SpectrumPanelElement;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "URMS.WinUI.Controls.HeaderControl.ClockTextElement":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.HeaderControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "ClockTextElement", "Microsoft.UI.Xaml.Controls.TextBlock");
+                xamlMember.Getter = get_15_HeaderControl_ClockTextElement;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "URMS.WinUI.Controls.HeaderControl.DateTextElement":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.HeaderControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "DateTextElement", "Microsoft.UI.Xaml.Controls.TextBlock");
+                xamlMember.Getter = get_16_HeaderControl_DateTextElement;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "URMS.WinUI.Controls.HeaderControl.RadarRotateElement":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.HeaderControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "RadarRotateElement", "Microsoft.UI.Xaml.Media.RotateTransform");
+                xamlMember.Getter = get_17_HeaderControl_RadarRotateElement;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "URMS.WinUI.Controls.HeaderControl.RadarBlip0Element":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.HeaderControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "RadarBlip0Element", "Microsoft.UI.Xaml.Shapes.Ellipse");
+                xamlMember.Getter = get_18_HeaderControl_RadarBlip0Element;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "URMS.WinUI.Controls.HeaderControl.RadarBlip1Element":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.HeaderControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "RadarBlip1Element", "Microsoft.UI.Xaml.Shapes.Ellipse");
+                xamlMember.Getter = get_19_HeaderControl_RadarBlip1Element;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "URMS.WinUI.Controls.HeaderControl.StatusTextElement":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.HeaderControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "StatusTextElement", "Microsoft.UI.Xaml.Controls.TextBlock");
+                xamlMember.Getter = get_20_HeaderControl_StatusTextElement;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "URMS.WinUI.Controls.HeaderControl.StatusDotElement":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.HeaderControl");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "StatusDotElement", "Microsoft.UI.Xaml.Shapes.Ellipse");
+                xamlMember.Getter = get_21_HeaderControl_StatusDotElement;
+                xamlMember.SetIsReadOnly();
+                break;
             case "URMS.WinUI.Controls.WeatherAnimation.Condition":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.WeatherAnimation");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "Condition", "String");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_14_WeatherAnimation_Condition;
-                xamlMember.Setter = set_14_WeatherAnimation_Condition;
+                xamlMember.Getter = get_22_WeatherAnimation_Condition;
+                xamlMember.Setter = set_22_WeatherAnimation_Condition;
+                break;
+            case "URMS.WinUI.Controls.WorkflowCard.CurrentStep":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("URMS.WinUI.Controls.WorkflowCard");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "CurrentStep", "Int32");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_23_WorkflowCard_CurrentStep;
+                xamlMember.Setter = set_23_WorkflowCard_CurrentStep;
+                break;
+            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.GradientStops":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "GradientStops", "Windows.Foundation.Collections.IObservableVector`1<Microsoft.UI.Xaml.Media.GradientStop>");
+                xamlMember.Getter = get_24_RadialGradientBrush_GradientStops;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.Center":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "Center", "Windows.Foundation.Point");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_25_RadialGradientBrush_Center;
+                xamlMember.Setter = set_25_RadialGradientBrush_Center;
+                break;
+            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.GradientOrigin":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "GradientOrigin", "Windows.Foundation.Point");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_26_RadialGradientBrush_GradientOrigin;
+                xamlMember.Setter = set_26_RadialGradientBrush_GradientOrigin;
+                break;
+            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.RadiusX":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "RadiusX", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_27_RadialGradientBrush_RadiusX;
+                xamlMember.Setter = set_27_RadialGradientBrush_RadiusX;
+                break;
+            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.RadiusY":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "RadiusY", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_28_RadialGradientBrush_RadiusY;
+                xamlMember.Setter = set_28_RadialGradientBrush_RadiusY;
+                break;
+            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.InterpolationSpace":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "InterpolationSpace", "Microsoft.UI.Composition.CompositionColorSpace");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_29_RadialGradientBrush_InterpolationSpace;
+                xamlMember.Setter = set_29_RadialGradientBrush_InterpolationSpace;
+                break;
+            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.MappingMode":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "MappingMode", "Microsoft.UI.Xaml.Media.BrushMappingMode");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_30_RadialGradientBrush_MappingMode;
+                xamlMember.Setter = set_30_RadialGradientBrush_MappingMode;
+                break;
+            case "Microsoft.UI.Xaml.Media.RadialGradientBrush.SpreadMethod":
+                userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.RadialGradientBrush");
+                xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "SpreadMethod", "Microsoft.UI.Xaml.Media.GradientSpreadMethod");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_31_RadialGradientBrush_SpreadMethod;
+                xamlMember.Setter = set_31_RadialGradientBrush_SpreadMethod;
                 break;
             case "Microsoft.UI.Xaml.Controls.ProgressBar.IsIndeterminate":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ProgressBar");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "IsIndeterminate", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_15_ProgressBar_IsIndeterminate;
-                xamlMember.Setter = set_15_ProgressBar_IsIndeterminate;
+                xamlMember.Getter = get_32_ProgressBar_IsIndeterminate;
+                xamlMember.Setter = set_32_ProgressBar_IsIndeterminate;
                 break;
             case "Microsoft.UI.Xaml.Controls.ProgressBar.ShowError":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ProgressBar");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "ShowError", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_16_ProgressBar_ShowError;
-                xamlMember.Setter = set_16_ProgressBar_ShowError;
+                xamlMember.Getter = get_33_ProgressBar_ShowError;
+                xamlMember.Setter = set_33_ProgressBar_ShowError;
                 break;
             case "Microsoft.UI.Xaml.Controls.ProgressBar.ShowPaused":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ProgressBar");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "ShowPaused", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_17_ProgressBar_ShowPaused;
-                xamlMember.Setter = set_17_ProgressBar_ShowPaused;
+                xamlMember.Getter = get_34_ProgressBar_ShowPaused;
+                xamlMember.Setter = set_34_ProgressBar_ShowPaused;
                 break;
             case "Microsoft.UI.Xaml.Controls.ProgressBar.TemplateSettings":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ProgressBar");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "TemplateSettings", "Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings");
-                xamlMember.Getter = get_18_ProgressBar_TemplateSettings;
+                xamlMember.Getter = get_35_ProgressBar_TemplateSettings;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Children":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "Children", "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>");
-                xamlMember.Getter = get_19_TreeViewNode_Children;
+                xamlMember.Getter = get_36_TreeViewNode_Children;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Content":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "Content", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_20_TreeViewNode_Content;
-                xamlMember.Setter = set_20_TreeViewNode_Content;
+                xamlMember.Getter = get_37_TreeViewNode_Content;
+                xamlMember.Setter = set_37_TreeViewNode_Content;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Depth":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "Depth", "Int32");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_21_TreeViewNode_Depth;
+                xamlMember.Getter = get_38_TreeViewNode_Depth;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasChildren":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "HasChildren", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_22_TreeViewNode_HasChildren;
+                xamlMember.Getter = get_39_TreeViewNode_HasChildren;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasUnrealizedChildren":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "HasUnrealizedChildren", "Boolean");
-                xamlMember.Getter = get_23_TreeViewNode_HasUnrealizedChildren;
-                xamlMember.Setter = set_23_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Getter = get_40_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Setter = set_40_TreeViewNode_HasUnrealizedChildren;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.IsExpanded":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "IsExpanded", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_24_TreeViewNode_IsExpanded;
-                xamlMember.Setter = set_24_TreeViewNode_IsExpanded;
+                xamlMember.Getter = get_41_TreeViewNode_IsExpanded;
+                xamlMember.Setter = set_41_TreeViewNode_IsExpanded;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Parent":
                 userType = (global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::URMS.WinUI.URMS_WinUI_XamlTypeInfo.XamlMember(this, "Parent", "Microsoft.UI.Xaml.Controls.TreeViewNode");
-                xamlMember.Getter = get_25_TreeViewNode_Parent;
+                xamlMember.Getter = get_42_TreeViewNode_Parent;
                 xamlMember.SetIsReadOnly();
                 break;
             }
