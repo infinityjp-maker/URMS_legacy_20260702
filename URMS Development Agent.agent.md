@@ -105,3 +105,66 @@
 	- hierarchy drama verification
 	- tone consistency verification
 	- agent/spec synchronization verification
+
+---
+
+## URMS UI 100% Completion Project (フェーズ 0-4)
+
+### Phase 0: Safety Foundation
+- Git backup branch: `backup/highend-ui-before-100pct`
+- Folder backup: `URMS.WinUI_backup_100pct_YYYYMMDD_HHMM`
+- Agent definition backup: `URMS Development Agent.agent.md.bak_YYYYMMDD_HHMM`
+- Todo tracking: Real-time updates for all sub-phases
+
+### Phase 1: Architecture Optimization
+- **Objective**: Establish dashboard-card interface and theme separation; eliminate dead logic.
+- **Key Requirements**:
+  - Define ViewModel/DTO/Interface (e.g., `DashboardCardModel`) for card data.
+  - Separate theme-dependent presentation from information logic.
+  - Eliminate unused event handlers, properties, and legacy code.
+  - Maintain interface stability across theme changes (absolute prohibition: modifying card information structure for theme changes).
+- **Turing Point**: Debug EXE launch + user (拓也) confirmation that structure is sound.
+
+### Phase 2: High-End Theme Completion
+- **Objective**: Finalize material/optical/animation quality.
+- **Key Requirements**:
+  - Complete CardControl v2 material/optical/motion (Material 1.8-2.4%, Satin 6-9%, Motion Hover 160ms/Active 180ms).
+  - Implement global UI unification (MainWindow, Header, Workflow, BootHud, Settings).
+  - Maintain dashboard hierarchy drama (SYSTEM 100%, SUBSYSTEM 55-60%, OPERATION 25-30%).
+  - Ensure theme system is pluggable: all visual parameters in ResourceDictionary.
+- **Turing Point**: Release EXE launch + user (拓也) confirmation on high-end aesthetic direction.
+
+### Phase 3: Product Finalization
+- **Objective**: Complete documentation and specification sync.
+- **Key Requirements**:
+  - Ensure zero semantic drift: specification ↔ agent ↔ code.
+  - Add Phase 1-3 sections to spec and agent definition.
+  - Verify Git/backup/branch naming and documentation.
+  - Record all deprecated elements to prevent accidental revival.
+- **Turing Point**: Release EXE launch + user (拓也) final confirmation on product readiness.
+
+### Phase 4: Completion Report
+- All Todo items to completed status.
+- Git status clean (all intended changes committed).
+- Final summary of architecture/theme/product structure.
+- Locked-in version: "URMS UI 100% Complete v3".
+
+### Absolute Prohibitions
+- **No theme-data mixing**: Theme files must not contain data logic.
+- **No interface breaking**: DashboardCardModel/ViewModel interface must remain stable.
+- **No dead code revival**: Any deleted code must be documented with deletion reason.
+- **No documentation drift**: Spec and agent must be synchronized after every phase boundary.
+- **No skipped backups**: Every phase transition requires Git branch + folder backup.
+- **No quality compromises**: No lightweight/simplified/reduced-quality alternatives permitted.
+
+### Theme System Requirements (Phase 2 continuation into Phase 3)
+- Theme separation: Move all brushes/gradients/colors/noise/animation-params to Themes/HighEndMaterialTheme.xaml.
+- Resource-only interface: Dashboard/CardControl reference only `StaticResource` / `ThemeResource`, never direct theme values.
+- Future pluggability: Prepare for additional theme definitions (structure, not UI).
+- Theme entry point: MainWindow or App level; store current theme name for future switcher.
+
+### Interface Formalization (Phase 1 mandatory)
+- DashboardCardModel interface (or equivalent): Define required properties for card data.
+- Example signature: `Title`, `MainValue`, `SubInfo`, `Detail`, `HierarchyClass` (hero/secondary/support).
+- Code-behind pattern: No magic strings; use ViewModel property binding throughout.
+- Testing: Verify theme change does not break card information display.
