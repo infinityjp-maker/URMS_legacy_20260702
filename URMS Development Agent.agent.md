@@ -66,8 +66,8 @@
 ### Global Tone Rules
 - Deep blue-black background and 1.5% noise baseline.
 - Reduce glow by 20 to 30%.
-- Header uses glass plus metal hybrid.
-- BootHud uses cinematic intro style.
+- Header uses cold glass signature, not warm metal.
+- BootHud uses glass intro style.
 - WorkflowCard uses same material family as CardControl.
 
 ## Prohibitions
@@ -162,6 +162,12 @@
 - Resource-only interface: Dashboard/CardControl reference only `StaticResource` / `ThemeResource`, never direct theme values.
 - Future pluggability: Prepare for additional theme definitions (structure, not UI).
 - Theme entry point: MainWindow or App level; store current theme name for future switcher.
+
+### Glass Signature Fixed Direction
+- Fixed product direction is Glass Signature.
+- Do not use bronze / quiet luxury / warm metal wording or palette.
+- Use cool transparency, white-blue highlights, thin strokes, and restrained luminance.
+- Dashboard / Header / BootHud / Settings / CardControl must remain in the same glass temperature band.
 
 ### Interface Formalization (Phase 1 mandatory)
 - DashboardCardModel interface (or equivalent): Define required properties for card data.

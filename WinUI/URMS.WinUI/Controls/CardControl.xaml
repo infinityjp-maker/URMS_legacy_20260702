@@ -14,13 +14,28 @@
     <Grid x:Name="MidShadowHost" IsHitTestVisible="False"/>
     <Grid x:Name="LiftShadowHost" IsHitTestVisible="False"/>
 
+    <Border x:Name="HeroAura"
+            Margin="-18,-24,-18,-18"
+            Background="{ThemeResource MaterialHeroAuraBrush}"
+            CornerRadius="28"
+            Opacity="0.0"
+            IsHitTestVisible="False"/>
+
     <Border x:Name="CardRoot"
             Background="Transparent"
-            CornerRadius="10"
+            CornerRadius="18"
             Translation="0,0,12">
       <Grid>
         <Grid x:Name="MaterialLayer" IsHitTestVisible="False">
-          <Rectangle x:Name="CardBackdropBlur" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.72">
+          <Border x:Name="HeroBand"
+                  Margin="1"
+                  Height="66"
+                  VerticalAlignment="Top"
+                  CornerRadius="17,17,10,10"
+                  Background="{ThemeResource MaterialHeroBandBrush}"
+                  Opacity="0.0"/>
+
+          <Rectangle x:Name="CardBackdropBlur" Margin="1" RadiusX="17" RadiusY="17" Opacity="0.72">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="#38141E35" Offset="0"/>
@@ -34,7 +49,7 @@
               Margin="1"
                   BorderBrush="#3850678D"
                   BorderThickness="1"
-                  CornerRadius="9">
+                  CornerRadius="17">
             <Border.Background>
               <LinearGradientBrush x:Name="CardBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
                 <GradientStop x:Name="BgStopTop" Color="#FF101826" Offset="0"/>
@@ -44,9 +59,9 @@
             </Border.Background>
           </Border>
 
-          <Rectangle x:Name="NoiseLayer" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.035" Fill="{ThemeResource GlobalNoiseBrush}"/>
+          <Rectangle x:Name="NoiseLayer" Margin="1" RadiusX="17" RadiusY="17" Opacity="0.035" Fill="{ThemeResource GlobalNoiseBrush}"/>
 
-          <Rectangle x:Name="SatinReflection" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.105">
+          <Rectangle x:Name="SatinReflection" Margin="1" RadiusX="17" RadiusY="17" Opacity="0.105">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="#3DFFFFFF" Offset="0.0"/>
@@ -59,24 +74,33 @@
 
           <Border x:Name="InnerGlow"
                   Margin="2"
-                  CornerRadius="8"
+              CornerRadius="16"
                   BorderThickness="6"
                   Opacity="0.18"
                   BorderBrush="#55D5E6F7"/>
 
           <Border x:Name="MaterialFrame"
                   Margin="1"
-                  CornerRadius="9"
+              CornerRadius="17"
                   BorderThickness="1"
                   BorderBrush="#1218212D"/>
         </Grid>
 
         <Grid x:Name="OpticalLayer" IsHitTestVisible="False">
+            <Border x:Name="TierRail"
+              Width="4"
+              Margin="16,22,0,22"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Stretch"
+              CornerRadius="2"
+              Background="{ThemeResource MaterialHeroBandBrush}"
+              Opacity="0.0"/>
+
           <Border x:Name="TopHighlight"
                   Margin="2,2,2,0"
-                  Height="20"
+              Height="26"
                   VerticalAlignment="Top"
-                  CornerRadius="9,9,5,5"
+              CornerRadius="17,17,10,10"
                   Opacity="0.48">
             <Border.Background>
               <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -90,7 +114,7 @@
 
           <Border x:Name="SoftInnerReflection"
                   Margin="2"
-                  CornerRadius="8"
+              CornerRadius="16"
                   BorderThickness="4"
                   Opacity="0.22"
                   BorderBrush="#7DEAF5FF"/>
@@ -104,8 +128,8 @@
 
           <Rectangle x:Name="AmbientFog"
                      Margin="2"
-                     RadiusX="8"
-                     RadiusY="8"
+                     RadiusX="16"
+                     RadiusY="16"
                      Opacity="0.10">
             <Rectangle.Fill>
               <RadialGradientBrush RadiusX="0.85" RadiusY="0.85">
@@ -117,7 +141,7 @@
           </Rectangle>
         </Grid>
 
-        <Grid x:Name="ContentLayer" Margin="52,44,52,44">
+        <Grid x:Name="ContentLayer" Margin="56,48,56,52">
           <StackPanel x:Name="InfoPanel" Spacing="18">
             <Grid>
               <Grid.ColumnDefinitions>
@@ -127,32 +151,57 @@
               </Grid.ColumnDefinitions>
 
               <Border Grid.Column="0"
+                      x:Name="InfoIconHost"
                       Width="34"
                       Height="34"
                       CornerRadius="17"
-                      Background="#1630445B"
-                      BorderBrush="#2F7FA7C0"
+                      Background="#1C2C4259"
+                      BorderBrush="#72A8CDEA"
                       BorderThickness="1">
                 <FontIcon x:Name="InfoIcon"
                           FontSize="15"
                           Glyph="&#xE946;"
-                          Foreground="#A8DCEBFA"
+                          Foreground="#ECF6FF"
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center"/>
               </Border>
 
-              <StackPanel Grid.Column="2" Spacing="6" Margin="0,4,0,0">
-                <TextBlock x:Name="TitleTextBlock"
-                           Text="{x:Bind TitleText, Mode=OneWay}"
-                           CharacterSpacing="180"
-                           FontSize="14"
-                           FontWeight="SemiBold"
-                           Foreground="#A6B7CBDE"
-                           TextTrimming="CharacterEllipsis"/>
-                <Rectangle Height="1" HorizontalAlignment="Stretch" Opacity="0.42">
+              <StackPanel Grid.Column="2" Spacing="8" Margin="0,2,0,0">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <TextBlock x:Name="TitleTextBlock"
+                             Grid.Column="0"
+                             Text="{x:Bind TitleText, Mode=OneWay}"
+                             FontFamily="{ThemeResource BodyFontFamily}"
+                             CharacterSpacing="180"
+                             FontSize="14"
+                             FontWeight="SemiBold"
+                             Foreground="#A6B7CBDE"
+                             TextTrimming="CharacterEllipsis"/>
+                  <Border x:Name="TierBadge"
+                          Grid.Column="1"
+                          Padding="8,4"
+                          CornerRadius="10"
+                          Opacity="0.0"
+                          HorizontalAlignment="Right"
+                          Background="#18283A52"
+                          BorderBrush="#34607A94"
+                          BorderThickness="1">
+                    <TextBlock x:Name="TierBadgeText"
+                               Text="SYSTEM"
+                               FontFamily="{ThemeResource MonoFontFamily}"
+                               FontSize="8"
+                               CharacterSpacing="150"
+                               Foreground="#D8EAF8"/>
+                  </Border>
+                </Grid>
+                <Rectangle x:Name="TitleDivider" Height="1" HorizontalAlignment="Stretch" Opacity="0.42">
                   <Rectangle.Fill>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                      <GradientStop Color="#4AA5C5DF" Offset="0"/>
+                      <GradientStop Color="#74CBE8FF" Offset="0"/>
                       <GradientStop Color="Transparent" Offset="1"/>
                     </LinearGradientBrush>
                   </Rectangle.Fill>
@@ -162,6 +211,7 @@
 
             <TextBlock x:Name="MainValueTextBlock"
                        Text="{x:Bind MainValueText, Mode=OneWay}"
+                       FontFamily="{ThemeResource DisplayFontFamily}"
                        CharacterSpacing="26"
                        FontSize="34"
                        FontWeight="SemiBold"
@@ -170,6 +220,7 @@
 
             <TextBlock x:Name="SubInfoTextBlock"
                        Text="{x:Bind SubInfoText, Mode=OneWay}"
+                       FontFamily="{ThemeResource BodyFontFamily}"
                        FontSize="12"
                        LineHeight="26"
                        Foreground="#8FA2B7C9"
@@ -212,8 +263,8 @@
 
           <Rectangle x:Name="ReflectionWave"
                      Margin="1"
-                     RadiusX="9"
-                     RadiusY="9"
+                     RadiusX="17"
+                     RadiusY="17"
                      Opacity="0.0">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0,-0.2" EndPoint="1,1.2">
@@ -227,9 +278,9 @@
 
           <Border x:Name="GlowBorder"
                   Margin="0"
-                  CornerRadius="10"
+              CornerRadius="18"
                   BorderThickness="1.5"
-                  BorderBrush="#4E8FB7CF"
+                  BorderBrush="#76A8D4F2"
                   Opacity="0.16"/>
         </Grid>
       </Grid>

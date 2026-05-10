@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Markup;
+using Microsoft.UI.Xaml.Media;
 using System;
 using System.Numerics;
 using Windows.UI;
@@ -74,6 +75,9 @@ namespace URMS.WinUI.Controls
         private Visual? _backdropVisual;
         private Visual? _ambientFogVisual;
         private Visual? _backdropBloomVisual;
+        private Visual? _heroAuraVisual;
+        private Visual? _heroBandVisual;
+        private Visual? _tierRailVisual;
         private ShadowLayer? _deepShadowLayer;
         private ShadowLayer? _midShadowLayer;
         private ShadowLayer? _liftShadowLayer;
@@ -204,6 +208,9 @@ namespace URMS.WinUI.Controls
             _backdropVisual = ElementCompositionPreview.GetElementVisual(CardBackdropBlur);
             _ambientFogVisual = ElementCompositionPreview.GetElementVisual(AmbientFog);
             _backdropBloomVisual = ElementCompositionPreview.GetElementVisual(BackdropBloom);
+            _heroAuraVisual = ElementCompositionPreview.GetElementVisual(HeroAura);
+            _heroBandVisual = ElementCompositionPreview.GetElementVisual(HeroBand);
+            _tierRailVisual = ElementCompositionPreview.GetElementVisual(TierRail);
 
             _deepShadowLayer = CreateShadowLayer(DeepShadowHost);
             _midShadowLayer = CreateShadowLayer(MidShadowHost);
@@ -224,20 +231,35 @@ namespace URMS.WinUI.Controls
             CardBackdropBlur.Opacity = profile.BlurOpacity;
             ActiveOverlay.Opacity = 0.0;
             ReflectionWave.Opacity = 0.0;
+            HeroAura.Opacity = profile.HeroAuraOpacity;
+            HeroBand.Opacity = profile.HeroBandOpacity;
+            TierRail.Opacity = profile.TierRailOpacity;
+            TierBadge.Opacity = profile.BadgeOpacity;
 
-            InfoPanel.Margin = new Thickness(52, 44, 52, 44);
+            InfoPanel.Margin = profile.ContentMargin;
             MainValueTextBlock.FontSize = profile.MainValueFontSize;
             MainValueTextBlock.CharacterSpacing = IsPrimaryTone ? 30 : 24;
             TitleTextBlock.FontSize = profile.TitleFontSize;
             SubInfoTextBlock.FontSize = profile.SubInfoFontSize;
             SubInfoTextBlock.LineHeight = profile.SubInfoLineHeight;
+            TierBadgeText.Text = profile.TierLabel;
 
             BgStopTop.Color = profile.BackgroundTop;
             BgStopMid.Color = profile.BackgroundMid;
             BgStopBottom.Color = profile.BackgroundBottom;
-            CardBackground.BorderBrush = new Microsoft.UI.Xaml.Media.SolidColorBrush(profile.BorderColor);
-            MaterialFrame.BorderBrush = new Microsoft.UI.Xaml.Media.SolidColorBrush(profile.FrameColor);
-            DeepOuterShadow.BorderBrush = new Microsoft.UI.Xaml.Media.SolidColorBrush(profile.DeepOuterShadowColor);
+            CardBackground.BorderBrush = new SolidColorBrush(profile.BorderColor);
+            MaterialFrame.BorderBrush = new SolidColorBrush(profile.FrameColor);
+            DeepOuterShadow.BorderBrush = new SolidColorBrush(profile.DeepOuterShadowColor);
+            InfoIconHost.Background = new SolidColorBrush(profile.IconBackgroundColor);
+            InfoIconHost.BorderBrush = new SolidColorBrush(profile.IconBorderColor);
+            InfoIcon.Foreground = new SolidColorBrush(profile.IconForegroundColor);
+            TitleTextBlock.Foreground = new SolidColorBrush(profile.TitleColor);
+            MainValueTextBlock.Foreground = new SolidColorBrush(profile.ValueColor);
+            SubInfoTextBlock.Foreground = new SolidColorBrush(profile.SubInfoColor);
+            TierBadge.Background = new SolidColorBrush(profile.BadgeBackgroundColor);
+            TierBadge.BorderBrush = new SolidColorBrush(profile.BadgeBorderColor);
+            TierBadgeText.Foreground = new SolidColorBrush(profile.BadgeTextColor);
+            TitleDivider.Opacity = profile.DividerOpacity;
 
             ApplyShadowProfile(_deepShadowLayer, profile.DeepShadow);
             ApplyShadowProfile(_midShadowLayer, profile.MidShadow);
@@ -259,6 +281,9 @@ namespace URMS.WinUI.Controls
             var targetBlur = (float)(profile.BlurOpacity + (isHover ? 0.04 : 0.0));
             var targetFog = (float)(profile.AmbientFogOpacity + (isHover ? 0.01 : 0.0));
             var targetBloom = (float)(profile.BloomOpacity + (isHover ? 0.03 : 0.0) + (isActive ? 0.03 : 0.0));
+            var targetHeroAura = (float)(profile.HeroAuraOpacity + (isHover ? 0.06 : 0.0) + (isActive ? 0.04 : 0.0));
+            var targetHeroBand = (float)(profile.HeroBandOpacity + (isHover ? 0.05 : 0.0));
+            var targetTierRail = (float)(profile.TierRailOpacity + (isHover ? 0.04 : 0.0));
             var duration = GetAnimationDuration(isActive);
 
             AnimateOpacity(_glowVisual, targetGlow, duration);
@@ -269,6 +294,9 @@ namespace URMS.WinUI.Controls
             AnimateOpacity(_backdropVisual, targetBlur, duration);
             AnimateOpacity(_ambientFogVisual, targetFog, duration);
             AnimateOpacity(_backdropBloomVisual, targetBloom, duration);
+            AnimateOpacity(_heroAuraVisual, targetHeroAura, duration);
+            AnimateOpacity(_heroBandVisual, targetHeroBand, duration);
+            AnimateOpacity(_tierRailVisual, targetTierRail, duration);
             AnimateCardTransform(targetScale, targetY, duration);
 
             if (_liftShadowLayer?.Shadow != null)
@@ -364,44 +392,61 @@ namespace URMS.WinUI.Controls
             var optical = Math.Clamp(OpticalDepth * (IsPrimaryTone ? 1.4 : 1.0), 0.65, 2.2);
             var shadow = Math.Clamp(ShadowDepth * (IsPrimaryTone ? 1.4 : 1.0), 0.7, 2.2);
             var density = Math.Clamp(InfoDensity, 0.8, 1.2);
+            var tierLabel = IsPrimaryTone ? "SYSTEM" : MaterialIntensity <= 0.8 ? "OPERATION" : "SUBSYSTEM";
 
-            var baseTop = IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x14, 0x1E, 0x2E) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x10, 0x18, 0x26);
-            var baseMid = IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x0D, 0x16, 0x24) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x0C, 0x13, 0x20);
-            var baseBottom = IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x09, 0x11, 0x1B) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x08, 0x10, 0x1A);
+            var baseTop = IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x18, 0x26, 0x3A) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x0C, 0x14, 0x20) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x12, 0x1B, 0x29);
+            var baseMid = IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x11, 0x1B, 0x2C) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x08, 0x10, 0x19) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x0D, 0x15, 0x22);
+            var baseBottom = IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x0A, 0x12, 0x1D) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x05, 0x0A, 0x11) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x08, 0x0F, 0x18);
 
             return new CardProfile(
-                NoiseOpacity: Math.Clamp(0.018 + ((material - 1.0) * 0.006), 0.018, 0.024),
-                SatinOpacity: Math.Clamp(0.06 + ((material - 1.0) * 0.02), 0.06, 0.09),
-                InnerGlowOpacity: Math.Clamp(0.10 + ((material - 1.0) * 0.03), 0.08, 0.18),
-                BlurOpacity: Math.Clamp(0.46 + ((material - 1.0) * 0.08), 0.42, 0.62),
-                TopHighlightOpacity: 0.28 * optical,
-                SoftInnerReflectionOpacity: 0.085 * optical,
-                ActiveOverlayOpacity: IsPrimaryTone ? 0.14 : 0.10,
-                AmbientFogOpacity: IsPrimaryTone ? 0.08 : 0.05,
-                BloomOpacity: IsPrimaryTone ? 0.14 : 0.0,
-                MainValueFontSize: IsPrimaryTone ? 38 + ((density - 1.0) * 2) : 34 + ((density - 1.0) * 2),
+                NoiseOpacity: Math.Clamp(0.020 + ((material - 1.0) * 0.010), 0.016, 0.038),
+                SatinOpacity: Math.Clamp(0.08 + ((material - 1.0) * 0.05), 0.05, 0.16),
+                InnerGlowOpacity: Math.Clamp(0.12 + ((material - 1.0) * 0.06), 0.08, 0.24),
+                BlurOpacity: Math.Clamp(0.52 + ((material - 1.0) * 0.14), 0.40, 0.78),
+                TopHighlightOpacity: Math.Clamp(0.20 * optical, 0.14, 0.52),
+                SoftInnerReflectionOpacity: Math.Clamp(0.09 * optical, 0.05, 0.24),
+                ActiveOverlayOpacity: IsPrimaryTone ? 0.17 : 0.10,
+                AmbientFogOpacity: IsPrimaryTone ? 0.11 : MaterialIntensity <= 0.8 ? 0.03 : 0.06,
+                BloomOpacity: IsPrimaryTone ? 0.18 : 0.03,
+                HeroAuraOpacity: IsPrimaryTone ? 0.22 : 0.0,
+                HeroBandOpacity: IsPrimaryTone ? 0.26 : MaterialIntensity <= 0.8 ? 0.04 : 0.10,
+                TierRailOpacity: IsPrimaryTone ? 0.55 : MaterialIntensity <= 0.8 ? 0.12 : 0.24,
+                BadgeOpacity: IsPrimaryTone ? 1.0 : 0.88,
+                MainValueFontSize: IsPrimaryTone ? 42 + ((density - 1.0) * 3) : MaterialIntensity <= 0.8 ? 28 + ((density - 1.0) * 2) : 34 + ((density - 1.0) * 2),
                 TitleFontSize: 14,
                 SubInfoFontSize: 12,
                 SubInfoLineHeight: 26,
                 BackgroundTop: baseTop,
                 BackgroundMid: baseMid,
                 BackgroundBottom: baseBottom,
-                BorderColor: Microsoft.UI.ColorHelper.FromArgb(0x46, 0x78, 0x93, 0xB3),
-                FrameColor: Microsoft.UI.ColorHelper.FromArgb(0x20, 0x16, 0x20, 0x2D),
-                DeepOuterShadowColor: Microsoft.UI.ColorHelper.FromArgb(0x2D, 0x07, 0x0A, 0x0F),
+                BorderColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0x88, 0xB2, 0xD6, 0xF2) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0x34, 0x6F, 0x88, 0xA1) : Microsoft.UI.ColorHelper.FromArgb(0x58, 0x92, 0xB6, 0xD4),
+                FrameColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0x58, 0xE0, 0xF0, 0xFF) : Microsoft.UI.ColorHelper.FromArgb(0x24, 0x33, 0x48, 0x5A),
+                DeepOuterShadowColor: Microsoft.UI.ColorHelper.FromArgb(IsPrimaryTone ? (byte)0x48 : (byte)0x2D, 0x07, 0x0A, 0x0F),
+                IconBackgroundColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0x34, 0x46, 0x6B, 0x8A) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0x22, 0x2B, 0x40, 0x54) : Microsoft.UI.ColorHelper.FromArgb(0x24, 0x36, 0x52, 0x6A),
+                IconBorderColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0x98, 0xD7, 0xEC, 0xFF) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0x46, 0x8D, 0xB2, 0xCF) : Microsoft.UI.ColorHelper.FromArgb(0x68, 0xB4, 0xD6, 0xEE),
+                IconForegroundColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xF2, 0xF9, 0xFF) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xCC, 0xE6, 0xFA),
+                TitleColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xDB, 0xEC, 0xFA) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x98, 0xAD, 0xC0) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xB9, 0xD0, 0xE4),
+                ValueColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xFA, 0xFD, 0xFF) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xD8, 0xE6, 0xF2) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xEE, 0xF5, 0xFC),
+                SubInfoColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xB9, 0xCC, 0xDE) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x86, 0x9A, 0xAD) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x9E, 0xB3, 0xC8),
+                BadgeBackgroundColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0x42, 0x3B, 0x59, 0x76) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0x24, 0x2A, 0x40, 0x52) : Microsoft.UI.ColorHelper.FromArgb(0x30, 0x34, 0x4B, 0x62),
+                BadgeBorderColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0x86, 0xC9, 0xE5, 0xFA) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0x44, 0x86, 0xA6, 0xC2) : Microsoft.UI.ColorHelper.FromArgb(0x5A, 0xAC, 0xCC, 0xE4),
+                BadgeTextColor: IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xF1, 0xF8, 0xFF) : MaterialIntensity <= 0.8 ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xB8, 0xD0, 0xE2) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xD7, 0xE8, 0xF6),
+                DividerOpacity: IsPrimaryTone ? 0.72 : MaterialIntensity <= 0.8 ? 0.20 : 0.42,
+                TierLabel: tierLabel,
+                ContentMargin: IsPrimaryTone ? new Thickness(60, 54, 60, 58) : MaterialIntensity <= 0.8 ? new Thickness(44, 36, 44, 40) : new Thickness(52, 44, 52, 48),
                 DeepShadow: new ShadowSpec(
-                    BlurRadius: 36f + (float)((shadow - 1.0) * 12.0),
-                    Opacity: 0.30f,
-                    OffsetY: 22f + (float)((shadow - 1.0) * 6.0),
+                    BlurRadius: 34f + (float)((shadow - 1.0) * 16.0),
+                    Opacity: IsPrimaryTone ? 0.42f : 0.28f,
+                    OffsetY: 20f + (float)((shadow - 1.0) * 8.0),
                     Color: Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x05, 0x08, 0x10)),
                 MidShadow: new ShadowSpec(
-                    BlurRadius: 12f + (float)((shadow - 1.0) * 4.0),
-                    Opacity: 0.18f,
+                    BlurRadius: 12f + (float)((shadow - 1.0) * 6.0),
+                    Opacity: IsPrimaryTone ? 0.22f : 0.16f,
                     OffsetY: 7f + (float)((shadow - 1.0) * 2.5),
                     Color: Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x08, 0x0D, 0x16)),
                 LiftShadow: new ShadowSpec(
-                    BlurRadius: 24f,
-                    Opacity: 0.24f,
+                    BlurRadius: IsPrimaryTone ? 30f : 22f,
+                    Opacity: IsPrimaryTone ? 0.30f : 0.18f,
                     OffsetY: 15f + (float)((shadow - 1.0) * 5.0),
                     Color: Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x03, 0x05, 0x0A)));
         }
@@ -474,6 +519,10 @@ namespace URMS.WinUI.Controls
             double ActiveOverlayOpacity,
             double AmbientFogOpacity,
             double BloomOpacity,
+            double HeroAuraOpacity,
+            double HeroBandOpacity,
+            double TierRailOpacity,
+            double BadgeOpacity,
             double MainValueFontSize,
             double TitleFontSize,
             double SubInfoFontSize,
@@ -484,6 +533,18 @@ namespace URMS.WinUI.Controls
             Color BorderColor,
             Color FrameColor,
             Color DeepOuterShadowColor,
+            Color IconBackgroundColor,
+            Color IconBorderColor,
+            Color IconForegroundColor,
+            Color TitleColor,
+            Color ValueColor,
+            Color SubInfoColor,
+            Color BadgeBackgroundColor,
+            Color BadgeBorderColor,
+            Color BadgeTextColor,
+            double DividerOpacity,
+            string TierLabel,
+            Thickness ContentMargin,
             ShadowSpec DeepShadow,
             ShadowSpec MidShadow,
             ShadowSpec LiftShadow);
