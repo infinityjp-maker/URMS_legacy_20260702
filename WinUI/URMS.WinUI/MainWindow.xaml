@@ -74,8 +74,8 @@
 
       <Canvas x:Name="BgGridCanvas" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False"/>
       <Canvas x:Name="BgPerspCanvas" Grid.Row="1" IsHitTestVisible="False"/>
-      <Canvas x:Name="BgMatrixCanvas" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" Opacity="0.028"/>
-      <Rectangle Grid.Row="0" Grid.RowSpan="2" Opacity="0.016" Fill="{ThemeResource GlobalNoiseBrush}" IsHitTestVisible="False"/>
+      <Canvas x:Name="BgMatrixCanvas" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" Opacity="0.048"/>
+      <Rectangle Grid.Row="0" Grid.RowSpan="2" Opacity="0.025" Fill="{ThemeResource GlobalNoiseBrush}" IsHitTestVisible="False"/>
 
       <Grid Grid.Row="1" IsHitTestVisible="False">
         <Canvas Width="88" Height="88" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,16,0,0">
