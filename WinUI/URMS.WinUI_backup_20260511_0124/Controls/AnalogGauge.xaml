@@ -1,0 +1,92 @@
+<UserControl
+    x:Class="URMS.WinUI.Controls.AnalogGauge"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Width="110" Height="90">
+
+    <Grid>
+        <Canvas x:Name="GaugeCanvas" Width="110" Height="90">
+
+            <!-- 背景アーク（StrokeDashArray: 240°分のみ表示） -->
+            <Ellipse x:Name="ArcBg"
+                     Canvas.Left="10" Canvas.Top="10"
+                     Width="80" Height="80"
+                     Stroke="{ThemeResource ProgressTrackBrush}"
+                     StrokeThickness="11"
+                     StrokeStartLineCap="Round"
+                     StrokeEndLineCap="Round"
+                     Fill="Transparent"
+                     RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <RotateTransform Angle="150"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+
+            <!-- 値アーク グロー外層 -->
+            <Ellipse x:Name="ArcGlow"
+                     Canvas.Left="10" Canvas.Top="10"
+                     Width="80" Height="80"
+                     StrokeThickness="15"
+                     Opacity="0.25"
+                     Fill="Transparent"
+                     Visibility="Collapsed"
+                     RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <RotateTransform Angle="150"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+
+            <!-- 値アーク 本体 -->
+            <Ellipse x:Name="ArcValue"
+                     Canvas.Left="10" Canvas.Top="10"
+                     Width="80" Height="80"
+                     StrokeThickness="11"
+                     StrokeStartLineCap="Round"
+                     StrokeEndLineCap="Round"
+                     Fill="Transparent"
+                     Visibility="Collapsed"
+                     RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <RotateTransform Angle="150"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+
+            <!-- 針 -->
+            <Line x:Name="Needle"
+                  Stroke="{ThemeResource ValueBrush}"
+                  StrokeThickness="2"
+                  StrokeStartLineCap="Round"
+                  StrokeEndLineCap="Round"
+                  Opacity="0.9"/>
+
+            <!-- 中心キャップ -->
+            <Ellipse x:Name="CenterCap"
+                     Width="10" Height="10"
+                     Fill="{ThemeResource HeaderBackgroundBrush}"
+                     Canvas.Left="45" Canvas.Top="45"/>
+
+            <!-- 値テキスト -->
+            <TextBlock x:Name="TxtValue"
+                       Canvas.Left="0" Canvas.Top="50"
+                       Width="100"
+                       TextAlignment="Center"
+                       FontSize="19"
+                       FontWeight="Bold"
+                       Foreground="{ThemeResource ValueBrush}"/>
+
+            <!-- ラベルテキスト -->
+            <TextBlock x:Name="TxtLabel"
+                       Canvas.Left="0" Canvas.Top="72"
+                       Width="100"
+                       TextAlignment="Center"
+                       FontSize="9"
+                       FontWeight="SemiBold"
+                       CharacterSpacing="80"
+                       Foreground="{ThemeResource LabelBrush}"/>
+
+        </Canvas>
+    </Grid>
+</UserControl>

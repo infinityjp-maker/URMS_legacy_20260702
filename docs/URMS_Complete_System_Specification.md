@@ -1,192 +1,125 @@
 # URMS Complete System Specification
 
-## 1. システム概要
+## 1. 目的
+URMS.WinUI は、運用・監視・実行・設定を 1 つの静かな高級 UI に統合する。単なるサイバー装飾ではなく、素材・光・影・情報密度で優先度を伝えることを最上位目的とする。
 
-### 1.1 目的
-URMS (Unified Resource Management System) は、運用情報・システム状態・操作アクションを単一ダッシュボードへ統合し、素早く正確な意思決定を行う WinUI ベースの統合運用 UI である。
+## 2. グローバルトーン定義
+- 背景基準は深青黒。基準色は #050A11 近傍。
+- 画面全体に 1.2% 前後の微細ノイズを重ねる。
+- 発光は従来比で 15% から 25% 減光する。
+- 明るさではなく、素材差分と影深度で高級感を作る。
+- Header は Acrylic を使わず、自前の素材レイヤーでガラス感を構成する。
+- BootHud は映画導入のような暗い導入演出を採用する。
 
-### 1.2 設計方針
-- 高級・静寂・可読性重視のサイバー UI
-- 最小差分での改善と長期運用整合性の維持
-- 情報の階層化（最重要 > 重要 > 詳細）
-- 色ではなく構造と余白で視線誘導
+## 3. CardControl 4 レイヤー構造
 
-### 1.3 技術基盤
-- WinUI 3 / .NET 8
-- ターゲット: net8.0-windows10.0.19041.0
-- Windows App SDK: 1.8.260416003
-- Composition API による影表現
+### 3.1 MaterialLayer
+- 背景ボケは 6px から 10px 相当。
+- 微細ノイズは 1.2% から 1.8%。
+- サテン反射は縦方向 3% から 5%。
+- InnerGlow は 2px から 4px。
+- 主役カードは素材強度を +20% する。
 
-## 2. UI 統合仕様（5フェーズ最終版）
+### 3.2 OpticalLayer
+- TopHighlight を主役光として使う。
+- SoftInnerReflection を内側反射として使う。
+- DeepOuterShadow を深影として使う。
+- 影の深度は Y=12 から 16、Blur=18 から 24 を基準とする。
 
-### 2.0 Material Layer（高級素材レイヤー）
-- 微細ノイズレイヤー: 0.8〜1.2%（標準 1.0%、主役 1.2%）
-- サテン反射: 縦方向 2〜3% の弱光沢
-- 内側反射: 1〜2px / 透明度 0.05〜0.08
-- 背景ボケ: Backdrop 系の弱いブラー（4〜6px 相当）
-- 主役カードは別素材: 明度 +8%、ノイズ密度 +20%、内側反射強化、影Y=10〜12
+### 3.3 ContentLayer
+- 情報余白は 52,44,52,44 を基準とする。
+- 階層は Title / MainValue / SubInfo / Detail の順で明確に分離する。
+- 主役カードの MainValue は 34px から 38px とし、準主役・脇役より明確に大きくする。
 
-### 2.1 Phase 1: CardControl 最終仕様（強弱・余白・奥行き）
+### 3.4 OverlayLayer
+- ActiveOverlay は光の波紋として扱う。
+- Active 時 Opacity は 0.05 から 0.08 を基準にする。
+- Hover 時は素材反射量を約 3% 増やす。
 
-#### 2.1.1 レイアウト
-- 外形: Border + CornerRadius=8
-- 情報領域: InfoPanel Margin=40,32,40,32
-- 情報領域間隔: Spacing=14
-- TopHighlight: 2px / #42FFFFFF
-- Icon色: #441EE3FF
-- タイトルとアイコン間: 14px + Title 上余白 2px
-- MainValue 上下余白: +12px
-- SubInfo LineHeight: 24
-- 素材レイヤー: BackdropBlur + NoiseLayer + SatinReflection + SoftInnerReflection
+### 3.5 CardControl Motion
+- Composition API を前提にする。
+- DropShadow 単体は禁止し、LayeredShadow を使う。
+- Hover / Active アニメーション時間は 140ms を基準にする。
+- 主役カードはアニメーション強度を +15% する。
 
-#### 2.1.2 質感
-- ベースグラデーション: #0A0F1A -> #0D121E（主役カードは 5% 明度上げ）
-- 枠線発光（面補助）: BorderThickness=1.5 / BorderBrush=#381BCCE6
-- GlowBorder は補助光（標準 Opacity 0.13）
-- Glow 強弱ルール:
-  - 主役（System Health / Tasks）: 0.27（Hover 0.29, IsPrimaryTone=True）
-  - 準主役（Weather / Security）: 0.20（Hover 0.21）
-  - 通常: 0.18（Hover 0.19, IsPrimaryTone=False）
-- ActiveOverlay: 上 #081DDEF8 / 下 #05000000
-- ActiveOverlay Opacity: 0.045
-- 外側シャドウ（標準）: Blur 16 / 下方向オフセット Y=9 / Color #0C1A2A
-- 外側シャドウ（主役）: Blur 18 / 下方向オフセット Y=11 / Color #0C1A2A
-- 内側シャドウ: 1px
+## 4. Dashboard の階層ドラマ
 
-#### 2.1.3 モーション（CardControl.xaml.cs）
-- Hover Scale: 1.004
-- Hover TranslateY: -0.5
-- Hover Glow: カード種別ごとに +0.01
-- Active Overlay Opacity: 0.045
-- 変化時間: 100ms
+### 4.1 主役 / 準主役 / 脇役
+- 主役は System Health と Tasks。
+- 準主役は Weather と Security。
+- 脇役は Schedule / Calendar / Network と subsystem / operation の各カード。
 
-### 2.2 Phase 2: Dashboard 視線誘導最適化
-- 最上段 2x2:
-  - 左上: SYSTEM HEALTH（主役）
-  - 右上: TASKS（主役）
-  - 左下: WEATHER（準主役）
-  - 右下: SECURITY（準主役）
-- 次段 3カラム:
-  - 左: SCHEDULE
-  - 中央: CALENDAR
-  - 右: NETWORK
-- 下段:
-  - Subsystem Layer / Operation Layer を継続配置
-- 余白戦略:
-  - ルート StackPanel Spacing=30
-  - Padding=44,36
-  - Top Grid ColumnSpacing / RowSpacing=32
-  - 中段/下段グリッド ColumnSpacing=32
-  - Section 間余白は 34px
-  - 主役カード Margin は +6px、準主役は +2px
-- 情報密度ルール:
-  - System Health は情報量 +5〜8%
-  - Weather / Security は補助情報を 1 行削減
-  - 中段（Schedule/Calendar/Network）は内部余白 +4px
-  - System Health は補助情報を 1 行追加
-- 階層ドラマ:
-  - SYSTEM: 光量・素材強度を最大
-  - SUBSYSTEM: 光量を 1 段階低下（Opacity 約0.86）
-  - OPERATION: 光量と密度をさらに低下（Opacity 約0.78）
+### 4.2 素材差分ルール
+- 主役: 素材強度 +20%、光学深度 +30%、影深度 +40%。
+- 準主役: 素材強度 +10%、影深度 +10%。
+- 脇役: 素材強度 -10%、光学深度 -20%。
 
-### 2.3 Phase 3: グローバルトーン最終統一
+### 4.3 光量ルール
+- SYSTEM LAYER は 100%。
+- SUBSYSTEM LAYER は 70%。
+- OPERATION LAYER は 40%。
 
-#### 2.3.1 App.xaml テーマ
-- Base: #090F1A を基準背景として統一
-- Label: #6E8097
-- Value: #C7D2E0
-- Accent Cyan: #4DAFD4（過度ネオン禁止）
-- Border: #25384F（主張を抑えた境界）
-- GlobalNoiseBrush: 0.8〜1.2% ノイズ表現の共通ブラシ
+### 4.4 情報密度ルール
+- 主役は密度高。複数ブロックを使って読み分けさせる。
+- 準主役は密度中。必要情報を 2 から 3 ブロックに抑える。
+- 脇役は密度低。1 画面で理解できる要点だけにする。
 
-#### 2.3.2 HeaderControl
-- シアン発光を最終で -15% 減光
-- 日付/時計/ステータスを #8FB5C9 系へ調整
-- ボトムラインを #6EAFC8 系に統一
-- ヘッダー光沢は 2 層（Top Gloss + Directional Gloss）
+### 4.5 レイアウトルール
+- ColumnSpacing / RowSpacing は 48 を基準とする。
+- セクション間余白は 52 を基準とする。
+- カード上下 Margin は主役 +10px、準主役 +6px、脇役 +2px。
+- 並び順は既存構成を維持する。
 
-#### 2.3.3 MainWindow 背景
-- Nebula を寒色低彩度へ再配色
-- Matrix レイヤー Opacity を 0.14 -> 0.05
-- コーナーブラケットと ScanLine を淡色化
+## 5. グローバル素材基準
 
-#### 2.3.4 Workflow / Settings / BootHud
-- WorkflowCard の強発光色を ThemeResource 経由へ統一
-- WorkflowCard の矢印色は #6A7C94 に固定
-- Settings / Header / MainWindow / BootHud の余白を追加で +2px
-- BootHud の導入演出を 20% 減光
-- WorkflowCard はカード素材を統一（ノイズ・サテン反射・内側反射）
-- MainWindow / Settings は全画面ノイズレイヤーを適用
+### 5.1 App.xaml
+- 全テーマに共通して深青黒、低彩度アクセント、細い境界線を使う。
+- Resource は ThemeResource 経由で参照する。
+- グローバルノイズと深度グラデーションを定義する。
 
-### 2.4 Phase 4: 仕様同期ルール
-- 新規カードは CardControl 以外を原則禁止
-- 追加カードは TitleText / MainValueText / SubInfoText / IconGlyph を定義
-- 強発光色（#00F7FF 近傍）を直接指定せず、ThemeResource を使用
-- 余白と階層は既存導線を踏襲し、情報密度だけを増やさない
+### 5.2 MainWindow
+- 背景レイヤー順は BgStarsCanvas → NebulaGrid → BgGridCanvas → BgPerspCanvas → BgMatrixCanvas を維持する。
+- Matrix は補助雰囲気であり、可読性を壊さない低 opacity を維持する。
+- ScanLine は高さ 3px、全画面、Opacity 0.6 を維持する。
 
-### 2.5 Phase 5: 最終品質化ルール
-- 強弱ルール: 同一画面で主役は最大2カードまで
-- 余白ルール: セクション間は 24px 未満禁止
-- 光ルール: TopHighlight を主役、GlowBorder は補助
-- 影ルール: Y方向オフセットで浮きを作り、横方向の強い影は禁止
-- 密度ルール: 高/中/低 の3段階を維持する
-- 視線導線ルール: 主役 -> 準主役 -> 詳細 の順で情報解像度を落とす
-- 光学的深度 3 層:
-  - TopHighlight（主役光）
-  - SoftInnerReflection（内側反射）
-  - DeepOuterShadow（深い外影）
+### 5.3 HeaderControl
+- 透明ではなく、暗いガラス素材として構成する。
+- 上面ハイライト、細いガラスライン、薄いノイズを持つ。
+- 時刻・日付・状態表示は高輝度ではなく静かな明色を使う。
 
-## 3. 画面仕様
+### 5.4 WorkflowCard
+- MaterialLayer と同系統の質感を持つ独立カードとする。
+- パイプラインは明滅ではなく深度差で現在位置を伝える。
 
-### 3.1 MainWindow
-- 標準タイトルバー非表示
-- HeaderControl 内に最小化/最大化/終了を配置
-- SetWindowSubclass による WM_CLOSE / WM_SYSCOMMAND 抑制
-- DoubleTapped で ToggleMaximizeWindow を実行
+### 5.5 SettingsPage
+- 設定画面もダッシュボードと同じ素材基準で統一する。
+- 左カラムはカテゴリ、右カラムは詳細情報という高密度レイアウトを採用する。
 
-### 3.2 Dashboard
-- 3層構造（System / Subsystem / Operation）
-- System 層は Phase 2 配置を厳守
-- CardControl による視覚統一
+### 5.6 BootHudPage
+- 不透明背景で Dashboard 透過を禁止する。
+- 暗いシネマティック導入、中央ロゴ、静かな状態表示を採用する。
 
-### 3.3 Settings
-- General / UI / System / Developer
-- UI 指定値は ThemeResource 経由で反映
+## 6. 今後の UI 拡張ルール
+- 新規カードは原則 CardControl を使用する。
+- 新規カードは必ず MaterialIntensity / OpticalDepth / ShadowDepth / InfoDensity のいずれかを明示する。
+- 同一画面で主役カードは 2 枚まで。
+- 強発光色の直接指定は禁止し、ThemeResource を使用する。
+- 素材を足す場合は、ノイズ・反射・影の 3 系統のうち 1 系統だけを強める。
+- 光が弱いセクションほど、情報密度も落とす。
+- 高級感は発光量ではなく、静かな階調差と余白で出す。
 
-### 3.4 BootHud
-- 不透明背景で Dashboard 透過防止
-- TransitionComplete 後にオーバーレイ除去
+## 7. 実装契約
+- 既存 code-behind が参照する x:Name は維持する。
+- Window の OS 既定タイトルバーは使用しない。
+- SetWindowSubclass による WM_CLOSE / WM_SYSCOMMAND 抑制を維持する。
+- DashboardPage の ScrollViewer は HorizontalScrollBarVisibility="Disabled" を維持する。
+- DashboardPage の中央寄せレイアウトを維持する。
 
-## 4. 実装ルール
-- XAML 要素名は PascalCase
-- UI 色は App.xaml のテーマブラシを優先
-- obj 配下生成物の手編集禁止
-- 既存の WinUI 固定仕様（アイコン、背景レイヤ順、ScanLine 高さ3）を維持
-
-## 5. ビルド運用
-
-### 5.1 ビルド
-- 作業ディレクトリ: WinUI/URMS.WinUI
-- コマンド: dotnet build -c Debug -p:Platform=x64
-
-### 5.2 起動確認
-- 実行: bin/x64/Debug/net8.0-windows10.0.19041.0/URMS.WinUI.exe
-- Header, Dashboard, Card Hover, BootHud を確認
-
-## 6. Copilot 変更ガイド
-- 変更優先順: CardControl -> Dashboard -> Theme -> 周辺画面
-- 目的は視認性と運用性、装飾過多は禁止
-- 大規模改修時も最小差分で適用
-- 変更後は必ずビルド検証を実施
-- 追加カード実装時は主役カードを複数作らず、同一画面で強発光領域は1箇所まで
-- 新規カード追加時は BaseGlowOpacity/HoverGlowOpacity を必ず明示する
-- 主役カード以外で IsPrimaryTone=True を使用しない
-- 新規カード追加時の初期値: 通常 0.18/0.19、準主役 0.20/0.21、主役 0.27/0.29
-- 質感基準: TopHighlight は主役光、Glow は補助光、影はY方向のみ強化
-- 拡張時質感基準:
-  - 主役カード以外で主役素材設定を使わない
-  - ノイズ強度は 0.8〜1.2% 範囲を維持
-  - 反射は 2〜3% を超えない
-  - 階層が下がるほど光量・密度・素材主張を段階的に落とす
-
-本仕様書は URMS WinUI の現行統一UIを再現・拡張するための基準文書である。
+## 8. 検証
+- ビルド: dotnet build -c Debug -p:Platform=x64
+- 起動後確認項目:
+  - MaterialLayer が全画面に一貫して見えること
+  - OpticalLayer の 3 層深度が主役カードで明確であること
+  - 主役カードが準主役・脇役より別素材に見えること
+  - Dashboard の 3 層ドラマが視線導線として成立していること
+  - Header / Settings / Workflow / BootHud までトーンが統一されていること

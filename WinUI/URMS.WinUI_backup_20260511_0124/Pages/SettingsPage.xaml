@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="URMS.WinUI.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="Transparent">
+
+  <Page.Resources>
+    <Style x:Key="CatButtonStyle" TargetType="Button">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="HorizontalContentAlignment" Value="Left"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Foreground" Value="{ThemeResource LabelBrush}"/>
+      <Setter Property="FontFamily" Value="Consolas"/>
+      <Setter Property="FontSize" Value="12"/>
+      <Setter Property="Padding" Value="12,8"/>
+      <Setter Property="CornerRadius" Value="6"/>
+    </Style>
+    <Style x:Key="CatButtonActiveStyle" TargetType="Button" BasedOn="{StaticResource CatButtonStyle}">
+      <Setter Property="Background" Value="#1A2C4058"/>
+      <Setter Property="Foreground" Value="{ThemeResource AccentCyanBrush}"/>
+    </Style>
+  </Page.Resources>
+
+  <Grid Margin="24">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="0,0,0,16">
+      <Button x:Name="BtnBack" Click="OnBack" Background="Transparent" BorderThickness="0" Foreground="{ThemeResource AccentCyanBrush}" FontSize="18" Padding="4">&#xE76B;</Button>
+      <TextBlock Text="SETTINGS" FontFamily="Consolas" FontSize="22" FontWeight="Bold" Foreground="{ThemeResource HeaderTitleBrush}" VerticalAlignment="Center"/>
+    </StackPanel>
+
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="180"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <Border Grid.Column="0" BorderBrush="{ThemeResource CardBorderBrush}" BorderThickness="0,0,1,0" Padding="0,0,12,0">
+        <StackPanel Spacing="6">
+          <Button x:Name="BtnCatGeneral" Content="GENERAL" Style="{StaticResource CatButtonActiveStyle}" Click="OnCatGeneral"/>
+          <Button x:Name="BtnCatUI" Content="UI" Style="{StaticResource CatButtonStyle}" Click="OnCatUi"/>
+          <Button x:Name="BtnCatSystem" Content="SYSTEM" Style="{StaticResource CatButtonStyle}" Click="OnCatSystem"/>
+          <Button x:Name="BtnCatDeveloper" Content="DEVELOPER" Style="{StaticResource CatButtonStyle}" Click="OnCatDeveloper"/>
+        </StackPanel>
+      </Border>
+
+      <ScrollViewer Grid.Column="1" Margin="20,0,0,0" VerticalScrollBarVisibility="Auto">
+        <StackPanel Spacing="14">
+          <StackPanel x:Name="PanelGeneral" Spacing="10">
+            <TextBlock Text="General" FontFamily="Consolas" FontSize="14" Foreground="{ThemeResource SectionHeaderBrush}"/>
+            <ComboBox x:Name="CmbTheme" SelectionChanged="OnThemeChanged" Width="220">
+              <ComboBoxItem x:Name="CmbThemeFuturistic" Content="Futuristic"/>
+              <ComboBoxItem x:Name="CmbThemeDark" Content="Dark"/>
+              <ComboBoxItem x:Name="CmbThemeLight" Content="Light"/>
+            </ComboBox>
+            <ComboBox x:Name="CmbLanguage" SelectionChanged="OnLanguageChanged" Width="220">
+              <ComboBoxItem Content="Japanese"/>
+              <ComboBoxItem Content="English"/>
+            </ComboBox>
+            <TextBlock Text="Version:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:Name="TxtVersion" Text="1.0.0" Foreground="{ThemeResource ValueBrush}"/>
+            <TextBlock Text="Build Date:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:Name="TxtBuildDate" Text="-" Foreground="{ThemeResource ValueBrush}"/>
+          </StackPanel>
+
+          <StackPanel x:Name="PanelUI" Spacing="10" Visibility="Collapsed">
+            <TextBlock Text="UI" FontFamily="Consolas" FontSize="14" Foreground="{ThemeResource SectionHeaderBrush}"/>
+            <ComboBox x:Name="CmbAccentColor" SelectionChanged="OnAccentColorChanged" Width="220">
+              <ComboBoxItem Content="Cyan" Tag="#00F7FF"/>
+              <ComboBoxItem Content="Green" Tag="#00FF88"/>
+              <ComboBoxItem Content="Magenta" Tag="#FF00CC"/>
+            </ComboBox>
+            <Slider x:Name="SliderAnimIntensity" Minimum="0" Maximum="2" StepFrequency="0.1" Value="1.0" ValueChanged="OnAnimIntensityChanged" Width="260"/>
+            <TextBlock x:Name="TxtAnimIntensity" Text="1.0x" Foreground="{ThemeResource ValueBrush}"/>
+            <ComboBox x:Name="CmbTargetFps" SelectionChanged="OnTargetFpsChanged" Width="220">
+              <ComboBoxItem Content="60 fps" Tag="60"/>
+              <ComboBoxItem Content="90 fps" Tag="90"/>
+              <ComboBoxItem Content="120 fps" Tag="120"/>
+            </ComboBox>
+          </StackPanel>
+
+          <StackPanel x:Name="PanelSystem" Spacing="10" Visibility="Collapsed">
+            <TextBlock Text="System" FontFamily="Consolas" FontSize="14" Foreground="{ThemeResource SectionHeaderBrush}"/>
+            <ToggleSwitch x:Name="TogBootAnim" IsOn="True" Toggled="OnBootAnimToggled"/>
+            <TextBlock Text="Launch:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:Name="TxtBootLaunch" Text="-" Foreground="{ThemeResource ValueBrush}"/>
+            <TextBlock Text="Dashboard:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:Name="TxtBootDash" Text="-" Foreground="{ThemeResource ValueBrush}"/>
+            <TextBlock Text="Complete:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:Name="TxtBootComplete" Text="-" Foreground="{ThemeResource ValueBrush}"/>
+          </StackPanel>
+
+          <StackPanel x:Name="PanelDeveloper" Spacing="10" Visibility="Collapsed">
+            <TextBlock Text="Developer" FontFamily="Consolas" FontSize="14" Foreground="{ThemeResource SectionHeaderBrush}"/>
+            <ToggleSwitch x:Name="TogDebugLog" IsOn="False" Toggled="OnDebugLogToggled"/>
+            <TextBlock Text="Settings Path:" Foreground="{ThemeResource LabelBrush}"/>
+            <TextBlock x:Name="TxtSettingsPath" Text="-" Foreground="{ThemeResource ValueBrush}"/>
+          </StackPanel>
+        </StackPanel>
+      </ScrollViewer>
+    </Grid>
+
+    <Border Grid.Row="2" Margin="0,14,0,0" Padding="10" CornerRadius="6" Background="#1422354A" BorderThickness="1" BorderBrush="{ThemeResource CardBorderBrush}">
+      <TextBlock x:Name="TxtApplyStatus" Text="Idle" Foreground="{ThemeResource ValueBrush}"/>
+    </Border>
+  </Grid>
+</Page>

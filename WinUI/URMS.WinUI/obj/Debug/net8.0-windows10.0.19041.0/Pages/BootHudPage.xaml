@@ -7,103 +7,56 @@
     Opacity="1">
 
   <Grid x:ConnectionId='2' x:Name="BootRoot">
-    <!-- 不透明背景 — Dashboard が透けないよう Alpha=FF 必須 -->
     <Grid.Background>
-      <RadialGradientBrush Center="0.5,0.45" RadiusX="0.9" RadiusY="0.8">
-        <GradientStop Color="#FF0C1621" Offset="0"/>
-        <GradientStop Color="#FF090E16" Offset="0.48"/>
-        <GradientStop Color="#FF05090E" Offset="1"/>
+      <RadialGradientBrush Center="0.5,0.42" RadiusX="1.0" RadiusY="0.9">
+        <GradientStop Color="#FF0D1621" Offset="0"/>
+        <GradientStop Color="#FF091019" Offset="0.45"/>
+        <GradientStop Color="#FF03070C" Offset="1"/>
       </RadialGradientBrush>
     </Grid.Background>
 
-    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="180" IsHitTestVisible="False" Opacity="0.08">
+    <Rectangle VerticalAlignment="Top" Height="320" Opacity="0.17">
       <Rectangle.Fill>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-          <GradientStop Color="#66A3CCE6" Offset="0"/>
-          <GradientStop Color="#0093B9D4" Offset="1"/>
-        </LinearGradientBrush>
-      </Rectangle.Fill>
-    </Rectangle>
-
-    <!-- ── 微細ノイズオーバーレイ (Opacity 0.02) ── -->
-    <Rectangle x:ConnectionId='3' x:Name="NoiseOverlay"
-               HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-           IsHitTestVisible="False" Opacity="0.011">
-      <Rectangle.Fill>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-          <GradientStop Color="#FF3A6080" Offset="0.0"/>
-          <GradientStop Color="#FF0A1520" Offset="0.25"/>
-          <GradientStop Color="#FF1A3040" Offset="0.5"/>
-          <GradientStop Color="#FF0A1520" Offset="0.75"/>
-          <GradientStop Color="#FF3A6080" Offset="1.0"/>
-        </LinearGradientBrush>
-      </Rectangle.Fill>
-    </Rectangle>
-
-    <!-- ── 縦方向シェーディング ── -->
-    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False" Opacity="0.14">
-      <Rectangle.Fill>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-          <GradientStop Color="#1A547D95" Offset="0"/>
-          <GradientStop Color="#12081016" Offset="0.45"/>
+          <GradientStop Color="#6687A5BE" Offset="0"/>
           <GradientStop Color="#00000000" Offset="1"/>
         </LinearGradientBrush>
       </Rectangle.Fill>
     </Rectangle>
-
-    <Rectangle VerticalAlignment="Top" Height="2" Fill="#2E6EAFC8" IsHitTestVisible="False"/>
-
-    <!-- ── パーティクルキャンバス ── -->
+    <Rectangle x:ConnectionId='3' x:Name="NoiseOverlay" Opacity="0.012" Fill="{ThemeResource GlobalNoiseBrush}"/>
+    <Rectangle Opacity="0.14">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+          <GradientStop Color="#1E6384A2" Offset="0"/>
+          <GradientStop Color="#00000000" Offset="0.4"/>
+          <GradientStop Color="#14202F44" Offset="1"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
     <Canvas x:ConnectionId='4' x:Name="BootParticleCanvas" IsHitTestVisible="False"/>
 
-    <!-- ── コンテンツパネル（フェード・スケール対象） ── -->
-    <StackPanel x:ConnectionId='5' x:Name="BootContentPanel"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Spacing="18"
-                Opacity="0">
-
+    <StackPanel x:ConnectionId='5' x:Name="BootContentPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="22" Opacity="0">
       <StackPanel.RenderTransform>
-        <ScaleTransform x:ConnectionId='6' x:Name="ContentScale" ScaleX="1.0" ScaleY="1.0"
-                        CenterX="0" CenterY="0"/>
+        <ScaleTransform x:ConnectionId='6' x:Name="ContentScale" ScaleX="1.0" ScaleY="1.0" CenterX="0" CenterY="0"/>
       </StackPanel.RenderTransform>
 
-      <!-- ロゴ枠 -->
-      <Border Width="184" Height="184" CornerRadius="6"
-              BorderBrush="#336EAFC8" BorderThickness="1"
-              Background="#140B1218" HorizontalAlignment="Center">
+      <Border Width="256" Height="256" CornerRadius="24" BorderBrush="#365C748B" BorderThickness="1" Background="#86101721">
         <Grid>
-          <Ellipse x:ConnectionId='8' x:Name="LogoGlowPulse" Width="150" Height="150" Fill="#406EAFC8" Opacity="0" IsHitTestVisible="False"/>
-          <Image x:ConnectionId='9' x:Name="UrmsLogo" Stretch="Uniform" Margin="14" Opacity="0">
+          <Ellipse Width="220" Height="220" Fill="#102D4357"/>
+          <Ellipse x:ConnectionId='8' x:Name="LogoGlowPulse" Width="188" Height="188" Fill="#487D9BB4" Opacity="0" IsHitTestVisible="False"/>
+          <Rectangle Width="186" Height="186" RadiusX="28" RadiusY="28" Stroke="#305A7084" StrokeThickness="1" Opacity="0.85"/>
+          <Image x:ConnectionId='9' x:Name="UrmsLogo" Width="124" Height="124" Stretch="Uniform" Opacity="0">
             <Image.Source>
-              <BitmapImage UriSource="ms-appx:///Assets/images/urms_logo.png"
-                           DecodePixelWidth="512" DecodePixelHeight="512"/>
+              <BitmapImage UriSource="ms-appx:///Assets/images/urms_logo.png" DecodePixelWidth="512" DecodePixelHeight="512"/>
             </Image.Source>
           </Image>
         </Grid>
       </Border>
 
-      <TextBlock Text="UNIFIED RUNNER MANAGEMENT SYSTEM"
-                 FontFamily="Consolas"
-                 FontSize="16" FontWeight="Bold"
-                 CharacterSpacing="120"
-                 Foreground="#C8E8F4"
-                 HorizontalAlignment="Center"/>
-
-      <TextBlock x:ConnectionId='7' x:Name="BootStatusText"
-                 Text="INITIALIZING"
-                 FontFamily="Consolas"
-                 FontSize="13" FontWeight="SemiBold"
-                 CharacterSpacing="80"
-                 Foreground="#9AD9EA"
-                 HorizontalAlignment="Center"/>
-
-      <TextBlock Text="v5.0.0"
-                 FontFamily="Consolas"
-                 FontSize="12"
-                 Foreground="#88C3D3"
-                 HorizontalAlignment="Center"/>
-
+      <TextBlock Text="UNIFIED RESOURCE MANAGEMENT SYSTEM" FontFamily="Consolas" FontSize="18" FontWeight="SemiBold" CharacterSpacing="170" Foreground="#E8EEF4" HorizontalAlignment="Center"/>
+      <TextBlock Text="CINEMATIC MATERIAL BOOT SEQUENCE" FontFamily="Consolas" FontSize="10" CharacterSpacing="140" Foreground="#98ACBF" HorizontalAlignment="Center"/>
+      <TextBlock x:ConnectionId='7' x:Name="BootStatusText" Text="INITIALIZING" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" CharacterSpacing="120" Foreground="#D7E3EE" HorizontalAlignment="Center"/>
+      <TextBlock Text="v5.0.0" FontFamily="Consolas" FontSize="11" Foreground="#8A9CAF" HorizontalAlignment="Center"/>
     </StackPanel>
   </Grid>
 </Page>

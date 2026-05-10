@@ -10,146 +10,199 @@
                                        >
 
   <Grid Background="Transparent">
-    <Grid x:ConnectionId='2' x:Name="ShadowHost" IsHitTestVisible="False"/>
+    <Grid x:ConnectionId='2' x:Name="DeepShadowHost" IsHitTestVisible="False"/>
+    <Grid x:ConnectionId='3' x:Name="MidShadowHost" IsHitTestVisible="False"/>
+    <Grid x:ConnectionId='4' x:Name="LiftShadowHost" IsHitTestVisible="False"/>
 
-        <Border x:ConnectionId='3' x:Name="CardRoot"
-          CornerRadius="8"
-          Background="Transparent"
-          Translation="0,0,8"
-          Scale="1,1,1">
+    <Border x:ConnectionId='5' x:Name="CardRoot"
+            Background="Transparent"
+            CornerRadius="10"
+            Translation="0,0,12">
       <Grid>
-        <Rectangle x:ConnectionId='4' x:Name="CardBackdropBlur"
-                   Margin="1"
-                   RadiusX="7"
-                   RadiusY="7"
-                   Opacity="0.28"
-                   IsHitTestVisible="False">
-          <Rectangle.Fill>
-            <SolidColorBrush Color="#180B101A"/>
-          </Rectangle.Fill>
-        </Rectangle>
+        <Grid x:ConnectionId='6' x:Name="MaterialLayer" IsHitTestVisible="False">
+          <Rectangle x:ConnectionId='22' x:Name="CardBackdropBlur" Margin="2" RadiusX="9" RadiusY="9" Opacity="0.34">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#32111B2A" Offset="0"/>
+                <GradientStop Color="#24101926" Offset="0.55"/>
+                <GradientStop Color="#2C0A111B" Offset="1"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
 
-        <Border x:ConnectionId='5' x:Name="CardBackground"
-                CornerRadius="8"
-                BorderThickness="1"
-                BorderBrush="#2B1EE3FF">
-          <Border.Background>
-            <LinearGradientBrush x:ConnectionId='7' x:Name="CardBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
-              <GradientStop x:ConnectionId='8' x:Name="BgStopTop" Color="#FF0A0F1A" Offset="0"/>
-              <GradientStop x:ConnectionId='9' x:Name="BgStopBottom" Color="#FF0D121E" Offset="1"/>
-            </LinearGradientBrush>
-          </Border.Background>
+            <Border x:ConnectionId='23' x:Name="CardBackground"
+              Margin="1"
+                  BorderBrush="#3850678D"
+                  BorderThickness="1"
+                  CornerRadius="9">
+            <Border.Background>
+              <LinearGradientBrush x:ConnectionId='28' x:Name="CardBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop x:ConnectionId='29' x:Name="BgStopTop" Color="#FF101826" Offset="0"/>
+                <GradientStop x:ConnectionId='30' x:Name="BgStopMid" Color="#FF0C1320" Offset="0.55"/>
+                <GradientStop x:ConnectionId='31' x:Name="BgStopBottom" Color="#FF08101A" Offset="1"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
 
-          <Grid>
-            <Rectangle x:ConnectionId='10' x:Name="TopHighlight"
-                       Height="3"
-                       VerticalAlignment="Top"
-                       IsHitTestVisible="False"
-                       Fill="#55FFFFFF"/>
+          <Rectangle x:ConnectionId='24' x:Name="NoiseLayer" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.014" Fill="{ThemeResource GlobalNoiseBrush}"/>
 
-            <Rectangle x:ConnectionId='11' x:Name="SatinReflection"
-                       Margin="1"
-                       RadiusX="7"
-                       RadiusY="7"
-                       IsHitTestVisible="False"
-                       Opacity="0.03">
-              <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                  <GradientStop Color="#66FFFFFF" Offset="0.0"/>
-                  <GradientStop Color="#0FFFFFFF" Offset="0.35"/>
-                  <GradientStop Color="#08FFFFFF" Offset="1.0"/>
-                </LinearGradientBrush>
-              </Rectangle.Fill>
-            </Rectangle>
+          <Rectangle x:ConnectionId='25' x:Name="SatinReflection" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.04">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#3DFFFFFF" Offset="0.0"/>
+                <GradientStop Color="#0AFFFFFF" Offset="0.24"/>
+                <GradientStop Color="#12B6D8F5" Offset="0.58"/>
+                <GradientStop Color="#08FFFFFF" Offset="1.0"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
 
-            <Rectangle x:ConnectionId='12' x:Name="NoiseLayer"
-                       Margin="1"
-                       RadiusX="7"
-                       RadiusY="7"
-                       IsHitTestVisible="False"
-                       Opacity="0.01">
-              <Rectangle.Fill>
-                <SolidColorBrush Color="#03FFFFFF"/>
-              </Rectangle.Fill>
-            </Rectangle>
+          <Border x:ConnectionId='26' x:Name="InnerGlow"
+                  Margin="2"
+                  CornerRadius="8"
+                  BorderThickness="3"
+                  Opacity="0.085"
+                  BorderBrush="#55D5E6F7"/>
 
-            <Border Margin="1"
-                    CornerRadius="7"
-                    BorderThickness="1"
-                    BorderBrush="#CC000000"
-                    IsHitTestVisible="False"/>
+          <Border x:ConnectionId='27' x:Name="MaterialFrame"
+                  Margin="1"
+                  CornerRadius="9"
+                  BorderThickness="1"
+                  BorderBrush="#1218212D"/>
+        </Grid>
 
-            <Border x:ConnectionId='13' x:Name="SoftInnerReflection"
-                    Margin="1"
-                    CornerRadius="7"
-                    BorderThickness="1.5"
-                    BorderBrush="#99FFFFFF"
-                    Opacity="0.06"
-                    IsHitTestVisible="False"/>
+        <Grid x:ConnectionId='7' x:Name="OpticalLayer" IsHitTestVisible="False">
+          <Border x:ConnectionId='19' x:Name="TopHighlight"
+                  Margin="2,2,2,0"
+                  Height="20"
+                  VerticalAlignment="Top"
+                  CornerRadius="9,9,5,5"
+                  Opacity="0.34">
+            <Border.Background>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#5EFFFFFF" Offset="0.0"/>
+                <GradientStop Color="#15FFFFFF" Offset="0.42"/>
+                <GradientStop Color="#38B7D9F4" Offset="0.78"/>
+                <GradientStop Color="#00FFFFFF" Offset="1.0"/>
+              </LinearGradientBrush>
+            </Border.Background>
+          </Border>
 
-            <StackPanel x:ConnectionId='14' x:Name="InfoPanel" Margin="40,32,40,32" Spacing="14">
-              <Grid>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="Auto"/>
-                  <ColumnDefinition Width="14"/>
-                  <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+          <Border x:ConnectionId='20' x:Name="SoftInnerReflection"
+                  Margin="2"
+                  CornerRadius="8"
+                  BorderThickness="1.6"
+                  Opacity="0.11"
+                  BorderBrush="#7DEAF5FF"/>
 
-                <FontIcon x:ConnectionId='19' x:Name="InfoIcon"
-                          Grid.Column="0"
-                          FontSize="16"
+          <Border x:ConnectionId='21' x:Name="DeepOuterShadow"
+                  Margin="0"
+                  CornerRadius="10"
+                  BorderThickness="1"
+                  Opacity="0.12"
+                  BorderBrush="#1C070A0F"/>
+        </Grid>
+
+        <Grid x:ConnectionId='8' x:Name="ContentLayer" Margin="52,44,52,44">
+          <StackPanel x:ConnectionId='13' x:Name="InfoPanel" Spacing="18">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+
+              <Border Grid.Column="0"
+                      Width="34"
+                      Height="34"
+                      CornerRadius="17"
+                      Background="#1630445B"
+                      BorderBrush="#2F7FA7C0"
+                      BorderThickness="1">
+                <FontIcon x:ConnectionId='18' x:Name="InfoIcon"
+                          FontSize="15"
                           Glyph="&#xE946;"
-                          Foreground="#441EE3FF"
+                          Foreground="#A8DCEBFA"
+                          HorizontalAlignment="Center"
                           VerticalAlignment="Center"/>
+              </Border>
 
-                <TextBlock x:ConnectionId='20' x:Name="TitleTextBlock"
-                           Grid.Column="2"
+              <StackPanel Grid.Column="2" Spacing="6">
+                <TextBlock x:ConnectionId='17' x:Name="TitleTextBlock"
                                                                  
-                           FontSize="14"
+                           CharacterSpacing="180"
+                           FontSize="12"
                            FontWeight="SemiBold"
-                           Foreground="#A9C4DEEF"
-                           Margin="0,2,0,0"
-                           HorizontalAlignment="Left"
+                           Foreground="#A6B7CBDE"
                            TextTrimming="CharacterEllipsis"/>
-              </Grid>
+                <Rectangle Height="1" HorizontalAlignment="Stretch" Opacity="0.42">
+                  <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                      <GradientStop Color="#4AA5C5DF" Offset="0"/>
+                      <GradientStop Color="Transparent" Offset="1"/>
+                    </LinearGradientBrush>
+                  </Rectangle.Fill>
+                </Rectangle>
+              </StackPanel>
+            </Grid>
 
-              <TextBlock x:ConnectionId='16' x:Name="MainValueTextBlock"
-                                                                   
-                         FontSize="30"
-                         FontWeight="Bold"
-                         CharacterSpacing="40"
-                         Foreground="#FFE7EEF8"
-                         Margin="0,12,0,12"
-                         HorizontalAlignment="Left"
-                         TextTrimming="CharacterEllipsis"/>
-
-              <TextBlock x:ConnectionId='17' x:Name="SubInfoTextBlock"
+            <TextBlock x:ConnectionId='14' x:Name="MainValueTextBlock"
                                                                  
-                         FontSize="12"
-                         LineHeight="24"
-                         Foreground="#FF8FA3BA"
-                         TextWrapping="WrapWholeWords"/>
+                       CharacterSpacing="26"
+                       FontSize="32"
+                       FontWeight="SemiBold"
+                       Foreground="#FFF1F6FB"
+                       TextTrimming="CharacterEllipsis"/>
 
-              <ContentPresenter x:ConnectionId='18' x:Name="InnerContent"/>
-            </StackPanel>
+            <TextBlock x:ConnectionId='15' x:Name="SubInfoTextBlock"
+                                                               
+                       FontSize="13"
+                       LineHeight="24"
+                       Foreground="#8FA2B7C9"
+                       TextWrapping="WrapWholeWords"/>
 
-            <Rectangle x:ConnectionId='15' x:Name="ActiveOverlay" IsHitTestVisible="False" Opacity="0">
-              <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                  <GradientStop Color="#081DDEF8" Offset="0"/>
-                  <GradientStop Color="#05000000" Offset="1"/>
-                </LinearGradientBrush>
-              </Rectangle.Fill>
-            </Rectangle>
-          </Grid>
-        </Border>
+            <ContentPresenter x:ConnectionId='16' x:Name="InnerContent"/>
+          </StackPanel>
+        </Grid>
 
-        <Border x:ConnectionId='6' x:Name="GlowBorder"
-                CornerRadius="8"
-            BorderThickness="1.5"
-            BorderBrush="#381BCCE6"
-          Opacity="0.13"
-                IsHitTestVisible="False"/>
+        <Grid x:ConnectionId='9' x:Name="OverlayLayer" IsHitTestVisible="False">
+          <Ellipse x:ConnectionId='10' x:Name="ActiveOverlay"
+                   Width="420"
+                   Height="420"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Opacity="0.0">
+            <Ellipse.Fill>
+              <RadialGradientBrush RadiusX="0.75" RadiusY="0.75">
+                <GradientStop Color="#16DBF1FF" Offset="0.0"/>
+                <GradientStop Color="#0CD6EAF8" Offset="0.42"/>
+                <GradientStop Color="#00000000" Offset="1.0"/>
+              </RadialGradientBrush>
+            </Ellipse.Fill>
+          </Ellipse>
+
+          <Rectangle x:ConnectionId='11' x:Name="ReflectionWave"
+                     Margin="1"
+                     RadiusX="9"
+                     RadiusY="9"
+                     Opacity="0.0">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,-0.2" EndPoint="1,1.2">
+                <GradientStop Color="#00FFFFFF" Offset="0.0"/>
+                <GradientStop Color="#14FFFFFF" Offset="0.38"/>
+                <GradientStop Color="#00FFFFFF" Offset="0.7"/>
+                <GradientStop Color="#0FD4EBFF" Offset="1.0"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+
+          <Border x:ConnectionId='12' x:Name="GlowBorder"
+                  Margin="0"
+                  CornerRadius="10"
+                  BorderThickness="1.5"
+                  BorderBrush="#4E8FB7CF"
+                  Opacity="0.16"/>
+        </Grid>
       </Grid>
     </Border>
   </Grid>

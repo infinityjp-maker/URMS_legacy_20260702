@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl x:ConnectionId='1'
+    x:Class="URMS.WinUI.Controls.CardControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="Transparent"
+                                     
+                                   
+                                     
+                                       >
+
+  <Grid Background="Transparent">
+    <Grid x:ConnectionId='2' x:Name="ShadowHost" IsHitTestVisible="False"/>
+
+        <Border x:ConnectionId='3' x:Name="CardRoot"
+          CornerRadius="8"
+          Background="Transparent"
+          Translation="0,0,8"
+          Scale="1,1,1">
+      <Grid>
+        <Rectangle x:ConnectionId='4' x:Name="CardBackdropBlur"
+                   Margin="1"
+                   RadiusX="7"
+                   RadiusY="7"
+                   Opacity="0.28"
+                   IsHitTestVisible="False">
+          <Rectangle.Fill>
+            <SolidColorBrush Color="#180B101A"/>
+          </Rectangle.Fill>
+        </Rectangle>
+
+        <Border x:ConnectionId='5' x:Name="CardBackground"
+                CornerRadius="8"
+                BorderThickness="1"
+                BorderBrush="#2B1EE3FF">
+          <Border.Background>
+            <LinearGradientBrush x:ConnectionId='7' x:Name="CardBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+              <GradientStop x:ConnectionId='8' x:Name="BgStopTop" Color="#FF0A0F1A" Offset="0"/>
+              <GradientStop x:ConnectionId='9' x:Name="BgStopBottom" Color="#FF0D121E" Offset="1"/>
+            </LinearGradientBrush>
+          </Border.Background>
+
+          <Grid>
+            <Rectangle x:ConnectionId='10' x:Name="TopHighlight"
+                       Height="3"
+                       VerticalAlignment="Top"
+                       IsHitTestVisible="False"
+                       Fill="#55FFFFFF"/>
+
+            <Rectangle x:ConnectionId='11' x:Name="SatinReflection"
+                       Margin="1"
+                       RadiusX="7"
+                       RadiusY="7"
+                       IsHitTestVisible="False"
+                       Opacity="0.03">
+              <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                  <GradientStop Color="#66FFFFFF" Offset="0.0"/>
+                  <GradientStop Color="#0FFFFFFF" Offset="0.35"/>
+                  <GradientStop Color="#08FFFFFF" Offset="1.0"/>
+                </LinearGradientBrush>
+              </Rectangle.Fill>
+            </Rectangle>
+
+            <Rectangle x:ConnectionId='12' x:Name="NoiseLayer"
+                       Margin="1"
+                       RadiusX="7"
+                       RadiusY="7"
+                       IsHitTestVisible="False"
+                       Opacity="0.01">
+              <Rectangle.Fill>
+                <SolidColorBrush Color="#03FFFFFF"/>
+              </Rectangle.Fill>
+            </Rectangle>
+
+            <Border Margin="1"
+                    CornerRadius="7"
+                    BorderThickness="1"
+                    BorderBrush="#CC000000"
+                    IsHitTestVisible="False"/>
+
+            <Border x:ConnectionId='13' x:Name="SoftInnerReflection"
+                    Margin="1"
+                    CornerRadius="7"
+                    BorderThickness="1.5"
+                    BorderBrush="#99FFFFFF"
+                    Opacity="0.06"
+                    IsHitTestVisible="False"/>
+
+            <StackPanel x:ConnectionId='14' x:Name="InfoPanel" Margin="40,32,40,32" Spacing="14">
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="14"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <FontIcon x:ConnectionId='19' x:Name="InfoIcon"
+                          Grid.Column="0"
+                          FontSize="16"
+                          Glyph="&#xE946;"
+                          Foreground="#441EE3FF"
+                          VerticalAlignment="Center"/>
+
+                <TextBlock x:ConnectionId='20' x:Name="TitleTextBlock"
+                           Grid.Column="2"
+                                                                 
+                           FontSize="14"
+                           FontWeight="SemiBold"
+                           Foreground="#A9C4DEEF"
+                           Margin="0,2,0,0"
+                           HorizontalAlignment="Left"
+                           TextTrimming="CharacterEllipsis"/>
+              </Grid>
+
+              <TextBlock x:ConnectionId='16' x:Name="MainValueTextBlock"
+                                                                   
+                         FontSize="30"
+                         FontWeight="Bold"
+                         CharacterSpacing="40"
+                         Foreground="#FFE7EEF8"
+                         Margin="0,12,0,12"
+                         HorizontalAlignment="Left"
+                         TextTrimming="CharacterEllipsis"/>
+
+              <TextBlock x:ConnectionId='17' x:Name="SubInfoTextBlock"
+                                                                 
+                         FontSize="12"
+                         LineHeight="24"
+                         Foreground="#FF8FA3BA"
+                         TextWrapping="WrapWholeWords"/>
+
+              <ContentPresenter x:ConnectionId='18' x:Name="InnerContent"/>
+            </StackPanel>
+
+            <Rectangle x:ConnectionId='15' x:Name="ActiveOverlay" IsHitTestVisible="False" Opacity="0">
+              <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                  <GradientStop Color="#081DDEF8" Offset="0"/>
+                  <GradientStop Color="#05000000" Offset="1"/>
+                </LinearGradientBrush>
+              </Rectangle.Fill>
+            </Rectangle>
+          </Grid>
+        </Border>
+
+        <Border x:ConnectionId='6' x:Name="GlowBorder"
+                CornerRadius="8"
+            BorderThickness="1.5"
+            BorderBrush="#381BCCE6"
+          Opacity="0.13"
+                IsHitTestVisible="False"/>
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>
+

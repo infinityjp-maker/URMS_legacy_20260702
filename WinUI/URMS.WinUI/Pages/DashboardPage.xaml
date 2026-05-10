@@ -7,575 +7,227 @@
     Background="Transparent">
 
   <Page.Resources>
-
-    <SolidColorBrush x:Key="LabelBrush" Color="#FF00F7FF"/>
-    <SolidColorBrush x:Key="ValueBrush" Color="#FF00F7FF"/>
-    <SolidColorBrush x:Key="HeroSubBrush" Color="#FF00F7FF"/>
-    <SolidColorBrush x:Key="CardTitleBrush" Color="#FF00F7FF"/>
-
-    <Style TargetType="TextBlock">
-      <Setter Property="Foreground" Value="{ThemeResource AccentCyanBrush}"/>
+    <Style x:Key="SectionLabelStyle" TargetType="TextBlock">
+      <Setter Property="FontFamily" Value="Consolas"/>
+      <Setter Property="FontSize" Value="11"/>
+      <Setter Property="CharacterSpacing" Value="140"/>
+      <Setter Property="Foreground" Value="{ThemeResource SectionHeaderBrush}"/>
     </Style>
-
-    <Style x:Key="CardTitleStyle" TargetType="TextBlock">
-      <Setter Property="FontFamily"      Value="Consolas"/>
-      <Setter Property="FontSize"        Value="9"/>
-      <Setter Property="FontWeight"      Value="Bold"/>
-      <Setter Property="CharacterSpacing" Value="390"/>
-      <Setter Property="Foreground"      Value="{ThemeResource CardTitleBrush}"/>
-    </Style>
-
-    <!-- カードタイトルコンテナ（::before 左線 + テキスト + ::after 右グラデーション） -->
-    <ControlTemplate x:Key="CardTitleCyan">
-      <Grid>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="14"/>
-          <ColumnDefinition Width="6"/>
-          <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Rectangle Grid.Column="0" Height="1" Fill="{ThemeResource AccentCyanBrush}" Opacity="0.7" VerticalAlignment="Center"/>
-        <ContentPresenter Grid.Column="2" VerticalAlignment="Center"/>
-        <Rectangle Grid.Column="3" Height="1" VerticalAlignment="Center" Margin="6,0,0,0" Opacity="0.4">
-          <Rectangle.Fill>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-              <GradientStop Color="#2e00f7ff" Offset="0"/>
-              <GradientStop Color="Transparent" Offset="1"/>
-            </LinearGradientBrush>
-          </Rectangle.Fill>
-        </Rectangle>
-      </Grid>
-    </ControlTemplate>
-
-    <Style x:Key="HudLineStyle" TargetType="Rectangle">
-      <Setter Property="Height" Value="1"/>
-      <Setter Property="Margin" Value="0,3,0,6"/>
-      <Setter Property="Fill">
-        <Setter.Value>
-          <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-            <GradientStop Color="#3000f7ff" Offset="0.0"/>
-            <GradientStop Color="#1800f7ff" Offset="0.4"/>
-            <GradientStop Color="Transparent"  Offset="1.0"/>
-          </LinearGradientBrush>
-        </Setter.Value>
-      </Setter>
-    </Style>
-
   </Page.Resources>
 
   <Grid>
-    <Grid.Background>
-      <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#FF0A0F1A" Offset="0"/>
-        <GradientStop Color="#FF0F1A2A" Offset="1"/>
-      </LinearGradientBrush>
-    </Grid.Background>
-
-    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-      <StackPanel Spacing="30" Padding="44,36" MaxWidth="1720" HorizontalAlignment="Center">
-
-        <Grid Margin="0,0,0,4">
+    <Rectangle Opacity="0.012" Fill="{ThemeResource GlobalNoiseBrush}"/>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+      <StackPanel MaxWidth="1820" HorizontalAlignment="Center" Padding="32,28,32,32" Spacing="52">
+        <Grid>
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
           </Grid.ColumnDefinitions>
-          <StackPanel Grid.Column="0" VerticalAlignment="Center" Spacing="3">
-            <TextBlock FontFamily="Consolas" FontSize="20" CharacterSpacing="350" Foreground="{ThemeResource HeroCyanBrush}">
-              <Run Text="//" Foreground="#5900f7ff" FontSize="14"/>
-              <Run Text=" 統合オペレーション "/>
-              <Run Text="//" Foreground="#5900f7ff" FontSize="14"/>
-              <Run Text=" DASHBOARD"/>
-            </TextBlock>
-            <TextBlock Text="UNIFIED RESOURCE MANAGEMENT SYSTEM — SECTOR 7 · NODE ALPHA"
-                       FontFamily="Consolas" FontSize="9" CharacterSpacing="278"
-                       Foreground="{ThemeResource HeroSubBrush}"/>
+          <StackPanel Spacing="6">
+            <TextBlock FontFamily="Consolas" FontSize="24" CharacterSpacing="320" Foreground="{ThemeResource HeroCyanBrush}" Text="DASHBOARD / HIGH-END MATERIAL OPS"/>
+            <TextBlock Text="UNIFIED RESOURCE MANAGEMENT SYSTEM / MATERIAL DRAMA ARCHITECTURE" FontFamily="Consolas" FontSize="10" CharacterSpacing="150" Foreground="{ThemeResource HeroSubBrush}"/>
           </StackPanel>
-          <Grid Grid.Column="1" VerticalAlignment="Center" MinWidth="320">
+          <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Spacing="6">
+            <TextBlock Text="SESSION" FontFamily="Consolas" FontSize="8" CharacterSpacing="150" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="TxtSessionId" Text="---" FontFamily="Consolas" FontSize="12" CharacterSpacing="120" Foreground="{ThemeResource ValueBrush}" HorizontalAlignment="Right"/>
+            <StackPanel Orientation="Horizontal" Spacing="8" Visibility="Collapsed">
+              <Button x:Name="BtnWinMin" Content="—" Click="OnWinMinClick"/>
+              <Button x:Name="BtnWinMax" Content="□" Click="OnWinMaxClick"/>
+              <Button x:Name="BtnWinClose" Content="×" Click="OnWinCloseClick"/>
+            </StackPanel>
+          </StackPanel>
+        </Grid>
+
+        <StackPanel Spacing="18">
+          <TextBlock Text="SYSTEM LAYER / 光量 100%" Style="{StaticResource SectionLabelStyle}"/>
+          <Grid ColumnSpacing="48" RowSpacing="48">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Spacing="1" Margin="0,0,10,0">
-              <TextBlock Text="SESSION" FontFamily="Consolas" FontSize="7" CharacterSpacing="222"
-                         Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Right"/>
-              <TextBlock x:Name="TxtSessionId" Text="---" FontFamily="Consolas" FontSize="9" CharacterSpacing="150"
-                         Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Right"/>
-            </StackPanel>
-
-            <Border Grid.Column="1" Background="#0f00ff88" BorderBrush="#3300ff88"
-                    BorderThickness="1" CornerRadius="4" Padding="10,5" Margin="0,0,12,0">
-              <StackPanel Orientation="Horizontal" Spacing="6">
-                <Ellipse Width="6" Height="6" Fill="{ThemeResource AccentGreenBrush}" VerticalAlignment="Center"/>
-                <TextBlock Text="SYSTEM NOMINAL" FontFamily="Consolas" FontSize="9" CharacterSpacing="30"
-                           Foreground="{ThemeResource AccentGreenBrush}" VerticalAlignment="Center"/>
-              </StackPanel>
-            </Border>
-
-            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center" Visibility="Collapsed">
-              <Button x:Name="BtnWinMin" Content="—" Width="28" Height="24" Padding="0"
-                      Background="#1400f7ff" BorderBrush="#3500f7ff" BorderThickness="1"
-                      Foreground="{ThemeResource AccentCyanBrush}" FontFamily="Consolas" FontSize="13"
-                      Click="OnWinMinClick"/>
-              <Button x:Name="BtnWinMax" Content="□" Width="28" Height="24" Padding="0"
-                      Background="#1400f7ff" BorderBrush="#3500f7ff" BorderThickness="1"
-                      Foreground="{ThemeResource AccentCyanBrush}" FontFamily="Consolas" FontSize="12"
-                      Click="OnWinMaxClick"/>
-              <Button x:Name="BtnWinClose" Content="×" Width="28" Height="24" Padding="0"
-                      Background="#1fFF3A3A" BorderBrush="#55FF3A3A" BorderThickness="1"
-                      Foreground="#FFFF9090" FontFamily="Consolas" FontSize="12"
-                      Click="OnWinCloseClick"/>
-            </StackPanel>
-          </Grid>
-        </Grid>
-
-        <TextBlock Text="SYSTEM LAYER / システムレイヤー" FontFamily="Consolas" FontSize="11" CharacterSpacing="100" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,14,0,16"/>
-
-        <!-- System Top Row: Schedule, Weather, Tasks, Security -->
-        <Grid ColumnSpacing="32" RowSpacing="32" Margin="0,0,0,34">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-          </Grid.RowDefinitions>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-          </Grid.ColumnDefinitions>
-
-          <ctrl:CardControl x:Name="CardTask" Grid.Row="0" Grid.Column="1" Margin="0,6,0,6" BaseGlowOpacity="0.27" HoverGlowOpacity="0.29" IsPrimaryTone="True" TitleText="TASKS" MainValueText="5 / 8" SubInfoText="今日の進行状況" IconGlyph="&#xE823;">
-            <StackPanel Spacing="0">
-              <Grid Margin="0,0,0,0">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="14"/><ColumnDefinition Width="6"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="0" Height="1" Fill="{ThemeResource AccentCyanBrush}" Opacity="0.7" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="2" x:Name="TxtCardTask" Style="{StaticResource CardTitleStyle}" Text="TASKS"/>
-                <Rectangle Grid.Column="3" Height="1" VerticalAlignment="Center" Margin="6,0,0,0" Opacity="0.4"><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#2e00f7ff" Offset="0"/><GradientStop Color="Transparent" Offset="1"/></LinearGradientBrush></Rectangle.Fill></Rectangle>
-              </Grid>
-              <Rectangle Style="{StaticResource HudLineStyle}"/>
-              <Grid>
-                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" FontFamily="Consolas" FontSize="22" Foreground="{ThemeResource AccentGreenBrush}">
-                  <Run Text="5"/><Run Text=" / 8" FontSize="13" Foreground="{ThemeResource LabelBrush}"/>
-                </TextBlock>
-                <TextBlock Grid.Column="1" Text="62%" FontFamily="Consolas" FontSize="13" Foreground="{ThemeResource AccentGreenBrush}" VerticalAlignment="Bottom" Margin="0,0,0,2"/>
-              </Grid>
-              <ProgressBar x:Name="BarTaskPct" Value="62" Height="5" Margin="0,8,0,0" Foreground="{ThemeResource AccentGreenBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
-              <StackPanel Orientation="Horizontal" Spacing="12" Margin="0,8,0,0">
-                <TextBlock FontSize="9" Foreground="{ThemeResource LabelBrush}"><Run Text="完了: "/><Run Text="5" Foreground="{ThemeResource AccentGreenBrush}"/></TextBlock>
-                <TextBlock FontSize="9" Foreground="{ThemeResource LabelBrush}"><Run Text="未了: "/><Run Text="3" Foreground="{ThemeResource AccentAmberBrush}"/></TextBlock>
-                <TextBlock FontSize="9" Foreground="{ThemeResource LabelBrush}"><Run Text="優先: "/><Run Text="1" Foreground="{ThemeResource AccentRedBrush}"/></TextBlock>
-              </StackPanel>
-            </StackPanel>
-          </ctrl:CardControl>
-
-          <ctrl:CardControl x:Name="CardWeather" Grid.Row="1" Grid.Column="0" Margin="0,2,0,2" BaseGlowOpacity="0.18" HoverGlowOpacity="0.20" TitleText="WEATHER" MainValueText="22°C" SubInfoText="" IconGlyph="&#xE706;">
-            <StackPanel Spacing="0">
-              <Grid Margin="0,0,0,0">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="14"/><ColumnDefinition Width="6"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="0" Height="1" Fill="{ThemeResource AccentCyanBrush}" Opacity="0.7" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="2" x:Name="TxtCardWeather" Style="{StaticResource CardTitleStyle}" Text="WEATHER"/>
-                <Rectangle Grid.Column="3" Height="1" VerticalAlignment="Center" Margin="6,0,0,0" Opacity="0.4"><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#2e00f7ff" Offset="0"/><GradientStop Color="Transparent" Offset="1"/></LinearGradientBrush></Rectangle.Fill></Rectangle>
-              </Grid>
-              <Rectangle Style="{StaticResource HudLineStyle}"/>
-              <Grid Margin="0,2,0,0">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="72"/>
-                  <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <ctrl:WeatherAnimation x:Name="WxAnim" Grid.Column="0" Condition="sunny" Height="56" Width="56"
-                                       HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <StackPanel Grid.Column="1" Margin="6,0,0,0" Spacing="2" VerticalAlignment="Top">
-                  <TextBlock x:Name="TxtWeatherTemp" Text="22°C" FontFamily="Consolas" FontSize="26" CharacterSpacing="8" Foreground="{ThemeResource AccentCyanBrush}"/>
-                  <TextBlock x:Name="TxtWeatherDesc" Text="Tokyo · Minato" FontSize="9" Foreground="{ThemeResource LabelBrush}"/>
-                </StackPanel>
-              </Grid>
-            </StackPanel>
-          </ctrl:CardControl>
-
-          <ctrl:CardControl x:Name="CardSysmon" Grid.Row="0" Grid.Column="0" Margin="0,6,0,6" BaseGlowOpacity="0.27" HoverGlowOpacity="0.29" IsPrimaryTone="True" TitleText="SYSTEM HEALTH" MainValueText="98 / 100" SubInfoText="Primary Node Integrity" IconGlyph="&#xE9CE;">
-            <StackPanel Spacing="0">
-              <Grid Margin="0,0,0,0">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="14"/><ColumnDefinition Width="6"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="0" Height="1" Fill="{ThemeResource AccentCyanBrush}" Opacity="0.7" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="2" Text="SYSTEM MONITOR" Style="{StaticResource CardTitleStyle}"/>
-                <Rectangle Grid.Column="3" Height="1" VerticalAlignment="Center" Margin="6,0,0,0" Opacity="0.4"><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#2e00f7ff" Offset="0"/><GradientStop Color="Transparent" Offset="1"/></LinearGradientBrush></Rectangle.Fill></Rectangle>
-              </Grid>
-              <Rectangle Style="{StaticResource HudLineStyle}"/>
-              <Grid Margin="0,0,0,8">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Padding="8,3" Background="#16324E66" BorderBrush="#3A6EAFC8" BorderThickness="1" CornerRadius="4" Margin="0,0,10,0">
-                  <TextBlock Text="PRIMARY" FontFamily="Consolas" FontSize="8" CharacterSpacing="90" Foreground="{ThemeResource AccentCyanBrush}"/>
+            <ctrl:CardControl x:Name="CardSysmon" Grid.Row="0" Grid.Column="0" Margin="0,10,0,10" BaseGlowOpacity="0.24" HoverGlowOpacity="0.28" IsPrimaryTone="True" MaterialIntensity="1.2" OpticalDepth="1.3" ShadowDepth="1.4" InfoDensity="1.1" TitleText="SYSTEM HEALTH" MainValueText="98 / 100" SubInfoText="Primary Node Integrity / Density High" IconGlyph="&#xE9CE;">
+              <StackPanel Spacing="18">
+                <Border Background="#10243246" BorderBrush="#33546C84" BorderThickness="1" CornerRadius="12" Padding="14,10">
+                  <TextBlock Text="PRIMARY NODE / LUMINANCE FULL / SHADOW +40%" FontFamily="Consolas" FontSize="9" CharacterSpacing="100" Foreground="{ThemeResource CardTitleBrush}"/>
                 </Border>
-                <TextBlock Grid.Column="1" Text="All Core Services Stable" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
-              </Grid>
-              <Grid>
-                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" HorizontalAlignment="Center" Spacing="2">
-                  <TextBlock Text="CPU" FontFamily="Consolas" FontSize="9" CharacterSpacing="60" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  <ctrl:AnalogGauge x:Name="GaugeCpu" Value="72" Label="CPU" GaugeColor="#00d4f0" Width="86" Height="76"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" HorizontalAlignment="Center" Spacing="2">
-                  <TextBlock Text="MEMORY" FontFamily="Consolas" FontSize="9" CharacterSpacing="60" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  <ctrl:AnalogGauge x:Name="GaugeRam" Value="58" Label="RAM" GaugeColor="#00e676" Width="86" Height="76"/>
-                </StackPanel>
-                <StackPanel Grid.Column="2" HorizontalAlignment="Center" Spacing="2">
-                  <TextBlock Text="GPU" FontFamily="Consolas" FontSize="9" CharacterSpacing="60" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  <ctrl:AnalogGauge x:Name="GaugeGpu" Value="45" Label="GPU" GaugeColor="#d080ff" Width="86" Height="76"/>
-                </StackPanel>
-              </Grid>
-              <Grid Margin="0,10,0,8">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Spacing="2">
-                  <TextBlock Text="SERVICES" FontFamily="Consolas" FontSize="8" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Text="18 / 18" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource AccentGreenBrush}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Spacing="2" HorizontalAlignment="Center">
-                  <TextBlock Text="ALERTS" FontFamily="Consolas" FontSize="8" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Text="0" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource AccentGreenBrush}" HorizontalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Grid.Column="2" Spacing="2" HorizontalAlignment="Right">
-                  <TextBlock Text="NODES" FontFamily="Consolas" FontSize="8" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Right"/>
-                  <TextBlock Text="4 ACTIVE" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource ValueBrush}" HorizontalAlignment="Right"/>
-                </StackPanel>
-              </Grid>
-              <TextBlock Text="THERMAL / I-O / BUS: NOMINAL" FontFamily="Consolas" FontSize="9" CharacterSpacing="35" Foreground="{ThemeResource ValueBrush}" Margin="0,2,0,6"/>
-              <TextBlock Text="POWER PROFILE: PERFORMANCE STABLE" FontFamily="Consolas" FontSize="9" CharacterSpacing="35" Foreground="{ThemeResource ValueBrush}" Margin="0,0,0,6"/>
-              <TextBlock Text="SERVICE LATENCY ENVELOPE: WITHIN RANGE" FontFamily="Consolas" FontSize="9" CharacterSpacing="35" Foreground="{ThemeResource ValueBrush}" Margin="0,0,0,6"/>
-              <TextBlock Text="DISK USAGE" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" FontWeight="Bold" Foreground="{ThemeResource CardTitleBrush}" Margin="0,12,0,4"/>
-              <Grid Margin="0,0,0,6">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="44"/><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/></Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="C:" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
-                <ProgressBar Grid.Column="1" x:Name="BarDiskC" Value="68" Height="8" Foreground="{ThemeResource AccentCyanBrush}" Background="{ThemeResource ProgressTrackBrush}" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="2" x:Name="TxtDiskC" Text="68%" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource LabelBrush}" TextAlignment="Right" VerticalAlignment="Center"/>
-              </Grid>
-              <Grid Margin="0,0,0,6">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="44"/><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/></Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="D:" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
-                <ProgressBar Grid.Column="1" x:Name="BarDiskD" Value="42" Height="8" Foreground="{ThemeResource AccentGreenBrush}" Background="{ThemeResource ProgressTrackBrush}" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="2" x:Name="TxtDiskD" Text="42%" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource LabelBrush}" TextAlignment="Right" VerticalAlignment="Center"/>
-              </Grid>
-              <Grid Margin="0,0,0,0">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="44"/><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/></Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="NAS" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource LabelBrush}" VerticalAlignment="Center"/>
-                <ProgressBar Grid.Column="1" x:Name="BarDiskNas" Value="31" Height="8" Foreground="{ThemeResource AccentPurpleBrush}" Background="{ThemeResource ProgressTrackBrush}" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="2" x:Name="TxtDiskNas" Text="31%" FontFamily="Consolas" FontSize="11" Foreground="{ThemeResource LabelBrush}" TextAlignment="Right" VerticalAlignment="Center"/>
-              </Grid>
-            </StackPanel>
-          </ctrl:CardControl>
+                <Grid ColumnSpacing="16">
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                  <StackPanel Grid.Column="0" Spacing="6"><TextBlock Text="CPU" FontFamily="Consolas" FontSize="9" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/><ctrl:AnalogGauge x:Name="GaugeCpu" Value="72" Label="CPU" GaugeColor="#8FB4CF" Width="112" Height="90"/></StackPanel>
+                  <StackPanel Grid.Column="1" Spacing="6"><TextBlock Text="MEMORY" FontFamily="Consolas" FontSize="9" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/><ctrl:AnalogGauge x:Name="GaugeRam" Value="58" Label="RAM" GaugeColor="#87B79E" Width="112" Height="90"/></StackPanel>
+                  <StackPanel Grid.Column="2" Spacing="6"><TextBlock Text="GPU" FontFamily="Consolas" FontSize="9" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/><ctrl:AnalogGauge x:Name="GaugeGpu" Value="45" Label="GPU" GaugeColor="#9B9AC7" Width="112" Height="90"/></StackPanel>
+                </Grid>
+                <Grid ColumnSpacing="12">
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="46"/><ColumnDefinition Width="*"/><ColumnDefinition Width="56"/></Grid.ColumnDefinitions>
+                  <TextBlock Text="C:" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
+                  <ProgressBar Grid.Column="1" x:Name="BarDiskC" Height="8" Foreground="{ThemeResource AccentCyanBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
+                  <TextBlock Grid.Column="2" x:Name="TxtDiskC" Text="68%" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid ColumnSpacing="12">
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="46"/><ColumnDefinition Width="*"/><ColumnDefinition Width="56"/></Grid.ColumnDefinitions>
+                  <TextBlock Text="D:" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
+                  <ProgressBar Grid.Column="1" x:Name="BarDiskD" Height="8" Foreground="{ThemeResource AccentGreenBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
+                  <TextBlock Grid.Column="2" x:Name="TxtDiskD" Text="42%" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid ColumnSpacing="12">
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="46"/><ColumnDefinition Width="*"/><ColumnDefinition Width="56"/></Grid.ColumnDefinitions>
+                  <TextBlock Text="NAS" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
+                  <ProgressBar Grid.Column="1" x:Name="BarDiskNas" Height="8" Foreground="{ThemeResource AccentPurpleBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
+                  <TextBlock Grid.Column="2" x:Name="TxtDiskNas" Text="31%" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Grid>
+              </StackPanel>
+            </ctrl:CardControl>
 
-          <ctrl:CardControl x:Name="CardSecurity" Grid.Row="1" Grid.Column="1" Margin="0,2,0,2" BaseGlowOpacity="0.18" HoverGlowOpacity="0.20" TitleText="SECURITY" MainValueText="PROTECTED" SubInfoText="" IconGlyph="&#xE72E;">
-            <StackPanel Spacing="0">
-              <Grid Margin="0,0,0,0">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="14"/><ColumnDefinition Width="6"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="0" Height="1" Fill="{ThemeResource AccentGreenBrush}" Opacity="0.7" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="2" Text="SECURITY" Style="{StaticResource CardTitleStyle}" Foreground="{ThemeResource AccentGreenBrush}"/>
-                <Rectangle Grid.Column="3" Height="1" VerticalAlignment="Center" Margin="6,0,0,0" Opacity="0.4"><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#2e00ff88" Offset="0"/><GradientStop Color="Transparent" Offset="1"/></LinearGradientBrush></Rectangle.Fill></Rectangle>
-              </Grid>
-              <Rectangle Height="1" Margin="0,4,0,10">
-                <Rectangle.Fill>
-                  <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="#3000ff88" Offset="0.0"/>
-                    <GradientStop Color="Transparent" Offset="1.0"/>
-                  </LinearGradientBrush>
-                </Rectangle.Fill>
-              </Rectangle>
-              <Grid>
+            <ctrl:CardControl x:Name="CardTask" Grid.Row="0" Grid.Column="1" Margin="0,10,0,10" BaseGlowOpacity="0.24" HoverGlowOpacity="0.28" IsPrimaryTone="True" MaterialIntensity="1.2" OpticalDepth="1.3" ShadowDepth="1.4" InfoDensity="1.1" TitleText="TASKS" MainValueText="5 / 8" SubInfoText="Operational queue / Density High" IconGlyph="&#xE823;">
+              <StackPanel Spacing="16">
+                <TextBlock x:Name="TxtCardTask" Text="TASKS" FontFamily="Consolas" FontSize="10" CharacterSpacing="160" Foreground="{ThemeResource CardTitleBrush}"/>
+                <ProgressBar x:Name="BarTaskPct" Value="62" Height="10" Foreground="{ThemeResource AccentGreenBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
+                <Grid ColumnSpacing="16">
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                  <Border Grid.Column="0" Background="#122A3D33" BorderBrush="#29546A5A" BorderThickness="1" CornerRadius="12" Padding="12"><StackPanel><TextBlock Text="DONE" Foreground="{ThemeResource LabelBrush}" FontFamily="Consolas" FontSize="8"/><TextBlock Text="5" Foreground="{ThemeResource ValueBrush}" FontSize="20"/></StackPanel></Border>
+                  <Border Grid.Column="1" Background="#122F2A22" BorderBrush="#294A4A54" BorderThickness="1" CornerRadius="12" Padding="12"><StackPanel><TextBlock Text="OPEN" Foreground="{ThemeResource LabelBrush}" FontFamily="Consolas" FontSize="8"/><TextBlock Text="3" Foreground="{ThemeResource ValueBrush}" FontSize="20"/></StackPanel></Border>
+                  <Border Grid.Column="2" Background="#122E2622" BorderBrush="#294B4A54" BorderThickness="1" CornerRadius="12" Padding="12"><StackPanel><TextBlock Text="PRIORITY" Foreground="{ThemeResource LabelBrush}" FontFamily="Consolas" FontSize="8"/><TextBlock Text="1" Foreground="{ThemeResource ValueBrush}" FontSize="20"/></StackPanel></Border>
+                </Grid>
+              </StackPanel>
+            </ctrl:CardControl>
+
+            <ctrl:CardControl x:Name="CardWeather" Grid.Row="1" Grid.Column="0" Margin="0,6,0,6" BaseGlowOpacity="0.18" HoverGlowOpacity="0.21" MaterialIntensity="1.1" ShadowDepth="1.1" TitleText="WEATHER" MainValueText="22°C" SubInfoText="Tokyo atmospheric envelope" IconGlyph="&#xE706;">
+              <Grid ColumnSpacing="14">
                 <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="🛡" FontFamily="Segoe UI Emoji" FontSize="26" Foreground="{ThemeResource AccentGreenBrush}" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="3">
-                  <TextBlock Text="PROTECTED" FontFamily="Consolas" FontSize="13" CharacterSpacing="20" Foreground="{ThemeResource AccentGreenBrush}"/>
+                <ctrl:WeatherAnimation x:Name="WxAnim" Condition="sunny" Height="82" Width="82"/>
+                <StackPanel Grid.Column="1" Spacing="8" VerticalAlignment="Center">
+                  <TextBlock x:Name="TxtCardWeather" Text="WEATHER" FontFamily="Consolas" FontSize="10" CharacterSpacing="150" Foreground="{ThemeResource CardTitleBrush}"/>
+                  <TextBlock x:Name="TxtWeatherTemp" Text="22°C" FontFamily="Consolas" FontSize="32" Foreground="{ThemeResource ValueBrush}"/>
+                  <TextBlock x:Name="TxtWeatherDesc" Text="Tokyo · Minato" Foreground="{ThemeResource LabelBrush}"/>
                 </StackPanel>
               </Grid>
-            </StackPanel>
-          </ctrl:CardControl>
-        </Grid>
+            </ctrl:CardControl>
 
-        <Grid ColumnSpacing="32" Margin="0,8,0,16" Opacity="0.93">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.1*"/>
-            <ColumnDefinition Width="2.1*"/>
-            <ColumnDefinition Width="1.1*"/>
-          </Grid.ColumnDefinitions>
+            <ctrl:CardControl x:Name="CardSecurity" Grid.Row="1" Grid.Column="1" Margin="0,6,0,6" BaseGlowOpacity="0.18" HoverGlowOpacity="0.21" MaterialIntensity="1.1" ShadowDepth="1.1" TitleText="SECURITY" MainValueText="PROTECTED" SubInfoText="Protected perimeter / Medium density" IconGlyph="&#xE72E;">
+              <StackPanel Spacing="14">
+                <TextBlock Text="SECURITY" FontFamily="Consolas" FontSize="10" CharacterSpacing="150" Foreground="{ThemeResource CardTitleBrush}"/>
+                <Border Background="#13223022" BorderBrush="#28506257" BorderThickness="1" CornerRadius="12" Padding="14,12">
+                  <TextBlock Text="Threat surface stable / patch compliance nominal / auth chain healthy" Foreground="{ThemeResource ValueBrush}" TextWrapping="WrapWholeWords"/>
+                </Border>
+              </StackPanel>
+            </ctrl:CardControl>
+          </Grid>
+        </StackPanel>
 
-          <ctrl:CardControl x:Name="CardSchedule" Grid.Column="0" Margin="0,4,0,4" BaseGlowOpacity="0.14" HoverGlowOpacity="0.15" TitleText="SCHEDULE" MainValueText="09:30" SubInfoText="朝会 (15min) / 13:00 週次レビュー" IconGlyph="&#xE787;">
-            <StackPanel Spacing="0" Padding="4,4,4,4">
-              <Grid Margin="0,0,0,0">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="14"/><ColumnDefinition Width="6"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="0" Height="1" Fill="{ThemeResource AccentCyanBrush}" Opacity="0.7" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="2" x:Name="TxtCardSchedule" Style="{StaticResource CardTitleStyle}" Text="SCHEDULE"/>
-                <Rectangle Grid.Column="3" Height="1" VerticalAlignment="Center" Margin="6,0,0,0" Opacity="0.4"><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#2e00f7ff" Offset="0"/><GradientStop Color="Transparent" Offset="1"/></LinearGradientBrush></Rectangle.Fill></Rectangle>
-              </Grid>
-              <Rectangle Style="{StaticResource HudLineStyle}"/>
-              <TextBlock Text="09:30" FontFamily="Consolas" FontSize="18" CharacterSpacing="30" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <TextBlock x:Name="TxtSchedNext" Text="朝会 (15min)" FontSize="10" Foreground="{ThemeResource LabelBrush}" Margin="0,2,0,0"/>
-              <Rectangle Height="1" Margin="0,8" Opacity="0.15" Fill="{ThemeResource CardBorderBrush}"/>
-              <Grid Margin="0,2">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="13:00" FontFamily="Consolas" FontSize="10" Foreground="{ThemeResource LabelBrush}" Width="48"/>
-                <TextBlock Grid.Column="1" Text="週次レビュー" FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
-              </Grid>
-            </StackPanel>
-          </ctrl:CardControl>
+        <StackPanel Spacing="18">
+          <TextBlock Text="SUBSYSTEM LAYER / 光量 70%" Style="{StaticResource SectionLabelStyle}"/>
+          <Grid ColumnSpacing="48" Margin="0,0,0,4">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="1.05*"/>
+              <ColumnDefinition Width="1.6*"/>
+              <ColumnDefinition Width="1.05*"/>
+            </Grid.ColumnDefinitions>
 
-          <ctrl:CardControl x:Name="CardCalendar" Grid.Column="1" Margin="0,4,0,4" BaseGlowOpacity="0.14" HoverGlowOpacity="0.15" TitleText="CALENDAR" MainValueText="2026/05" SubInfoText="予定とマーカーを日付グリッドで確認" IconGlyph="&#xE787;">
-            <StackPanel Spacing="6" Padding="16,14,16,12">
-              <TextBlock Text="CALENDAR" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <TextBlock x:Name="TxtCalendarMonth" Text="2026/05" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" Foreground="{ThemeResource ValueBrush}"/>
-              <Border Background="#14FFFFFF" BorderBrush="#3300E0FF" BorderThickness="1" CornerRadius="8" Padding="8,8,8,8">
-                <Grid>
+            <ctrl:CardControl x:Name="CardSchedule" Grid.Column="0" Margin="0,2,0,2" BaseGlowOpacity="0.12" HoverGlowOpacity="0.14" MaterialIntensity="0.9" OpticalDepth="0.8" ShadowDepth="0.95" InfoDensity="0.95" TitleText="SCHEDULE" MainValueText="09:30" SubInfoText="Morning sync / review later" IconGlyph="&#xE787;">
+              <StackPanel Spacing="10">
+                <TextBlock x:Name="TxtCardSchedule" Text="SCHEDULE" FontFamily="Consolas" FontSize="10" CharacterSpacing="140" Foreground="{ThemeResource CardTitleBrush}"/>
+                <TextBlock x:Name="TxtSchedNext" Text="朝会 (15min)" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Text="13:00 週次レビュー" Foreground="{ThemeResource LabelBrush}"/>
+              </StackPanel>
+            </ctrl:CardControl>
+
+            <ctrl:CardControl x:Name="CardCalendar" Grid.Column="1" Margin="0,2,0,2" BaseGlowOpacity="0.12" HoverGlowOpacity="0.14" MaterialIntensity="0.9" OpticalDepth="0.8" ShadowDepth="0.95" InfoDensity="0.95" TitleText="CALENDAR" MainValueText="2026/05" SubInfoText="Calendar field / medium density" IconGlyph="&#xE787;">
+              <StackPanel Spacing="12">
+                <TextBlock x:Name="TxtCalendarMonth" Text="2026/05" FontFamily="Consolas" FontSize="14" Foreground="{ThemeResource ValueBrush}"/>
+                <Grid ColumnSpacing="6" RowSpacing="8">
                   <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
                   </Grid.ColumnDefinitions>
                   <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
                   </Grid.RowDefinitions>
-                  <TextBlock Grid.Row="0" Grid.Column="0" Text="S" FontFamily="Consolas" FontSize="9" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="0" Grid.Column="1" Text="M" FontFamily="Consolas" FontSize="9" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="0" Grid.Column="2" Text="T" FontFamily="Consolas" FontSize="9" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="0" Grid.Column="3" Text="W" FontFamily="Consolas" FontSize="9" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="0" Grid.Column="4" Text="T" FontFamily="Consolas" FontSize="9" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="0" Grid.Column="5" Text="F" FontFamily="Consolas" FontSize="9" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="0" Grid.Column="6" Text="S" FontFamily="Consolas" FontSize="9" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="1" Grid.Column="4" Text="1" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="1" Grid.Column="5" Text="2" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="1" Grid.Column="6" Text="3" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="2" Grid.Column="0" Text="4" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="2" Grid.Column="1" Text="5" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="2" Grid.Column="2" Text="6" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <Border Grid.Row="2" Grid.Column="3" Background="#3600E0FF" BorderBrush="#A000E0FF" BorderThickness="1" CornerRadius="3" Width="20" Height="18" HorizontalAlignment="Center">
-                    <TextBlock Text="7" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF00E0FF" FontWeight="Bold"/>
-                  </Border>
-                  <TextBlock Grid.Row="2" Grid.Column="4" Text="8" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="2" Grid.Column="5" Text="9" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="2" Grid.Column="6" Text="10" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="3" Grid.Column="0" Text="11" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="3" Grid.Column="1" Text="12" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="3" Grid.Column="2" Text="13" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="3" Grid.Column="3" Text="14" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="3" Grid.Column="4" Text="15" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="3" Grid.Column="5" Text="16" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="3" Grid.Column="6" Text="17" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="4" Grid.Column="0" Text="18" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="4" Grid.Column="1" Text="19" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="4" Grid.Column="2" Text="20" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="4" Grid.Column="3" Text="21" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="4" Grid.Column="4" Text="22" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="4" Grid.Column="5" Text="23" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="4" Grid.Column="6" Text="24" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="5" Grid.Column="0" Text="25" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <TextBlock Grid.Row="5" Grid.Column="1" Text="26" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="5" Grid.Column="2" Text="27" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="5" Grid.Column="3" Text="28" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="5" Grid.Column="4" Text="29" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="5" Grid.Column="5" Text="30" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock Grid.Row="5" Grid.Column="6" Text="31" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="#FFFF6B6B"/>
-                  <Ellipse Grid.Row="2" Grid.Column="5" Width="4" Height="4" Fill="#FFFFBC44" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
-                  <Ellipse Grid.Row="3" Grid.Column="2" Width="4" Height="4" Fill="#FF24F08C" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
-                  <Ellipse Grid.Row="4" Grid.Column="4" Width="4" Height="4" Fill="#FF00E8FF" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
+                  <TextBlock Grid.Row="0" Grid.Column="0" Text="S" HorizontalAlignment="Center" Foreground="#D2A8AF"/>
+                  <TextBlock Grid.Row="0" Grid.Column="1" Text="M" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="0" Grid.Column="2" Text="T" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="0" Grid.Column="3" Text="W" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="0" Grid.Column="4" Text="T" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="0" Grid.Column="5" Text="F" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="0" Grid.Column="6" Text="S" HorizontalAlignment="Center" Foreground="#D2A8AF"/>
+                  <TextBlock Grid.Row="1" Grid.Column="0" Text="4" HorizontalAlignment="Center" Foreground="#D2A8AF"/>
+                  <TextBlock Grid.Row="1" Grid.Column="1" Text="5" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="1" Grid.Column="2" Text="6" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <Border Grid.Row="1" Grid.Column="3" Background="#29425B71" CornerRadius="8" Padding="4"><TextBlock Text="7" HorizontalAlignment="Center" Foreground="{ThemeResource ValueBrush}"/></Border>
+                  <TextBlock Grid.Row="1" Grid.Column="4" Text="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="1" Grid.Column="5" Text="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="1" Grid.Column="6" Text="10" HorizontalAlignment="Center" Foreground="#D2A8AF"/>
+                  <TextBlock Grid.Row="2" Grid.Column="0" Text="11" HorizontalAlignment="Center" Foreground="#D2A8AF"/>
+                  <TextBlock Grid.Row="2" Grid.Column="1" Text="12" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="2" Grid.Column="2" Text="13" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="2" Grid.Column="3" Text="14" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="2" Grid.Column="4" Text="15" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="2" Grid.Column="5" Text="16" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Grid.Row="2" Grid.Column="6" Text="17" HorizontalAlignment="Center" Foreground="#D2A8AF"/>
                 </Grid>
-              </Border>
-            </StackPanel>
-          </ctrl:CardControl>
-
-          <ctrl:CardControl x:Name="CardNetwork" Grid.Column="2" Margin="0,4,0,4" BaseGlowOpacity="0.14" HoverGlowOpacity="0.15" TitleText="NETWORK" MainValueText="24 hosts" SubInfoText="Latency 12ms / Uptime 100%" IconGlyph="&#xE128;">
-            <StackPanel Spacing="0" Padding="4,4,4,4">
-              <Grid Margin="0,0,0,0">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="14"/><ColumnDefinition Width="6"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="0" Height="1" Fill="{ThemeResource AccentCyanBrush}" Opacity="0.7" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="2" Text="NETWORK" Style="{StaticResource CardTitleStyle}" Foreground="{ThemeResource AccentCyanBrush}"/>
-                <Rectangle Grid.Column="3" Height="1" VerticalAlignment="Center" Margin="6,0,0,0" Opacity="0.4"><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#2e00f7ff" Offset="0"/><GradientStop Color="Transparent" Offset="1"/></LinearGradientBrush></Rectangle.Fill></Rectangle>
-              </Grid>
-              <Rectangle Style="{StaticResource HudLineStyle}"/>
-              <TextBlock FontFamily="Consolas" FontSize="24" CharacterSpacing="10" Foreground="{ThemeResource AccentCyanBrush}">
-                <Run Text="24"/><Run Text=" hosts" FontSize="11" Foreground="{ThemeResource LabelBrush}"/>
-              </TextBlock>
-              <Grid Margin="0,8,0,0">
-                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Margin="0,0,3,0" Padding="6,5" Background="#0a00f7ff" BorderBrush="#1e00f7ff" BorderThickness="1" CornerRadius="4">
-                  <StackPanel HorizontalAlignment="Center" Spacing="2">
-                    <TextBlock Text="12ms" FontFamily="Consolas" FontSize="13" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/>
-                    <TextBlock Text="LATENCY" FontFamily="Consolas" FontSize="7" CharacterSpacing="40" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  </StackPanel>
-                </Border>
-                <Border Grid.Column="1" Margin="3,0,0,0" Padding="6,5" Background="#0a00ff88" BorderBrush="#1e00ff88" BorderThickness="1" CornerRadius="4">
-                  <StackPanel HorizontalAlignment="Center" Spacing="2">
-                    <TextBlock Text="100%" FontFamily="Consolas" FontSize="12" Foreground="{ThemeResource AccentGreenBrush}" HorizontalAlignment="Center"/>
-                    <TextBlock Text="UPTIME" FontFamily="Consolas" FontSize="7" CharacterSpacing="40" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  </StackPanel>
-                </Border>
-              </Grid>
-              <Canvas x:Name="NetWaveCanvas" Height="32" Margin="0,8,0,0" HorizontalAlignment="Stretch"/>
-              <TextBlock Text="STABLE" FontFamily="Consolas" FontSize="9" CharacterSpacing="80" Foreground="#FF00E8FF" HorizontalAlignment="Right" Margin="0,4,0,0"/>
-            </StackPanel>
-          </ctrl:CardControl>
-        </Grid>
-
-        <Rectangle Height="1" Margin="0,34,0,0" Opacity="0.25">
-          <Rectangle.Fill>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-              <GradientStop Color="#4D00E0FF" Offset="0"/>
-              <GradientStop Color="#1A00E0FF" Offset="0.5"/>
-              <GradientStop Color="Transparent" Offset="1"/>
-            </LinearGradientBrush>
-          </Rectangle.Fill>
-        </Rectangle>
-
-        <TextBlock Text="SUBSYSTEM LAYER / サブシステムレイヤー" FontFamily="Consolas" FontSize="11" CharacterSpacing="100" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,34,0,16" Opacity="0.85"/>
-
-        <Grid Margin="0" ColumnSpacing="32" Opacity="0.86">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-          </Grid.ColumnDefinitions>
-
-          <ctrl:CardControl x:Name="SubAsset" Grid.Column="0" Margin="0,4,0,4" BaseGlowOpacity="0.18" HoverGlowOpacity="0.19" MinHeight="136">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
-              <FontIcon Glyph="&#xE14C;" FontFamily="Segoe Fluent Icons" FontSize="18" HorizontalAlignment="Center" Foreground="#FF00E8FF"/>
-              <TextBlock Text="ASSET" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900f7ff"/>
-              <TextBlock x:Name="TxtSubAsset" Text="Management" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
-              <TextBlock x:Name="TxtAssetStatus" Text="ACTIVE" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <TextBlock Text="127 items" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-            </StackPanel>
-          </ctrl:CardControl>
-
-          <ctrl:CardControl x:Name="SubDisk" Grid.Column="1" Margin="0,4,0,4" BaseGlowOpacity="0.18" HoverGlowOpacity="0.19" MinHeight="136">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
-              <FontIcon Glyph="&#xE7F8;" FontFamily="Segoe Fluent Icons" FontSize="18" HorizontalAlignment="Center" Foreground="#FF00E8FF"/>
-              <TextBlock Text="DISK" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#99ff9800"/>
-              <TextBlock x:Name="TxtSubDisk" Text="Management" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
-              <TextBlock x:Name="TxtDiskStatus" Text="ACTIVE" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
-              <TextBlock Text="3 volumes" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-            </StackPanel>
-          </ctrl:CardControl>
-
-          <ctrl:CardControl x:Name="SubContent" Grid.Column="2" Margin="0,4,0,4" BaseGlowOpacity="0.18" HoverGlowOpacity="0.19" MinHeight="136">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
-              <FontIcon Glyph="&#xE8A5;" FontFamily="Segoe Fluent Icons" FontSize="18" HorizontalAlignment="Center" Foreground="#FF00E8FF"/>
-              <TextBlock Text="CONTENT" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900ff88"/>
-              <TextBlock x:Name="TxtSubContent" Text="Management" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
-              <TextBlock x:Name="TxtContentStatus" Text="ACTIVE" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
-              <TextBlock Text="2.4 TB" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-            </StackPanel>
-          </ctrl:CardControl>
-
-          <ctrl:CardControl x:Name="SubLog" Grid.Column="3" Margin="0,4,0,4" BaseGlowOpacity="0.18" HoverGlowOpacity="0.19" MinHeight="136">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
-              <FontIcon Glyph="&#xE9D2;" FontFamily="Segoe Fluent Icons" FontSize="18" HorizontalAlignment="Center" Foreground="#FF00E8FF"/>
-              <TextBlock Text="LOG" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#99ffb800"/>
-              <TextBlock x:Name="TxtSubLog" Text="Management" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
-              <TextBlock x:Name="TxtLogStatus" Text="ACTIVE" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentAmberBrush}"/>
-              <TextBlock Text="254 events" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-            </StackPanel>
-          </ctrl:CardControl>
-
-          <ctrl:CardControl x:Name="SubSecurity" Grid.Column="4" Margin="0,4,0,4" BaseGlowOpacity="0.18" HoverGlowOpacity="0.19" MinHeight="136">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
-              <FontIcon Glyph="&#xE72E;" FontFamily="Segoe Fluent Icons" FontSize="18" HorizontalAlignment="Center" Foreground="#FF00E8FF"/>
-              <TextBlock Text="SECURITY" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#9900ff88"/>
-              <TextBlock x:Name="TxtSubSecurity" Text="Subsystem" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
-              <TextBlock x:Name="TxtSecurityStatus" Text="ACTIVE" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
-              <TextBlock Text="threats: 0" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-            </StackPanel>
-          </ctrl:CardControl>
-
-          <ctrl:CardControl x:Name="SubExtra" Grid.Column="5" Margin="0,4,0,4" BaseGlowOpacity="0.18" HoverGlowOpacity="0.19" MinHeight="136">
-            <StackPanel Spacing="4" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,10,12,8">
-              <FontIcon Glyph="&#xE710;" FontFamily="Segoe Fluent Icons" FontSize="18" HorizontalAlignment="Center" Foreground="#FF00E8FF"/>
-              <TextBlock Text="EXPANSION" FontFamily="Consolas" FontSize="8" CharacterSpacing="60" HorizontalAlignment="Center" Foreground="#99B9EFFF"/>
-              <TextBlock x:Name="TxtSubExtra" Text="Subsystem Slot" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Foreground="#FFB9EFFF"/>
-              <TextBlock x:Name="TxtExtraStatus" Text="ACTIVE" FontFamily="Consolas" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <TextBlock Text="plug-in ready" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-            </StackPanel>
-          </ctrl:CardControl>
-        </Grid>
-
-        <Rectangle Height="1" Margin="0,34,0,0" Opacity="0.25">
-          <Rectangle.Fill>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-              <GradientStop Color="#4D00E0FF" Offset="0"/>
-              <GradientStop Color="#1A00E0FF" Offset="0.5"/>
-              <GradientStop Color="Transparent" Offset="1"/>
-            </LinearGradientBrush>
-          </Rectangle.Fill>
-        </Rectangle>
-
-        <TextBlock Text="OPERATION LAYER / 運用レイヤー" FontFamily="Consolas" FontSize="11" CharacterSpacing="100" Foreground="{ThemeResource AccentCyanBrush}" Margin="0,34,0,16" Opacity="0.72"/>
-
-        <Grid ColumnSpacing="32" Opacity="0.78">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.2*"/>
-            <ColumnDefinition Width="2.8*"/>
-            <ColumnDefinition Width="1.2*"/>
-            <ColumnDefinition Width="1.3*"/>
-            <ColumnDefinition Width="1.1*"/>
-          </Grid.ColumnDefinitions>
-
-          <ctrl:CardControl x:Name="OperationStateCard" Grid.Column="0" Margin="0">
-            <StackPanel Spacing="8" Padding="14,12,14,10">
-              <TextBlock Text="SYSTEM HEALTH" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <StackPanel Spacing="6">
-                <StackPanel Spacing="3">
-                  <TextBlock Text="HEALTH" FontFamily="Consolas" FontSize="8" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock x:Name="TxtOpHealth" Text="NOMINAL" FontFamily="Consolas" FontSize="15" FontWeight="SemiBold" Foreground="{ThemeResource AccentGreenBrush}"/>
-                </StackPanel>
-                <StackPanel Spacing="3">
-                  <TextBlock Text="ALERTS" FontFamily="Consolas" FontSize="8" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock x:Name="TxtOpAlerts" Text="0" FontFamily="Consolas" FontSize="17" Foreground="{ThemeResource AccentAmberBrush}"/>
-                </StackPanel>
-                <StackPanel Spacing="3">
-                  <TextBlock Text="TASKS" FontFamily="Consolas" FontSize="8" Foreground="{ThemeResource LabelBrush}"/>
-                  <TextBlock x:Name="TxtOpTasks" Text="2 active" FontFamily="Consolas" FontSize="12" Foreground="{ThemeResource ValueBrush}"/>
-                </StackPanel>
               </StackPanel>
-            </StackPanel>
-          </ctrl:CardControl>
+            </ctrl:CardControl>
 
-          <ctrl:CardControl x:Name="OperationWorkflowCard" Grid.Column="1" Margin="0">
-            <StackPanel Spacing="8" Padding="14,12,14,10">
-              <TextBlock Text="WORKFLOW" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
+            <ctrl:CardControl x:Name="CardNetwork" Grid.Column="2" Margin="0,2,0,2" BaseGlowOpacity="0.12" HoverGlowOpacity="0.14" MaterialIntensity="0.9" OpticalDepth="0.8" ShadowDepth="0.95" InfoDensity="0.95" TitleText="NETWORK" MainValueText="24 hosts" SubInfoText="Latency 12 ms / Uptime 100%" IconGlyph="&#xE128;">
+              <StackPanel Spacing="10">
+                <TextBlock Text="NETWORK" FontFamily="Consolas" FontSize="10" CharacterSpacing="140" Foreground="{ThemeResource CardTitleBrush}"/>
+                <Canvas x:Name="NetWaveCanvas" Height="36"/>
+                <TextBlock Text="Latency 12 ms / Uptime 100%" Foreground="{ThemeResource LabelBrush}"/>
+              </StackPanel>
+            </ctrl:CardControl>
+          </Grid>
+
+          <Grid ColumnSpacing="48">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ctrl:CardControl x:Name="SubAsset" Grid.Column="0" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.9" OpticalDepth="0.8" InfoDensity="0.9"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubAsset" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtAssetStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubDisk" Grid.Column="1" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.9" OpticalDepth="0.8" InfoDensity="0.9"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubDisk" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtDiskStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubContent" Grid.Column="2" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.9" OpticalDepth="0.8" InfoDensity="0.9"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubContent" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtContentStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubLog" Grid.Column="3" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.9" OpticalDepth="0.8" InfoDensity="0.9"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubLog" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtLogStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubSecurity" Grid.Column="4" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.9" OpticalDepth="0.8" InfoDensity="0.9"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubSecurity" Text="Subsystem" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtSecurityStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubExtra" Grid.Column="5" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.9" OpticalDepth="0.8" InfoDensity="0.9"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubExtra" Text="Subsystem Slot" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtExtraStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+          </Grid>
+        </StackPanel>
+
+        <StackPanel Spacing="18">
+          <TextBlock Text="OPERATION LAYER / 光量 40%" Style="{StaticResource SectionLabelStyle}"/>
+          <Grid ColumnSpacing="48">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/><ColumnDefinition Width="1.35*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ctrl:CardControl x:Name="OperationStateCard" Grid.Column="0" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.9" OpticalDepth="0.7" InfoDensity="0.85" TitleText="STATE" MainValueText="NOMINAL" SubInfoText="Low density" IconGlyph="&#xE7BA;">
+              <StackPanel Spacing="8"><TextBlock x:Name="TxtOpHealth" Text="NOMINAL" FontSize="16" Foreground="{ThemeResource ValueBrush}"/><TextBlock x:Name="TxtOpAlerts" Text="0" Foreground="{ThemeResource AccentAmberBrush}"/><TextBlock x:Name="TxtOpTasks" Text="2 active" Foreground="{ThemeResource LabelBrush}"/></StackPanel>
+            </ctrl:CardControl>
+
+            <ctrl:CardControl x:Name="OperationWorkflowCard" Grid.Column="1" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.9" OpticalDepth="0.7" InfoDensity="0.85" TitleText="WORKFLOW" MainValueText="PIPELINE" SubInfoText="Low density" IconGlyph="&#xE7C1;">
               <ctrl:WorkflowCard x:Name="OpWorkflowCard"/>
-            </StackPanel>
-          </ctrl:CardControl>
+            </ctrl:CardControl>
 
-          <ctrl:CardControl x:Name="OperationActionCard" Grid.Column="2" Margin="0">
-            <StackPanel Spacing="6" Padding="14,12,14,10">
-              <TextBlock Text="ACTIONS" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <Button x:Name="BtnOpLock" Content="🔒 Lock" FontFamily="Consolas" FontSize="10" Height="28" Background="#0A00F7FF" BorderBrush="#3300E0FF" BorderThickness="1" CornerRadius="3"/>
-              <Button x:Name="BtnOpRestart" Content="↻ Restart" FontFamily="Consolas" FontSize="10" Height="28" Background="#0AFF3A3A" BorderBrush="#33FF3A3A" BorderThickness="1" CornerRadius="3"/>
-              <Button x:Name="BtnOpLogOff" Content="⎋ LogOff" FontFamily="Consolas" FontSize="10" Height="28" Background="#0AFF9800" BorderBrush="#33FF9800" BorderThickness="1" CornerRadius="3"/>
-              <Button x:Name="BtnOpDeploy" Content="↑ Deploy" FontFamily="Consolas" FontSize="10" Height="28" Background="#0AC060FF" BorderBrush="#33C060FF" BorderThickness="1" CornerRadius="3"/>
-              <Button x:Name="BtnOpValidate" Content="✓ Validate" FontFamily="Consolas" FontSize="10" Height="28" Background="#0A00FF88" BorderBrush="#3300FF88" BorderThickness="1" CornerRadius="3"/>
-            </StackPanel>
-          </ctrl:CardControl>
+            <ctrl:CardControl x:Name="OperationActionCard" Grid.Column="2" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.9" OpticalDepth="0.7" InfoDensity="0.85" TitleText="ACTIONS" MainValueText="5" SubInfoText="Quick action deck" IconGlyph="&#xE8EF;">
+              <StackPanel Spacing="8">
+                <Button x:Name="BtnOpLock" Content="Lock" Height="32" Background="#16202D3C" BorderBrush="#2C495D71" BorderThickness="1"/>
+                <Button x:Name="BtnOpRestart" Content="Restart" Height="32" Background="#16202D3C" BorderBrush="#2C495D71" BorderThickness="1"/>
+                <Button x:Name="BtnOpLogOff" Content="LogOff" Height="32" Background="#16202D3C" BorderBrush="#2C495D71" BorderThickness="1"/>
+                <Button x:Name="BtnOpDeploy" Content="Deploy" Height="32" Background="#16202D3C" BorderBrush="#2C495D71" BorderThickness="1"/>
+                <Button x:Name="BtnOpValidate" Content="Validate" Height="32" Background="#16202D3C" BorderBrush="#2C495D71" BorderThickness="1"/>
+              </StackPanel>
+            </ctrl:CardControl>
 
-          <ctrl:CardControl x:Name="OperationRunningTaskCard" Grid.Column="3" Margin="0">
-            <StackPanel Spacing="8" Padding="14,12,14,10">
-              <TextBlock Text="RUNNING TASKS" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <TextBlock Text="SYNC_NODE_ALPHA" FontFamily="Consolas" FontSize="9" Foreground="{ThemeResource ValueBrush}"/>
-              <TextBlock Text="LOG_INDEX_REBUILD" FontFamily="Consolas" FontSize="9" Foreground="{ThemeResource ValueBrush}"/>
-              <TextBlock Text="CACHE_VALIDATE" FontFamily="Consolas" FontSize="9" Foreground="{ThemeResource ValueBrush}"/>
-              <TextBlock Text="3 active" FontFamily="Consolas" FontSize="10" Foreground="{ThemeResource AccentGreenBrush}" Margin="0,4,0,0"/>
-            </StackPanel>
-          </ctrl:CardControl>
+            <ctrl:CardControl x:Name="OperationRunningTaskCard" Grid.Column="3" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.9" OpticalDepth="0.7" InfoDensity="0.85" TitleText="RUNNING" MainValueText="2" SubInfoText="Task flow" IconGlyph="&#xE823;">
+              <StackPanel Spacing="8"><TextBlock Text="Backup validation" Foreground="{ThemeResource ValueBrush}"/><TextBlock Text="Artifact sweep" Foreground="{ThemeResource LabelBrush}"/></StackPanel>
+            </ctrl:CardControl>
 
-          <ctrl:CardControl x:Name="OperationAlertsCard" Grid.Column="4" Margin="0">
-            <StackPanel Spacing="6" Padding="14,12,14,10">
-              <TextBlock Text="ALERTS" FontFamily="Consolas" FontSize="9" CharacterSpacing="150" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <TextBlock x:Name="TxtAlertCritical" Text="critical: 0" FontFamily="Consolas" FontSize="10" Foreground="{ThemeResource AccentRedBrush}"/>
-              <TextBlock x:Name="TxtAlertWarn" Text="warning: 1" FontFamily="Consolas" FontSize="10" Foreground="{ThemeResource AccentAmberBrush}"/>
-              <TextBlock x:Name="TxtAlertInfo" Text="info: 4" FontFamily="Consolas" FontSize="10" Foreground="{ThemeResource AccentCyanBrush}"/>
-            </StackPanel>
-          </ctrl:CardControl>
-        </Grid>
-
-        <Border Height="6"/>
-
+            <ctrl:CardControl x:Name="OperationAlertsCard" Grid.Column="4" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.9" OpticalDepth="0.7" InfoDensity="0.85" TitleText="ALERTS" MainValueText="5" SubInfoText="Alert density low" IconGlyph="&#xE7BA;">
+              <StackPanel Spacing="8"><TextBlock x:Name="TxtAlertCritical" Text="critical: 0" Foreground="{ThemeResource AccentRedBrush}"/><TextBlock x:Name="TxtAlertWarn" Text="warning: 1" Foreground="{ThemeResource AccentAmberBrush}"/><TextBlock x:Name="TxtAlertInfo" Text="info: 4" Foreground="{ThemeResource AccentCyanBrush}"/></StackPanel>
+            </ctrl:CardControl>
+          </Grid>
+        </StackPanel>
       </StackPanel>
     </ScrollViewer>
   </Grid>
 </Page>
-

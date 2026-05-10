@@ -3,8 +3,8 @@
     x:Class="URMS.WinUI.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:local="using:URMS.WinUI"
-  xmlns:controls="using:URMS.WinUI.Controls"
+    xmlns:local="using:URMS.WinUI"
+    xmlns:controls="using:URMS.WinUI.Controls"
     Title="URMS">
 
   <Grid>
@@ -19,9 +19,8 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <Grid x:Name="AppTitleBar" Grid.Row="0" Margin="0,2,0,2" Background="Transparent">
+    <Grid x:Name="AppTitleBar" Grid.Row="0" Background="Transparent">
       <controls:HeaderControl x:Name="HeaderHost"
-                              Margin="0"
                               DoubleTapped="OnHeaderDoubleTapped"
                               MinimizeClicked="OnHeaderMinimizeClicked"
                               MaximizeClicked="OnHeaderMaximizeClicked"
@@ -30,127 +29,92 @@
     </Grid>
 
     <Grid Grid.Row="1" Background="{ThemeResource AppBackgroundBrush}" Margin="2,0,2,2">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="72"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="72"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
 
-    <!-- ─── 背景 z:0: 星空 ─── -->
-    <Canvas x:Name="BgStarsCanvas"  Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False"/>
+      <Canvas x:Name="BgStarsCanvas" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False"/>
 
-    <!-- ─── 背景 z:1: Nebula 放射グラデーション (nebulapulse 12s) ─── -->
-    <Grid x:Name="NebulaGrid" Grid.Row="1" Grid.RowSpan="2" IsHitTestVisible="False">
-      <!-- レイヤー 1: 左上ブルー rgba(0,100,180,.11) -->
-      <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
+      <Grid x:Name="NebulaGrid" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False">
+        <Rectangle Fill="{ThemeResource AppDepthGradient}"/>
+        <Rectangle>
+          <Rectangle.Fill>
+            <RadialGradientBrush Center="0.18,0.22" RadiusX="0.58" RadiusY="0.42">
+              <GradientStop Color="#18385674" Offset="0"/>
+              <GradientStop Color="#00000000" Offset="1"/>
+            </RadialGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle>
+          <Rectangle.Fill>
+            <RadialGradientBrush Center="0.82,0.78" RadiusX="0.46" RadiusY="0.32">
+              <GradientStop Color="#16283A5B" Offset="0"/>
+              <GradientStop Color="#00000000" Offset="1"/>
+            </RadialGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle>
+          <Rectangle.Fill>
+            <RadialGradientBrush Center="0.52,0.08" RadiusX="0.44" RadiusY="0.24">
+              <GradientStop Color="#143A5368" Offset="0"/>
+              <GradientStop Color="#00000000" Offset="1"/>
+            </RadialGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle>
+          <Rectangle.Fill>
+            <RadialGradientBrush Center="0.5,0.55" RadiusX="0.7" RadiusY="0.48">
+              <GradientStop Color="#0F182431" Offset="0"/>
+              <GradientStop Color="#00000000" Offset="1"/>
+            </RadialGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+      </Grid>
+
+      <Canvas x:Name="BgGridCanvas" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False"/>
+      <Canvas x:Name="BgPerspCanvas" Grid.Row="1" IsHitTestVisible="False"/>
+      <Canvas x:Name="BgMatrixCanvas" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" Opacity="0.035"/>
+      <Rectangle Grid.Row="0" Grid.RowSpan="2" Opacity="0.012" Fill="{ThemeResource GlobalNoiseBrush}" IsHitTestVisible="False"/>
+
+      <Grid Grid.Row="1" IsHitTestVisible="False">
+        <Canvas Width="88" Height="88" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,16,0,0">
+          <Line X1="0" Y1="88" X2="0" Y2="0" Stroke="#274B6075" StrokeThickness="2"/>
+          <Line X1="0" Y1="0" X2="88" Y2="0" Stroke="#274B6075" StrokeThickness="2"/>
+        </Canvas>
+        <Canvas Width="88" Height="88" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,16,18,0">
+          <Line X1="88" Y1="88" X2="88" Y2="0" Stroke="#274B6075" StrokeThickness="2"/>
+          <Line X1="0" Y1="0" X2="88" Y2="0" Stroke="#274B6075" StrokeThickness="2"/>
+        </Canvas>
+        <Canvas Width="88" Height="88" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="18,0,0,18">
+          <Line X1="0" Y1="0" X2="0" Y2="88" Stroke="#274B6075" StrokeThickness="2"/>
+          <Line X1="0" Y1="88" X2="88" Y2="88" Stroke="#274B6075" StrokeThickness="2"/>
+        </Canvas>
+        <Canvas Width="88" Height="88" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,18,18">
+          <Line X1="88" Y1="0" X2="88" Y2="88" Stroke="#274B6075" StrokeThickness="2"/>
+          <Line X1="0" Y1="88" X2="88" Y2="88" Stroke="#274B6075" StrokeThickness="2"/>
+        </Canvas>
+      </Grid>
+
+      <Grid Grid.Row="1">
+        <Frame x:Name="ContentFrame"/>
+        <Grid x:Name="BootOverlayGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+      </Grid>
+
+      <Rectangle x:Name="ScanLine" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" Height="3" VerticalAlignment="Bottom" IsHitTestVisible="False" Opacity="0.6">
         <Rectangle.Fill>
-          <RadialGradientBrush Center="0.15,0.3" GradientOrigin="0.15,0.3" RadiusX="0.55" RadiusY="0.4">
-            <GradientStop Color="#1A0E3452" Offset="0"/>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="Transparent" Offset="0"/>
+            <GradientStop Color="#416E88A0" Offset="0.4"/>
+            <GradientStop Color="#7FA1B9D1" Offset="0.5"/>
+            <GradientStop Color="#416E88A0" Offset="0.6"/>
             <GradientStop Color="Transparent" Offset="1"/>
-          </RadialGradientBrush>
+          </LinearGradientBrush>
         </Rectangle.Fill>
-      </Rectangle>
-      <!-- レイヤー 2: 右下インディゴ -->
-      <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
-        <Rectangle.Fill>
-          <RadialGradientBrush Center="0.85,0.7" GradientOrigin="0.85,0.7" RadiusX="0.5" RadiusY="0.35">
-            <GradientStop Color="#18283F65" Offset="0"/>
-            <GradientStop Color="Transparent" Offset="1"/>
-          </RadialGradientBrush>
-        </Rectangle.Fill>
-      </Rectangle>
-      <!-- レイヤー 3: 中央上ティール rgba(0,200,160,.07) -->
-      <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
-        <Rectangle.Fill>
-          <RadialGradientBrush Center="0.5,0.08" GradientOrigin="0.5,0.08" RadiusX="0.45" RadiusY="0.3">
-            <GradientStop Color="#15305E74" Offset="0"/>
-            <GradientStop Color="Transparent" Offset="1"/>
-          </RadialGradientBrush>
-        </Rectangle.Fill>
-      </Rectangle>
-      <!-- レイヤー 4: 右下ブルー rgba(0,150,255,.08) -->
-      <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
-        <Rectangle.Fill>
-          <RadialGradientBrush Center="0.7,0.9" GradientOrigin="0.7,0.9" RadiusX="0.5" RadiusY="0.25">
-            <GradientStop Color="#18364D73" Offset="0"/>
-            <GradientStop Color="Transparent" Offset="1"/>
-          </RadialGradientBrush>
-        </Rectangle.Fill>
+        <Rectangle.RenderTransform>
+          <TranslateTransform x:Name="ScanLineTranslate"/>
+        </Rectangle.RenderTransform>
       </Rectangle>
     </Grid>
-
-    <!-- ─── 背景 z:2: グリッドパターン ─── -->
-    <Canvas x:Name="BgGridCanvas"   Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False"/>
-
-    <!-- ─── 背景 z:2: パースペクティブグリッド ─── -->
-    <Canvas x:Name="BgPerspCanvas"  Grid.Row="1" IsHitTestVisible="False"/>
-
-    <!-- ─── 背景 z:3: マトリクス文字 ─── -->
-    <Canvas x:Name="BgMatrixCanvas" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" Opacity="0.05"/>
-
-    <!-- ─── 背景 z:4: 微細ノイズレイヤー ─── -->
-    <Rectangle Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" Opacity="0.01" Fill="{ThemeResource GlobalNoiseBrush}"/>
-
-    <!-- ─── HUD 4 コーナーブラケット ─── -->
-    <Grid Grid.Row="1" IsHitTestVisible="False">
-      <!-- 左上 -->
-      <Canvas Width="70" Height="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
-        <Line X1="0" Y1="70" X2="0" Y2="0" Stroke="#336EAFC8" StrokeThickness="2"/>
-        <Line X1="0" Y1="0" X2="70" Y2="0" Stroke="#336EAFC8" StrokeThickness="2"/>
-        <Ellipse Canvas.Left="-3" Canvas.Top="-3" Width="7" Height="7">
-          <Ellipse.Fill><SolidColorBrush Color="#6EAFC8" Opacity="0.55"/></Ellipse.Fill>
-        </Ellipse>
-      </Canvas>
-      <!-- 右上 -->
-      <Canvas Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0">
-        <Line X1="70" Y1="70" X2="70" Y2="0" Stroke="#336EAFC8" StrokeThickness="2"/>
-        <Line X1="0"  Y1="0"  X2="70" Y2="0" Stroke="#336EAFC8" StrokeThickness="2"/>
-        <Ellipse Canvas.Left="66" Canvas.Top="-3" Width="7" Height="7">
-          <Ellipse.Fill><SolidColorBrush Color="#6EAFC8" Opacity="0.55"/></Ellipse.Fill>
-        </Ellipse>
-      </Canvas>
-      <!-- 左下 -->
-      <Canvas Width="70" Height="70" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10">
-        <Line X1="0" Y1="0" X2="0"  Y2="70" Stroke="#336EAFC8" StrokeThickness="2"/>
-        <Line X1="0" Y1="70" X2="70" Y2="70" Stroke="#336EAFC8" StrokeThickness="2"/>
-        <Ellipse Canvas.Left="-3" Canvas.Top="66" Width="7" Height="7">
-          <Ellipse.Fill><SolidColorBrush Color="#6EAFC8" Opacity="0.55"/></Ellipse.Fill>
-        </Ellipse>
-      </Canvas>
-      <!-- 右下 -->
-      <Canvas Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10">
-        <Line X1="70" Y1="0" X2="70" Y2="70" Stroke="#336EAFC8" StrokeThickness="2"/>
-        <Line X1="0"  Y1="70" X2="70" Y2="70" Stroke="#336EAFC8" StrokeThickness="2"/>
-        <Ellipse Canvas.Left="66" Canvas.Top="66" Width="7" Height="7">
-          <Ellipse.Fill><SolidColorBrush Color="#6EAFC8" Opacity="0.55"/></Ellipse.Fill>
-        </Ellipse>
-      </Canvas>
-    </Grid>
-
-    <!-- ─── コンテンツエリア ─── -->
-    <Grid Grid.Row="1">
-      <Frame x:Name="ContentFrame"/>
-      <!-- Boot オーバーレイ（BootHudPage を全面表示、遷移後に Children.Remove） -->
-      <Grid x:Name="BootOverlayGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-    </Grid>
-
-    <!-- ─── スキャンライン (全画面, z-top) ─── -->
-    <Rectangle x:Name="ScanLine" Grid.Row="1" Grid.RowSpan="2"
-               HorizontalAlignment="Stretch" Height="3"
-               VerticalAlignment="Bottom" IsHitTestVisible="False" Opacity="0.6">
-      <Rectangle.Fill>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-          <GradientStop Color="Transparent" Offset="0.0"/>
-          <GradientStop Color="#5A6EAFC8"   Offset="0.4"/>
-          <GradientStop Color="#956EAFC8"   Offset="0.5"/>
-          <GradientStop Color="#5A6EAFC8"   Offset="0.6"/>
-          <GradientStop Color="Transparent" Offset="1.0"/>
-        </LinearGradientBrush>
-      </Rectangle.Fill>
-      <Rectangle.RenderTransform>
-        <TranslateTransform x:Name="ScanLineTranslate"/>
-      </Rectangle.RenderTransform>
-    </Rectangle>
-
-  </Grid>
   </Grid>
 </Window>
