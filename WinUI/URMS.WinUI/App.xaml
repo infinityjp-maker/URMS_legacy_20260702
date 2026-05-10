@@ -7,6 +7,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <!-- High-End Material Theme: All visual parameters (colors, brushes, gradients, animation values) -->
+                <ResourceDictionary Source="Themes/HighEndMaterialTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <ResourceDictionary.ThemeDictionaries>
