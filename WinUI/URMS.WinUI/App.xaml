@@ -34,7 +34,7 @@
                     <SolidColorBrush x:Key="CardLabelBrush" Color="#8A9FB5"/>
                     <SolidColorBrush x:Key="SectionHeaderBrush" Color="#C2D1E0"/>
                     <SolidColorBrush x:Key="ProgressTrackBrush" Color="#17212D"/>
-                    <SolidColorBrush x:Key="GlobalNoiseBrush" Color="#04FFFFFF"/>
+                    <SolidColorBrush x:Key="GlobalNoiseBrush" Color="#05FFFFFF"/>
                     <LinearGradientBrush x:Key="AppDepthGradient" StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#08111B" Offset="0"/>
                         <GradientStop Color="#060B12" Offset="0.45"/>
@@ -70,7 +70,7 @@
                     <SolidColorBrush x:Key="CardLabelBrush" Color="#8A9FB5"/>
                     <SolidColorBrush x:Key="SectionHeaderBrush" Color="#C2D1E0"/>
                     <SolidColorBrush x:Key="ProgressTrackBrush" Color="#17212D"/>
-                    <SolidColorBrush x:Key="GlobalNoiseBrush" Color="#04FFFFFF"/>
+                    <SolidColorBrush x:Key="GlobalNoiseBrush" Color="#05FFFFFF"/>
                     <LinearGradientBrush x:Key="AppDepthGradient" StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#08111B" Offset="0"/>
                         <GradientStop Color="#060B12" Offset="0.45"/>

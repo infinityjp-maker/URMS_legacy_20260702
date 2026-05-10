@@ -15,7 +15,7 @@
       </RadialGradientBrush>
     </Grid.Background>
 
-    <Rectangle VerticalAlignment="Top" Height="320" Opacity="0.17">
+    <Rectangle VerticalAlignment="Top" Height="320" Opacity="0.19">
       <Rectangle.Fill>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
           <GradientStop Color="#6687A5BE" Offset="0"/>
@@ -23,13 +23,31 @@
         </LinearGradientBrush>
       </Rectangle.Fill>
     </Rectangle>
-    <Rectangle x:Name="NoiseOverlay" Opacity="0.012" Fill="{ThemeResource GlobalNoiseBrush}"/>
-    <Rectangle Opacity="0.14">
+    <Rectangle x:Name="NoiseOverlay" Opacity="0.018" Fill="{ThemeResource GlobalNoiseBrush}"/>
+    <Rectangle Opacity="0.17">
       <Rectangle.Fill>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-          <GradientStop Color="#1E6384A2" Offset="0"/>
+          <GradientStop Color="#286F93B2" Offset="0"/>
           <GradientStop Color="#00000000" Offset="0.4"/>
-          <GradientStop Color="#14202F44" Offset="1"/>
+          <GradientStop Color="#1A25364B" Offset="1"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Rectangle Opacity="0.10" IsHitTestVisible="False">
+      <Rectangle.Fill>
+        <RadialGradientBrush Center="0.5,0.5" RadiusX="0.74" RadiusY="0.74">
+          <GradientStop Color="#24D7E8F8" Offset="0.0"/>
+          <GradientStop Color="#08D7E8F8" Offset="0.45"/>
+          <GradientStop Color="#00000000" Offset="1.0"/>
+        </RadialGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Rectangle Opacity="0.06" IsHitTestVisible="False">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+          <GradientStop Color="#1DD4E6F7" Offset="0.0"/>
+          <GradientStop Color="#00000000" Offset="0.48"/>
+          <GradientStop Color="#0C1F2F44" Offset="1.0"/>
         </LinearGradientBrush>
       </Rectangle.Fill>
     </Rectangle>
@@ -54,7 +72,7 @@
       </Border>
 
       <TextBlock Text="UNIFIED RESOURCE MANAGEMENT SYSTEM" FontFamily="Consolas" FontSize="18" FontWeight="SemiBold" CharacterSpacing="170" Foreground="#E8EEF4" HorizontalAlignment="Center"/>
-      <TextBlock Text="CINEMATIC MATERIAL BOOT SEQUENCE" FontFamily="Consolas" FontSize="10" CharacterSpacing="140" Foreground="#98ACBF" HorizontalAlignment="Center"/>
+      <TextBlock Text="CINEMATIC MATERIAL BOOT / OPTICAL DEPTH 6" FontFamily="Consolas" FontSize="10" CharacterSpacing="140" Foreground="#98ACBF" HorizontalAlignment="Center"/>
       <TextBlock x:Name="BootStatusText" Text="INITIALIZING" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" CharacterSpacing="120" Foreground="#D7E3EE" HorizontalAlignment="Center"/>
       <TextBlock Text="v5.0.0" FontFamily="Consolas" FontSize="11" Foreground="#8A9CAF" HorizontalAlignment="Center"/>
     </StackPanel>

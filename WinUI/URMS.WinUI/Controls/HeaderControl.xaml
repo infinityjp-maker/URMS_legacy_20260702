@@ -6,7 +6,7 @@
     Background="Transparent">
 
   <Grid Height="88" Background="Transparent">
-    <Border Margin="18,12,18,6" CornerRadius="18" BorderThickness="1" BorderBrush="#3352677E" Background="#8C08111A">
+    <Border Margin="18,12,18,6" CornerRadius="18" BorderThickness="1" BorderBrush="#3A5A6E84" Background="#92091118">
       <Grid>
         <Rectangle RadiusX="18" RadiusY="18" Opacity="0.95">
           <Rectangle.Fill>
@@ -17,8 +17,8 @@
             </LinearGradientBrush>
           </Rectangle.Fill>
         </Rectangle>
-        <Rectangle RadiusX="18" RadiusY="18" Opacity="0.018" Fill="{ThemeResource GlobalNoiseBrush}"/>
-        <Rectangle Height="28" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="17" RadiusY="17" Opacity="0.18">
+        <Rectangle RadiusX="18" RadiusY="18" Opacity="0.022" Fill="{ThemeResource GlobalNoiseBrush}"/>
+        <Rectangle Height="28" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="17" RadiusY="17" Opacity="0.22">
           <Rectangle.Fill>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
               <GradientStop Color="#58FFFFFF" Offset="0"/>
@@ -27,7 +27,17 @@
             </LinearGradientBrush>
           </Rectangle.Fill>
         </Rectangle>
+        <Rectangle Height="16" VerticalAlignment="Bottom" Margin="6,0,6,3" RadiusX="12" RadiusY="12" Opacity="0.16">
+          <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+              <GradientStop Color="#38495867" Offset="0"/>
+              <GradientStop Color="#1252627B" Offset="0.56"/>
+              <GradientStop Color="#00000000" Offset="1"/>
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
         <Rectangle Height="1" VerticalAlignment="Top" Margin="18,16,18,0" Fill="{ThemeResource GlassLineBrush}"/>
+        <Rectangle Height="1" VerticalAlignment="Bottom" Margin="18,0,18,10" Fill="#2E5D6E84"/>
 
         <Grid Margin="20,12,20,12">
           <Grid.ColumnDefinitions>
@@ -58,7 +68,7 @@
                 <ColumnDefinition Width="Auto"/>
               </Grid.ColumnDefinitions>
               <StackPanel x:Name="SpectrumPanel" Grid.Column="0" Orientation="Horizontal" Height="18" VerticalAlignment="Center"/>
-              <TextBlock Grid.Column="1" Text="MATERIAL GLASS HEADER" FontFamily="Consolas" FontSize="8" CharacterSpacing="150" Foreground="#8296AB" Margin="18,0,0,0" VerticalAlignment="Center"/>
+              <TextBlock Grid.Column="1" Text="MATERIAL GLASS + METAL HYBRID" FontFamily="Consolas" FontSize="8" CharacterSpacing="150" Foreground="#8296AB" Margin="18,0,0,0" VerticalAlignment="Center"/>
             </Grid>
           </Grid>
 

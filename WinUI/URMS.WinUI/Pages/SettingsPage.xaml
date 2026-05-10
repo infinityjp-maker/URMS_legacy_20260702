@@ -26,13 +26,13 @@
   </Page.Resources>
 
   <Grid>
-    <Rectangle Opacity="0.012" Fill="{ThemeResource GlobalNoiseBrush}"/>
-    <Rectangle Opacity="0.12">
+    <Rectangle Opacity="0.018" Fill="{ThemeResource GlobalNoiseBrush}"/>
+    <Rectangle Opacity="0.08">
       <Rectangle.Fill>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-          <GradientStop Color="#16385168" Offset="0"/>
+          <GradientStop Color="#102A3C55" Offset="0"/>
           <GradientStop Color="#00000000" Offset="0.45"/>
-          <GradientStop Color="#10213145" Offset="1"/>
+          <GradientStop Color="#0D1B2D3F" Offset="1"/>
         </LinearGradientBrush>
       </Rectangle.Fill>
     </Rectangle>
@@ -63,7 +63,7 @@
           <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" CornerRadius="18" BorderBrush="#2B405365" BorderThickness="1" Background="#8A0A121A" Padding="18">
+        <Border Grid.Column="0" CornerRadius="18" BorderBrush="#2A3D4E60" BorderThickness="1" Background="#92090F16" Padding="18">
           <StackPanel Spacing="10">
             <Button x:Name="BtnCatGeneral" Content="GENERAL" Style="{StaticResource CatButtonActiveStyle}" Click="OnCatGeneral"/>
             <Button x:Name="BtnCatUI" Content="UI" Style="{StaticResource CatButtonStyle}" Click="OnCatUi"/>
@@ -74,9 +74,9 @@
 
         <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
           <Grid>
-            <Border CornerRadius="22" BorderBrush="#30485E71" BorderThickness="1" Background="#970A1118" Padding="28">
+            <Border CornerRadius="22" BorderBrush="#2E425466" BorderThickness="1" Background="#9A090F15" Padding="28">
               <Grid>
-                <Rectangle Opacity="0.015" Fill="{ThemeResource GlobalNoiseBrush}" RadiusX="22" RadiusY="22"/>
+                <Rectangle Opacity="0.02" Fill="{ThemeResource GlobalNoiseBrush}" RadiusX="22" RadiusY="22"/>
                 <StackPanel Spacing="22">
                   <StackPanel x:Name="PanelGeneral" Spacing="16">
                     <TextBlock Text="General" FontFamily="Consolas" FontSize="16" CharacterSpacing="120" Foreground="{ThemeResource SectionHeaderBrush}"/>
@@ -173,7 +173,7 @@
         </ScrollViewer>
       </Grid>
 
-      <Border Grid.Row="2" Margin="0,24,0,0" Padding="14,12" CornerRadius="14" Background="#9A0C141C" BorderThickness="1" BorderBrush="#2A425566">
+      <Border Grid.Row="2" Margin="0,24,0,0" Padding="14,12" CornerRadius="14" Background="#940A1016" BorderThickness="1" BorderBrush="#29405062">
         <TextBlock x:Name="TxtApplyStatus" Text="Idle" Foreground="{ThemeResource ValueBrush}"/>
       </Border>
     </Grid>

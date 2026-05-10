@@ -20,7 +20,7 @@
             Translation="0,0,12">
       <Grid>
         <Grid x:Name="MaterialLayer" IsHitTestVisible="False">
-          <Rectangle x:Name="CardBackdropBlur" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.44">
+          <Rectangle x:Name="CardBackdropBlur" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.52">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="#32111B2A" Offset="0"/>
@@ -44,9 +44,9 @@
             </Border.Background>
           </Border>
 
-          <Rectangle x:Name="NoiseLayer" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.018" Fill="{ThemeResource GlobalNoiseBrush}"/>
+          <Rectangle x:Name="NoiseLayer" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.020" Fill="{ThemeResource GlobalNoiseBrush}"/>
 
-          <Rectangle x:Name="SatinReflection" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.05">
+          <Rectangle x:Name="SatinReflection" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.072">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="#3DFFFFFF" Offset="0.0"/>
@@ -60,7 +60,7 @@
           <Border x:Name="InnerGlow"
                   Margin="2"
                   CornerRadius="8"
-                  BorderThickness="5"
+                  BorderThickness="6"
                   Opacity="0.11"
                   BorderBrush="#55D5E6F7"/>
 
@@ -101,6 +101,20 @@
                   BorderThickness="1"
                   Opacity="0.12"
                   BorderBrush="#1C070A0F"/>
+
+          <Rectangle x:Name="AmbientFog"
+                     Margin="2"
+                     RadiusX="8"
+                     RadiusY="8"
+                     Opacity="0.04">
+            <Rectangle.Fill>
+              <RadialGradientBrush RadiusX="0.85" RadiusY="0.85">
+                <GradientStop Color="#22D2E6F8" Offset="0.0"/>
+                <GradientStop Color="#08000000" Offset="0.7"/>
+                <GradientStop Color="#00000000" Offset="1.0"/>
+              </RadialGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
         </Grid>
 
         <Grid x:Name="ContentLayer" Margin="52,44,52,44">
@@ -176,6 +190,21 @@
               <RadialGradientBrush RadiusX="0.75" RadiusY="0.75">
                 <GradientStop Color="#16DBF1FF" Offset="0.0"/>
                 <GradientStop Color="#0CD6EAF8" Offset="0.42"/>
+                <GradientStop Color="#00000000" Offset="1.0"/>
+              </RadialGradientBrush>
+            </Ellipse.Fill>
+          </Ellipse>
+
+          <Ellipse x:Name="BackdropBloom"
+                   Width="460"
+                   Height="460"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Opacity="0.0">
+            <Ellipse.Fill>
+              <RadialGradientBrush RadiusX="0.8" RadiusY="0.8">
+                <GradientStop Color="#2ED7E9FB" Offset="0.0"/>
+                <GradientStop Color="#08D7E9FB" Offset="0.42"/>
                 <GradientStop Color="#00000000" Offset="1.0"/>
               </RadialGradientBrush>
             </Ellipse.Fill>

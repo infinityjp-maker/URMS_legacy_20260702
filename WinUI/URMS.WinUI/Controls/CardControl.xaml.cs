@@ -13,7 +13,8 @@ namespace URMS.WinUI.Controls
     [ContentProperty(Name = "CardContent")]
     public sealed partial class CardControl : UserControl
     {
-        private static readonly TimeSpan TransitionDuration = TimeSpan.FromMilliseconds(140);
+        private static readonly TimeSpan HoverDuration = TimeSpan.FromMilliseconds(160);
+        private static readonly TimeSpan ActiveDuration = TimeSpan.FromMilliseconds(180);
 
         public static readonly DependencyProperty CardContentProperty =
             DependencyProperty.Register(nameof(CardContent), typeof(object), typeof(CardControl),
@@ -71,6 +72,8 @@ namespace URMS.WinUI.Controls
         private Visual? _innerReflectionVisual;
         private Visual? _reflectionWaveVisual;
         private Visual? _backdropVisual;
+        private Visual? _ambientFogVisual;
+        private Visual? _backdropBloomVisual;
         private ShadowLayer? _deepShadowLayer;
         private ShadowLayer? _midShadowLayer;
         private ShadowLayer? _liftShadowLayer;
@@ -199,6 +202,8 @@ namespace URMS.WinUI.Controls
             _innerReflectionVisual = ElementCompositionPreview.GetElementVisual(SoftInnerReflection);
             _reflectionWaveVisual = ElementCompositionPreview.GetElementVisual(ReflectionWave);
             _backdropVisual = ElementCompositionPreview.GetElementVisual(CardBackdropBlur);
+            _ambientFogVisual = ElementCompositionPreview.GetElementVisual(AmbientFog);
+            _backdropBloomVisual = ElementCompositionPreview.GetElementVisual(BackdropBloom);
 
             _deepShadowLayer = CreateShadowLayer(DeepShadowHost);
             _midShadowLayer = CreateShadowLayer(MidShadowHost);
@@ -243,33 +248,40 @@ namespace URMS.WinUI.Controls
         private void ApplyState(bool isHover, bool isActive)
         {
             var profile = BuildProfile();
-            var emphasis = IsPrimaryTone ? 1.30f : 1.20f;
-            var targetScale = isHover ? 1.008f * emphasis : 1.0f;
-            var targetY = isHover ? -2.4f * emphasis : 0.0f;
+            var emphasis = IsPrimaryTone ? 1.30f : 1.0f;
+            var targetScale = isHover ? 1.010f * emphasis : 1.0f;
+            var targetY = isHover ? -2.8f * emphasis : 0.0f;
             var targetGlow = (float)(isHover ? HoverGlowOpacity : BaseGlowOpacity);
             var targetOverlay = (float)(isActive ? profile.ActiveOverlayOpacity : 0.0);
-            var targetSatin = (float)(profile.SatinOpacity + (isHover ? 0.05 : 0.0));
-            var targetInner = (float)(profile.SoftInnerReflectionOpacity + (isHover ? 0.03 : 0.0));
+            var targetSatin = (float)(profile.SatinOpacity + (isHover ? 0.06 : 0.0) + (isActive ? 0.10 : 0.0));
+            var targetInner = (float)(profile.SoftInnerReflectionOpacity + (isHover ? 0.05 : 0.0));
             var targetWave = (float)(isHover ? 0.09 : 0.0);
             var targetBlur = (float)(profile.BlurOpacity + (isHover ? 0.04 : 0.0));
+            var targetFog = (float)(profile.AmbientFogOpacity + (isHover ? 0.01 : 0.0));
+            var targetBloom = (float)(profile.BloomOpacity + (isHover ? 0.03 : 0.0) + (isActive ? 0.03 : 0.0));
+            var duration = GetAnimationDuration(isActive);
 
-            AnimateOpacity(_glowVisual, targetGlow);
-            AnimateOpacity(_activeOverlayVisual, targetOverlay);
-            AnimateOpacity(_satinVisual, targetSatin);
-            AnimateOpacity(_innerReflectionVisual, targetInner);
-            AnimateOpacity(_reflectionWaveVisual, targetWave);
-            AnimateOpacity(_backdropVisual, targetBlur);
-            AnimateCardTransform(targetScale, targetY);
+            AnimateOpacity(_glowVisual, targetGlow, duration);
+            AnimateOpacity(_activeOverlayVisual, targetOverlay, duration);
+            AnimateOpacity(_satinVisual, targetSatin, duration);
+            AnimateOpacity(_innerReflectionVisual, targetInner, duration);
+            AnimateOpacity(_reflectionWaveVisual, targetWave, duration);
+            AnimateOpacity(_backdropVisual, targetBlur, duration);
+            AnimateOpacity(_ambientFogVisual, targetFog, duration);
+            AnimateOpacity(_backdropBloomVisual, targetBloom, duration);
+            AnimateCardTransform(targetScale, targetY, duration);
 
             if (_liftShadowLayer?.Shadow != null)
             {
-                AnimateScalar(_liftShadowLayer.Shadow, nameof(DropShadow.Opacity), isHover ? 0.30f : profile.LiftShadow.Opacity);
-                AnimateVector3(_liftShadowLayer.Shadow, nameof(DropShadow.Offset), new Vector3(0f, isHover ? profile.LiftShadow.OffsetY - 1.2f : profile.LiftShadow.OffsetY, 0f));
+                AnimateScalar(_liftShadowLayer.Shadow, nameof(DropShadow.Opacity), isHover ? 0.34f : profile.LiftShadow.Opacity, duration);
+                var hoverLift = isHover ? profile.LiftShadow.OffsetY + 6f : profile.LiftShadow.OffsetY;
+                var activeLift = isActive ? hoverLift + 10f : hoverLift;
+                AnimateVector3(_liftShadowLayer.Shadow, nameof(DropShadow.Offset), new Vector3(0f, activeLift, 0f), duration);
             }
 
             if (_midShadowLayer?.Shadow != null)
             {
-                AnimateScalar(_midShadowLayer.Shadow, nameof(DropShadow.BlurRadius), isHover ? profile.MidShadow.BlurRadius + 1.8f : profile.MidShadow.BlurRadius);
+                AnimateScalar(_midShadowLayer.Shadow, nameof(DropShadow.BlurRadius), isHover ? profile.MidShadow.BlurRadius + 6f : profile.MidShadow.BlurRadius, duration);
             }
 
             if (isActive)
@@ -348,8 +360,8 @@ namespace URMS.WinUI.Controls
         private CardProfile BuildProfile()
         {
             var primaryBoost = IsPrimaryTone ? 1.2 : 1.0;
-            var material = Math.Clamp(MaterialIntensity * primaryBoost, 0.8, 2.0);
-            var optical = Math.Clamp(OpticalDepth * (IsPrimaryTone ? 1.3 : 1.0), 0.65, 1.9);
+            var material = Math.Clamp(MaterialIntensity * primaryBoost, 0.8, 2.4);
+            var optical = Math.Clamp(OpticalDepth * (IsPrimaryTone ? 1.4 : 1.0), 0.65, 2.2);
             var shadow = Math.Clamp(ShadowDepth * (IsPrimaryTone ? 1.4 : 1.0), 0.7, 2.2);
             var density = Math.Clamp(InfoDensity, 0.8, 1.2);
 
@@ -358,13 +370,15 @@ namespace URMS.WinUI.Controls
             var baseBottom = IsPrimaryTone ? Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x09, 0x11, 0x1B) : Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x08, 0x10, 0x1A);
 
             return new CardProfile(
-                NoiseOpacity: 0.015 + ((material - 1.0) * 0.005),
-                SatinOpacity: 0.040 + ((material - 1.0) * 0.02),
-                InnerGlowOpacity: 0.095 + ((material - 1.0) * 0.03),
-                BlurOpacity: 0.40 + ((material - 1.0) * 0.08),
+                NoiseOpacity: Math.Clamp(0.018 + ((material - 1.0) * 0.006), 0.018, 0.024),
+                SatinOpacity: Math.Clamp(0.06 + ((material - 1.0) * 0.02), 0.06, 0.09),
+                InnerGlowOpacity: Math.Clamp(0.10 + ((material - 1.0) * 0.03), 0.08, 0.18),
+                BlurOpacity: Math.Clamp(0.46 + ((material - 1.0) * 0.08), 0.42, 0.62),
                 TopHighlightOpacity: 0.28 * optical,
                 SoftInnerReflectionOpacity: 0.085 * optical,
-                ActiveOverlayOpacity: IsPrimaryTone ? 0.09 : 0.065,
+                ActiveOverlayOpacity: IsPrimaryTone ? 0.14 : 0.10,
+                AmbientFogOpacity: IsPrimaryTone ? 0.08 : 0.05,
+                BloomOpacity: IsPrimaryTone ? 0.14 : 0.0,
                 MainValueFontSize: IsPrimaryTone ? 38 + ((density - 1.0) * 2) : 34 + ((density - 1.0) * 2),
                 TitleFontSize: 14,
                 SubInfoFontSize: 12,
@@ -376,9 +390,9 @@ namespace URMS.WinUI.Controls
                 FrameColor: Microsoft.UI.ColorHelper.FromArgb(0x20, 0x16, 0x20, 0x2D),
                 DeepOuterShadowColor: Microsoft.UI.ColorHelper.FromArgb(0x2D, 0x07, 0x0A, 0x0F),
                 DeepShadow: new ShadowSpec(
-                    BlurRadius: 24f + (float)((shadow - 1.0) * 8.0),
+                    BlurRadius: 36f + (float)((shadow - 1.0) * 12.0),
                     Opacity: 0.30f,
-                    OffsetY: 16f + (float)((shadow - 1.0) * 4.0),
+                    OffsetY: 22f + (float)((shadow - 1.0) * 6.0),
                     Color: Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x05, 0x08, 0x10)),
                 MidShadow: new ShadowSpec(
                     BlurRadius: 12f + (float)((shadow - 1.0) * 4.0),
@@ -392,28 +406,28 @@ namespace URMS.WinUI.Controls
                     Color: Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x03, 0x05, 0x0A)));
         }
 
-        private void AnimateCardTransform(float scale, float offsetY)
+        private void AnimateCardTransform(float scale, float offsetY, TimeSpan duration)
         {
             if (_cardRootVisual == null)
             {
                 return;
             }
 
-            AnimateVector3(_cardRootVisual, nameof(Visual.Scale), new Vector3(scale, scale, 1f));
-            AnimateVector3(_cardRootVisual, nameof(Visual.Offset), new Vector3(0f, offsetY, 0f));
+            AnimateVector3(_cardRootVisual, nameof(Visual.Scale), new Vector3(scale, scale, 1f), duration);
+            AnimateVector3(_cardRootVisual, nameof(Visual.Offset), new Vector3(0f, offsetY, 0f), duration);
         }
 
-        private void AnimateOpacity(Visual? visual, float opacity)
+        private void AnimateOpacity(Visual? visual, float opacity, TimeSpan duration)
         {
             if (visual == null)
             {
                 return;
             }
 
-            AnimateScalar(visual, nameof(Visual.Opacity), opacity);
+            AnimateScalar(visual, nameof(Visual.Opacity), opacity, duration);
         }
 
-        private void AnimateScalar(CompositionObject target, string propertyName, float value)
+        private void AnimateScalar(CompositionObject target, string propertyName, float value, TimeSpan duration)
         {
             if (_compositor == null)
             {
@@ -422,11 +436,11 @@ namespace URMS.WinUI.Controls
 
             var animation = _compositor.CreateScalarKeyFrameAnimation();
             animation.InsertKeyFrame(1f, value);
-            animation.Duration = GetAnimationDuration();
+            animation.Duration = duration;
             target.StartAnimation(propertyName, animation);
         }
 
-        private void AnimateVector3(CompositionObject target, string propertyName, Vector3 value)
+        private void AnimateVector3(CompositionObject target, string propertyName, Vector3 value, TimeSpan duration)
         {
             if (_compositor == null)
             {
@@ -435,12 +449,16 @@ namespace URMS.WinUI.Controls
 
             var animation = _compositor.CreateVector3KeyFrameAnimation();
             animation.InsertKeyFrame(1f, value);
-            animation.Duration = GetAnimationDuration();
+            animation.Duration = duration;
             target.StartAnimation(propertyName, animation);
         }
 
-        private TimeSpan GetAnimationDuration()
-            => IsPrimaryTone ? TimeSpan.FromMilliseconds(TransitionDuration.TotalMilliseconds * 1.15) : TransitionDuration;
+        private TimeSpan GetAnimationDuration(bool isActive)
+        {
+            var baseline = isActive ? ActiveDuration : HoverDuration;
+            var factor = IsPrimaryTone ? 1.30 : 1.0;
+            return TimeSpan.FromMilliseconds(baseline.TotalMilliseconds * factor);
+        }
 
         private sealed record ShadowLayer(FrameworkElement Host, SpriteVisual Visual, DropShadow Shadow);
 
@@ -454,6 +472,8 @@ namespace URMS.WinUI.Controls
             double TopHighlightOpacity,
             double SoftInnerReflectionOpacity,
             double ActiveOverlayOpacity,
+            double AmbientFogOpacity,
+            double BloomOpacity,
             double MainValueFontSize,
             double TitleFontSize,
             double SubInfoFontSize,

@@ -6,10 +6,10 @@
     Background="Transparent">
 
   <Grid>
-    <Border CornerRadius="14" BorderThickness="1" BorderBrush="#314559" Background="#C10A121B" Padding="18,16,18,16">
+    <Border CornerRadius="14" BorderThickness="1" BorderBrush="#385063" Background="#C90A131C" Padding="18,16,18,16">
       <Grid>
-        <Rectangle RadiusX="14" RadiusY="14" Opacity="0.016" Fill="{ThemeResource GlobalNoiseBrush}"/>
-        <Rectangle Height="22" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="13" RadiusY="13" Opacity="0.16">
+        <Rectangle RadiusX="14" RadiusY="14" Opacity="0.022" Fill="{ThemeResource GlobalNoiseBrush}"/>
+        <Rectangle Height="22" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="13" RadiusY="13" Opacity="0.20">
           <Rectangle.Fill>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
               <GradientStop Color="#48FFFFFF" Offset="0"/>
@@ -19,7 +19,7 @@
           </Rectangle.Fill>
         </Rectangle>
         <StackPanel Spacing="14">
-          <TextBlock Text="PIPELINE FLOW / OPTICAL DEPTH 3" FontFamily="Consolas" FontSize="9" CharacterSpacing="120" Foreground="{ThemeResource CardTitleBrush}"/>
+          <TextBlock Text="PIPELINE FLOW / OPTICAL DEPTH 4" FontFamily="Consolas" FontSize="9" CharacterSpacing="120" Foreground="{ThemeResource CardTitleBrush}"/>
           <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
             <Grid MinWidth="84">
               <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>

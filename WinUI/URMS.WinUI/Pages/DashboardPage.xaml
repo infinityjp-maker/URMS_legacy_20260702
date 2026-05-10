@@ -18,7 +18,7 @@
   <Grid>
     <Rectangle Opacity="0.012" Fill="{ThemeResource GlobalNoiseBrush}"/>
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-      <StackPanel MaxWidth="1820" HorizontalAlignment="Center" Padding="32,28,32,32" Spacing="52">
+      <StackPanel MaxWidth="1820" HorizontalAlignment="Center" Padding="32,28,32,32" Spacing="60">
         <Grid>
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -41,7 +41,7 @@
 
         <StackPanel Spacing="18">
           <TextBlock Text="SYSTEM LAYER / 光量 100%" Style="{StaticResource SectionLabelStyle}"/>
-          <Grid ColumnSpacing="48" RowSpacing="48">
+          <Grid ColumnSpacing="56" RowSpacing="56">
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto"/>
               <RowDefinition Height="Auto"/>
@@ -51,7 +51,7 @@
               <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <ctrl:CardControl x:Name="CardSysmon" Grid.Row="0" Grid.Column="0" Margin="0,12,0,12" BaseGlowOpacity="0.24" HoverGlowOpacity="0.28" IsPrimaryTone="True" MaterialIntensity="1.4" OpticalDepth="1.5" ShadowDepth="1.6" InfoDensity="1.1" TitleText="SYSTEM HEALTH" MainValueText="98 / 100" SubInfoText="Primary Node Integrity / Density High" IconGlyph="&#xE9CE;">
+            <ctrl:CardControl x:Name="CardSysmon" Grid.Row="0" Grid.Column="0" Margin="0,16,0,16" BaseGlowOpacity="0.24" HoverGlowOpacity="0.28" IsPrimaryTone="True" MaterialIntensity="1.4" OpticalDepth="1.5" ShadowDepth="1.6" InfoDensity="1.2" TitleText="SYSTEM HEALTH" MainValueText="98 / 100" SubInfoText="Primary Node Integrity / Density High" IconGlyph="&#xE9CE;">
               <StackPanel Spacing="18">
                 <Border Background="#10243246" BorderBrush="#33546C84" BorderThickness="1" CornerRadius="12" Padding="14,10">
                   <TextBlock Text="PRIMARY NODE / LUMINANCE FULL / SHADOW +40%" FontFamily="Consolas" FontSize="9" CharacterSpacing="100" Foreground="{ThemeResource CardTitleBrush}"/>
@@ -83,7 +83,7 @@
               </StackPanel>
             </ctrl:CardControl>
 
-            <ctrl:CardControl x:Name="CardTask" Grid.Row="0" Grid.Column="1" Margin="0,12,0,12" BaseGlowOpacity="0.24" HoverGlowOpacity="0.28" IsPrimaryTone="True" MaterialIntensity="1.4" OpticalDepth="1.5" ShadowDepth="1.6" InfoDensity="1.1" TitleText="TASKS" MainValueText="5 / 8" SubInfoText="Operational queue / Density High" IconGlyph="&#xE823;">
+            <ctrl:CardControl x:Name="CardTask" Grid.Row="0" Grid.Column="1" Margin="0,16,0,16" BaseGlowOpacity="0.24" HoverGlowOpacity="0.28" IsPrimaryTone="True" MaterialIntensity="1.4" OpticalDepth="1.5" ShadowDepth="1.6" InfoDensity="1.2" TitleText="TASKS" MainValueText="5 / 8" SubInfoText="Operational queue / Density High" IconGlyph="&#xE823;">
               <StackPanel Spacing="16">
                 <TextBlock x:Name="TxtCardTask" Text="TASKS" FontFamily="Consolas" FontSize="10" CharacterSpacing="160" Foreground="{ThemeResource CardTitleBrush}"/>
                 <ProgressBar x:Name="BarTaskPct" Value="62" Height="10" Foreground="{ThemeResource AccentGreenBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
@@ -96,7 +96,7 @@
               </StackPanel>
             </ctrl:CardControl>
 
-            <ctrl:CardControl x:Name="CardWeather" Grid.Row="1" Grid.Column="0" Margin="0,6,0,6" BaseGlowOpacity="0.18" HoverGlowOpacity="0.21" MaterialIntensity="1.2" ShadowDepth="1.2" TitleText="WEATHER" MainValueText="22°C" SubInfoText="Tokyo atmospheric envelope" IconGlyph="&#xE706;">
+            <ctrl:CardControl x:Name="CardWeather" Grid.Row="1" Grid.Column="0" Margin="0,8,0,8" BaseGlowOpacity="0.18" HoverGlowOpacity="0.21" MaterialIntensity="1.2" ShadowDepth="1.2" TitleText="WEATHER" MainValueText="22°C" SubInfoText="Tokyo atmospheric envelope" IconGlyph="&#xE706;">
               <Grid ColumnSpacing="14">
                 <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
                 <ctrl:WeatherAnimation x:Name="WxAnim" Condition="sunny" Height="82" Width="82"/>
@@ -108,7 +108,7 @@
               </Grid>
             </ctrl:CardControl>
 
-            <ctrl:CardControl x:Name="CardSecurity" Grid.Row="1" Grid.Column="1" Margin="0,6,0,6" BaseGlowOpacity="0.18" HoverGlowOpacity="0.21" MaterialIntensity="1.2" ShadowDepth="1.2" TitleText="SECURITY" MainValueText="PROTECTED" SubInfoText="Protected perimeter / Medium density" IconGlyph="&#xE72E;">
+            <ctrl:CardControl x:Name="CardSecurity" Grid.Row="1" Grid.Column="1" Margin="0,8,0,8" BaseGlowOpacity="0.18" HoverGlowOpacity="0.21" MaterialIntensity="1.2" ShadowDepth="1.2" TitleText="SECURITY" MainValueText="PROTECTED" SubInfoText="Protected perimeter / Medium density" IconGlyph="&#xE72E;">
               <StackPanel Spacing="14">
                 <TextBlock Text="SECURITY" FontFamily="Consolas" FontSize="10" CharacterSpacing="150" Foreground="{ThemeResource CardTitleBrush}"/>
                 <Border Background="#13223022" BorderBrush="#28506257" BorderThickness="1" CornerRadius="12" Padding="14,12">
@@ -121,14 +121,14 @@
 
         <StackPanel Spacing="18">
           <TextBlock Text="SUBSYSTEM LAYER / 光量 60%" Style="{StaticResource SectionLabelStyle}"/>
-          <Grid ColumnSpacing="48" Margin="0,0,0,4">
+          <Grid ColumnSpacing="56" Margin="0,0,0,4">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="1.05*"/>
               <ColumnDefinition Width="1.6*"/>
               <ColumnDefinition Width="1.05*"/>
             </Grid.ColumnDefinitions>
 
-            <ctrl:CardControl x:Name="CardSchedule" Grid.Column="0" Margin="0,2,0,2" BaseGlowOpacity="0.12" HoverGlowOpacity="0.14" MaterialIntensity="0.8" OpticalDepth="0.6" ShadowDepth="0.8" InfoDensity="0.9" TitleText="SCHEDULE" MainValueText="09:30" SubInfoText="Morning sync / review later" IconGlyph="&#xE787;">
+            <ctrl:CardControl x:Name="CardSchedule" Grid.Column="0" Margin="0,8,0,8" BaseGlowOpacity="0.12" HoverGlowOpacity="0.14" MaterialIntensity="1.1" OpticalDepth="1.0" ShadowDepth="1.0" InfoDensity="0.9" TitleText="SCHEDULE" MainValueText="09:30" SubInfoText="Morning sync / review later" IconGlyph="&#xE787;">
               <StackPanel Spacing="10">
                 <TextBlock x:Name="TxtCardSchedule" Text="SCHEDULE" FontFamily="Consolas" FontSize="10" CharacterSpacing="140" Foreground="{ThemeResource CardTitleBrush}"/>
                 <TextBlock x:Name="TxtSchedNext" Text="朝会 (15min)" Foreground="{ThemeResource ValueBrush}"/>
@@ -136,7 +136,7 @@
               </StackPanel>
             </ctrl:CardControl>
 
-            <ctrl:CardControl x:Name="CardCalendar" Grid.Column="1" Margin="0,2,0,2" BaseGlowOpacity="0.12" HoverGlowOpacity="0.14" MaterialIntensity="0.8" OpticalDepth="0.6" ShadowDepth="0.8" InfoDensity="0.9" TitleText="CALENDAR" MainValueText="2026/05" SubInfoText="Calendar field / medium density" IconGlyph="&#xE787;">
+            <ctrl:CardControl x:Name="CardCalendar" Grid.Column="1" Margin="0,8,0,8" BaseGlowOpacity="0.12" HoverGlowOpacity="0.14" MaterialIntensity="1.1" OpticalDepth="1.0" ShadowDepth="1.0" InfoDensity="0.9" TitleText="CALENDAR" MainValueText="2026/05" SubInfoText="Calendar field / medium density" IconGlyph="&#xE787;">
               <StackPanel Spacing="12">
                 <TextBlock x:Name="TxtCalendarMonth" Text="2026/05" FontFamily="Consolas" FontSize="14" Foreground="{ThemeResource ValueBrush}"/>
                 <Grid ColumnSpacing="6" RowSpacing="8">
@@ -171,7 +171,7 @@
               </StackPanel>
             </ctrl:CardControl>
 
-            <ctrl:CardControl x:Name="CardNetwork" Grid.Column="2" Margin="0,2,0,2" BaseGlowOpacity="0.12" HoverGlowOpacity="0.14" MaterialIntensity="0.8" OpticalDepth="0.6" ShadowDepth="0.8" InfoDensity="0.9" TitleText="NETWORK" MainValueText="24 hosts" SubInfoText="Latency 12 ms / Uptime 100%" IconGlyph="&#xE128;">
+            <ctrl:CardControl x:Name="CardNetwork" Grid.Column="2" Margin="0,8,0,8" BaseGlowOpacity="0.12" HoverGlowOpacity="0.14" MaterialIntensity="1.1" OpticalDepth="1.0" ShadowDepth="1.0" InfoDensity="0.9" TitleText="NETWORK" MainValueText="24 hosts" SubInfoText="Latency 12 ms / Uptime 100%" IconGlyph="&#xE128;">
               <StackPanel Spacing="10">
                 <TextBlock Text="NETWORK" FontFamily="Consolas" FontSize="10" CharacterSpacing="140" Foreground="{ThemeResource CardTitleBrush}"/>
                 <Canvas x:Name="NetWaveCanvas" Height="36"/>
@@ -180,35 +180,35 @@
             </ctrl:CardControl>
           </Grid>
 
-          <Grid ColumnSpacing="48">
+          <Grid ColumnSpacing="56">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ctrl:CardControl x:Name="SubAsset" Grid.Column="0" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubAsset" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtAssetStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
-            <ctrl:CardControl x:Name="SubDisk" Grid.Column="1" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubDisk" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtDiskStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
-            <ctrl:CardControl x:Name="SubContent" Grid.Column="2" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubContent" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtContentStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
-            <ctrl:CardControl x:Name="SubLog" Grid.Column="3" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubLog" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtLogStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
-            <ctrl:CardControl x:Name="SubSecurity" Grid.Column="4" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubSecurity" Text="Subsystem" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtSecurityStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
-            <ctrl:CardControl x:Name="SubExtra" Grid.Column="5" Margin="0,2,0,2" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubExtra" Text="Subsystem Slot" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtExtraStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubAsset" Grid.Column="0" Margin="0,4,0,4" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="1.1" OpticalDepth="1.0" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubAsset" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtAssetStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubDisk" Grid.Column="1" Margin="0,4,0,4" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="1.1" OpticalDepth="1.0" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubDisk" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtDiskStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubContent" Grid.Column="2" Margin="0,4,0,4" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="1.1" OpticalDepth="1.0" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubContent" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtContentStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubLog" Grid.Column="3" Margin="0,4,0,4" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="1.1" OpticalDepth="1.0" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubLog" Text="Management" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtLogStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubSecurity" Grid.Column="4" Margin="0,4,0,4" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="1.1" OpticalDepth="1.0" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubSecurity" Text="Subsystem" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtSecurityStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
+            <ctrl:CardControl x:Name="SubExtra" Grid.Column="5" Margin="0,4,0,4" BaseGlowOpacity="0.13" HoverGlowOpacity="0.15" MinHeight="150" MaterialIntensity="1.1" OpticalDepth="1.0" InfoDensity="0.85"><StackPanel Spacing="8"><TextBlock x:Name="TxtSubExtra" Text="Subsystem Slot" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:Name="TxtExtraStatus" Text="ACTIVE" HorizontalAlignment="Center" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></StackPanel></ctrl:CardControl>
           </Grid>
         </StackPanel>
 
         <StackPanel Spacing="18">
           <TextBlock Text="OPERATION LAYER / 光量 30%" Style="{StaticResource SectionLabelStyle}"/>
-          <Grid ColumnSpacing="48">
+          <Grid ColumnSpacing="56">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="*"/><ColumnDefinition Width="1.35*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <ctrl:CardControl x:Name="OperationStateCard" Grid.Column="0" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.8" TitleText="STATE" MainValueText="NOMINAL" SubInfoText="Low density" IconGlyph="&#xE7BA;">
+            <ctrl:CardControl x:Name="OperationStateCard" Grid.Column="0" Margin="0,4,0,4" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.7" OpticalDepth="0.5" InfoDensity="0.75" TitleText="STATE" MainValueText="NOMINAL" SubInfoText="Low density" IconGlyph="&#xE7BA;">
               <StackPanel Spacing="8"><TextBlock x:Name="TxtOpHealth" Text="NOMINAL" FontSize="16" Foreground="{ThemeResource ValueBrush}"/><TextBlock x:Name="TxtOpAlerts" Text="0" Foreground="{ThemeResource AccentAmberBrush}"/><TextBlock x:Name="TxtOpTasks" Text="2 active" Foreground="{ThemeResource LabelBrush}"/></StackPanel>
             </ctrl:CardControl>
 
-            <ctrl:CardControl x:Name="OperationWorkflowCard" Grid.Column="1" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.8" TitleText="WORKFLOW" MainValueText="PIPELINE" SubInfoText="Low density" IconGlyph="&#xE7C1;">
+            <ctrl:CardControl x:Name="OperationWorkflowCard" Grid.Column="1" Margin="0,4,0,4" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.7" OpticalDepth="0.5" InfoDensity="0.75" TitleText="WORKFLOW" MainValueText="PIPELINE" SubInfoText="Low density" IconGlyph="&#xE7C1;">
               <ctrl:WorkflowCard x:Name="OpWorkflowCard"/>
             </ctrl:CardControl>
 
-            <ctrl:CardControl x:Name="OperationActionCard" Grid.Column="2" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.8" TitleText="ACTIONS" MainValueText="5" SubInfoText="Quick action deck" IconGlyph="&#xE8EF;">
+            <ctrl:CardControl x:Name="OperationActionCard" Grid.Column="2" Margin="0,4,0,4" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.7" OpticalDepth="0.5" InfoDensity="0.75" TitleText="ACTIONS" MainValueText="5" SubInfoText="Quick action deck" IconGlyph="&#xE8EF;">
               <StackPanel Spacing="8">
                 <Button x:Name="BtnOpLock" Content="Lock" Height="32" Background="#16202D3C" BorderBrush="#2C495D71" BorderThickness="1"/>
                 <Button x:Name="BtnOpRestart" Content="Restart" Height="32" Background="#16202D3C" BorderBrush="#2C495D71" BorderThickness="1"/>
@@ -218,11 +218,11 @@
               </StackPanel>
             </ctrl:CardControl>
 
-            <ctrl:CardControl x:Name="OperationRunningTaskCard" Grid.Column="3" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.8" TitleText="RUNNING" MainValueText="2" SubInfoText="Task flow" IconGlyph="&#xE823;">
+            <ctrl:CardControl x:Name="OperationRunningTaskCard" Grid.Column="3" Margin="0,4,0,4" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.7" OpticalDepth="0.5" InfoDensity="0.75" TitleText="RUNNING" MainValueText="2" SubInfoText="Task flow" IconGlyph="&#xE823;">
               <StackPanel Spacing="8"><TextBlock Text="Backup validation" Foreground="{ThemeResource ValueBrush}"/><TextBlock Text="Artifact sweep" Foreground="{ThemeResource LabelBrush}"/></StackPanel>
             </ctrl:CardControl>
 
-            <ctrl:CardControl x:Name="OperationAlertsCard" Grid.Column="4" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.8" OpticalDepth="0.6" InfoDensity="0.8" TitleText="ALERTS" MainValueText="5" SubInfoText="Alert density low" IconGlyph="&#xE7BA;">
+            <ctrl:CardControl x:Name="OperationAlertsCard" Grid.Column="4" Margin="0,4,0,4" BaseGlowOpacity="0.10" HoverGlowOpacity="0.12" MaterialIntensity="0.7" OpticalDepth="0.5" InfoDensity="0.75" TitleText="ALERTS" MainValueText="5" SubInfoText="Alert density low" IconGlyph="&#xE7BA;">
               <StackPanel Spacing="8"><TextBlock x:Name="TxtAlertCritical" Text="critical: 0" Foreground="{ThemeResource AccentRedBrush}"/><TextBlock x:Name="TxtAlertWarn" Text="warning: 1" Foreground="{ThemeResource AccentAmberBrush}"/><TextBlock x:Name="TxtAlertInfo" Text="info: 4" Foreground="{ThemeResource AccentCyanBrush}"/></StackPanel>
             </ctrl:CardControl>
           </Grid>
