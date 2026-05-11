@@ -52,10 +52,10 @@
     </Style>
   </Page.Resources>
 
-  <Grid Padding="12,10,12,10">
+  <Grid Padding="12">
     <Rectangle Opacity="0.016" Fill="{ThemeResource GlobalNoiseBrush}"/>
 
-    <Grid ColumnSpacing="14">
+    <Grid ColumnSpacing="12">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="84"/>
         <ColumnDefinition Width="*"/>
@@ -123,14 +123,14 @@
 
       <Grid Grid.Column="1">
         <Grid.RowDefinitions>
-          <RowDefinition Height="54"/>
+          <RowDefinition Height="68"/>
           <RowDefinition Height="12"/>
           <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" CornerRadius="14"
+        <Border Grid.Row="0" CornerRadius="16"
                 BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                Background="{ThemeResource GlassSecondaryBrush}" Padding="16,0">
+                Background="{ThemeResource MaterialPanelStrongBrush}" Padding="20,0">
           <Grid ColumnSpacing="12">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="Auto"/>
@@ -138,19 +138,28 @@
               <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
-              <FontIcon Glyph="&#xE706;" FontSize="18" Foreground="{ThemeResource AccentCyanBrush}"/>
-              <TextBlock Text="WEATHER" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="22" Foreground="{ThemeResource HeaderTitleBrush}"/>
+            <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+              <Border Width="48" Height="48" CornerRadius="18"
+                      BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
+                      Background="{ThemeResource GlassHeroBrush}">
+                <Border.Shadow>
+                  <ThemeShadow/>
+                </Border.Shadow>
+                <TextBlock Text="U" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontFamily="{ThemeResource DisplayFontFamily}" FontSize="26"
+                           Foreground="{ThemeResource AccentCyanBrush}"/>
+              </Border>
+              <TextBlock Text="WEATHER" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="26" Foreground="{ThemeResource HeaderTitleBrush}"/>
             </StackPanel>
 
-            <Border Grid.Column="1" Height="34" VerticalAlignment="Center" CornerRadius="10"
+            <Border Grid.Column="1" Width="420" Height="36" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12"
                     BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
               <Grid Margin="10,0">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="Auto"/>
                   <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <FontIcon Glyph="&#xE721;" VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                <FontIcon Glyph="&#xE721;" FontSize="18" VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
                 <TextBlock Grid.Column="1" Text="Search city" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
               </Grid>
             </Border>

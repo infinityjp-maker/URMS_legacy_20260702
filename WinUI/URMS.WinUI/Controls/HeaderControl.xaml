@@ -5,14 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Background="Transparent">
 
-  <Grid Height="88" Background="Transparent">
-    <Border Margin="18,12,18,6" CornerRadius="22" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeBrush}" Background="{ThemeResource MaterialShellBrush}">
+  <Grid Height="68" Background="Transparent">
+    <Border Margin="12,8,12,0" CornerRadius="16" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MaterialPanelStrongBrush}">
       <Grid>
-        <Rectangle RadiusX="22" RadiusY="22" Opacity="1.0" Fill="{ThemeResource MaterialPanelDepthBrush}"/>
-        <Rectangle RadiusX="22" RadiusY="22" Opacity="0.034" Fill="{ThemeResource GlobalNoiseBrush}"/>
-        <Rectangle Height="38" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="21" RadiusY="21" Opacity="0.34" Fill="{ThemeResource MaterialHeroBandBrush}"/>
-        <Rectangle RadiusX="22" RadiusY="22" Opacity="0.12" Fill="{ThemeResource MaterialHeroAuraBrush}"/>
-        <Rectangle Height="26" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="21" RadiusY="21" Opacity="0.28">
+        <Rectangle RadiusX="16" RadiusY="16" Opacity="0.03" Fill="{ThemeResource GlobalNoiseBrush}"/>
+        <Rectangle Height="24" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="15" RadiusY="15" Opacity="0.18">
           <Rectangle.Fill>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
               <GradientStop Color="#D10A131E" Offset="0"/>
@@ -21,24 +18,15 @@
             </LinearGradientBrush>
           </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Height="28" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="21" RadiusY="21" Opacity="0.32">
+        <Rectangle Height="14" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="15" RadiusY="15" Opacity="0.22">
           <Rectangle.Fill>
             <StaticResource ResourceKey="MaterialShellHighlightBrush"/>
           </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Height="16" VerticalAlignment="Bottom" Margin="6,0,6,3" RadiusX="12" RadiusY="12" Opacity="0.16">
-          <Rectangle.Fill>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-              <GradientStop Color="#38495867" Offset="0"/>
-              <GradientStop Color="#1252627B" Offset="0.56"/>
-              <GradientStop Color="#00000000" Offset="1"/>
-            </LinearGradientBrush>
-          </Rectangle.Fill>
-        </Rectangle>
-        <Rectangle Height="1" VerticalAlignment="Top" Margin="18,16,18,0" Fill="{ThemeResource GlassLineBrush}"/>
-        <Rectangle Height="1" VerticalAlignment="Bottom" Margin="18,0,18,10" Fill="{ThemeResource MaterialStrokeSoftBrush}"/>
+        <Rectangle Height="1" VerticalAlignment="Bottom" Margin="20,0,20,10" Fill="{ThemeResource MaterialStrokeSoftBrush}"/>
+        <Rectangle Height="1" VerticalAlignment="Top" Margin="20,10,20,0" Fill="{ThemeResource GlassLineBrush}"/>
 
-        <Grid Margin="20,12,20,12">
+        <Grid Margin="20,10,20,10">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
@@ -47,68 +35,61 @@
             <ColumnDefinition Width="Auto"/>
           </Grid.ColumnDefinitions>
 
-          <Grid Grid.Column="0" Width="56" Height="56" VerticalAlignment="Center">
-            <Ellipse Fill="#16344A62" Stroke="{ThemeResource MaterialStrokeBrush}" StrokeThickness="1"/>
-            <Ellipse Margin="5" Fill="#22314760" Opacity="0.92"/>
-            <Image Width="38" Height="38" Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
-          </Grid>
+          <Border Grid.Column="0" Width="48" Height="48" VerticalAlignment="Center" CornerRadius="18"
+                  BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
+                  Background="{ThemeResource GlassHeroBrush}">
+            <Border.Shadow>
+              <ThemeShadow/>
+            </Border.Shadow>
+            <Image Width="32" Height="32" Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
+          </Border>
 
-          <Grid Grid.Column="1" Margin="18,0,0,0">
+          <Grid Grid.Column="1" Margin="12,0,0,0">
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto"/>
               <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="URMS" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="28" FontWeight="SemiBold" CharacterSpacing="220" Foreground="{ThemeResource HeaderTitleBrush}"/>
-            <TextBlock Grid.Row="1" Text="Unified Resource Management System" FontFamily="{ThemeResource BodyFontFamily}" FontSize="11" CharacterSpacing="40" Foreground="{ThemeResource HeaderSubtitleBrush}" Margin="0,2,0,0"/>
-            <Grid Grid.Row="2" Margin="0,10,0,0">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="220"/>
-                <ColumnDefinition Width="Auto"/>
-              </Grid.ColumnDefinitions>
-              <StackPanel x:Name="SpectrumPanel" Grid.Column="0" Orientation="Horizontal" Height="18" VerticalAlignment="Center"/>
-              <TextBlock Grid.Column="1" Text="Glass shell / optical depth / restrained clarity" FontFamily="{ThemeResource BodyFontFamily}" FontSize="9" CharacterSpacing="20" Foreground="{ThemeResource HeaderSubtitleBrush}" Margin="18,0,0,0" VerticalAlignment="Center"/>
-            </Grid>
+            <TextBlock Text="URMS" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="26" FontWeight="SemiBold" CharacterSpacing="120" Foreground="{ThemeResource HeaderTitleBrush}"/>
+            <TextBlock Grid.Row="1" Text="Unified Resource Management System" FontFamily="{ThemeResource BodyFontFamily}" FontSize="10" CharacterSpacing="30" Foreground="{ThemeResource HeaderSubtitleBrush}" Margin="0,1,0,0"/>
+            <StackPanel x:Name="SpectrumPanel" Grid.Row="1" Orientation="Horizontal" Height="1" Opacity="0"/>
           </Grid>
 
-          <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Spacing="22" Margin="0,0,28,0">
-            <TextBlock x:Name="TxtDate" Text="yyyy/MM/dd (ddd)" FontFamily="{ThemeResource BodyFontFamily}" FontSize="14" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
-            <TextBlock x:Name="TxtClock" Text="HH:mm:ss" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="20" FontWeight="SemiBold" Foreground="{ThemeResource CardValueBrush}" VerticalAlignment="Center"/>
+          <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Spacing="14" Margin="0,0,20,0">
+            <TextBlock x:Name="TxtDate" Text="yyyy/MM/dd (ddd)" FontFamily="{ThemeResource BodyFontFamily}" FontSize="12" Foreground="{ThemeResource LabelBrush}" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TxtClock" Text="HH:mm:ss" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16" FontWeight="SemiBold" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
           </StackPanel>
 
-          <Grid Grid.Column="3" Width="88" Height="52" Margin="0,0,24,0" VerticalAlignment="Center">
-            <Ellipse Width="52" Height="52" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="#3A84A8C8" StrokeThickness="1"/>
-            <Ellipse Width="36" Height="36" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="#24587395" StrokeThickness="1"/>
-            <Path Data="M26,26 L48,26 A26,26 0 0 0 43,12 Z" Fill="#2F8EB6D3" HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Grid Grid.Column="3" Width="68" Height="42" Margin="0,0,16,0" VerticalAlignment="Center">
+            <Ellipse Width="42" Height="42" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="#3A84A8C8" StrokeThickness="1"/>
+            <Path Data="M21,21 L40,21 A21,21 0 0 0 36,10 Z" Fill="#2F8EB6D3" HorizontalAlignment="Center" VerticalAlignment="Center">
               <Path.RenderTransform>
-                <RotateTransform x:Name="RadarRotate" CenterX="26" CenterY="26"/>
+                <RotateTransform x:Name="RadarRotate" CenterX="21" CenterY="21"/>
               </Path.RenderTransform>
             </Path>
-            <Ellipse x:Name="RadarBlip0" Width="4" Height="4" Fill="#E3F4FF" Margin="49,14,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"/>
-            <Ellipse x:Name="RadarBlip1" Width="3" Height="3" Fill="#A8D6F2" Margin="23,34,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"/>
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0" Spacing="4">
-              <StackPanel Orientation="Horizontal" Spacing="7">
-                <Ellipse x:Name="StatusDot" Width="7" Height="7" Fill="#B5DEFF" VerticalAlignment="Center"/>
-                <TextBlock x:Name="TxtStatus" Text="SCAN_DONE" FontFamily="{ThemeResource MonoFontFamily}" FontSize="9" CharacterSpacing="100" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
+            <Ellipse x:Name="RadarBlip0" Width="4" Height="4" Fill="#E3F4FF" Margin="42,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"/>
+            <Ellipse x:Name="RadarBlip1" Width="3" Height="3" Fill="#A8D6F2" Margin="20,28,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"/>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0" Spacing="2">
+              <StackPanel Orientation="Horizontal" Spacing="6">
+                <Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="#B5DEFF" VerticalAlignment="Center"/>
+                <TextBlock x:Name="TxtStatus" Text="SCAN_DONE" FontFamily="{ThemeResource MonoFontFamily}" FontSize="8" CharacterSpacing="80" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
               </StackPanel>
-              <TextBlock Text="LUMINANCE -20%" FontFamily="{ThemeResource MonoFontFamily}" FontSize="7" CharacterSpacing="110" Foreground="{ThemeResource HeaderSubtitleBrush}"/>
             </StackPanel>
           </Grid>
 
-          <StackPanel Grid.Column="4" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
-            <Button x:Name="MinimizeButton" Width="34" Height="34" Padding="0" Background="{ThemeResource MaterialButtonBrush}" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" CornerRadius="17" Click="OnMinimizeClicked">
-              <FontIcon Glyph="&#xE921;" FontSize="13" Foreground="#DCE7F1"/>
+          <StackPanel Grid.Column="4" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+            <Button x:Name="MinimizeButton" Width="30" Height="30" Padding="0" Background="{ThemeResource MaterialButtonBrush}" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" CornerRadius="15" Click="OnMinimizeClicked">
+              <FontIcon Glyph="&#xE921;" FontSize="12" Foreground="#DCE7F1"/>
             </Button>
             <Grid>
-              <Button x:Name="MaximizeButton" Width="34" Height="34" Padding="0" Background="{ThemeResource MaterialButtonBrush}" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" CornerRadius="17" Click="OnMaximizeClicked">
-                <FontIcon Glyph="&#xE922;" FontSize="13" Foreground="#DCE7F1"/>
+              <Button x:Name="MaximizeButton" Width="30" Height="30" Padding="0" Background="{ThemeResource MaterialButtonBrush}" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" CornerRadius="15" Click="OnMaximizeClicked">
+                <FontIcon Glyph="&#xE922;" FontSize="12" Foreground="#DCE7F1"/>
               </Button>
-              <Button x:Name="RestoreButton" Width="34" Height="34" Padding="0" Background="{ThemeResource MaterialButtonBrush}" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" CornerRadius="17" Click="OnRestoreClicked">
-                <FontIcon Glyph="&#xE923;" FontSize="13" Foreground="#DCE7F1"/>
+              <Button x:Name="RestoreButton" Width="30" Height="30" Padding="0" Background="{ThemeResource MaterialButtonBrush}" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" CornerRadius="15" Click="OnRestoreClicked">
+                <FontIcon Glyph="&#xE923;" FontSize="12" Foreground="#DCE7F1"/>
               </Button>
             </Grid>
-            <Button x:Name="CloseButton" Width="34" Height="34" Padding="0" Background="{ThemeResource MaterialButtonDangerBrush}" BorderBrush="{ThemeResource MaterialButtonDangerStrokeBrush}" BorderThickness="1" CornerRadius="17" Click="OnCloseClicked">
-              <FontIcon Glyph="&#xE8BB;" FontSize="13" Foreground="#F2DFE2"/>
+            <Button x:Name="CloseButton" Width="30" Height="30" Padding="0" Background="{ThemeResource MaterialButtonDangerBrush}" BorderBrush="{ThemeResource MaterialButtonDangerStrokeBrush}" BorderThickness="1" CornerRadius="15" Click="OnCloseClicked">
+              <FontIcon Glyph="&#xE8BB;" FontSize="12" Foreground="#F2DFE2"/>
             </Button>
           </StackPanel>
         </Grid>

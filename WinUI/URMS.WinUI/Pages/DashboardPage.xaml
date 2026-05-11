@@ -58,10 +58,10 @@
     </Style>
   </Page.Resources>
 
-  <Grid Padding="12,10,12,10">
+  <Grid Padding="12">
     <Rectangle Opacity="0.016" Fill="{ThemeResource GlobalNoiseBrush}"/>
 
-    <Grid ColumnSpacing="14">
+    <Grid ColumnSpacing="12">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="84"/>
         <ColumnDefinition Width="*"/>
@@ -131,19 +131,19 @@
 
       <Grid Grid.Column="1">
         <Grid.RowDefinitions>
-          <RowDefinition Height="54"/>
+          <RowDefinition Height="68"/>
           <RowDefinition Height="12"/>
           <RowDefinition Height="226"/>
-          <RowDefinition Height="14"/>
+          <RowDefinition Height="12"/>
           <RowDefinition Height="*"/>
-          <RowDefinition Height="14"/>
+          <RowDefinition Height="12"/>
           <RowDefinition Height="196"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" CornerRadius="14"
+        <Border Grid.Row="0" CornerRadius="16"
                 BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                Background="{ThemeResource GlassSecondaryBrush}" Padding="16,0">
-          <Grid ColumnSpacing="14">
+                Background="{ThemeResource MaterialPanelStrongBrush}" Padding="20,0">
+          <Grid ColumnSpacing="12">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="Auto"/>
               <ColumnDefinition Width="*"/>
@@ -151,14 +151,24 @@
               <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="DASHBOARD"
-                       VerticalAlignment="Center"
-                       FontFamily="{ThemeResource DisplayFontFamily}"
-                       FontSize="22"
-                       Foreground="{ThemeResource HeaderTitleBrush}"/>
+            <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+              <Border Width="48" Height="48" CornerRadius="18"
+                      BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
+                      Background="{ThemeResource GlassHeroBrush}">
+                <Border.Shadow>
+                  <ThemeShadow/>
+                </Border.Shadow>
+                <TextBlock Text="U" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontFamily="{ThemeResource DisplayFontFamily}" FontSize="26"
+                           Foreground="{ThemeResource AccentCyanBrush}"/>
+              </Border>
+              <TextBlock Text="URMS" VerticalAlignment="Center"
+                         FontFamily="{ThemeResource DisplayFontFamily}" FontSize="26"
+                         Foreground="{ThemeResource HeaderTitleBrush}"/>
+            </StackPanel>
 
-            <Border Grid.Column="1" Height="34" VerticalAlignment="Center"
-                    CornerRadius="10"
+            <Border Grid.Column="1" Width="420" Height="36" VerticalAlignment="Center" HorizontalAlignment="Center"
+                    CornerRadius="12"
                     BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
                     Background="{ThemeResource MatteCardBrush}">
               <Grid Margin="10,0">
@@ -166,16 +176,16 @@
                   <ColumnDefinition Width="Auto"/>
                   <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <FontIcon Glyph="&#xE721;" Foreground="{ThemeResource LabelBrush}" VerticalAlignment="Center"/>
+                <FontIcon Glyph="&#xE721;" FontSize="18" Foreground="{ThemeResource LabelBrush}" VerticalAlignment="Center"/>
                 <TextBlock Grid.Column="1" Text="Search systems, pipelines, incidents" Margin="8,0,0,0"
                            VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
               </Grid>
             </Border>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
-              <ctrl:WeatherAnimation x:Name="WxAnim" Condition="partly_cloudy" Width="22" Height="22"/>
-              <TextBlock x:Name="TxtWeatherTemp" Text="22C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16" Foreground="{ThemeResource ValueBrush}"/>
-              <TextBlock x:Name="TxtWeatherDesc" Text="Tokyo" Foreground="{ThemeResource LabelBrush}" FontSize="11"/>
+              <ctrl:WeatherAnimation x:Name="WxAnim" Condition="partly_cloudy" Width="16" Height="16"/>
+              <TextBlock x:Name="TxtWeatherTemp" Text="22C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
+              <TextBlock x:Name="TxtWeatherDesc" Text="Tokyo" Foreground="{ThemeResource LabelBrush}" FontSize="10"/>
               <TextBlock x:Name="TxtCardWeather" Text="" Visibility="Collapsed"/>
             </StackPanel>
 
@@ -183,7 +193,7 @@
                     CornerRadius="10" BorderThickness="1"
                     BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
                     Background="{ThemeResource MatteCardBrush}" Padding="12,0">
-              <TextBlock Text="Operator: Takuya" VerticalAlignment="Center" Foreground="{ThemeResource ValueBrush}"/>
+              <TextBlock Text="Operator: Takuya" FontSize="10" VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </Border>
           </Grid>
         </Border>

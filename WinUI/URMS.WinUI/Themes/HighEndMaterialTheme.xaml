@@ -22,8 +22,8 @@
     <SolidColorBrush x:Key="HeaderSubtitleBrush" Color="#99AABD"/>
     
     <!-- TEXT AND LABEL COLORS -->
-    <SolidColorBrush x:Key="LabelBrush" Color="#AABBCC"/>
-    <SolidColorBrush x:Key="ValueBrush" Color="#EEF2FF"/>
+    <SolidColorBrush x:Key="LabelBrush" Color="#C7D3E0"/>
+    <SolidColorBrush x:Key="ValueBrush" Color="#F8FBFF"/>
     <SolidColorBrush x:Key="CardTitleBrush" Color="#C2D2E8"/>
     
     <!-- HERO ACCENT COLORS (Primary Cards) -->
@@ -31,11 +31,11 @@
     <SolidColorBrush x:Key="HeroSubBrush" Color="#9AB4CF"/>
     
     <!-- SECONDARY ACCENT COLORS (Secondary and Support Cards) -->
-    <SolidColorBrush x:Key="AccentCyanBrush" Color="#4CC3FF"/>
-    <SolidColorBrush x:Key="AccentGreenBrush" Color="#4CD964"/>
-    <SolidColorBrush x:Key="AccentAmberBrush" Color="#FFB347"/>
+    <SolidColorBrush x:Key="AccentCyanBrush" Color="#5FD4FF"/>
+    <SolidColorBrush x:Key="AccentGreenBrush" Color="#52E06A"/>
+    <SolidColorBrush x:Key="AccentAmberBrush" Color="#FFB23A"/>
     <SolidColorBrush x:Key="AccentMagentaBrush" Color="#B9A7D6"/>
-    <SolidColorBrush x:Key="AccentPurpleBrush" Color="#6A83FF"/>
+    <SolidColorBrush x:Key="AccentPurpleBrush" Color="#738DFF"/>
     <SolidColorBrush x:Key="AccentRedBrush" Color="#D59CA6"/>
     <SolidColorBrush x:Key="AccentTealBrush" Color="#2FD0C8"/>
     <!-- AccentSubBrush = #2FD0C8 (same as AccentTeal, semantic alias for sub-accent usage) -->
@@ -66,10 +66,10 @@
     
     <!-- SECTION AND LAYOUT COLORS -->
     <SolidColorBrush x:Key="SectionHeaderBrush" Color="#D6E3F5"/>
-    <SolidColorBrush x:Key="ProgressTrackBrush" Color="#17212D"/>
+    <SolidColorBrush x:Key="ProgressTrackBrush" Color="#3317212D"/>
     
     <!-- MATERIAL TEXTURES -->
-    <SolidColorBrush x:Key="GlobalNoiseBrush" Color="#05FFFFFF"/>
+    <SolidColorBrush x:Key="GlobalNoiseBrush" Color="#04FFFFFF"/>
     
     <!-- GRADIENT DEFINITIONS (Depth and Glass Effects) -->
     <LinearGradientBrush x:Key="AppDepthGradient" StartPoint="0,0" EndPoint="1,1">
