@@ -58,15 +58,15 @@
         <ScaleTransform x:Name="ContentScale" ScaleX="1.0" ScaleY="1.0" CenterX="0" CenterY="0"/>
       </StackPanel.RenderTransform>
 
-      <Border Width="304" Height="304" CornerRadius="32" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" Background="{ThemeResource MaterialShellBrush}">
+      <Border Width="304" Height="304" CornerRadius="20" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" Background="{ThemeResource GlassHeroBrush}">
         <Grid>
-          <Rectangle RadiusX="32" RadiusY="32" Fill="{ThemeResource MaterialPanelDepthBrush}"/>
-          <Rectangle RadiusX="32" RadiusY="32" Opacity="0.04" Fill="{ThemeResource GlobalNoiseBrush}"/>
-          <Rectangle Height="64" Margin="1,1,1,0" VerticalAlignment="Top" RadiusX="31" RadiusY="31" Opacity="0.34" Fill="{ThemeResource MaterialHeroBandBrush}"/>
-          <Rectangle RadiusX="32" RadiusY="32" Opacity="0.14" Fill="{ThemeResource MaterialHeroAuraBrush}"/>
+          <Rectangle RadiusX="20" RadiusY="20" Fill="{ThemeResource GlassHeroBrush}"/>
+          <Rectangle RadiusX="20" RadiusY="20" Opacity="0.04" Fill="{ThemeResource GlobalNoiseBrush}"/>
+          <Rectangle Height="64" Margin="1,1,1,0" VerticalAlignment="Top" RadiusX="19" RadiusY="19" Opacity="0.34" Fill="{ThemeResource MaterialHeroBandBrush}"/>
+          <Rectangle RadiusX="20" RadiusY="20" Opacity="0.14" Fill="{ThemeResource MaterialHeroAuraBrush}"/>
           <Ellipse Width="244" Height="244" Fill="#14304A64"/>
           <Ellipse x:Name="LogoGlowPulse" Width="216" Height="216" Fill="#4B8EC5EA" Opacity="0" IsHitTestVisible="False"/>
-          <Rectangle Width="214" Height="214" RadiusX="34" RadiusY="34" Stroke="{ThemeResource MaterialStrokeBrush}" StrokeThickness="1" Opacity="0.95"/>
+          <Rectangle Width="214" Height="214" RadiusX="20" RadiusY="20" Stroke="{ThemeResource MaterialStrokeBrush}" StrokeThickness="1" Opacity="0.95"/>
           <Image x:Name="UrmsLogo" Width="124" Height="124" Stretch="Uniform" Opacity="0">
             <Image.Source>
               <BitmapImage UriSource="ms-appx:///Assets/images/urms_logo.png" DecodePixelWidth="512" DecodePixelHeight="512"/>
@@ -78,7 +78,7 @@
       <TextBlock Text="UNIFIED RESOURCE MANAGEMENT SYSTEM" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="22" FontWeight="SemiBold" CharacterSpacing="80" Foreground="{ThemeResource HeaderTitleBrush}" HorizontalAlignment="Center"/>
       <TextBlock Text="Glass boot shell / cool highlights / restrained luminance" FontFamily="{ThemeResource BodyFontFamily}" FontSize="11" CharacterSpacing="20" Foreground="{ThemeResource HeaderSubtitleBrush}" HorizontalAlignment="Center"/>
       <TextBlock x:Name="BootStatusText" Text="INITIALIZING" FontFamily="{ThemeResource MonoFontFamily}" FontSize="13" FontWeight="SemiBold" CharacterSpacing="160" Foreground="{ThemeResource ValueBrush}" HorizontalAlignment="Center"/>
-      <TextBlock Text="v5.0.0" FontFamily="{ThemeResource BodyFontFamily}" FontSize="11" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+      <TextBlock Text="v5.0.0" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
     </StackPanel>
   </Grid>
 </Page>

@@ -10,7 +10,6 @@ namespace URMS.WinUI.Pages
 {
     public sealed partial class BootHudPage : Page
     {
-        private DispatcherQueueTimer? _statusPulseTimer;
         private DispatcherQueueTimer? _scaleTimer;
         private DispatcherQueueTimer? _glowPulseTimer;
         private double _scaleT = 0;
@@ -43,31 +42,53 @@ namespace URMS.WinUI.Pages
                 ContentScale.CenterY = BootContentPanel.ActualHeight / 2;
             };
 
-            // ① BootContentPanel フェードイン
-            await FadeAsync(BootContentPanel, 0, 1, 220);
+            // Phase 1: 0.8秒フェードイン
+            await FadeAsync(BootContentPanel, 0, 1, 800);
+            await FadeAsync(UrmsLogo, 0, 1, 800);
 
-            // ② ロゴ フェードイン (600ms)
-            await FadeAsync(UrmsLogo, 0, 1, 600);
-
-            // ③ スケールパルス開始
+            // スケールパルス + ロゴグロー開始
             StartScalePulse();
             StartLogoGlowPulse();
 
-            // ④ ステータスパルス開始
-            StartStatusPulse();
+            // Phase 2: 1.2秒点滅 (INITIALIZING)
+            await BootInitializingBlink();
 
-            // ⑤ Boot シーケンス完走 (~2s)
-            await Task.Delay(2000);
+            // Phase 3: 1秒フェードアウト → 遷移完了
+            await FadeAsync(this, 1, 0, 1000);
 
-            // ⑥ "SYSTEM ONLINE" をフェードイン
-            _statusPulseTimer?.Stop();
-            BootStatusText.Opacity = 0;
-            BootStatusText.Text = "SYSTEM ONLINE";
-            await FadeAsync(BootStatusText, 0, 1, 500);
-            await Task.Delay(250);
+            // 起動完了時刻を記録
+            App.RecordBootTransitionComplete();
 
-            // ⑦ BootContentPanel フェードアウト → 遷移完了
-            await AnimateOpacityToDashboardAsync();
+            // 親グリッドから自身を削除
+            TransitionComplete?.Invoke();
+        }
+
+        // ═══════════════════════════════════════════════════
+        // INITIALIZING 1.2秒点滅
+        // ═══════════════════════════════════════════════════
+        private Task BootInitializingBlink()
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            var q = DispatcherQueue.GetForCurrentThread();
+            var blinkTimer = q.CreateTimer();
+            blinkTimer.Interval = TimeSpan.FromMilliseconds(200);
+            int tickCount = 0;
+            int maxTicks = 6; // 1200ms / 200ms = 6 ticks
+
+            blinkTimer.Tick += (_, _) =>
+            {
+                tickCount++;
+                // 0.2s周期で Opacity 1.0 ↔ 0.3
+                BootStatusText.Opacity = (tickCount % 2 == 1) ? 1.0 : 0.3;
+                if (tickCount >= maxTicks)
+                {
+                    blinkTimer.Stop();
+                    BootStatusText.Opacity = 1.0;
+                    tcs.TrySetResult(true);
+                }
+            };
+            blinkTimer.Start();
+            return tcs.Task;
         }
 
         // ═══════════════════════════════════════════════════
@@ -99,6 +120,12 @@ namespace URMS.WinUI.Pages
             _scaleTimer.Start();
         }
 
+        private void StopAllAnimations()
+        {
+            _scaleTimer?.Stop();
+            _glowPulseTimer?.Stop();
+        }
+
         private void StartLogoGlowPulse()
         {
             var q = DispatcherQueue.GetForCurrentThread();
@@ -112,40 +139,6 @@ namespace URMS.WinUI.Pages
                 LogoGlowPulse.Opacity = 0.3 * pulse;
             };
             _glowPulseTimer.Start();
-        }
-
-        // ═══════════════════════════════════════════════════
-        // ステータスパルス
-        // ═══════════════════════════════════════════════════
-        private void StartStatusPulse()
-        {
-            var q = DispatcherQueue.GetForCurrentThread();
-            _statusPulseTimer = q.CreateTimer();
-            _statusPulseTimer.Interval = TimeSpan.FromMilliseconds(300);
-            _statusPulseTimer.Tick += (_, _) =>
-            {
-                BootStatusText.Text = "INITIALIZING";
-                BootStatusText.Opacity = BootStatusText.Opacity > 0.6 ? 0.35 : 1.0;
-            };
-            _statusPulseTimer.Start();
-        }
-
-        // ═══════════════════════════════════════════════════
-        // BootContentPanel フェードアウト + 遷移完了
-        // ═══════════════════════════════════════════════════
-        private async Task AnimateOpacityToDashboardAsync()
-        {
-            _statusPulseTimer?.Stop();
-            _scaleTimer?.Stop();
-            _glowPulseTimer?.Stop();
-
-            await FadeAsync(this, 1, 0, 400);
-
-            // 起動完了時刻を記録
-            App.RecordBootTransitionComplete();
-
-            // 親グリッドから自身を削除（BootOverlayGrid.Children.Remove）
-            TransitionComplete?.Invoke();
         }
 
         // ═══════════════════════════════════════════════════
