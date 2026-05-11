@@ -47,9 +47,9 @@
 
 ### Dashboard Hierarchy Drama Rules
 - Hero/secondary/support differential:
-	- Hero: material +40%, optical +50%, shadow +60%
-	- Secondary: material +20%, shadow +20%
-	- Support: material -20%, optical -40%
+	- Hero: SYSTEM LAYER 4 cards (System Health / Tasks / Weather / Security)
+	- Secondary: SUBSYSTEM LAYER 2x3 grid (Asset / Auth / Monitor / Disk / Delivery / Content)
+	- Support: OPERATION LAYER 3-column list cards (Recent Logs / Recent Events / Recent Operations)
 - Section luminance:
 	- SYSTEM 100%
 	- SUBSYSTEM 55 to 60%
@@ -64,11 +64,17 @@
 	- Card margin: hero +16, secondary +8, support +4
 
 ### Global Tone Rules
-- Deep blue-black background and 1.5% noise baseline.
-- Reduce glow by 20 to 30%.
+- Deep blue-black background (#05070B baseline) and 1.5% noise baseline.
+- Use blue-white highlights and keep glow restrained.
 - Header uses cold glass signature, not warm metal.
 - BootHud uses glass intro style.
 - WorkflowCard uses same material family as CardControl.
+
+### Sidebar and Top-Bar Rules
+- Dashboard must keep left sidebar + right main pane composition.
+- Sidebar baseline width is 214px.
+- Top command bar must contain title, search surface, and operator display.
+- Sidebar is navigation-only and must not include dashboard card data logic.
 
 ## Prohibitions
 - No high-emission neon overuse.
@@ -76,6 +82,7 @@
 - No hero-card overpopulation on the same view.
 - No direct hard-coded accent spikes when ThemeResource is available.
 - No spec-agent drift after UI changes.
+- Do not collapse dashboard back to single-column legacy layout.
 
 ## New Card Addition Rules
 - New cards must inherit CardControl material/optical/density model.

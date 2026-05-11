@@ -6,9 +6,13 @@
     Background="Transparent">
 
   <Grid Height="88" Background="Transparent">
-    <Border Margin="18,12,18,6" CornerRadius="18" BorderThickness="1" BorderBrush="#3A5A6E84" Background="#92091118">
+    <Border Margin="18,12,18,6" CornerRadius="22" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeBrush}" Background="{ThemeResource MaterialShellBrush}">
       <Grid>
-        <Rectangle RadiusX="18" RadiusY="18" Opacity="0.95">
+        <Rectangle RadiusX="22" RadiusY="22" Opacity="1.0" Fill="{ThemeResource MaterialPanelDepthBrush}"/>
+        <Rectangle RadiusX="22" RadiusY="22" Opacity="0.034" Fill="{ThemeResource GlobalNoiseBrush}"/>
+        <Rectangle Height="38" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="21" RadiusY="21" Opacity="0.34" Fill="{ThemeResource MaterialHeroBandBrush}"/>
+        <Rectangle RadiusX="22" RadiusY="22" Opacity="0.12" Fill="{ThemeResource MaterialHeroAuraBrush}"/>
+        <Rectangle Height="26" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="21" RadiusY="21" Opacity="0.28">
           <Rectangle.Fill>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
               <GradientStop Color="#D10A131E" Offset="0"/>
@@ -17,14 +21,9 @@
             </LinearGradientBrush>
           </Rectangle.Fill>
         </Rectangle>
-        <Rectangle RadiusX="18" RadiusY="18" Opacity="0.022" Fill="{ThemeResource GlobalNoiseBrush}"/>
-        <Rectangle Height="28" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="17" RadiusY="17" Opacity="0.22">
+        <Rectangle Height="28" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="21" RadiusY="21" Opacity="0.32">
           <Rectangle.Fill>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-              <GradientStop Color="#58FFFFFF" Offset="0"/>
-              <GradientStop Color="#12D4E7F7" Offset="0.52"/>
-              <GradientStop Color="#00FFFFFF" Offset="1"/>
-            </LinearGradientBrush>
+            <StaticResource ResourceKey="MaterialShellHighlightBrush"/>
           </Rectangle.Fill>
         </Rectangle>
         <Rectangle Height="16" VerticalAlignment="Bottom" Margin="6,0,6,3" RadiusX="12" RadiusY="12" Opacity="0.16">
@@ -37,7 +36,7 @@
           </Rectangle.Fill>
         </Rectangle>
         <Rectangle Height="1" VerticalAlignment="Top" Margin="18,16,18,0" Fill="{ThemeResource GlassLineBrush}"/>
-        <Rectangle Height="1" VerticalAlignment="Bottom" Margin="18,0,18,10" Fill="#2E5D6E84"/>
+        <Rectangle Height="1" VerticalAlignment="Bottom" Margin="18,0,18,10" Fill="{ThemeResource MaterialStrokeSoftBrush}"/>
 
         <Grid Margin="20,12,20,12">
           <Grid.ColumnDefinitions>
@@ -49,8 +48,8 @@
           </Grid.ColumnDefinitions>
 
           <Grid Grid.Column="0" Width="56" Height="56" VerticalAlignment="Center">
-            <Ellipse Fill="#14354D64" Stroke="#3A69859D" StrokeThickness="1"/>
-            <Ellipse Margin="5" Fill="#162B4158" Opacity="0.85"/>
+            <Ellipse Fill="#16344A62" Stroke="{ThemeResource MaterialStrokeBrush}" StrokeThickness="1"/>
+            <Ellipse Margin="5" Fill="#22314760" Opacity="0.92"/>
             <Image Width="38" Height="38" Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
           </Grid>
 
@@ -60,55 +59,55 @@
               <RowDefinition Height="Auto"/>
               <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="URMS" FontFamily="Consolas" FontSize="24" FontWeight="SemiBold" CharacterSpacing="340" Foreground="{ThemeResource HeaderTitleBrush}"/>
-            <TextBlock Grid.Row="1" Text="Unified Resource Management System" FontFamily="Consolas" FontSize="10" CharacterSpacing="110" Foreground="{ThemeResource HeaderSubtitleBrush}" Margin="0,2,0,0"/>
+            <TextBlock Text="URMS" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="28" FontWeight="SemiBold" CharacterSpacing="220" Foreground="{ThemeResource HeaderTitleBrush}"/>
+            <TextBlock Grid.Row="1" Text="Unified Resource Management System" FontFamily="{ThemeResource BodyFontFamily}" FontSize="11" CharacterSpacing="40" Foreground="{ThemeResource HeaderSubtitleBrush}" Margin="0,2,0,0"/>
             <Grid Grid.Row="2" Margin="0,10,0,0">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="220"/>
                 <ColumnDefinition Width="Auto"/>
               </Grid.ColumnDefinitions>
               <StackPanel x:ConnectionId='13' x:Name="SpectrumPanel" Grid.Column="0" Orientation="Horizontal" Height="18" VerticalAlignment="Center"/>
-              <TextBlock Grid.Column="1" Text="MATERIAL GLASS + METAL HYBRID" FontFamily="Consolas" FontSize="8" CharacterSpacing="150" Foreground="#8296AB" Margin="18,0,0,0" VerticalAlignment="Center"/>
+              <TextBlock Grid.Column="1" Text="Glass shell / optical depth / restrained clarity" FontFamily="{ThemeResource BodyFontFamily}" FontSize="9" CharacterSpacing="20" Foreground="{ThemeResource HeaderSubtitleBrush}" Margin="18,0,0,0" VerticalAlignment="Center"/>
             </Grid>
           </Grid>
 
           <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Spacing="22" Margin="0,0,28,0">
-            <TextBlock x:ConnectionId='11' x:Name="TxtDate" Text="yyyy/MM/dd (ddd)" FontFamily="Consolas" FontSize="14" Foreground="#C7D5E2" VerticalAlignment="Center"/>
-            <TextBlock x:ConnectionId='12' x:Name="TxtClock" Text="HH:mm:ss" FontFamily="Consolas" FontSize="18" FontWeight="SemiBold" Foreground="#F0F5FA" VerticalAlignment="Center"/>
+            <TextBlock x:ConnectionId='11' x:Name="TxtDate" Text="yyyy/MM/dd (ddd)" FontFamily="{ThemeResource BodyFontFamily}" FontSize="14" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
+            <TextBlock x:ConnectionId='12' x:Name="TxtClock" Text="HH:mm:ss" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="20" FontWeight="SemiBold" Foreground="{ThemeResource CardValueBrush}" VerticalAlignment="Center"/>
           </StackPanel>
 
           <Grid Grid.Column="3" Width="88" Height="52" Margin="0,0,24,0" VerticalAlignment="Center">
-            <Ellipse Width="52" Height="52" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="#224A6278" StrokeThickness="1"/>
-            <Ellipse Width="36" Height="36" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="#183A4F63" StrokeThickness="1"/>
-            <Path Data="M26,26 L48,26 A26,26 0 0 0 43,12 Z" Fill="#264F6B83" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Ellipse Width="52" Height="52" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="#3A84A8C8" StrokeThickness="1"/>
+            <Ellipse Width="36" Height="36" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="#24587395" StrokeThickness="1"/>
+            <Path Data="M26,26 L48,26 A26,26 0 0 0 43,12 Z" Fill="#2F8EB6D3" HorizontalAlignment="Center" VerticalAlignment="Center">
               <Path.RenderTransform>
                 <RotateTransform x:ConnectionId='10' x:Name="RadarRotate" CenterX="26" CenterY="26"/>
               </Path.RenderTransform>
             </Path>
-            <Ellipse x:ConnectionId='6' x:Name="RadarBlip0" Width="4" Height="4" Fill="#CFE6F5" Margin="49,14,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"/>
-            <Ellipse x:ConnectionId='7' x:Name="RadarBlip1" Width="3" Height="3" Fill="#90B8D2" Margin="23,34,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"/>
+            <Ellipse x:ConnectionId='6' x:Name="RadarBlip0" Width="4" Height="4" Fill="#E3F4FF" Margin="49,14,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"/>
+            <Ellipse x:ConnectionId='7' x:Name="RadarBlip1" Width="3" Height="3" Fill="#A8D6F2" Margin="23,34,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"/>
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0" Spacing="4">
               <StackPanel Orientation="Horizontal" Spacing="7">
-                <Ellipse x:ConnectionId='8' x:Name="StatusDot" Width="7" Height="7" Fill="#9CB9D1" VerticalAlignment="Center"/>
-                <TextBlock x:ConnectionId='9' x:Name="TxtStatus" Text="SCAN_DONE" FontFamily="Consolas" FontSize="9" CharacterSpacing="100" Foreground="#C5D5E4" VerticalAlignment="Center"/>
+                <Ellipse x:ConnectionId='8' x:Name="StatusDot" Width="7" Height="7" Fill="#B5DEFF" VerticalAlignment="Center"/>
+                <TextBlock x:ConnectionId='9' x:Name="TxtStatus" Text="SCAN_DONE" FontFamily="{ThemeResource MonoFontFamily}" FontSize="9" CharacterSpacing="100" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
               </StackPanel>
-              <TextBlock Text="LUMINANCE -20%" FontFamily="Consolas" FontSize="7" CharacterSpacing="110" Foreground="#7A8EA4"/>
+              <TextBlock Text="LUMINANCE -20%" FontFamily="{ThemeResource MonoFontFamily}" FontSize="7" CharacterSpacing="110" Foreground="{ThemeResource HeaderSubtitleBrush}"/>
             </StackPanel>
           </Grid>
 
           <StackPanel Grid.Column="4" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
-            <Button x:ConnectionId='2' x:Name="MinimizeButton" Width="34" Height="34" Padding="0" Background="#14304155" BorderBrush="#30546A80" BorderThickness="1" CornerRadius="17"                          >
+            <Button x:ConnectionId='2' x:Name="MinimizeButton" Width="34" Height="34" Padding="0" Background="{ThemeResource MaterialButtonBrush}" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" CornerRadius="17"                          >
               <FontIcon Glyph="&#xE921;" FontSize="13" Foreground="#DCE7F1"/>
             </Button>
             <Grid>
-              <Button x:ConnectionId='4' x:Name="MaximizeButton" Width="34" Height="34" Padding="0" Background="#14304155" BorderBrush="#30546A80" BorderThickness="1" CornerRadius="17"                          >
+              <Button x:ConnectionId='4' x:Name="MaximizeButton" Width="34" Height="34" Padding="0" Background="{ThemeResource MaterialButtonBrush}" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" CornerRadius="17"                          >
                 <FontIcon Glyph="&#xE922;" FontSize="13" Foreground="#DCE7F1"/>
               </Button>
-              <Button x:ConnectionId='5' x:Name="RestoreButton" Width="34" Height="34" Padding="0" Background="#14304155" BorderBrush="#30546A80" BorderThickness="1" CornerRadius="17"                         >
+              <Button x:ConnectionId='5' x:Name="RestoreButton" Width="34" Height="34" Padding="0" Background="{ThemeResource MaterialButtonBrush}" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" CornerRadius="17"                         >
                 <FontIcon Glyph="&#xE923;" FontSize="13" Foreground="#DCE7F1"/>
               </Button>
             </Grid>
-            <Button x:ConnectionId='3' x:Name="CloseButton" Width="34" Height="34" Padding="0" Background="#2A512A2C" BorderBrush="#4A8A646B" BorderThickness="1" CornerRadius="17"                       >
+            <Button x:ConnectionId='3' x:Name="CloseButton" Width="34" Height="34" Padding="0" Background="{ThemeResource MaterialButtonDangerBrush}" BorderBrush="{ThemeResource MaterialButtonDangerStrokeBrush}" BorderThickness="1" CornerRadius="17"                       >
               <FontIcon Glyph="&#xE8BB;" FontSize="13" Foreground="#F2DFE2"/>
             </Button>
           </StackPanel>

@@ -4,9 +4,9 @@
 URMS.WinUI は、運用・監視・実行・設定を 1 つのプロダクト級 UI に統合する。高級演出よりも、素材・光学・影・情報密度を二世代目仕様として体系化し、視線誘導と判断速度を最大化することを最上位目的とする。
 
 ## 2. グローバルトーン定義
-- 背景基準は深青黒。基準色は #050A11 近傍。
+- 背景基準は深青黒。基準色は #05070B 近傍。
 - 画面全体に 1.5% 前後の微細ノイズを重ねる。
-- 発光は局所的な白青ハイライトに限定し、面全体のネオン化を禁止する。
+- 発光は局所的な青白ハイライトに限定し、面全体のネオン化を禁止する。
 - 高級感は透明感、静かな反射、影深度、余白で作る。
 - Header は Acrylic を使わず、自前の素材レイヤーで冷たいガラス感を構成する。
 - BootHud はガラス導入演出を採用し、暖色メタル方向は採用しない。
@@ -48,9 +48,9 @@ URMS.WinUI は、運用・監視・実行・設定を 1 つのプロダクト級
 ## 4. Dashboard の階層ドラマ
 
 ### 4.1 主役 / 準主役 / 脇役
-- 主役は System Health と Tasks。
-- 準主役は Weather と Security。
-- 脇役は Schedule / Calendar / Network と subsystem / operation の各カード。
+- 主役は SYSTEM LAYER の 4 枚（System Health / Tasks / Weather / Security）。
+- 準主役は SUBSYSTEM LAYER の 2x3 グリッド（Asset / Auth / Monitor / Disk / Delivery / Content）。
+- 脇役は OPERATION LAYER の 3 列リスト（Recent Logs / Recent Events / Recent Operations）。
 
 ### 4.2 素材差分ルール
 - 主役: 素材 +40%、光学 +50%、影 +60%。
@@ -68,10 +68,16 @@ URMS.WinUI は、運用・監視・実行・設定を 1 つのプロダクト級
 - 脇役は密度低。1 画面で理解できる要点だけにする。
 
 ### 4.5 レイアウトルール
-- ColumnSpacing / RowSpacing は 56 を基準とする。
-- セクション間余白は 60 を基準とする。
-- カード上下 Margin は主役 +16px、準主役 +8px、脇役 +4px。
-- 並び順は既存構成を維持する。
+- 左サイドバー幅は 214px 固定とする。
+- 右ペインは Top command bar + SYSTEM + SUBSYSTEM + OPERATION の縦構造とする。
+- SYSTEM は 4 カード横並びを基本とし、横幅不足時のみ折り返しを許可する。
+- SUBSYSTEM は 2x3 の固定グリッドを維持する。
+- OPERATION は 3 列のマットカード構造を維持する。
+
+### 4.9 左サイドバー規約
+- メニューは Dashboard / Systems / Workflows / Logs / Settings / Profile を基準とする。
+- サイドバー背景は MaterialPanelStrongBrush を使用し、選択強調は青系ストロークで表現する。
+- サイドバーはカード情報インターフェースを持たず、ナビゲーション責務のみを持つ。
 
 ### 4.6 SYSTEM 層詳細
 - 情報密度を v1 比で 15% から 20% 増やす。
@@ -211,6 +217,14 @@ URMS.WinUI は、運用・監視・実行・設定を 1 つのプロダクト級
 - 暖色メタル / bronze / quiet luxury 文言と配色は採用しない。
 - ガラス方向の定義は、冷たい透明感、白青ハイライト、細いストローク、深青黒背景を基準にする。
 - Dashboard / Header / BootHud / Settings / CardControl は同一のガラス温度帯を共有する。
+
+### 9.4.2 Screenshot-driven Dashboard Structure
+- ダッシュボード構造は、左サイドバー + 右メインペインの金融ダッシュボード系構造を採用する。
+- Top command bar にはタイトル、検索入力、オペレーター表示を配置する。
+- SYSTEM LAYER は 4 枚横並びカードで視線誘導を開始する。
+- SUBSYSTEM LAYER は 2x3 グリッドで情報整理感を担保する。
+- OPERATION LAYER は Recent Logs / Events / Operations のリスト性を担保する。
+- カラーリングは青黒 + 高コントラスト白文字を採用し、情報の見やすさを優先する。
 
 ### 9.5 フェーズ 4: 完了報告
 - Todo すべてを完了状態に。

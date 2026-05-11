@@ -58,11 +58,15 @@
         <ScaleTransform x:ConnectionId='6' x:Name="ContentScale" ScaleX="1.0" ScaleY="1.0" CenterX="0" CenterY="0"/>
       </StackPanel.RenderTransform>
 
-      <Border Width="256" Height="256" CornerRadius="24" BorderBrush="#365C748B" BorderThickness="1" Background="#86101721">
+      <Border Width="304" Height="304" CornerRadius="32" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" Background="{ThemeResource MaterialShellBrush}">
         <Grid>
-          <Ellipse Width="220" Height="220" Fill="#102D4357"/>
-          <Ellipse x:ConnectionId='8' x:Name="LogoGlowPulse" Width="188" Height="188" Fill="#487D9BB4" Opacity="0" IsHitTestVisible="False"/>
-          <Rectangle Width="186" Height="186" RadiusX="28" RadiusY="28" Stroke="#305A7084" StrokeThickness="1" Opacity="0.85"/>
+          <Rectangle RadiusX="32" RadiusY="32" Fill="{ThemeResource MaterialPanelDepthBrush}"/>
+          <Rectangle RadiusX="32" RadiusY="32" Opacity="0.04" Fill="{ThemeResource GlobalNoiseBrush}"/>
+          <Rectangle Height="64" Margin="1,1,1,0" VerticalAlignment="Top" RadiusX="31" RadiusY="31" Opacity="0.34" Fill="{ThemeResource MaterialHeroBandBrush}"/>
+          <Rectangle RadiusX="32" RadiusY="32" Opacity="0.14" Fill="{ThemeResource MaterialHeroAuraBrush}"/>
+          <Ellipse Width="244" Height="244" Fill="#14304A64"/>
+          <Ellipse x:ConnectionId='8' x:Name="LogoGlowPulse" Width="216" Height="216" Fill="#4B8EC5EA" Opacity="0" IsHitTestVisible="False"/>
+          <Rectangle Width="214" Height="214" RadiusX="34" RadiusY="34" Stroke="{ThemeResource MaterialStrokeBrush}" StrokeThickness="1" Opacity="0.95"/>
           <Image x:ConnectionId='9' x:Name="UrmsLogo" Width="124" Height="124" Stretch="Uniform" Opacity="0">
             <Image.Source>
               <BitmapImage UriSource="ms-appx:///Assets/images/urms_logo.png" DecodePixelWidth="512" DecodePixelHeight="512"/>
@@ -71,10 +75,10 @@
         </Grid>
       </Border>
 
-      <TextBlock Text="UNIFIED RESOURCE MANAGEMENT SYSTEM" FontFamily="Consolas" FontSize="18" FontWeight="SemiBold" CharacterSpacing="170" Foreground="#E8EEF4" HorizontalAlignment="Center"/>
-      <TextBlock Text="CINEMATIC MATERIAL BOOT / OPTICAL DEPTH 6" FontFamily="Consolas" FontSize="10" CharacterSpacing="140" Foreground="#98ACBF" HorizontalAlignment="Center"/>
-      <TextBlock x:ConnectionId='7' x:Name="BootStatusText" Text="INITIALIZING" FontFamily="Consolas" FontSize="13" FontWeight="SemiBold" CharacterSpacing="120" Foreground="#D7E3EE" HorizontalAlignment="Center"/>
-      <TextBlock Text="v5.0.0" FontFamily="Consolas" FontSize="11" Foreground="#8A9CAF" HorizontalAlignment="Center"/>
+      <TextBlock Text="UNIFIED RESOURCE MANAGEMENT SYSTEM" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="22" FontWeight="SemiBold" CharacterSpacing="80" Foreground="{ThemeResource HeaderTitleBrush}" HorizontalAlignment="Center"/>
+      <TextBlock Text="Glass boot shell / cool highlights / restrained luminance" FontFamily="{ThemeResource BodyFontFamily}" FontSize="11" CharacterSpacing="20" Foreground="{ThemeResource HeaderSubtitleBrush}" HorizontalAlignment="Center"/>
+      <TextBlock x:ConnectionId='7' x:Name="BootStatusText" Text="INITIALIZING" FontFamily="{ThemeResource MonoFontFamily}" FontSize="13" FontWeight="SemiBold" CharacterSpacing="160" Foreground="{ThemeResource ValueBrush}" HorizontalAlignment="Center"/>
+      <TextBlock Text="v5.0.0" FontFamily="{ThemeResource BodyFontFamily}" FontSize="11" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
     </StackPanel>
   </Grid>
 </Page>

@@ -16,46 +16,46 @@
     -->
 
     <!-- MATERIAL PALETTE: Primary Colors and Brushes -->
-    <SolidColorBrush x:Key="AppBackgroundBrush" Color="#050A11"/>
-    <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="#09111B"/>
+    <SolidColorBrush x:Key="AppBackgroundBrush" Color="#05070B"/>
+    <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="#0A1220"/>
     <SolidColorBrush x:Key="HeaderTitleBrush" Color="#F2F7FC"/>
     <SolidColorBrush x:Key="HeaderSubtitleBrush" Color="#99AABD"/>
     
     <!-- TEXT AND LABEL COLORS -->
-    <SolidColorBrush x:Key="LabelBrush" Color="#879CB1"/>
-    <SolidColorBrush x:Key="ValueBrush" Color="#E4EDF6"/>
-    <SolidColorBrush x:Key="CardTitleBrush" Color="#B6C9DB"/>
+    <SolidColorBrush x:Key="LabelBrush" Color="#A5B5CC"/>
+    <SolidColorBrush x:Key="ValueBrush" Color="#F5F7FA"/>
+    <SolidColorBrush x:Key="CardTitleBrush" Color="#C2D2E8"/>
     
     <!-- HERO ACCENT COLORS (Primary Cards) -->
-    <SolidColorBrush x:Key="HeroCyanBrush" Color="#CBE6FF"/>
-    <SolidColorBrush x:Key="HeroSubBrush" Color="#88A3BC"/>
+    <SolidColorBrush x:Key="HeroCyanBrush" Color="#7FD4FF"/>
+    <SolidColorBrush x:Key="HeroSubBrush" Color="#9AB4CF"/>
     
     <!-- SECONDARY ACCENT COLORS (Secondary and Support Cards) -->
-    <SolidColorBrush x:Key="AccentCyanBrush" Color="#82C5F6"/>
-    <SolidColorBrush x:Key="AccentGreenBrush" Color="#8CD7C5"/>
-    <SolidColorBrush x:Key="AccentAmberBrush" Color="#D7C28A"/>
+    <SolidColorBrush x:Key="AccentCyanBrush" Color="#4CC3FF"/>
+    <SolidColorBrush x:Key="AccentGreenBrush" Color="#4CD964"/>
+    <SolidColorBrush x:Key="AccentAmberBrush" Color="#FFB347"/>
     <SolidColorBrush x:Key="AccentMagentaBrush" Color="#B9A7D6"/>
-    <SolidColorBrush x:Key="AccentPurpleBrush" Color="#9EA8E8"/>
+    <SolidColorBrush x:Key="AccentPurpleBrush" Color="#6A83FF"/>
     <SolidColorBrush x:Key="AccentRedBrush" Color="#D59CA6"/>
-    <SolidColorBrush x:Key="AccentTealBrush" Color="#79C4D0"/>
+    <SolidColorBrush x:Key="AccentTealBrush" Color="#2FD0C8"/>
     
     <!-- CARD STYLING COLORS -->
-    <SolidColorBrush x:Key="CardBackgroundBrush" Color="#0B121B"/>
-    <SolidColorBrush x:Key="CardBorderBrush" Color="#2D3E52"/>
-    <SolidColorBrush x:Key="CardHeaderBrush" Color="#111B28"/>
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="#0B0F18"/>
+    <SolidColorBrush x:Key="CardBorderBrush" Color="#334C7A"/>
+    <SolidColorBrush x:Key="CardHeaderBrush" Color="#141B2B"/>
     <SolidColorBrush x:Key="CardValueBrush" Color="#F6FAFE"/>
     <SolidColorBrush x:Key="CardLabelBrush" Color="#94A8BC"/>
-    <SolidColorBrush x:Key="MaterialShellBrush" Color="#72101929"/>
-    <SolidColorBrush x:Key="MaterialPanelBrush" Color="#66152132"/>
-    <SolidColorBrush x:Key="MaterialPanelStrongBrush" Color="#881A2940"/>
-    <SolidColorBrush x:Key="MaterialStrokeBrush" Color="#6CA7CBE8"/>
-    <SolidColorBrush x:Key="MaterialStrokeSoftBrush" Color="#345B7994"/>
+    <SolidColorBrush x:Key="MaterialShellBrush" Color="#6E101A31"/>
+    <SolidColorBrush x:Key="MaterialPanelBrush" Color="#6B162542"/>
+    <SolidColorBrush x:Key="MaterialPanelStrongBrush" Color="#8520335B"/>
+    <SolidColorBrush x:Key="MaterialStrokeBrush" Color="#7495C4FF"/>
+    <SolidColorBrush x:Key="MaterialStrokeSoftBrush" Color="#3654769D"/>
     <SolidColorBrush x:Key="MaterialButtonBrush" Color="#2A213449"/>
     <SolidColorBrush x:Key="MaterialButtonDangerBrush" Color="#2E4E2A31"/>
     <SolidColorBrush x:Key="MaterialButtonDangerStrokeBrush" Color="#588D6670"/>
     
     <!-- SECTION AND LAYOUT COLORS -->
-    <SolidColorBrush x:Key="SectionHeaderBrush" Color="#C8DBEF"/>
+    <SolidColorBrush x:Key="SectionHeaderBrush" Color="#D6E3F5"/>
     <SolidColorBrush x:Key="ProgressTrackBrush" Color="#17212D"/>
     
     <!-- MATERIAL TEXTURES -->
@@ -63,9 +63,9 @@
     
     <!-- GRADIENT DEFINITIONS (Depth and Glass Effects) -->
     <LinearGradientBrush x:Key="AppDepthGradient" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#08111B" Offset="0"/>
-        <GradientStop Color="#060B12" Offset="0.45"/>
-        <GradientStop Color="#04080D" Offset="1"/>
+        <GradientStop Color="#0B1020" Offset="0"/>
+        <GradientStop Color="#070C16" Offset="0.45"/>
+        <GradientStop Color="#05070B" Offset="1"/>
     </LinearGradientBrush>
     
     <LinearGradientBrush x:Key="GlassLineBrush" StartPoint="0,0" EndPoint="1,0">
@@ -75,9 +75,9 @@
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="MaterialHeroBandBrush" StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Color="#A8F5FBFF" Offset="0"/>
-        <GradientStop Color="#58D8EEFF" Offset="0.45"/>
-        <GradientStop Color="#14BEDFFF" Offset="1"/>
+        <GradientStop Color="#98C7FF" Offset="0"/>
+        <GradientStop Color="#4CA3FF" Offset="0.45"/>
+        <GradientStop Color="#1E6BDA" Offset="1"/>
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="MaterialShellHighlightBrush" StartPoint="0,0" EndPoint="1,0">
@@ -87,14 +87,14 @@
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="MaterialPanelDepthBrush" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#C2101824" Offset="0"/>
-        <GradientStop Color="#A20C131D" Offset="0.5"/>
-        <GradientStop Color="#92070C12" Offset="1"/>
+        <GradientStop Color="#C0142038" Offset="0"/>
+        <GradientStop Color="#A010182B" Offset="0.5"/>
+        <GradientStop Color="#8A0A1020" Offset="1"/>
     </LinearGradientBrush>
 
     <RadialGradientBrush x:Key="MaterialHeroAuraBrush" Center="0.5,0.45" RadiusX="0.72" RadiusY="0.82">
-        <GradientStop Color="#4EDDF1FF" Offset="0"/>
-        <GradientStop Color="#18C6DEF4" Offset="0.45"/>
+        <GradientStop Color="#5DA9FF" Offset="0"/>
+        <GradientStop Color="#1D7BE6" Offset="0.45"/>
         <GradientStop Color="#00000000" Offset="1"/>
     </RadialGradientBrush>
 

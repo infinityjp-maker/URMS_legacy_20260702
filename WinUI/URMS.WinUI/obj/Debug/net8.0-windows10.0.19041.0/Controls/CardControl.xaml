@@ -14,39 +14,54 @@
     <Grid x:ConnectionId='3' x:Name="MidShadowHost" IsHitTestVisible="False"/>
     <Grid x:ConnectionId='4' x:Name="LiftShadowHost" IsHitTestVisible="False"/>
 
-    <Border x:ConnectionId='5' x:Name="CardRoot"
+    <Border x:ConnectionId='5' x:Name="HeroAura"
+            Margin="-18,-24,-18,-18"
+            Background="{ThemeResource MaterialHeroAuraBrush}"
+            CornerRadius="28"
+            Opacity="0.0"
+            IsHitTestVisible="False"/>
+
+    <Border x:ConnectionId='6' x:Name="CardRoot"
             Background="Transparent"
-            CornerRadius="10"
+            CornerRadius="18"
             Translation="0,0,12">
       <Grid>
-        <Grid x:ConnectionId='6' x:Name="MaterialLayer" IsHitTestVisible="False">
-          <Rectangle x:ConnectionId='24' x:Name="CardBackdropBlur" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.52">
+        <Grid x:ConnectionId='7' x:Name="MaterialLayer" IsHitTestVisible="False">
+          <Border x:ConnectionId='30' x:Name="HeroBand"
+                  Margin="1"
+                  Height="66"
+                  VerticalAlignment="Top"
+                  CornerRadius="17,17,10,10"
+                  Background="{ThemeResource MaterialHeroBandBrush}"
+                  Opacity="0.0"/>
+
+          <Rectangle x:ConnectionId='31' x:Name="CardBackdropBlur" Margin="1" RadiusX="17" RadiusY="17" Opacity="0.72">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#32111B2A" Offset="0"/>
-                <GradientStop Color="#24101926" Offset="0.55"/>
-                <GradientStop Color="#2C0A111B" Offset="1"/>
+                <GradientStop Color="#38141E35" Offset="0"/>
+                <GradientStop Color="#2C121A2A" Offset="0.55"/>
+                <GradientStop Color="#300C1220" Offset="1"/>
               </LinearGradientBrush>
             </Rectangle.Fill>
           </Rectangle>
 
-            <Border x:ConnectionId='25' x:Name="CardBackground"
+            <Border x:ConnectionId='32' x:Name="CardBackground"
               Margin="1"
                   BorderBrush="#3850678D"
                   BorderThickness="1"
-                  CornerRadius="9">
+                  CornerRadius="17">
             <Border.Background>
-              <LinearGradientBrush x:ConnectionId='30' x:Name="CardBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
-                <GradientStop x:ConnectionId='31' x:Name="BgStopTop" Color="#FF101826" Offset="0"/>
-                <GradientStop x:ConnectionId='32' x:Name="BgStopMid" Color="#FF0C1320" Offset="0.55"/>
-                <GradientStop x:ConnectionId='33' x:Name="BgStopBottom" Color="#FF08101A" Offset="1"/>
+              <LinearGradientBrush x:ConnectionId='37' x:Name="CardBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop x:ConnectionId='38' x:Name="BgStopTop" Color="#FF101826" Offset="0"/>
+                <GradientStop x:ConnectionId='39' x:Name="BgStopMid" Color="#FF0C1320" Offset="0.55"/>
+                <GradientStop x:ConnectionId='40' x:Name="BgStopBottom" Color="#FF08101A" Offset="1"/>
               </LinearGradientBrush>
             </Border.Background>
           </Border>
 
-          <Rectangle x:ConnectionId='26' x:Name="NoiseLayer" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.020" Fill="{ThemeResource GlobalNoiseBrush}"/>
+          <Rectangle x:ConnectionId='33' x:Name="NoiseLayer" Margin="1" RadiusX="17" RadiusY="17" Opacity="0.035" Fill="{ThemeResource GlobalNoiseBrush}"/>
 
-          <Rectangle x:ConnectionId='27' x:Name="SatinReflection" Margin="1" RadiusX="9" RadiusY="9" Opacity="0.072">
+          <Rectangle x:ConnectionId='34' x:Name="SatinReflection" Margin="1" RadiusX="17" RadiusY="17" Opacity="0.105">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="#3DFFFFFF" Offset="0.0"/>
@@ -57,27 +72,36 @@
             </Rectangle.Fill>
           </Rectangle>
 
-          <Border x:ConnectionId='28' x:Name="InnerGlow"
+          <Border x:ConnectionId='35' x:Name="InnerGlow"
                   Margin="2"
-                  CornerRadius="8"
+              CornerRadius="16"
                   BorderThickness="6"
-                  Opacity="0.11"
+                  Opacity="0.18"
                   BorderBrush="#55D5E6F7"/>
 
-          <Border x:ConnectionId='29' x:Name="MaterialFrame"
+          <Border x:ConnectionId='36' x:Name="MaterialFrame"
                   Margin="1"
-                  CornerRadius="9"
+              CornerRadius="17"
                   BorderThickness="1"
                   BorderBrush="#1218212D"/>
         </Grid>
 
-        <Grid x:ConnectionId='7' x:Name="OpticalLayer" IsHitTestVisible="False">
-          <Border x:ConnectionId='20' x:Name="TopHighlight"
+        <Grid x:ConnectionId='8' x:Name="OpticalLayer" IsHitTestVisible="False">
+            <Border x:ConnectionId='25' x:Name="TierRail"
+              Width="4"
+              Margin="16,22,0,22"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Stretch"
+              CornerRadius="2"
+              Background="{ThemeResource MaterialHeroBandBrush}"
+              Opacity="0.0"/>
+
+          <Border x:ConnectionId='26' x:Name="TopHighlight"
                   Margin="2,2,2,0"
-                  Height="20"
+              Height="26"
                   VerticalAlignment="Top"
-                  CornerRadius="9,9,5,5"
-                  Opacity="0.34">
+              CornerRadius="17,17,10,10"
+                  Opacity="0.48">
             <Border.Background>
               <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                 <GradientStop Color="#5EFFFFFF" Offset="0.0"/>
@@ -88,25 +112,25 @@
             </Border.Background>
           </Border>
 
-          <Border x:ConnectionId='21' x:Name="SoftInnerReflection"
+          <Border x:ConnectionId='27' x:Name="SoftInnerReflection"
                   Margin="2"
-                  CornerRadius="8"
+              CornerRadius="16"
                   BorderThickness="4"
-                  Opacity="0.13"
+                  Opacity="0.22"
                   BorderBrush="#7DEAF5FF"/>
 
-          <Border x:ConnectionId='22' x:Name="DeepOuterShadow"
+          <Border x:ConnectionId='28' x:Name="DeepOuterShadow"
                   Margin="0"
                   CornerRadius="10"
                   BorderThickness="1"
                   Opacity="0.12"
                   BorderBrush="#1C070A0F"/>
 
-          <Rectangle x:ConnectionId='23' x:Name="AmbientFog"
+          <Rectangle x:ConnectionId='29' x:Name="AmbientFog"
                      Margin="2"
-                     RadiusX="8"
-                     RadiusY="8"
-                     Opacity="0.04">
+                     RadiusX="16"
+                     RadiusY="16"
+                     Opacity="0.10">
             <Rectangle.Fill>
               <RadialGradientBrush RadiusX="0.85" RadiusY="0.85">
                 <GradientStop Color="#22D2E6F8" Offset="0.0"/>
@@ -117,8 +141,8 @@
           </Rectangle>
         </Grid>
 
-        <Grid x:ConnectionId='8' x:Name="ContentLayer" Margin="52,44,52,44">
-          <StackPanel x:ConnectionId='14' x:Name="InfoPanel" Spacing="18">
+        <Grid x:ConnectionId='9' x:Name="ContentLayer" Margin="56,48,56,52">
+          <StackPanel x:ConnectionId='15' x:Name="InfoPanel" Spacing="18">
             <Grid>
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -126,33 +150,58 @@
                 <ColumnDefinition Width="*"/>
               </Grid.ColumnDefinitions>
 
-              <Border Grid.Column="0"
+              <Border x:ConnectionId='19' Grid.Column="0"
+                      x:Name="InfoIconHost"
                       Width="34"
                       Height="34"
                       CornerRadius="17"
-                      Background="#1630445B"
-                      BorderBrush="#2F7FA7C0"
+                      Background="#1C2C4259"
+                      BorderBrush="#72A8CDEA"
                       BorderThickness="1">
-                <FontIcon x:ConnectionId='19' x:Name="InfoIcon"
+                <FontIcon x:ConnectionId='24' x:Name="InfoIcon"
                           FontSize="15"
                           Glyph="&#xE946;"
-                          Foreground="#A8DCEBFA"
+                          Foreground="#ECF6FF"
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center"/>
               </Border>
 
-              <StackPanel Grid.Column="2" Spacing="6" Margin="0,4,0,0">
-                <TextBlock x:ConnectionId='18' x:Name="TitleTextBlock"
-                                                                 
-                           CharacterSpacing="180"
-                           FontSize="14"
-                           FontWeight="SemiBold"
-                           Foreground="#A6B7CBDE"
-                           TextTrimming="CharacterEllipsis"/>
-                <Rectangle Height="1" HorizontalAlignment="Stretch" Opacity="0.42">
+              <StackPanel Grid.Column="2" Spacing="8" Margin="0,2,0,0">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <TextBlock x:ConnectionId='21' x:Name="TitleTextBlock"
+                             Grid.Column="0"
+                                                                   
+                             FontFamily="{ThemeResource BodyFontFamily}"
+                             CharacterSpacing="180"
+                             FontSize="14"
+                             FontWeight="SemiBold"
+                             Foreground="#A6B7CBDE"
+                             TextTrimming="CharacterEllipsis"/>
+                  <Border x:ConnectionId='22' x:Name="TierBadge"
+                          Grid.Column="1"
+                          Padding="8,4"
+                          CornerRadius="10"
+                          Opacity="0.0"
+                          HorizontalAlignment="Right"
+                          Background="#18283A52"
+                          BorderBrush="#34607A94"
+                          BorderThickness="1">
+                    <TextBlock x:ConnectionId='23' x:Name="TierBadgeText"
+                               Text="SYSTEM"
+                               FontFamily="{ThemeResource MonoFontFamily}"
+                               FontSize="8"
+                               CharacterSpacing="150"
+                               Foreground="#D8EAF8"/>
+                  </Border>
+                </Grid>
+                <Rectangle x:ConnectionId='20' x:Name="TitleDivider" Height="1" HorizontalAlignment="Stretch" Opacity="0.42">
                   <Rectangle.Fill>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                      <GradientStop Color="#4AA5C5DF" Offset="0"/>
+                      <GradientStop Color="#74CBE8FF" Offset="0"/>
                       <GradientStop Color="Transparent" Offset="1"/>
                     </LinearGradientBrush>
                   </Rectangle.Fill>
@@ -160,27 +209,29 @@
               </StackPanel>
             </Grid>
 
-            <TextBlock x:ConnectionId='15' x:Name="MainValueTextBlock"
+            <TextBlock x:ConnectionId='16' x:Name="MainValueTextBlock"
                                                                  
+                       FontFamily="{ThemeResource DisplayFontFamily}"
                        CharacterSpacing="26"
                        FontSize="34"
                        FontWeight="SemiBold"
                        Foreground="#FFF1F6FB"
                        TextTrimming="CharacterEllipsis"/>
 
-            <TextBlock x:ConnectionId='16' x:Name="SubInfoTextBlock"
+            <TextBlock x:ConnectionId='17' x:Name="SubInfoTextBlock"
                                                                
+                       FontFamily="{ThemeResource BodyFontFamily}"
                        FontSize="12"
                        LineHeight="26"
                        Foreground="#8FA2B7C9"
                        TextWrapping="WrapWholeWords"/>
 
-            <ContentPresenter x:ConnectionId='17' x:Name="InnerContent"/>
+            <ContentPresenter x:ConnectionId='18' x:Name="InnerContent"/>
           </StackPanel>
         </Grid>
 
-        <Grid x:ConnectionId='9' x:Name="OverlayLayer" IsHitTestVisible="False">
-          <Ellipse x:ConnectionId='10' x:Name="ActiveOverlay"
+        <Grid x:ConnectionId='10' x:Name="OverlayLayer" IsHitTestVisible="False">
+          <Ellipse x:ConnectionId='11' x:Name="ActiveOverlay"
                    Width="420"
                    Height="420"
                    HorizontalAlignment="Center"
@@ -195,7 +246,7 @@
             </Ellipse.Fill>
           </Ellipse>
 
-          <Ellipse x:ConnectionId='11' x:Name="BackdropBloom"
+          <Ellipse x:ConnectionId='12' x:Name="BackdropBloom"
                    Width="460"
                    Height="460"
                    HorizontalAlignment="Center"
@@ -210,10 +261,10 @@
             </Ellipse.Fill>
           </Ellipse>
 
-          <Rectangle x:ConnectionId='12' x:Name="ReflectionWave"
+          <Rectangle x:ConnectionId='13' x:Name="ReflectionWave"
                      Margin="1"
-                     RadiusX="9"
-                     RadiusY="9"
+                     RadiusX="17"
+                     RadiusY="17"
                      Opacity="0.0">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0,-0.2" EndPoint="1,1.2">
@@ -225,11 +276,11 @@
             </Rectangle.Fill>
           </Rectangle>
 
-          <Border x:ConnectionId='13' x:Name="GlowBorder"
+          <Border x:ConnectionId='14' x:Name="GlowBorder"
                   Margin="0"
-                  CornerRadius="10"
+              CornerRadius="18"
                   BorderThickness="1.5"
-                  BorderBrush="#4E8FB7CF"
+                  BorderBrush="#76A8D4F2"
                   Opacity="0.16"/>
         </Grid>
       </Grid>

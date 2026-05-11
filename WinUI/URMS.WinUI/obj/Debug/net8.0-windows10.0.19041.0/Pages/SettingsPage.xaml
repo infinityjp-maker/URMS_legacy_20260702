@@ -9,18 +9,18 @@
     <Style x:Key="CatButtonStyle" TargetType="Button">
       <Setter Property="HorizontalAlignment" Value="Stretch"/>
       <Setter Property="HorizontalContentAlignment" Value="Left"/>
-      <Setter Property="Background" Value="#121A2531"/>
-      <Setter Property="BorderBrush" Value="#24374A5D"/>
+      <Setter Property="Background" Value="{ThemeResource MaterialButtonBrush}"/>
+      <Setter Property="BorderBrush" Value="{ThemeResource MaterialStrokeSoftBrush}"/>
       <Setter Property="BorderThickness" Value="1"/>
       <Setter Property="Foreground" Value="{ThemeResource LabelBrush}"/>
-      <Setter Property="FontFamily" Value="Consolas"/>
+      <Setter Property="FontFamily" Value="{ThemeResource BodyFontFamily}"/>
       <Setter Property="FontSize" Value="12"/>
       <Setter Property="Padding" Value="16,12"/>
       <Setter Property="CornerRadius" Value="12"/>
     </Style>
     <Style x:Key="CatButtonActiveStyle" TargetType="Button" BasedOn="{StaticResource CatButtonStyle}">
-      <Setter Property="Background" Value="#263A5168"/>
-      <Setter Property="BorderBrush" Value="#4B718BA4"/>
+      <Setter Property="Background" Value="{ThemeResource MaterialPanelStrongBrush}"/>
+      <Setter Property="BorderBrush" Value="{ThemeResource MaterialStrokeBrush}"/>
       <Setter Property="Foreground" Value="{ThemeResource ValueBrush}"/>
     </Style>
   </Page.Resources>
@@ -49,10 +49,10 @@
           <ColumnDefinition Width="Auto"/>
           <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button x:ConnectionId='28' x:Name="BtnBack" Grid.Column="0"                Width="42" Height="42" Padding="0" Background="#18273648" BorderBrush="#2E4E6580" BorderThickness="1" Foreground="{ThemeResource ValueBrush}" CornerRadius="21">&#xE76B;</Button>
+        <Button x:ConnectionId='28' x:Name="BtnBack" Grid.Column="0"                Width="42" Height="42" Padding="0" Background="{ThemeResource MaterialButtonBrush}" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" Foreground="{ThemeResource ValueBrush}" CornerRadius="21">&#xE76B;</Button>
         <StackPanel Grid.Column="1" Margin="18,0,0,0" VerticalAlignment="Center">
-          <TextBlock Text="SETTINGS" FontFamily="Consolas" FontSize="24" FontWeight="SemiBold" CharacterSpacing="220" Foreground="{ThemeResource HeaderTitleBrush}"/>
-          <TextBlock Text="MATERIAL TONE / LUMINANCE REDUCED / DENSITY GUIDED" FontFamily="Consolas" FontSize="9" CharacterSpacing="130" Foreground="{ThemeResource HeaderSubtitleBrush}" Margin="0,4,0,0"/>
+          <TextBlock Text="Settings" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="28" FontWeight="SemiBold" CharacterSpacing="40" Foreground="{ThemeResource HeaderTitleBrush}"/>
+          <TextBlock Text="Glass controls / restrained highlights / premium operations" FontFamily="{ThemeResource BodyFontFamily}" FontSize="10" CharacterSpacing="20" Foreground="{ThemeResource HeaderSubtitleBrush}" Margin="0,4,0,0"/>
         </StackPanel>
       </Grid>
 
@@ -63,23 +63,30 @@
           <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" CornerRadius="18" BorderBrush="#2A3D4E60" BorderThickness="1" Background="#92090F16" Padding="18">
-          <StackPanel Spacing="10">
+        <Border Grid.Column="0" CornerRadius="22" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" Background="{ThemeResource MaterialShellBrush}" Padding="18">
+          <Grid>
+            <Rectangle RadiusX="22" RadiusY="22" Fill="{ThemeResource MaterialPanelDepthBrush}"/>
+            <Rectangle RadiusX="22" RadiusY="22" Opacity="0.028" Fill="{ThemeResource GlobalNoiseBrush}"/>
+            <Rectangle Height="48" Margin="1,1,1,0" VerticalAlignment="Top" RadiusX="21" RadiusY="21" Opacity="0.24" Fill="{ThemeResource MaterialHeroBandBrush}"/>
+            <StackPanel Spacing="10" Margin="0">
             <Button x:ConnectionId='24' x:Name="BtnCatGeneral" Content="GENERAL" Style="{StaticResource CatButtonActiveStyle}"                     />
             <Button x:ConnectionId='25' x:Name="BtnCatUI" Content="UI" Style="{StaticResource CatButtonStyle}"                />
             <Button x:ConnectionId='26' x:Name="BtnCatSystem" Content="SYSTEM" Style="{StaticResource CatButtonStyle}"                    />
             <Button x:ConnectionId='27' x:Name="BtnCatDeveloper" Content="DEVELOPER" Style="{StaticResource CatButtonStyle}"                       />
-          </StackPanel>
+            </StackPanel>
+          </Grid>
         </Border>
 
         <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
           <Grid>
-            <Border CornerRadius="22" BorderBrush="#2E425466" BorderThickness="1" Background="#9A090F15" Padding="28">
+            <Border CornerRadius="24" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" Background="{ThemeResource MaterialShellBrush}" Padding="28">
               <Grid>
-                <Rectangle Opacity="0.02" Fill="{ThemeResource GlobalNoiseBrush}" RadiusX="22" RadiusY="22"/>
+                <Rectangle RadiusX="24" RadiusY="24" Fill="{ThemeResource MaterialPanelDepthBrush}"/>
+                <Rectangle Height="52" Margin="1,1,1,0" VerticalAlignment="Top" RadiusX="23" RadiusY="23" Opacity="0.22" Fill="{ThemeResource MaterialHeroBandBrush}"/>
+                <Rectangle Opacity="0.028" Fill="{ThemeResource GlobalNoiseBrush}" RadiusX="24" RadiusY="24"/>
                 <StackPanel Spacing="22">
                   <StackPanel x:ConnectionId='3' x:Name="PanelGeneral" Spacing="16">
-                    <TextBlock Text="General" FontFamily="Consolas" FontSize="16" CharacterSpacing="120" Foreground="{ThemeResource SectionHeaderBrush}"/>
+                    <TextBlock Text="General" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="18" CharacterSpacing="20" Foreground="{ThemeResource SectionHeaderBrush}"/>
                     <Grid ColumnSpacing="20">
                       <Grid.ColumnDefinitions><ColumnDefinition Width="260"/><ColumnDefinition Width="260"/></Grid.ColumnDefinitions>
                       <StackPanel Grid.Column="0" Spacing="10">
@@ -100,13 +107,13 @@
                     </Grid>
                     <Grid ColumnSpacing="20">
                       <Grid.ColumnDefinitions><ColumnDefinition Width="260"/><ColumnDefinition Width="260"/></Grid.ColumnDefinitions>
-                      <Border Grid.Column="0" Background="#12243246" BorderBrush="#27455D72" BorderThickness="1" CornerRadius="14" Padding="16">
+                      <Border Grid.Column="0" Background="{ThemeResource MaterialPanelBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" CornerRadius="14" Padding="16">
                         <StackPanel Spacing="6">
                           <TextBlock Text="Version" Foreground="{ThemeResource LabelBrush}"/>
                           <TextBlock x:ConnectionId='18' x:Name="TxtVersion" Text="1.0.0" Foreground="{ThemeResource ValueBrush}" FontSize="18"/>
                         </StackPanel>
                       </Border>
-                      <Border Grid.Column="1" Background="#12243246" BorderBrush="#27455D72" BorderThickness="1" CornerRadius="14" Padding="16">
+                      <Border Grid.Column="1" Background="{ThemeResource MaterialPanelBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" CornerRadius="14" Padding="16">
                         <StackPanel Spacing="6">
                           <TextBlock Text="Build Date" Foreground="{ThemeResource LabelBrush}"/>
                           <TextBlock x:ConnectionId='17' x:Name="TxtBuildDate" Text="-" Foreground="{ThemeResource ValueBrush}" FontSize="18"/>
@@ -136,7 +143,7 @@
                         </ComboBox>
                       </StackPanel>
                     </Grid>
-                    <Border Background="#12243246" BorderBrush="#27455D72" BorderThickness="1" CornerRadius="14" Padding="16">
+                    <Border Background="{ThemeResource MaterialPanelBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" CornerRadius="14" Padding="16">
                       <StackPanel Spacing="10">
                         <TextBlock Text="Animation Intensity" Foreground="{ThemeResource LabelBrush}"/>
                         <Slider x:ConnectionId='13' x:Name="SliderAnimIntensity" Minimum="0" Maximum="2" StepFrequency="0.1" Value="1.0"                                      />
@@ -150,16 +157,16 @@
                     <ToggleSwitch x:ConnectionId='9' x:Name="TogBootAnim" IsOn="True"                             Header="Boot animation"/>
                     <Grid ColumnSpacing="20">
                       <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                      <Border Grid.Column="0" Background="#12243246" BorderBrush="#27455D72" BorderThickness="1" CornerRadius="14" Padding="16"><StackPanel Spacing="6"><TextBlock Text="Launch" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:ConnectionId='12' x:Name="TxtBootLaunch" Text="-" Foreground="{ThemeResource ValueBrush}" FontSize="18"/></StackPanel></Border>
-                      <Border Grid.Column="1" Background="#12243246" BorderBrush="#27455D72" BorderThickness="1" CornerRadius="14" Padding="16"><StackPanel Spacing="6"><TextBlock Text="Dashboard" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:ConnectionId='11' x:Name="TxtBootDash" Text="-" Foreground="{ThemeResource ValueBrush}" FontSize="18"/></StackPanel></Border>
-                      <Border Grid.Column="2" Background="#12243246" BorderBrush="#27455D72" BorderThickness="1" CornerRadius="14" Padding="16"><StackPanel Spacing="6"><TextBlock Text="Complete" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:ConnectionId='10' x:Name="TxtBootComplete" Text="-" Foreground="{ThemeResource ValueBrush}" FontSize="18"/></StackPanel></Border>
+                      <Border Grid.Column="0" Background="{ThemeResource MaterialPanelBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" CornerRadius="14" Padding="16"><StackPanel Spacing="6"><TextBlock Text="Launch" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:ConnectionId='12' x:Name="TxtBootLaunch" Text="-" Foreground="{ThemeResource ValueBrush}" FontSize="18"/></StackPanel></Border>
+                      <Border Grid.Column="1" Background="{ThemeResource MaterialPanelBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" CornerRadius="14" Padding="16"><StackPanel Spacing="6"><TextBlock Text="Dashboard" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:ConnectionId='11' x:Name="TxtBootDash" Text="-" Foreground="{ThemeResource ValueBrush}" FontSize="18"/></StackPanel></Border>
+                      <Border Grid.Column="2" Background="{ThemeResource MaterialPanelBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" CornerRadius="14" Padding="16"><StackPanel Spacing="6"><TextBlock Text="Complete" Foreground="{ThemeResource LabelBrush}"/><TextBlock x:ConnectionId='10' x:Name="TxtBootComplete" Text="-" Foreground="{ThemeResource ValueBrush}" FontSize="18"/></StackPanel></Border>
                     </Grid>
                   </StackPanel>
 
                   <StackPanel x:ConnectionId='6' x:Name="PanelDeveloper" Spacing="16" Visibility="Collapsed">
                     <TextBlock Text="Developer" FontFamily="Consolas" FontSize="16" CharacterSpacing="120" Foreground="{ThemeResource SectionHeaderBrush}"/>
                     <ToggleSwitch x:ConnectionId='7' x:Name="TogDebugLog" IsOn="False"                             Header="Debug log"/>
-                    <Border Background="#12243246" BorderBrush="#27455D72" BorderThickness="1" CornerRadius="14" Padding="16">
+                    <Border Background="{ThemeResource MaterialPanelBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" CornerRadius="14" Padding="16">
                       <StackPanel Spacing="6">
                         <TextBlock Text="Settings Path" Foreground="{ThemeResource LabelBrush}"/>
                         <TextBlock x:ConnectionId='8' x:Name="TxtSettingsPath" Text="-" Foreground="{ThemeResource ValueBrush}" TextWrapping="WrapWholeWords"/>
@@ -173,7 +180,7 @@
         </ScrollViewer>
       </Grid>
 
-      <Border Grid.Row="2" Margin="0,24,0,0" Padding="14,12" CornerRadius="14" Background="#940A1016" BorderThickness="1" BorderBrush="#29405062">
+      <Border Grid.Row="2" Margin="0,24,0,0" Padding="14,12" CornerRadius="14" Background="{ThemeResource MaterialShellBrush}" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}">
         <TextBlock x:ConnectionId='2' x:Name="TxtApplyStatus" Text="Idle" Foreground="{ThemeResource ValueBrush}"/>
       </Border>
     </Grid>

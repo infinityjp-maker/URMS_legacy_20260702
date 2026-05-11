@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("URMS.WinUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f73efa5832487fe5921ca0673dc1bef577949aac")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77e61d20a1c788afef1f1cf26fdcbc87b1cb41b6")]
 [assembly: System.Reflection.AssemblyProductAttribute("URMS.WinUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("URMS.WinUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
