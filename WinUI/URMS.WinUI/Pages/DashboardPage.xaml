@@ -360,6 +360,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
               </Grid.RowDefinitions>
 
               <TextBlock Text="OPERATION" Style="{StaticResource SectionTitleStyle}"/>
@@ -401,6 +402,19 @@
                 <TextBlock Grid.Column="1" Text="12,980" HorizontalAlignment="Right" Foreground="{ThemeResource ValueBrush}"/>
                 <TextBlock Grid.Column="2" Text="3" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
                 <TextBlock Grid.Column="3" Text="99.99%" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
+              </Grid>
+
+              <Grid Grid.Row="4" Margin="0,2,0,0" ColumnSpacing="8" Padding="8,6">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="70"/>
+                  <ColumnDefinition Width="56"/>
+                  <ColumnDefinition Width="76"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Cache Layer" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="1" Text="8,320" HorizontalAlignment="Right" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="2" Text="0" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
+                <TextBlock Grid.Column="3" Text="99.97%" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
               </Grid>
             </Grid>
           </Border>
