@@ -50,11 +50,11 @@ namespace URMS.WinUI.Pages
             StartScalePulse();
             StartLogoGlowPulse();
 
-            // Phase 2: 1.2秒点滅 (INITIALIZING)
+            // Phase 2: 0.9秒点滅 (INITIALIZING)
             await BootInitializingBlink();
 
-            // Phase 3: 1秒フェードアウト → 遷移完了
-            await FadeAsync(this, 1, 0, 1000);
+            // Phase 3: 0.32秒フェードアウト → 遷移完了
+            await FadeAsync(this, 1, 0, 320);
 
             // 起動完了時刻を記録
             App.RecordBootTransitionComplete();
@@ -71,14 +71,14 @@ namespace URMS.WinUI.Pages
             var tcs = new TaskCompletionSource<bool>();
             var q = DispatcherQueue.GetForCurrentThread();
             var blinkTimer = q.CreateTimer();
-            blinkTimer.Interval = TimeSpan.FromMilliseconds(200);
+            blinkTimer.Interval = TimeSpan.FromMilliseconds(150);
             int tickCount = 0;
-            int maxTicks = 6; // 1200ms / 200ms = 6 ticks
+            int maxTicks = 6; // 900ms / 150ms = 6 ticks
 
             blinkTimer.Tick += (_, _) =>
             {
                 tickCount++;
-                // 0.2s周期で Opacity 1.0 ↔ 0.3
+                // 0.15s周期で Opacity 1.0 ↔ 0.3
                 BootStatusText.Opacity = (tickCount % 2 == 1) ? 1.0 : 0.3;
                 if (tickCount >= maxTicks)
                 {
@@ -130,11 +130,11 @@ namespace URMS.WinUI.Pages
         {
             var q = DispatcherQueue.GetForCurrentThread();
             _glowPulseTimer = q.CreateTimer();
-            _glowPulseTimer.Interval = TimeSpan.FromMilliseconds(40);
+            _glowPulseTimer.Interval = TimeSpan.FromMilliseconds(30);
             _glowPulseTimer.Tick += (_, _) =>
             {
-                // 1.2s で 0.3 -> 0.0 を往復ではなく減衰ループ
-                _glowPhase += (2 * Math.PI) / 30.0;
+                // 0.6s で 0.3 -> 0.0 を往復ではなく減衰ループ
+                _glowPhase += (2 * Math.PI) / 20.0;
                 double pulse = (Math.Sin(_glowPhase) + 1.0) * 0.5;
                 LogoGlowPulse.Opacity = 0.3 * pulse;
             };

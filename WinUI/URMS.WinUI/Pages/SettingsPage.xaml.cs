@@ -1,6 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Media.Animation;
 using URMS.WinUI.Services;
 using System;
 using System.IO;
@@ -115,6 +116,7 @@ namespace URMS.WinUI.Pages
             _svc.Settings.Theme = theme.ToString();
             _svc.Save();
             TxtApplyStatus.Text = $"テーマ適用: {((ComboBoxItem)CmbTheme.SelectedItem).Content}";
+            AnimateApplyStatus();
         }
 
         private void OnLanguageChanged(object sender, SelectionChangedEventArgs e)
@@ -130,6 +132,7 @@ namespace URMS.WinUI.Pages
             _svc.Settings.Language = lang.ToString();
             _svc.Save();
             TxtApplyStatus.Text = $"言語適用: {((ComboBoxItem)CmbLanguage.SelectedItem).Content}";
+            AnimateApplyStatus();
         }
 
         // ── UI ───────────────────────────────────────────────────────────────
@@ -140,6 +143,7 @@ namespace URMS.WinUI.Pages
             _svc.Settings.AccentColor = tag;
             _svc.Save();
             TxtApplyStatus.Text = $"アクセントカラー: {tag}";
+            AnimateApplyStatus();
         }
 
         private void OnAnimIntensityChanged(object sender, RangeBaseValueChangedEventArgs e)
@@ -150,6 +154,7 @@ namespace URMS.WinUI.Pages
             _svc.Settings.AnimIntensity = v;
             _svc.Save();
             TxtApplyStatus.Text = $"アニメ強度: {v:F1}×";
+            AnimateApplyStatus();
         }
 
         private void OnTargetFpsChanged(object sender, SelectionChangedEventArgs e)
@@ -159,6 +164,7 @@ namespace URMS.WinUI.Pages
             _svc.Settings.TargetFps = fps;
             _svc.Save();
             TxtApplyStatus.Text = $"目標FPS: {fps}";
+            AnimateApplyStatus();
         }
 
         // ── SYSTEM ───────────────────────────────────────────────────────────
@@ -168,6 +174,7 @@ namespace URMS.WinUI.Pages
             _svc.Settings.BootAnimEnabled = TogBootAnim.IsOn;
             _svc.Save();
             TxtApplyStatus.Text = $"Boot 演出: {(TogBootAnim.IsOn ? "ON" : "OFF")} (次回起動から)";
+            AnimateApplyStatus();
         }
 
         // ── DEVELOPER ────────────────────────────────────────────────────────
@@ -175,6 +182,23 @@ namespace URMS.WinUI.Pages
         {
             if (_initializing) return;
             TxtApplyStatus.Text = $"デバッグログ: {(TogDebugLog.IsOn ? "ON" : "OFF")}";
+            AnimateApplyStatus();
+        }
+
+        private void AnimateApplyStatus()
+        {
+            TxtApplyStatus.Opacity = 0;
+            var animation = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = TimeSpan.FromMilliseconds(250)
+            };
+            var sb = new Storyboard();
+            sb.Children.Add(animation);
+            Storyboard.SetTarget(animation, TxtApplyStatus);
+            Storyboard.SetTargetProperty(animation, "Opacity");
+            sb.Begin();
         }
 
         // ── 戻る ─────────────────────────────────────────────────────────────

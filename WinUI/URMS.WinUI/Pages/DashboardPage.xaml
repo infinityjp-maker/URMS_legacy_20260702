@@ -29,7 +29,7 @@
     <Style x:Key="MicroLabelStyle" TargetType="TextBlock">
       <Setter Property="FontFamily" Value="{ThemeResource MonoFontFamily}"/>
       <Setter Property="FontSize" Value="10"/>
-      <Setter Property="CharacterSpacing" Value="80"/>
+      <Setter Property="CharacterSpacing" Value="100"/>
       <Setter Property="Foreground" Value="{ThemeResource LabelBrush}"/>
     </Style>
 
@@ -71,7 +71,7 @@
               CornerRadius="18"
               BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
               BorderThickness="1"
-              Background="{ThemeResource MaterialPanelStrongBrush}">
+              Background="{ThemeResource AppBackgroundBrush}">
         <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -97,42 +97,44 @@
                          HorizontalAlignment="Left" Fill="{ThemeResource AccentCyanBrush}"/>
               <Button Style="{StaticResource NavButtonStyle}"
                       Click="OnNavDashboard"
+                      PointerEntered="OnNavPointerEntered"
+                      PointerExited="OnNavPointerExited"
                       Background="{ThemeResource SidebarActiveBrush}"
                       BorderBrush="{ThemeResource AccentCyanBrush}">
                 <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                  <FontIcon Glyph="&#xE8F1;" FontSize="22" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/>
+                  <FontIcon Glyph="&#xE8F1;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/>
                   <TextBlock Text="DASH" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Center"/>
                 </StackPanel>
               </Button>
             </Grid>
 
-            <Button x:Name="BtnNavWeather" Style="{StaticResource NavButtonStyle}" Click="OnNavWeather" ToolTipService.ToolTip="Weather">
+            <Button x:Name="BtnNavWeather" Style="{StaticResource NavButtonStyle}" Click="OnNavWeather" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited" ToolTipService.ToolTip="Weather">
               <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE706;" FontSize="22" HorizontalAlignment="Center"/>
+                <FontIcon Glyph="&#xE706;" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="WTHR" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Center"/>
               </StackPanel>
             </Button>
-            <Button Style="{StaticResource NavButtonStyle}" ToolTipService.ToolTip="Systems">
+            <Button Style="{StaticResource NavButtonStyle}" Click="OnNavSystem" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited" ToolTipService.ToolTip="Systems">
               <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE7C1;" FontSize="22" HorizontalAlignment="Center"/>
+                <FontIcon Glyph="&#xE7C1;" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="SYS" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Center"/>
               </StackPanel>
             </Button>
-            <Button Style="{StaticResource NavButtonStyle}" ToolTipService.ToolTip="Workflows">
+            <Button Style="{StaticResource NavButtonStyle}" Click="OnNavFlow" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited" ToolTipService.ToolTip="Workflows">
               <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE8A5;" FontSize="22" HorizontalAlignment="Center"/>
+                <FontIcon Glyph="&#xE8A5;" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="FLOW" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Center"/>
               </StackPanel>
             </Button>
-            <Button Style="{StaticResource NavButtonStyle}" ToolTipService.ToolTip="Logs">
+            <Button Style="{StaticResource NavButtonStyle}" Click="OnNavLog" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited" ToolTipService.ToolTip="Logs">
               <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE9D2;" FontSize="22" HorizontalAlignment="Center"/>
+                <FontIcon Glyph="&#xE9D2;" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="LOG" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Center"/>
               </StackPanel>
             </Button>
-            <Button Style="{StaticResource NavButtonStyle}" ToolTipService.ToolTip="Settings">
+            <Button Style="{StaticResource NavButtonStyle}" Click="OnNavSettings" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited" ToolTipService.ToolTip="Settings">
               <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE713;" FontSize="22" HorizontalAlignment="Center"/>
+                <FontIcon Glyph="&#xE713;" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="SET" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Center"/>
               </StackPanel>
             </Button>
@@ -158,7 +160,7 @@
 
         <Border Grid.Row="0" CornerRadius="16"
                 BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                Background="{ThemeResource MaterialPanelStrongBrush}" Padding="20,0">
+          Background="{ThemeResource MaterialPanelStrongBrush}" Padding="24,0">
           <Grid ColumnSpacing="12">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="Auto"/>
@@ -174,10 +176,10 @@
                          Foreground="{ThemeResource HeaderTitleBrush}"/>
             </StackPanel>
 
-            <Border Grid.Column="1" Width="420" Height="36" VerticalAlignment="Center" HorizontalAlignment="Center"
+                <Border Grid.Column="1" Width="460" Height="36" VerticalAlignment="Center" HorizontalAlignment="Center"
                     CornerRadius="12"
                     BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                    Background="{ThemeResource MatteCardBrush}">
+                  Background="{ThemeResource GlassSecondaryBrush}">
               <Grid Margin="10,0">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="Auto"/>
@@ -191,8 +193,8 @@
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
               <ctrl:WeatherAnimation x:Name="WxAnim" Condition="partly_cloudy" Width="16" Height="16"/>
-              <TextBlock x:Name="TxtWeatherTemp" Text="22C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
-              <TextBlock x:Name="TxtWeatherDesc" Text="Tokyo" Foreground="{ThemeResource LabelBrush}" FontSize="10"/>
+              <TextBlock x:Name="TxtWeatherTemp" Text="22C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="9" Foreground="{ThemeResource ValueBrush}"/>
+              <TextBlock x:Name="TxtWeatherDesc" Text="Tokyo" Foreground="{ThemeResource LabelBrush}" FontSize="9"/>
               <TextBlock x:Name="TxtCardWeather" Text="" Visibility="Collapsed"/>
             </StackPanel>
 
@@ -200,7 +202,7 @@
                     CornerRadius="10" BorderThickness="1"
                     BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
                     Background="{ThemeResource MatteCardBrush}" Padding="12,0">
-              <TextBlock Text="On-duty: Takuya" FontSize="10" VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock x:Name="TxtOperatorState" Text="● Online | On-duty: Takuya" FontSize="10" VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
             </Border>
           </Grid>
         </Border>
@@ -244,6 +246,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Spacing="4" VerticalAlignment="Center">
                   <TextBlock Text="Unified Operations" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="26" Foreground="{ThemeResource HeaderTitleBrush}"/>
+                  <TextBlock Text="Live Operations Overview" FontFamily="{ThemeResource BodyFontFamily}" FontSize="12" Foreground="{ThemeResource LabelBrush}"/>
                   <TextBlock x:Name="TxtCardSchedule" Text="Workflow health"
                              FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" CharacterSpacing="80"
                              Foreground="{ThemeResource LabelBrush}"/>
@@ -268,7 +271,10 @@
                 <RowDefinition Height="Auto"/>
               </Grid.RowDefinitions>
 
-              <TextBlock Text="System Health Score" Style="{StaticResource SectionTitleStyle}"/>
+              <StackPanel Orientation="Horizontal" Spacing="6">
+                <TextBlock x:Name="TxtHealthStateDot" Text="●" Foreground="{ThemeResource AccentCyanBrush}" VerticalAlignment="Center"/>
+                <TextBlock Text="System Health Score" Style="{StaticResource SectionTitleStyle}"/>
+              </StackPanel>
 
               <StackPanel Grid.Row="1" Margin="0,8,0,0" Spacing="3" VerticalAlignment="Center">
                 <TextBlock Text="98.4" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="48" Foreground="{ThemeResource ValueBrush}"/>
@@ -302,6 +308,7 @@
               <TextBlock Text="CPU" Style="{StaticResource MicroLabelStyle}"/>
               <ctrl:AnalogGauge x:Name="GaugeCpu" Value="72" Label="" GaugeColor="#4CC3FF" Height="68"/>
               <TextBlock x:Name="TxtCpuSummary" Text="Core utilization" Foreground="{ThemeResource LabelBrush}" FontSize="11"/>
+              <TextBlock x:Name="TxtCpuTrend" Text="→ stable" Style="{StaticResource MicroLabelStyle}"/>
             </StackPanel>
           </Border>
 
@@ -310,6 +317,7 @@
               <TextBlock Text="RAM" Style="{StaticResource MicroLabelStyle}"/>
               <ctrl:AnalogGauge x:Name="GaugeRam" Value="58" Label="" GaugeColor="#2FD0C8" Height="68"/>
               <TextBlock x:Name="TxtRamSummary" Text="Memory pressure" Foreground="{ThemeResource LabelBrush}" FontSize="11"/>
+              <TextBlock x:Name="TxtRamTrend" Text="↑ rising" Style="{StaticResource MicroLabelStyle}"/>
             </StackPanel>
           </Border>
 
@@ -318,10 +326,11 @@
               <TextBlock Text="GPU" Style="{StaticResource MicroLabelStyle}"/>
               <ctrl:AnalogGauge x:Name="GaugeGpu" Value="45" Label="" GaugeColor="#6A83FF" Height="68"/>
               <TextBlock x:Name="TxtGpuSummary" Text="Render workload" Foreground="{ThemeResource LabelBrush}" FontSize="11"/>
+              <TextBlock x:Name="TxtGpuTrend" Text="↓ cooling" Style="{StaticResource MicroLabelStyle}"/>
             </StackPanel>
           </Border>
 
-          <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource SecondaryCardStyle}">
+          <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource SecondaryCardStyle}" Background="{ThemeResource GlassSecondaryBrush}">
             <Grid>
               <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -365,7 +374,7 @@
                 <Grid.ColumnDefinitions><ColumnDefinition Width="30"/><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/></Grid.ColumnDefinitions>
                 <TextBlock Text="NAS" VerticalAlignment="Center" Foreground="{ThemeResource ValueBrush}" FontSize="11"/>
                 <ProgressBar Grid.Column="1" x:Name="BarDiskNas" Height="6" Foreground="{ThemeResource AccentPurpleBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
-                <TextBlock Grid.Column="2" x:Name="TxtDiskNas" Text="--" HorizontalAlignment="Right" Foreground="{ThemeResource LabelBrush}" FontSize="10"/>
+                <TextBlock Grid.Column="2" x:Name="TxtDiskNas" Text="Not Connected" HorizontalAlignment="Right" Foreground="{ThemeResource LabelBrush}" FontSize="10"/>
               </Grid>
             </StackPanel>
           </Border>
@@ -410,7 +419,7 @@
                   <ColumnDefinition Width="76"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Core API" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource ValueBrush}"/>
-                <TextBlock x:Name="TxtOpStateCore" Grid.Column="1" Text="NORMAL" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
+                <TextBlock x:Name="TxtOpStateCore" Grid.Column="1" Text="● NORMAL" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
                 <TextBlock Grid.Column="2" Text="5" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
                 <TextBlock Grid.Column="3" Text="99.98%" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
               </Grid>
@@ -423,7 +432,7 @@
                   <ColumnDefinition Width="76"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Deploy Service" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource ValueBrush}"/>
-                <TextBlock x:Name="TxtOpStateDeploy" Grid.Column="1" Text="NORMAL" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
+                <TextBlock x:Name="TxtOpStateDeploy" Grid.Column="1" Text="● NORMAL" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
                 <TextBlock Grid.Column="2" Text="3" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
                 <TextBlock Grid.Column="3" Text="99.99%" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
               </Grid>
@@ -436,7 +445,7 @@
                   <ColumnDefinition Width="76"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Cache Layer" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource ValueBrush}"/>
-                <TextBlock x:Name="TxtOpStateCache" Grid.Column="1" Text="NORMAL" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
+                <TextBlock x:Name="TxtOpStateCache" Grid.Column="1" Text="● NORMAL" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentCyanBrush}"/>
                 <TextBlock Grid.Column="2" Text="0" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
                 <TextBlock Grid.Column="3" Text="99.97%" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
               </Grid>

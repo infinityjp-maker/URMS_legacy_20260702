@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="URMS.WinUI.Pages.LogPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="Transparent">
+
+  <Grid x:Name="RootGrid" Padding="12" Opacity="0">
+    <Rectangle Opacity="0.016" Fill="{ThemeResource GlobalNoiseBrush}"/>
+    <Grid ColumnSpacing="12">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="84"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+
+      <Border Grid.Column="0" CornerRadius="18" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" Background="{ThemeResource AppBackgroundBrush}">
+        <StackPanel Margin="8,14,8,14" Spacing="8">
+          <Button Click="OnNavDashboard" CornerRadius="14" Height="64" Padding="12,8" Background="Transparent" BorderBrush="Transparent" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited"><StackPanel><FontIcon Glyph="&#xE8F1;" FontSize="20" HorizontalAlignment="Center"/><TextBlock Text="DASH" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+          <Button Click="OnNavWeather" CornerRadius="14" Height="64" Padding="12,8" Background="Transparent" BorderBrush="Transparent" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited"><StackPanel><FontIcon Glyph="&#xE706;" FontSize="20" HorizontalAlignment="Center"/><TextBlock Text="WTHR" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+          <Button Click="OnNavSystem" CornerRadius="14" Height="64" Padding="12,8" Background="Transparent" BorderBrush="Transparent" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited"><StackPanel><FontIcon Glyph="&#xE7C1;" FontSize="20" HorizontalAlignment="Center"/><TextBlock Text="SYS" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+          <Button Click="OnNavFlow" CornerRadius="14" Height="64" Padding="12,8" Background="Transparent" BorderBrush="Transparent" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited"><StackPanel><FontIcon Glyph="&#xE8A5;" FontSize="20" HorizontalAlignment="Center"/><TextBlock Text="FLOW" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+          <Grid><Rectangle Width="3" RadiusX="1.5" RadiusY="1.5" HorizontalAlignment="Left" Fill="{ThemeResource AccentCyanBrush}"/><Button CornerRadius="14" Height="64" Padding="12,8" Background="{ThemeResource SidebarActiveBrush}" BorderBrush="{ThemeResource AccentCyanBrush}"><StackPanel><FontIcon Glyph="&#xE9D2;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/><TextBlock Text="LOG" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button></Grid>
+          <Button Click="OnNavSettings" CornerRadius="14" Height="64" Padding="12,8" Background="Transparent" BorderBrush="Transparent" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited"><StackPanel><FontIcon Glyph="&#xE713;" FontSize="20" HorizontalAlignment="Center"/><TextBlock Text="SET" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+        </StackPanel>
+      </Border>
+
+      <Grid Grid.Column="1" RowSpacing="12">
+        <Grid.RowDefinitions><RowDefinition Height="60"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+
+        <Border Grid.Row="0" CornerRadius="16" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MaterialPanelStrongBrush}" Padding="24,0">
+          <Grid ColumnSpacing="12">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock Text="LOG VIEWER" VerticalAlignment="Center" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="18" Foreground="{ThemeResource HeaderTitleBrush}"/>
+            <Border Grid.Column="1" Width="460" Height="36" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="12" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource GlassSecondaryBrush}"><Grid Margin="10,0"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE721;" FontSize="18" VerticalAlignment="Center"/><TextBox Grid.Column="1" x:Name="LogSearchBox" PlaceholderText="Search logs" Background="Transparent" BorderThickness="0" Foreground="{ThemeResource ValueBrush}" TextChanged="OnLogSearchChanged"/></Grid></Border>
+            <TextBlock Grid.Column="2" x:Name="TxtAutoScroll" Text="Auto-scroll: ON" FontSize="10" Foreground="{ThemeResource LabelBrush}" VerticalAlignment="Center"/>
+          </Grid>
+        </Border>
+
+        <Border Grid.Row="1" CornerRadius="12" Padding="12" Background="{ThemeResource MatteCardBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1">
+          <ListView x:Name="LogList" SelectionMode="Single" IsItemClickEnabled="True" ItemClick="OnLogItemClick" Background="Transparent" BorderThickness="0"/>
+        </Border>
+      </Grid>
+    </Grid>
+  </Grid>
+</Page>

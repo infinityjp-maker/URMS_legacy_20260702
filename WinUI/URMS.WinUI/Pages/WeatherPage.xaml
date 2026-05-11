@@ -23,7 +23,7 @@
     <Style x:Key="WxLabelStyle" TargetType="TextBlock">
       <Setter Property="FontFamily" Value="{ThemeResource MonoFontFamily}"/>
       <Setter Property="FontSize" Value="10"/>
-      <Setter Property="CharacterSpacing" Value="90"/>
+      <Setter Property="CharacterSpacing" Value="110"/>
       <Setter Property="Foreground" Value="{ThemeResource LabelBrush}"/>
     </Style>
 
@@ -74,7 +74,7 @@
               CornerRadius="18"
               BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
               BorderThickness="1"
-              Background="{ThemeResource MaterialPanelStrongBrush}">
+              Background="{ThemeResource AppBackgroundBrush}">
         <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -95,9 +95,9 @@
                      HorizontalAlignment="Center" Text="NAV" Style="{StaticResource WxLabelStyle}"/>
 
           <StackPanel Grid.Row="1" Margin="8,0,8,0" Spacing="8">
-            <Button Style="{StaticResource WxNavButtonStyle}" Click="OnNavDashboard" ToolTipService.ToolTip="Dashboard">
+            <Button Style="{StaticResource WxNavButtonStyle}" Click="OnNavDashboard" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited" ToolTipService.ToolTip="Dashboard">
               <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE8F1;" FontSize="22" HorizontalAlignment="Center"/>
+                <FontIcon Glyph="&#xE8F1;" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="DASH" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
               </StackPanel>
             </Button>
@@ -106,36 +106,38 @@
               <Rectangle Width="3" RadiusX="1.5" RadiusY="1.5"
                          HorizontalAlignment="Left" Fill="{ThemeResource AccentCyanBrush}"/>
               <Button Style="{StaticResource WxNavButtonStyle}"
+                      PointerEntered="OnNavPointerEntered"
+                      PointerExited="OnNavPointerExited"
                       Background="{ThemeResource SidebarActiveBrush}"
                       BorderBrush="{ThemeResource AccentCyanBrush}">
                 <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                  <FontIcon Glyph="&#xE706;" FontSize="22" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/>
+                  <FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/>
                   <TextBlock Text="WTHR" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
                 </StackPanel>
               </Button>
             </Grid>
 
-            <Button Style="{StaticResource WxNavButtonStyle}" ToolTipService.ToolTip="Systems">
+            <Button Style="{StaticResource WxNavButtonStyle}" Click="OnNavSystem" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited" ToolTipService.ToolTip="Systems">
               <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE7C1;" FontSize="22" HorizontalAlignment="Center"/>
+                <FontIcon Glyph="&#xE7C1;" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="SYS" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
               </StackPanel>
             </Button>
-            <Button Style="{StaticResource WxNavButtonStyle}" ToolTipService.ToolTip="Workflows">
+            <Button Style="{StaticResource WxNavButtonStyle}" Click="OnNavFlow" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited" ToolTipService.ToolTip="Workflows">
               <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE8A5;" FontSize="22" HorizontalAlignment="Center"/>
+                <FontIcon Glyph="&#xE8A5;" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="FLOW" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
               </StackPanel>
             </Button>
-            <Button Style="{StaticResource WxNavButtonStyle}" ToolTipService.ToolTip="Logs">
+            <Button Style="{StaticResource WxNavButtonStyle}" Click="OnNavLog" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited" ToolTipService.ToolTip="Logs">
               <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE9D2;" FontSize="22" HorizontalAlignment="Center"/>
+                <FontIcon Glyph="&#xE9D2;" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="LOG" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
               </StackPanel>
             </Button>
-            <Button Style="{StaticResource WxNavButtonStyle}" ToolTipService.ToolTip="Settings">
+            <Button Style="{StaticResource WxNavButtonStyle}" Click="OnNavSettings" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited" ToolTipService.ToolTip="Settings">
               <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE713;" FontSize="22" HorizontalAlignment="Center"/>
+                <FontIcon Glyph="&#xE713;" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="SET" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
               </StackPanel>
             </Button>
@@ -155,11 +157,12 @@
 
         <Border Grid.Row="0" CornerRadius="16"
                 BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                Background="{ThemeResource MaterialPanelStrongBrush}" Padding="20,0">
+          Background="{ThemeResource MaterialPanelStrongBrush}" Padding="24,0">
           <Grid ColumnSpacing="12">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="Auto"/>
               <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="Auto"/>
               <ColumnDefinition Width="Auto"/>
               <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
@@ -171,8 +174,8 @@
                          Foreground="{ThemeResource HeaderTitleBrush}"/>
             </StackPanel>
 
-            <Border Grid.Column="1" Width="420" Height="36" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12"
-                    BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
+                <Border Grid.Column="1" Width="460" Height="36" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12"
+                  BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource GlassSecondaryBrush}">
               <Grid Margin="10,0">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="Auto"/>
@@ -185,11 +188,16 @@
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
               <ctrl:WeatherAnimation x:Name="WxHeaderAnim" Condition="partly_cloudy" Width="16" Height="16"/>
-              <TextBlock Text="22°C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
-              <TextBlock Text="Tokyo" FontSize="10" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Text="22°C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="9" Foreground="{ThemeResource ValueBrush}"/>
+              <TextBlock Text="Tokyo" FontSize="9" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
 
-            <Button Grid.Column="3" Click="OnNavDashboard" Height="30" VerticalAlignment="Center" CornerRadius="10" Padding="12,0"
+            <Border Grid.Column="3" Height="30" VerticalAlignment="Center" CornerRadius="10"
+                    BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}" Padding="12,0">
+              <TextBlock Text="● Online | Operator" FontSize="10" VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+            </Border>
+
+            <Button Grid.Column="4" Click="OnNavDashboard" Height="30" VerticalAlignment="Center" CornerRadius="10" Padding="12,0"
                     BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}" Foreground="{ThemeResource ValueBrush}">
               <StackPanel Orientation="Horizontal" Spacing="6">
                 <FontIcon Glyph="&#xE72B;"/>
@@ -242,7 +250,7 @@
                                VerticalAlignment="Center" Margin="10,0,0,0" Foreground="{ThemeResource ValueBrush}"/>
                   </Grid>
 
-                  <TextBlock x:Name="TxtMainDesc" Grid.Row="2" Text="Workflow-safe weather state"
+                  <TextBlock x:Name="TxtMainDesc" Grid.Row="2" Text="Current Conditions"
                              FontFamily="{ThemeResource BodyFontFamily}" FontSize="14"
                              Foreground="{ThemeResource LabelBrush}" Margin="0,0,0,8"/>
 
@@ -256,11 +264,11 @@
                       <TextBlock x:Name="TxtUvIndex" Text="4" Foreground="{ThemeResource ValueBrush}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Spacing="8">
-                      <TextBlock Text="HIGH" Style="{StaticResource WxLabelStyle}"/>
+                      <TextBlock Text="↑ HIGH" Style="{StaticResource WxLabelStyle}"/>
                       <TextBlock x:Name="TxtTempHigh" Text="26°C" Foreground="{ThemeResource ValueBrush}"/>
-                      <TextBlock Text="LOW" Style="{StaticResource WxLabelStyle}"/>
+                      <TextBlock Text="↓ LOW" Style="{StaticResource WxLabelStyle}"/>
                       <TextBlock x:Name="TxtTempLow" Text="17°C" Foreground="{ThemeResource ValueBrush}"/>
-                      <TextBlock Text="FEELS" Style="{StaticResource WxLabelStyle}"/>
+                      <TextBlock Text="◎ FEELS" Style="{StaticResource WxLabelStyle}"/>
                       <TextBlock x:Name="TxtFeelsLike" Text="20°C" Foreground="{ThemeResource ValueBrush}"/>
                     </StackPanel>
                   </StackPanel>
@@ -273,7 +281,10 @@
                         PointerEntered="OnCardPointerEntered" PointerExited="OnCardPointerExited">
                   <Grid>
                     <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                    <TextBlock Text="New York" Foreground="{ThemeResource ValueBrush}" FontFamily="{ThemeResource MonoFontFamily}" FontSize="13"/>
+                    <StackPanel>
+                      <TextBlock Text="New York" Foreground="{ThemeResource ValueBrush}" FontFamily="{ThemeResource MonoFontFamily}" FontSize="13"/>
+                      <TextBlock Text="View details" Foreground="{ThemeResource LabelBrush}" Opacity="0.55" FontSize="10"/>
+                    </StackPanel>
                     <TextBlock Grid.Column="1" Text="14°C" Foreground="{ThemeResource AccentCyanBrush}" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="22"/>
                   </Grid>
                 </Button>
@@ -283,7 +294,10 @@
                         PointerEntered="OnCardPointerEntered" PointerExited="OnCardPointerExited">
                   <Grid>
                     <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                    <TextBlock Text="California" Foreground="{ThemeResource ValueBrush}" FontFamily="{ThemeResource MonoFontFamily}" FontSize="13"/>
+                    <StackPanel>
+                      <TextBlock Text="California" Foreground="{ThemeResource ValueBrush}" FontFamily="{ThemeResource MonoFontFamily}" FontSize="13"/>
+                      <TextBlock Text="View details" Foreground="{ThemeResource LabelBrush}" Opacity="0.55" FontSize="10"/>
+                    </StackPanel>
                     <TextBlock Grid.Column="1" Text="26°C" Foreground="{ThemeResource AccentAmberBrush}" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="22"/>
                   </Grid>
                 </Button>
@@ -313,27 +327,27 @@
                     </Button>
                         <Button x:Name="ForecastRow2" Tag="Mon" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
                           BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
-                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Mon" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="21°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="MON" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="21°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
                     </Button>
                         <Button x:Name="ForecastRow3" Tag="Tue" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
                           BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
-                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Tue" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="20°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="TUE" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="20°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
                     </Button>
                         <Button x:Name="ForecastRow4" Tag="Wed" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
                           BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
-                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Wed" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="18°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="WED" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="18°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
                     </Button>
                         <Button x:Name="ForecastRow5" Tag="Thu" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
                           BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
-                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Thu" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="19°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="THU" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="19°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
                     </Button>
                         <Button x:Name="ForecastRow6" Tag="Fri" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
                           BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}" Visibility="Collapsed">
-                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Fri" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="22°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="FRI" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="22°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
                     </Button>
                         <Button x:Name="ForecastRow7" Tag="Sat" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
                           BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}" Visibility="Collapsed">
-                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Sat" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="24°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="SAT" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="24°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
                     </Button>
                   </StackPanel>
                 </Grid>
@@ -353,13 +367,13 @@
                   </Canvas>
                   <StackPanel Grid.Row="2" Spacing="6">
                     <Button Height="40" Tag="Tokyo" Click="OnWorldCityClicked" Style="{StaticResource WxCityButtonStyle}" Background="{ThemeResource SidebarActiveBrush}" BorderBrush="{ThemeResource AccentCyanBrush}">
-                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Tokyo" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="22°C" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource AccentCyanBrush}"/></Grid>
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="● Tokyo" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="22°C" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource AccentCyanBrush}"/></Grid>
                     </Button>
                     <Button Height="40" Tag="Seoul" Click="OnWorldCityClicked" Style="{StaticResource WxCityButtonStyle}">
-                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Seoul" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="19°C" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="● Seoul" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="19°C" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/></Grid>
                     </Button>
                     <Button Height="40" Tag="Singapore" Click="OnWorldCityClicked" Style="{StaticResource WxCityButtonStyle}">
-                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Singapore" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="31°C" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="● Singapore" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="31°C" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/></Grid>
                     </Button>
                   </StackPanel>
                 </Grid>
@@ -390,16 +404,19 @@
                   <ColumnDefinition Width="*"/>
                   <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Sun" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Column="1" Text="Mon" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Column="2" Text="Tue" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Column="3" Text="Wed" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Column="4" Text="Thu" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Column="5" Text="Fri" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Column="6" Text="Sat" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Text="S" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="M" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="2" Text="T" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="3" Text="W" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="4" Text="T" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="5" Text="F" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="6" Text="S" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
               </Grid>
             </Grid>
           </Border>
+
+          <TextBlock x:Name="TxtLastUpdated" Grid.Row="1" Margin="10,8,0,0" HorizontalAlignment="Left"
+                     Text="Last updated: --:--" Style="{StaticResource WxLabelStyle}"/>
         </Grid>
       </Grid>
     </Grid>

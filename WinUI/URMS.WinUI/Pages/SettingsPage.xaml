@@ -6,6 +6,11 @@
     Background="Transparent">
 
   <Page.Resources>
+    <Style x:Key="SettingDescStyle" TargetType="TextBlock">
+      <Setter Property="Foreground" Value="{ThemeResource LabelBrush}"/>
+      <Setter Property="FontSize" Value="11"/>
+    </Style>
+
     <Style x:Key="CatButtonStyle" TargetType="Button">
       <Setter Property="HorizontalAlignment" Value="Stretch"/>
       <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -37,7 +42,7 @@
       </Rectangle.Fill>
     </Rectangle>
 
-    <Grid Margin="34">
+    <Grid Margin="12">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
@@ -63,15 +68,15 @@
           <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" CornerRadius="22" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" Background="{ThemeResource MaterialShellBrush}" Padding="18">
+        <Border Grid.Column="0" CornerRadius="22" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" Background="{ThemeResource MatteCardBrush}" Padding="18">
           <Grid>
             <Rectangle RadiusX="22" RadiusY="22" Fill="{ThemeResource MaterialPanelDepthBrush}"/>
             <Rectangle RadiusX="22" RadiusY="22" Opacity="0.028" Fill="{ThemeResource GlobalNoiseBrush}"/>
             <Rectangle Height="48" Margin="1,1,1,0" VerticalAlignment="Top" RadiusX="21" RadiusY="21" Opacity="0.24" Fill="{ThemeResource MaterialHeroBandBrush}"/>
             <StackPanel Spacing="10" Margin="0">
             <Button x:Name="BtnCatGeneral" Content="GENERAL" Style="{StaticResource CatButtonActiveStyle}" Click="OnCatGeneral"/>
-            <Button x:Name="BtnCatUI" Content="UI" Style="{StaticResource CatButtonStyle}" Click="OnCatUi"/>
-            <Button x:Name="BtnCatSystem" Content="SYSTEM" Style="{StaticResource CatButtonStyle}" Click="OnCatSystem"/>
+            <Button x:Name="BtnCatUI" Content="DISPLAY" Style="{StaticResource CatButtonStyle}" Click="OnCatUi"/>
+            <Button x:Name="BtnCatSystem" Content="NETWORK" Style="{StaticResource CatButtonStyle}" Click="OnCatSystem"/>
             <Button x:Name="BtnCatDeveloper" Content="DEVELOPER" Style="{StaticResource CatButtonStyle}" Click="OnCatDeveloper"/>
             </StackPanel>
           </Grid>
@@ -79,7 +84,7 @@
 
         <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
           <Grid>
-            <Border CornerRadius="24" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" Background="{ThemeResource MaterialShellBrush}" Padding="28">
+            <Border CornerRadius="24" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" Background="{ThemeResource MatteCardBrush}" Padding="28">
               <Grid>
                 <Rectangle RadiusX="24" RadiusY="24" Fill="{ThemeResource MaterialPanelDepthBrush}"/>
                 <Rectangle Height="52" Margin="1,1,1,0" VerticalAlignment="Top" RadiusX="23" RadiusY="23" Opacity="0.22" Fill="{ThemeResource MaterialHeroBandBrush}"/>
@@ -87,10 +92,11 @@
                 <StackPanel Spacing="22">
                   <StackPanel x:Name="PanelGeneral" Spacing="16">
                     <TextBlock Text="General" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="18" CharacterSpacing="20" Foreground="{ThemeResource SectionHeaderBrush}"/>
+                    <TextBlock Text="Core profile and localization." Style="{StaticResource SettingDescStyle}"/>
                     <Grid ColumnSpacing="20">
                       <Grid.ColumnDefinitions><ColumnDefinition Width="260"/><ColumnDefinition Width="260"/></Grid.ColumnDefinitions>
                       <StackPanel Grid.Column="0" Spacing="10">
-                        <TextBlock Text="Theme" Foreground="{ThemeResource LabelBrush}"/>
+                        <TextBlock Text="Theme" Style="{StaticResource SettingDescStyle}"/>
                         <ComboBox x:Name="CmbTheme" SelectionChanged="OnThemeChanged">
                           <ComboBoxItem x:Name="CmbThemeFuturistic" Content="Futuristic"/>
                           <ComboBoxItem x:Name="CmbThemeDark" Content="Dark"/>
@@ -98,7 +104,7 @@
                         </ComboBox>
                       </StackPanel>
                       <StackPanel Grid.Column="1" Spacing="10">
-                        <TextBlock Text="Language" Foreground="{ThemeResource LabelBrush}"/>
+                        <TextBlock Text="Language" Style="{StaticResource SettingDescStyle}"/>
                         <ComboBox x:Name="CmbLanguage" SelectionChanged="OnLanguageChanged">
                           <ComboBoxItem Content="Japanese"/>
                           <ComboBoxItem Content="English"/>
@@ -123,11 +129,12 @@
                   </StackPanel>
 
                   <StackPanel x:Name="PanelUI" Spacing="16" Visibility="Collapsed">
-                    <TextBlock Text="UI" FontFamily="Consolas" FontSize="16" CharacterSpacing="120" Foreground="{ThemeResource SectionHeaderBrush}"/>
+                    <TextBlock Text="Display" FontFamily="Consolas" FontSize="16" CharacterSpacing="120" Foreground="{ThemeResource SectionHeaderBrush}"/>
+                    <TextBlock Text="Visual tuning and motion balance." Style="{StaticResource SettingDescStyle}"/>
                     <Grid ColumnSpacing="20">
                       <Grid.ColumnDefinitions><ColumnDefinition Width="260"/><ColumnDefinition Width="260"/></Grid.ColumnDefinitions>
                       <StackPanel Grid.Column="0" Spacing="10">
-                        <TextBlock Text="Accent" Foreground="{ThemeResource LabelBrush}"/>
+                        <TextBlock Text="Accent" Style="{StaticResource SettingDescStyle}"/>
                         <ComboBox x:Name="CmbAccentColor" SelectionChanged="OnAccentColorChanged">
                           <ComboBoxItem Content="Cyan" Tag="#7FAECC"/>
                           <ComboBoxItem Content="Green" Tag="#7BB89F"/>
@@ -135,7 +142,7 @@
                         </ComboBox>
                       </StackPanel>
                       <StackPanel Grid.Column="1" Spacing="10">
-                        <TextBlock Text="Target FPS" Foreground="{ThemeResource LabelBrush}"/>
+                        <TextBlock Text="Target FPS" Style="{StaticResource SettingDescStyle}"/>
                         <ComboBox x:Name="CmbTargetFps" SelectionChanged="OnTargetFpsChanged">
                           <ComboBoxItem Content="60 fps" Tag="60"/>
                           <ComboBoxItem Content="90 fps" Tag="90"/>
@@ -145,7 +152,7 @@
                     </Grid>
                     <Border Background="{ThemeResource MaterialPanelBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" CornerRadius="14" Padding="16">
                       <StackPanel Spacing="10">
-                        <TextBlock Text="Animation Intensity" Foreground="{ThemeResource LabelBrush}"/>
+                        <TextBlock Text="Animation Intensity" Style="{StaticResource SettingDescStyle}"/>
                         <Slider x:Name="SliderAnimIntensity" Minimum="0" Maximum="2" StepFrequency="0.1" Value="1.0" ValueChanged="OnAnimIntensityChanged"/>
                         <TextBlock x:Name="TxtAnimIntensity" Text="1.0x" Foreground="{ThemeResource ValueBrush}" FontSize="18"/>
                       </StackPanel>
@@ -153,7 +160,8 @@
                   </StackPanel>
 
                   <StackPanel x:Name="PanelSystem" Spacing="16" Visibility="Collapsed">
-                    <TextBlock Text="System" FontFamily="Consolas" FontSize="16" CharacterSpacing="120" Foreground="{ThemeResource SectionHeaderBrush}"/>
+                    <TextBlock Text="Network" FontFamily="Consolas" FontSize="16" CharacterSpacing="120" Foreground="{ThemeResource SectionHeaderBrush}"/>
+                    <TextBlock Text="Connectivity and boot telemetry." Style="{StaticResource SettingDescStyle}"/>
                     <ToggleSwitch x:Name="TogBootAnim" IsOn="True" Toggled="OnBootAnimToggled" Header="Boot animation"/>
                     <Grid ColumnSpacing="20">
                       <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
@@ -165,6 +173,7 @@
 
                   <StackPanel x:Name="PanelDeveloper" Spacing="16" Visibility="Collapsed">
                     <TextBlock Text="Developer" FontFamily="Consolas" FontSize="16" CharacterSpacing="120" Foreground="{ThemeResource SectionHeaderBrush}"/>
+                    <TextBlock Text="Debug and diagnostics controls." Style="{StaticResource SettingDescStyle}"/>
                     <ToggleSwitch x:Name="TogDebugLog" IsOn="False" Toggled="OnDebugLogToggled" Header="Debug log"/>
                     <Border Background="{ThemeResource MaterialPanelBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" CornerRadius="14" Padding="16">
                       <StackPanel Spacing="6">

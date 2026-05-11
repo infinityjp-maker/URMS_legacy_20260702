@@ -63,14 +63,17 @@ namespace URMS.WinUI.Pages
                 case nameof(DashboardViewModel.CpuUsage):
                     GaugeCpu.Value = _vm.CpuUsage;
                     TxtCpuSummary.Text = $"Core utilization: {_vm.CpuUsage:F0}%";
+                    TxtCpuTrend.Text = _vm.CpuUsage >= 75 ? "↑ rising" : (_vm.CpuUsage <= 45 ? "↓ cooling" : "→ stable");
                     break;
                 case nameof(DashboardViewModel.RamUsage):
                     GaugeRam.Value = _vm.RamUsage;
                     TxtRamSummary.Text = $"Memory pressure: {_vm.RamUsage:F0}%";
+                    TxtRamTrend.Text = _vm.RamUsage >= 70 ? "↑ rising" : (_vm.RamUsage <= 40 ? "↓ easing" : "→ stable");
                     break;
                 case nameof(DashboardViewModel.GpuUsage):
                     GaugeGpu.Value = _vm.GpuUsage;
                     TxtGpuSummary.Text = $"Render workload: {_vm.GpuUsage:F0}%";
+                    TxtGpuTrend.Text = _vm.GpuUsage >= 70 ? "↑ spike" : (_vm.GpuUsage <= 35 ? "↓ cooling" : "→ stable");
                     break;
                 case nameof(DashboardViewModel.DiskC):
                     BarDiskC.Value = _vm.DiskC; break;
@@ -100,6 +103,7 @@ namespace URMS.WinUI.Pages
             WxAnim.Condition    = "partly_cloudy";
             TxtWeatherTemp.Text = "22°C";
             TxtWeatherDesc.Text = "Tokyo · Minato";
+            TxtOperatorState.Text = "● Online | On-duty: Takuya";
 
             // 初期表示値（VM が未取得の間のフォールバック）
             GaugeCpu.Value = 0;
@@ -108,6 +112,9 @@ namespace URMS.WinUI.Pages
             TxtCpuSummary.Text = "Core utilization: --";
             TxtRamSummary.Text = "Memory pressure: --";
             TxtGpuSummary.Text = "Render workload: --";
+            TxtCpuTrend.Text = "→ stable";
+            TxtRamTrend.Text = "→ stable";
+            TxtGpuTrend.Text = "→ stable";
 
             BarTaskPct.Value = 62;
 
@@ -117,6 +124,7 @@ namespace URMS.WinUI.Pages
             TxtDiskD.Text    = "—";
             BarDiskNas.Value = 0;
             TxtDiskNas.Text  = "—";
+            TxtDiskNas.Text  = "Not Connected";
 
             TxtOpHealth.Text = "NOMINAL";
             TxtOpAlerts.Text = "0";
@@ -124,10 +132,14 @@ namespace URMS.WinUI.Pages
             TxtOpStateCore.Text = "NORMAL";
             TxtOpStateDeploy.Text = "NORMAL";
             TxtOpStateCache.Text = "NORMAL";
+            TxtOpStateCore.Text = "● NORMAL";
+            TxtOpStateDeploy.Text = "● NORMAL";
+            TxtOpStateCache.Text = "● NORMAL";
             TxtOpStateCore.Foreground = new SolidColorBrush(Color.FromArgb(255, 95, 212, 255));
             TxtOpStateDeploy.Foreground = new SolidColorBrush(Color.FromArgb(255, 95, 212, 255));
             TxtOpStateCache.Foreground = new SolidColorBrush(Color.FromArgb(255, 95, 212, 255));
-            TxtReadinessEta.Text = "ETA: 4h 20m";
+            TxtReadinessEta.Text = "ETA: 4h 28m remaining";
+            TxtHealthStateDot.Foreground = new SolidColorBrush(Color.FromArgb(255, 95, 212, 255));
             OpWorkflowCard.CurrentStep = 0;
         }
 
@@ -153,9 +165,9 @@ namespace URMS.WinUI.Pages
             var coreBlocked = _workflowStep == 5;
             var deployDegraded = _workflowStep >= 4;
 
-            TxtOpStateCore.Text = coreBlocked ? "BLOCKED" : "NORMAL";
-            TxtOpStateDeploy.Text = deployDegraded ? "DEGRADED" : "NORMAL";
-            TxtOpStateCache.Text = "NORMAL";
+            TxtOpStateCore.Text = coreBlocked ? "● BLOCKED" : "● NORMAL";
+            TxtOpStateDeploy.Text = deployDegraded ? "● DEGRADED" : "● NORMAL";
+            TxtOpStateCache.Text = "● NORMAL";
 
             var cyan = new SolidColorBrush(Color.FromArgb(255, 95, 212, 255));
             var amber = new SolidColorBrush(Color.FromArgb(255, 255, 178, 58));
@@ -164,7 +176,8 @@ namespace URMS.WinUI.Pages
             TxtOpStateCore.Foreground = coreBlocked ? red : cyan;
             TxtOpStateDeploy.Foreground = deployDegraded ? amber : cyan;
             TxtOpStateCache.Foreground = cyan;
-            TxtReadinessEta.Text = _workflowStep >= 4 ? "ETA: delayed by dependency" : "ETA: 4h 20m";
+            TxtReadinessEta.Text = _workflowStep >= 4 ? "ETA: delayed by dependency" : "ETA: 4h 28m remaining";
+            TxtHealthStateDot.Foreground = coreBlocked ? red : (deployDegraded ? amber : cyan);
         }
 
         private void StartPageFadeIn()
@@ -173,7 +186,7 @@ namespace URMS.WinUI.Pages
             {
                 From = 0,
                 To = 1,
-                Duration = TimeSpan.FromMilliseconds(400)
+                Duration = TimeSpan.FromMilliseconds(320)
             };
             var storyboard = new Storyboard();
             storyboard.Children.Add(animation);
@@ -189,7 +202,7 @@ namespace URMS.WinUI.Pages
             {
                 From = 1,
                 To = 0,
-                Duration = TimeSpan.FromMilliseconds(400)
+                Duration = TimeSpan.FromMilliseconds(320)
             };
             var storyboard = new Storyboard();
             storyboard.Children.Add(animation);
@@ -275,6 +288,64 @@ namespace URMS.WinUI.Pages
         {
             await FadeOutAsync();
             Frame.Navigate(typeof(WeatherPage));
+        }
+
+        private async void OnNavSystem(object sender, RoutedEventArgs e)
+        {
+            await FadeOutAsync();
+            Frame.Navigate(typeof(SystemOverviewPage));
+        }
+
+        private async void OnNavFlow(object sender, RoutedEventArgs e)
+        {
+            await FadeOutAsync();
+            Frame.Navigate(typeof(FlowPage));
+        }
+
+        private async void OnNavLog(object sender, RoutedEventArgs e)
+        {
+            await FadeOutAsync();
+            Frame.Navigate(typeof(LogPage));
+        }
+
+        private async void OnNavSettings(object sender, RoutedEventArgs e)
+        {
+            await FadeOutAsync();
+            Frame.Navigate(typeof(SettingsPage));
+        }
+
+        private void OnNavPointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            if (sender is not UIElement target)
+                return;
+
+            var animation = new DoubleAnimation
+            {
+                To = 0.86,
+                Duration = TimeSpan.FromMilliseconds(180)
+            };
+            var storyboard = new Storyboard();
+            storyboard.Children.Add(animation);
+            Storyboard.SetTarget(animation, target);
+            Storyboard.SetTargetProperty(animation, "Opacity");
+            storyboard.Begin();
+        }
+
+        private void OnNavPointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            if (sender is not UIElement target)
+                return;
+
+            var animation = new DoubleAnimation
+            {
+                To = 1.0,
+                Duration = TimeSpan.FromMilliseconds(180)
+            };
+            var storyboard = new Storyboard();
+            storyboard.Children.Add(animation);
+            Storyboard.SetTarget(animation, target);
+            Storyboard.SetTargetProperty(animation, "Opacity");
+            storyboard.Begin();
         }
 
         // ── CardWeather tap → WeatherPage ──────────────────────────

@@ -5,8 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Background="Transparent">
 
-  <Grid Height="68" Background="{ThemeResource MaterialPanelStrongBrush}">
-    <Border Margin="12,8,12,0" CornerRadius="16" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MaterialPanelStrongBrush}">
+  <Grid Height="72" Background="{ThemeResource MaterialPanelStrongBrush}">
+    <Border Margin="24,8,24,0" CornerRadius="16" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MaterialPanelStrongBrush}">
       <Grid>
         <Rectangle RadiusX="16" RadiusY="16" Opacity="0.03" Fill="{ThemeResource GlobalNoiseBrush}"/>
         <Rectangle Height="24" VerticalAlignment="Top" Margin="1,1,1,0" RadiusX="15" RadiusY="15" Opacity="0.18">
@@ -26,7 +26,7 @@
         <Rectangle Height="1" VerticalAlignment="Bottom" Margin="20,0,20,10" Fill="{ThemeResource MaterialStrokeSoftBrush}"/>
         <Rectangle Height="1" VerticalAlignment="Top" Margin="20,10,20,0" Fill="{ThemeResource GlassLineBrush}"/>
 
-        <Grid Margin="20,10,20,10">
+        <Grid Margin="24,10,24,10">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>

@@ -23,7 +23,7 @@
         </LinearGradientBrush>
       </Rectangle.Fill>
     </Rectangle>
-    <Rectangle x:Name="NoiseOverlay" Opacity="0.018" Fill="{ThemeResource GlobalNoiseBrush}"/>
+    <Rectangle x:Name="NoiseOverlay" Opacity="0.08" Fill="{ThemeResource GlobalNoiseBrush}"/>
     <Rectangle Opacity="0.17">
       <Rectangle.Fill>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -58,9 +58,9 @@
         <ScaleTransform x:Name="ContentScale" ScaleX="1.0" ScaleY="1.0" CenterX="0" CenterY="0"/>
       </StackPanel.RenderTransform>
 
-      <Border Width="304" Height="304" CornerRadius="20" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" Background="{ThemeResource GlassHeroBrush}">
+      <Border Width="304" Height="304" CornerRadius="20" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" Background="{ThemeResource LiquidGlassBrush}">
         <Grid>
-          <Rectangle RadiusX="20" RadiusY="20" Fill="{ThemeResource GlassHeroBrush}"/>
+          <Rectangle RadiusX="20" RadiusY="20" Fill="{ThemeResource LiquidGlassBrush}"/>
           <Rectangle RadiusX="20" RadiusY="20" Opacity="0.04" Fill="{ThemeResource GlobalNoiseBrush}"/>
           <Rectangle Height="64" Margin="1,1,1,0" VerticalAlignment="Top" RadiusX="19" RadiusY="19" Opacity="0.34" Fill="{ThemeResource MaterialHeroBandBrush}"/>
           <Rectangle RadiusX="20" RadiusY="20" Opacity="0.14" Fill="{ThemeResource MaterialHeroAuraBrush}"/>
@@ -78,7 +78,11 @@
       <TextBlock Text="UNIFIED RESOURCE MANAGEMENT SYSTEM" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="22" FontWeight="SemiBold" CharacterSpacing="80" Foreground="{ThemeResource HeaderTitleBrush}" HorizontalAlignment="Center"/>
       <TextBlock Text="Glass boot shell / cool highlights / restrained luminance" FontFamily="{ThemeResource BodyFontFamily}" FontSize="11" CharacterSpacing="20" Foreground="{ThemeResource HeaderSubtitleBrush}" HorizontalAlignment="Center"/>
       <TextBlock x:Name="BootStatusText" Text="INITIALIZING" FontFamily="{ThemeResource MonoFontFamily}" FontSize="13" FontWeight="SemiBold" CharacterSpacing="160" Foreground="{ThemeResource ValueBrush}" HorizontalAlignment="Center"/>
-      <TextBlock Text="v5.0.0" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+      <TextBlock Text="v8.0.0" FontFamily="{ThemeResource MonoFontFamily}" FontSize="12" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
     </StackPanel>
+
+    <TextBlock Text="Press Ctrl+Q to skip" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+               Margin="0,0,18,14" Opacity="0.46" FontSize="10"
+               FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource LabelBrush}"/>
   </Grid>
 </Page>

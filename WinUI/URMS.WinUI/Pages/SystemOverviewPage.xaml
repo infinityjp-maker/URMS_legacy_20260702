@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="URMS.WinUI.Pages.SystemOverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ctrl="using:URMS.WinUI.Controls"
+    Background="Transparent">
+
+  <Grid x:Name="RootGrid" Padding="12" Opacity="0">
+    <Rectangle Opacity="0.016" Fill="{ThemeResource GlobalNoiseBrush}"/>
+
+    <Grid ColumnSpacing="12">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="84"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <Border Grid.Column="0" CornerRadius="18" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" Background="{ThemeResource AppBackgroundBrush}">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+
+          <Border Width="56" Height="56" Margin="0,14,0,8" CornerRadius="16" HorizontalAlignment="Center" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1" Background="{ThemeResource GlassHeroBrush}">
+            <Image Width="36" Height="36" Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
+          </Border>
+
+          <StackPanel Grid.Row="1" Margin="8,8,8,0" Spacing="8">
+            <Button Click="OnNavDashboard" CornerRadius="14" Height="64" Padding="12,8" Background="Transparent" BorderBrush="Transparent" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited"><StackPanel><FontIcon Glyph="&#xE8F1;" FontSize="20" HorizontalAlignment="Center"/><TextBlock Text="DASH" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+            <Button Click="OnNavWeather" CornerRadius="14" Height="64" Padding="12,8" Background="Transparent" BorderBrush="Transparent" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited"><StackPanel><FontIcon Glyph="&#xE706;" FontSize="20" HorizontalAlignment="Center"/><TextBlock Text="WTHR" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+            <Grid>
+              <Rectangle Width="3" RadiusX="1.5" RadiusY="1.5" HorizontalAlignment="Left" Fill="{ThemeResource AccentCyanBrush}"/>
+              <Button CornerRadius="14" Height="64" Padding="12,8" Background="{ThemeResource SidebarActiveBrush}" BorderBrush="{ThemeResource AccentCyanBrush}"><StackPanel><FontIcon Glyph="&#xE7C1;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/><TextBlock Text="SYS" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+            </Grid>
+            <Button Click="OnNavFlow" CornerRadius="14" Height="64" Padding="12,8" Background="Transparent" BorderBrush="Transparent" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited"><StackPanel><FontIcon Glyph="&#xE8A5;" FontSize="20" HorizontalAlignment="Center"/><TextBlock Text="FLOW" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+            <Button Click="OnNavLog" CornerRadius="14" Height="64" Padding="12,8" Background="Transparent" BorderBrush="Transparent" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited"><StackPanel><FontIcon Glyph="&#xE9D2;" FontSize="20" HorizontalAlignment="Center"/><TextBlock Text="LOG" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+            <Button Click="OnNavSettings" CornerRadius="14" Height="64" Padding="12,8" Background="Transparent" BorderBrush="Transparent" PointerEntered="OnNavPointerEntered" PointerExited="OnNavPointerExited"><StackPanel><FontIcon Glyph="&#xE713;" FontSize="20" HorizontalAlignment="Center"/><TextBlock Text="SET" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" HorizontalAlignment="Center"/></StackPanel></Button>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <Grid Grid.Column="1" RowSpacing="12">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="60"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="220"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" CornerRadius="16" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MaterialPanelStrongBrush}" Padding="24,0">
+          <Grid ColumnSpacing="12">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Center"><TextBlock Text="SYS" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110"/><TextBlock Text="System Overview" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="18" Foreground="{ThemeResource HeaderTitleBrush}"/></StackPanel>
+            <Border Grid.Column="1" Width="460" Height="36" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="12" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource GlassSecondaryBrush}"><Grid Margin="10,0"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE721;" FontSize="18" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="Search servers" Margin="8,0,0,0" VerticalAlignment="Center"/></Grid></Border>
+            <TextBlock Grid.Column="2" Text="● Online" VerticalAlignment="Center" FontSize="10" Foreground="{ThemeResource LabelBrush}"/>
+          </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" ColumnSpacing="14">
+          <Grid.ColumnDefinitions><ColumnDefinition Width="1.2*"/><ColumnDefinition Width="0.8*"/></Grid.ColumnDefinitions>
+
+          <Border Grid.Column="0" CornerRadius="20" Padding="20,18" Background="{ThemeResource GlassHeroBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1">
+            <Border.Shadow><ThemeShadow/></Border.Shadow>
+            <StackPanel Spacing="6">
+              <TextBlock Text="SYSTEM CORE" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Text="98.2" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="56" Foreground="{ThemeResource ValueBrush}"/>
+              <TextBlock Text="Live infrastructure health" FontFamily="{ThemeResource BodyFontFamily}" FontSize="13" Foreground="{ThemeResource LabelBrush}"/>
+            </StackPanel>
+          </Border>
+
+          <Grid Grid.Column="1" RowSpacing="12">
+            <Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+            <Border Grid.Row="0" CornerRadius="16" Padding="12,10" Background="{ThemeResource GlassSecondaryBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"><StackPanel><TextBlock Text="CPU" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110"/><ctrl:AnalogGauge Value="71" Label="" GaugeColor="#5BD0FF" Height="68"/></StackPanel></Border>
+            <Border Grid.Row="1" CornerRadius="16" Padding="12,10" Background="{ThemeResource GlassSecondaryBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"><StackPanel><TextBlock Text="RAM" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110"/><ctrl:AnalogGauge Value="62" Label="" GaugeColor="#2FD0C8" Height="68"/></StackPanel></Border>
+            <Border Grid.Row="2" CornerRadius="16" Padding="12,10" Background="{ThemeResource GlassSecondaryBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"><StackPanel><TextBlock Text="GPU" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110"/><ctrl:AnalogGauge Value="46" Label="" GaugeColor="#738DFF" Height="68"/></StackPanel></Border>
+          </Grid>
+        </Grid>
+
+        <Border Grid.Row="2" CornerRadius="12" Padding="12,10" Background="{ThemeResource MatteCardBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1">
+          <Grid>
+            <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+            <TextBlock Text="SERVER STATUS" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10" CharacterSpacing="110"/>
+            <Grid Grid.Row="1" Margin="0,8,0,0">
+              <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+              <Grid Background="#060C14" Padding="8,6" ColumnSpacing="8"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="90"/><ColumnDefinition Width="120"/></Grid.ColumnDefinitions><TextBlock Text="NODE" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11"/><TextBlock Grid.Column="1" Text="STATE" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center"/><TextBlock Grid.Column="2" Text="LATENCY" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right"/></Grid>
+              <Grid Grid.Row="1" Background="#060C14" Margin="0,1,0,0" Padding="8,6" ColumnSpacing="8"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="90"/><ColumnDefinition Width="120"/></Grid.ColumnDefinitions><TextBlock Text="api-gateway-01" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11"/><TextBlock Grid.Column="1" Text="● UP" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/><TextBlock Grid.Column="2" Text="14ms" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right"/></Grid>
+              <Grid Grid.Row="2" Margin="0,1,0,0" Padding="8,6" ColumnSpacing="8"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="90"/><ColumnDefinition Width="120"/></Grid.ColumnDefinitions><TextBlock Text="workflow-node-04" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11"/><TextBlock Grid.Column="1" Text="● MAINT" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource AccentAmberBrush}" HorizontalAlignment="Center"/><TextBlock Grid.Column="2" Text="--" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right"/></Grid>
+              <Grid Grid.Row="3" Background="#060C14" Margin="0,1,0,0" Padding="8,6" ColumnSpacing="8"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="90"/><ColumnDefinition Width="120"/></Grid.ColumnDefinitions><TextBlock Text="cache-cluster-02" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11"/><TextBlock Grid.Column="1" Text="● DOWN" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource AccentRedBrush}" HorizontalAlignment="Center"/><TextBlock Grid.Column="2" Text="timeout" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right"/></Grid>
+            </Grid>
+          </Grid>
+        </Border>
+      </Grid>
+    </Grid>
+  </Grid>
+</Page>

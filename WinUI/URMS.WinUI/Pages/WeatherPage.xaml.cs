@@ -28,7 +28,7 @@ namespace URMS.WinUI.Pages
         {
             // Static placeholder data — replace with live weather API in future
             TxtMainTemp.Text     = "22\u00B0C";
-            TxtMainDesc.Text     = "Workflow-safe weather state";
+            TxtMainDesc.Text     = "Current Conditions";
             TxtMainLocation.Text = "Tokyo, Minato-ku";
             TxtHumidity.Text     = "68%";
             TxtWind.Text         = "12 km/h";
@@ -38,6 +38,7 @@ namespace URMS.WinUI.Pages
             TxtTempLow.Text      = "17\u00B0C";
             WxMainAnim.Condition = "partly_cloudy";
             WxHeaderAnim.Condition = "partly_cloudy";
+            TxtLastUpdated.Text = $"Last updated: {DateTime.Now:HH:mm}";
         }
 
         private async void OnNavDashboard(object sender, RoutedEventArgs e)
@@ -55,7 +56,7 @@ namespace URMS.WinUI.Pages
             {
                 From = 0,
                 To = 1,
-                Duration = TimeSpan.FromMilliseconds(400)
+                Duration = TimeSpan.FromMilliseconds(320)
             };
             var storyboard = new Storyboard();
             storyboard.Children.Add(animation);
@@ -71,7 +72,7 @@ namespace URMS.WinUI.Pages
             {
                 From = 1,
                 To = 0,
-                Duration = TimeSpan.FromMilliseconds(400)
+                Duration = TimeSpan.FromMilliseconds(320)
             };
             var storyboard = new Storyboard();
             storyboard.Children.Add(animation);
@@ -92,7 +93,7 @@ namespace URMS.WinUI.Pages
                 case "New York":
                     TxtMainLocation.Text = "New York, Manhattan";
                     TxtMainTemp.Text = "14\u00B0C";
-                    TxtMainDesc.Text = "Cold front over city";
+                    TxtMainDesc.Text = "Current Conditions";
                     TxtWind.Text = "18 km/h";
                     TxtHumidity.Text = "59%";
                     TxtUvIndex.Text = "3";
@@ -104,7 +105,7 @@ namespace URMS.WinUI.Pages
                 case "California":
                     TxtMainLocation.Text = "California, San Jose";
                     TxtMainTemp.Text = "26\u00B0C";
-                    TxtMainDesc.Text = "Dry and warm";
+                    TxtMainDesc.Text = "Current Conditions";
                     TxtWind.Text = "10 km/h";
                     TxtHumidity.Text = "42%";
                     TxtUvIndex.Text = "7";
@@ -126,7 +127,7 @@ namespace URMS.WinUI.Pages
                 case "Tokyo":
                     TxtMainLocation.Text = "Tokyo, Minato-ku";
                     TxtMainTemp.Text = "22\u00B0C";
-                    TxtMainDesc.Text = "Workflow-safe weather state";
+                    TxtMainDesc.Text = "Current Conditions";
                     TxtWind.Text = "12 km/h";
                     TxtHumidity.Text = "68%";
                     TxtUvIndex.Text = "4";
@@ -138,7 +139,7 @@ namespace URMS.WinUI.Pages
                 case "Seoul":
                     TxtMainLocation.Text = "Seoul, Yongsan";
                     TxtMainTemp.Text = "19\u00B0C";
-                    TxtMainDesc.Text = "Stable cloud layer";
+                    TxtMainDesc.Text = "Current Conditions";
                     TxtWind.Text = "15 km/h";
                     TxtHumidity.Text = "64%";
                     TxtUvIndex.Text = "3";
@@ -150,7 +151,7 @@ namespace URMS.WinUI.Pages
                 case "Singapore":
                     TxtMainLocation.Text = "Singapore";
                     TxtMainTemp.Text = "31\u00B0C";
-                    TxtMainDesc.Text = "Humid tropical profile";
+                    TxtMainDesc.Text = "Current Conditions";
                     TxtWind.Text = "8 km/h";
                     TxtHumidity.Text = "79%";
                     TxtUvIndex.Text = "8";
@@ -195,7 +196,7 @@ namespace URMS.WinUI.Pages
             var animation = new DoubleAnimation
             {
                 To = 0.86,
-                Duration = TimeSpan.FromMilliseconds(250)
+                Duration = TimeSpan.FromMilliseconds(180)
             };
             var storyboard = new Storyboard();
             storyboard.Children.Add(animation);
@@ -212,7 +213,7 @@ namespace URMS.WinUI.Pages
             var animation = new DoubleAnimation
             {
                 To = 1.0,
-                Duration = TimeSpan.FromMilliseconds(250)
+                Duration = TimeSpan.FromMilliseconds(180)
             };
             var storyboard = new Storyboard();
             storyboard.Children.Add(animation);
@@ -248,5 +249,35 @@ namespace URMS.WinUI.Pages
 
             storyboard.Begin();
         }
+
+        private async void OnNavSystem(object sender, RoutedEventArgs e)
+        {
+            await FadeOutAsync();
+            Frame.Navigate(typeof(SystemOverviewPage));
+        }
+
+        private async void OnNavFlow(object sender, RoutedEventArgs e)
+        {
+            await FadeOutAsync();
+            Frame.Navigate(typeof(FlowPage));
+        }
+
+        private async void OnNavLog(object sender, RoutedEventArgs e)
+        {
+            await FadeOutAsync();
+            Frame.Navigate(typeof(LogPage));
+        }
+
+        private async void OnNavSettings(object sender, RoutedEventArgs e)
+        {
+            await FadeOutAsync();
+            Frame.Navigate(typeof(SettingsPage));
+        }
+
+        private void OnNavPointerEntered(object sender, PointerRoutedEventArgs e)
+            => OnCardPointerEntered(sender, e);
+
+        private void OnNavPointerExited(object sender, PointerRoutedEventArgs e)
+            => OnCardPointerExited(sender, e);
     }
 }
