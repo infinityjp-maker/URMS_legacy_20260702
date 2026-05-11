@@ -1,0 +1,12 @@
+  蠕ｩ蜈・ｯｾ雎｡縺ｮ繝励Ο繧ｸ繧ｧ繧ｯ繝医ｒ豎ｺ螳壹＠縺ｦ縺・∪縺・..
+  蠕ｩ蜈・ｯｾ雎｡縺ｮ縺吶∋縺ｦ縺ｮ繝励Ο繧ｸ繧ｧ繧ｯ繝医・譛譁ｰ縺ｧ縺吶・
+C:\Program Files\dotnet\sdk\10.0.202\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets(308,5): warning NETSDK1206: 繝舌・繧ｸ繝ｧ繝ｳ蝗ｺ譛峨∪縺溘・繝・ぅ繧ｹ繝医Μ繝薙Η繝ｼ繧ｷ繝ｧ繝ｳ蝗ｺ譛峨・繝ｩ繝ｳ繧ｿ繧､繝隴伜挨蟄舌′隕九▽縺九ｊ縺ｾ縺励◆: win10-arm64, win10-x64, win10-x86縲ょｽｱ髻ｿ繧貞女縺代ｋ繝ｩ繧､繝悶Λ繝ｪ: Microsoft.WindowsAppSDK縲・NET 8.0 莉･髯阪〒縺ｯ縲∵里螳壹〒縺ｯ繝舌・繧ｸ繝ｧ繝ｳ蝗ｺ譛峨♀繧医・繝・ぅ繧ｹ繝医Μ繝薙Η繝ｼ繧ｷ繝ｧ繝ｳ蝗ｺ譛峨・繝ｩ繝ｳ繧ｿ繧､繝隴伜挨蟄舌・雉・肇縺ｯ隕九▽縺九ｊ縺ｾ縺帙ｓ縲りｩｳ邏ｰ縺ｫ縺､縺・※縺ｯ縲”ttps://aka.ms/dotnet/rid-usage for details 繧貞盾辣ｧ縺励※縺上□縺輔＞縲・[D:\GitHub\URMS\WinUI\URMS.WinUI\URMS.WinUI.csproj]
+  URMS.WinUI -> D:\GitHub\URMS\WinUI\URMS.WinUI\bin\Debug\net8.0-windows10.0.26100.0\URMS.WinUI.dll
+
+繝薙Ν繝峨↓謌仙粥縺励∪縺励◆縲・
+
+C:\Program Files\dotnet\sdk\10.0.202\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets(308,5): warning NETSDK1206: 繝舌・繧ｸ繝ｧ繝ｳ蝗ｺ譛峨∪縺溘・繝・ぅ繧ｹ繝医Μ繝薙Η繝ｼ繧ｷ繝ｧ繝ｳ蝗ｺ譛峨・繝ｩ繝ｳ繧ｿ繧､繝隴伜挨蟄舌′隕九▽縺九ｊ縺ｾ縺励◆: win10-arm64, win10-x64, win10-x86縲ょｽｱ髻ｿ繧貞女縺代ｋ繝ｩ繧､繝悶Λ繝ｪ: Microsoft.WindowsAppSDK縲・NET 8.0 莉･髯阪〒縺ｯ縲∵里螳壹〒縺ｯ繝舌・繧ｸ繝ｧ繝ｳ蝗ｺ譛峨♀繧医・繝・ぅ繧ｹ繝医Μ繝薙Η繝ｼ繧ｷ繝ｧ繝ｳ蝗ｺ譛峨・繝ｩ繝ｳ繧ｿ繧､繝隴伜挨蟄舌・雉・肇縺ｯ隕九▽縺九ｊ縺ｾ縺帙ｓ縲りｩｳ邏ｰ縺ｫ縺､縺・※縺ｯ縲”ttps://aka.ms/dotnet/rid-usage for details 繧貞盾辣ｧ縺励※縺上□縺輔＞縲・[D:\GitHub\URMS\WinUI\URMS.WinUI\URMS.WinUI.csproj]
+    1 蛟九・隴ｦ蜻・
+    0 繧ｨ繝ｩ繝ｼ
+
+邨碁℃譎る俣 00:00:04.42

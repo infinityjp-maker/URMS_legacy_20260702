@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="URMS.WinUI.Pages.BootHudPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="Transparent"
+    Opacity="1">
+
+  <Grid x:ConnectionId='2' x:Name="BootRoot">
+    <Grid.Background>
+      <RadialGradientBrush Center="0.5,0.42" RadiusX="1.0" RadiusY="0.9">
+        <GradientStop Color="#FF0D1621" Offset="0"/>
+        <GradientStop Color="#FF091019" Offset="0.45"/>
+        <GradientStop Color="#FF03070C" Offset="1"/>
+      </RadialGradientBrush>
+    </Grid.Background>
+
+    <Rectangle VerticalAlignment="Top" Height="320" Opacity="0.19">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+          <GradientStop Color="#6687A5BE" Offset="0"/>
+          <GradientStop Color="#00000000" Offset="1"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Rectangle x:ConnectionId='3' x:Name="NoiseOverlay" Opacity="0.018" Fill="{ThemeResource GlobalNoiseBrush}"/>
+    <Rectangle Opacity="0.17">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+          <GradientStop Color="#286F93B2" Offset="0"/>
+          <GradientStop Color="#00000000" Offset="0.4"/>
+          <GradientStop Color="#1A25364B" Offset="1"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Rectangle Opacity="0.10" IsHitTestVisible="False">
+      <Rectangle.Fill>
+        <RadialGradientBrush Center="0.5,0.5" RadiusX="0.74" RadiusY="0.74">
+          <GradientStop Color="#24D7E8F8" Offset="0.0"/>
+          <GradientStop Color="#08D7E8F8" Offset="0.45"/>
+          <GradientStop Color="#00000000" Offset="1.0"/>
+        </RadialGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Rectangle Opacity="0.06" IsHitTestVisible="False">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+          <GradientStop Color="#1DD4E6F7" Offset="0.0"/>
+          <GradientStop Color="#00000000" Offset="0.48"/>
+          <GradientStop Color="#0C1F2F44" Offset="1.0"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Canvas x:ConnectionId='4' x:Name="BootParticleCanvas" IsHitTestVisible="False"/>
+
+    <StackPanel x:ConnectionId='5' x:Name="BootContentPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="22" Opacity="0">
+      <StackPanel.RenderTransform>
+        <ScaleTransform x:ConnectionId='6' x:Name="ContentScale" ScaleX="1.0" ScaleY="1.0" CenterX="0" CenterY="0"/>
+      </StackPanel.RenderTransform>
+
+      <Border Width="304" Height="304" CornerRadius="32" BorderBrush="{ThemeResource MaterialStrokeBrush}" BorderThickness="1" Background="{ThemeResource MaterialShellBrush}">
+        <Grid>
+          <Rectangle RadiusX="32" RadiusY="32" Fill="{ThemeResource MaterialPanelDepthBrush}"/>
+          <Rectangle RadiusX="32" RadiusY="32" Opacity="0.04" Fill="{ThemeResource GlobalNoiseBrush}"/>
+          <Rectangle Height="64" Margin="1,1,1,0" VerticalAlignment="Top" RadiusX="31" RadiusY="31" Opacity="0.34" Fill="{ThemeResource MaterialHeroBandBrush}"/>
+          <Rectangle RadiusX="32" RadiusY="32" Opacity="0.14" Fill="{ThemeResource MaterialHeroAuraBrush}"/>
+          <Ellipse Width="244" Height="244" Fill="#14304A64"/>
+          <Ellipse x:ConnectionId='8' x:Name="LogoGlowPulse" Width="216" Height="216" Fill="#4B8EC5EA" Opacity="0" IsHitTestVisible="False"/>
+          <Rectangle Width="214" Height="214" RadiusX="34" RadiusY="34" Stroke="{ThemeResource MaterialStrokeBrush}" StrokeThickness="1" Opacity="0.95"/>
+          <Image x:ConnectionId='9' x:Name="UrmsLogo" Width="124" Height="124" Stretch="Uniform" Opacity="0">
+            <Image.Source>
+              <BitmapImage UriSource="ms-appx:///Assets/images/urms_logo.png" DecodePixelWidth="512" DecodePixelHeight="512"/>
+            </Image.Source>
+          </Image>
+        </Grid>
+      </Border>
+
+      <TextBlock Text="UNIFIED RESOURCE MANAGEMENT SYSTEM" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="22" FontWeight="SemiBold" CharacterSpacing="80" Foreground="{ThemeResource HeaderTitleBrush}" HorizontalAlignment="Center"/>
+      <TextBlock Text="Glass boot shell / cool highlights / restrained luminance" FontFamily="{ThemeResource BodyFontFamily}" FontSize="11" CharacterSpacing="20" Foreground="{ThemeResource HeaderSubtitleBrush}" HorizontalAlignment="Center"/>
+      <TextBlock x:ConnectionId='7' x:Name="BootStatusText" Text="INITIALIZING" FontFamily="{ThemeResource MonoFontFamily}" FontSize="13" FontWeight="SemiBold" CharacterSpacing="160" Foreground="{ThemeResource ValueBrush}" HorizontalAlignment="Center"/>
+      <TextBlock Text="v5.0.0" FontFamily="{ThemeResource BodyFontFamily}" FontSize="11" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+    </StackPanel>
+  </Grid>
+</Page>
+

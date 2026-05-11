@@ -1,0 +1,11 @@
+  蠕ｩ蜈・ｯｾ雎｡縺ｮ繝励Ο繧ｸ繧ｧ繧ｯ繝医ｒ豎ｺ螳壹＠縺ｦ縺・∪縺・..
+  蠕ｩ蜈・ｯｾ雎｡縺ｮ縺吶∋縺ｦ縺ｮ繝励Ο繧ｸ繧ｧ繧ｯ繝医・譛譁ｰ縺ｧ縺吶・
+C:\Users\infin\.nuget\packages\microsoft.windowsappsdk\1.5.240227000\buildTransitive\Microsoft.UI.Xaml.Markup.Compiler.interop.targets(590,9): error MSB3073: 繧ｳ繝槭Φ繝・""C:\Users\infin\.nuget\packages\microsoft.windowsappsdk\1.5.240227000\buildTransitive\..\tools\net6.0\..\net472\XamlCompiler.exe" "obj\Debug\net8.0-windows10.0.26100.0\\input.json" "obj\Debug\net8.0-windows10.0.26100.0\\output.json"" 縺ｯ繧ｳ繝ｼ繝・1 縺ｧ邨ゆｺ・＠縺ｾ縺励◆縲・[D:\GitHub\URMS\WinUI\URMS.WinUI\URMS.WinUI.csproj]
+
+繝薙Ν繝峨↓螟ｱ謨励＠縺ｾ縺励◆縲・
+
+C:\Users\infin\.nuget\packages\microsoft.windowsappsdk\1.5.240227000\buildTransitive\Microsoft.UI.Xaml.Markup.Compiler.interop.targets(590,9): error MSB3073: 繧ｳ繝槭Φ繝・""C:\Users\infin\.nuget\packages\microsoft.windowsappsdk\1.5.240227000\buildTransitive\..\tools\net6.0\..\net472\XamlCompiler.exe" "obj\Debug\net8.0-windows10.0.26100.0\\input.json" "obj\Debug\net8.0-windows10.0.26100.0\\output.json"" 縺ｯ繧ｳ繝ｼ繝・1 縺ｧ邨ゆｺ・＠縺ｾ縺励◆縲・[D:\GitHub\URMS\WinUI\URMS.WinUI\URMS.WinUI.csproj]
+    0 蛟九・隴ｦ蜻・
+    1 繧ｨ繝ｩ繝ｼ
+
+邨碁℃譎る俣 00:00:03.29
