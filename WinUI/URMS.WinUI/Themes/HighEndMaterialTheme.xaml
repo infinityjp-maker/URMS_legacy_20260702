@@ -22,8 +22,8 @@
     <SolidColorBrush x:Key="HeaderSubtitleBrush" Color="#99AABD"/>
     
     <!-- TEXT AND LABEL COLORS -->
-    <SolidColorBrush x:Key="LabelBrush" Color="#C7D3E0"/>
-    <SolidColorBrush x:Key="ValueBrush" Color="#F8FBFF"/>
+    <SolidColorBrush x:Key="LabelBrush" Color="#A8B7C8"/>
+    <SolidColorBrush x:Key="ValueBrush" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="CardTitleBrush" Color="#C2D2E8"/>
     
     <!-- HERO ACCENT COLORS (Primary Cards) -->

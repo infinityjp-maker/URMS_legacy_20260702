@@ -205,16 +205,32 @@
           </Grid.ColumnDefinitions>
 
           <Border Grid.Column="0" Style="{StaticResource PrimaryCardStyle}" Tapped="OnCardWeatherTapped">
+            <Border.Shadow>
+              <ThemeShadow/>
+            </Border.Shadow>
             <Grid>
               <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
               </Grid.RowDefinitions>
 
-              <TextBlock Text="SYSTEM" Style="{StaticResource MicroLabelStyle}"/>
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="SYSTEM" Style="{StaticResource MicroLabelStyle}" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" CornerRadius="16" Padding="12,6"
+                        BorderThickness="0" Background="{ThemeResource AccentCyanBrush}" Foreground="#081320"
+                        Click="OnNavWeather">
+                  <StackPanel Orientation="Horizontal" Spacing="5">
+                    <TextBlock Text="Open Weather Layer" FontFamily="{ThemeResource BodyFontFamily}" FontSize="11"/>
+                    <FontIcon Glyph="&#xE76C;" FontSize="11"/>
+                  </StackPanel>
+                </Button>
+              </Grid>
 
-              <Grid Grid.Row="1" Margin="0,10,0,6">
+              <Grid Grid.Row="1" Margin="0,10,0,0">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="*"/>
                   <ColumnDefinition Width="Auto"/>
@@ -225,24 +241,15 @@
                              FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" CharacterSpacing="80"
                              Foreground="{ThemeResource LabelBrush}"/>
                   <TextBlock Text="98.4" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="56" Foreground="{ThemeResource ValueBrush}"/>
-                  <TextBlock Text="All critical systems nominal" FontFamily="{ThemeResource BodyFontFamily}" FontSize="14" Foreground="{ThemeResource LabelBrush}"/>
                 </StackPanel>
-                <Border Grid.Column="1" Width="124" Height="124" CornerRadius="62"
+                <Border Grid.Column="1" Width="140" Height="140" CornerRadius="70" VerticalAlignment="Center"
                         Background="{ThemeResource HeroCyanGlassBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1">
                   <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="2">
-                    <FontIcon Glyph="&#xEC4A;" FontSize="30" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/>
+                    <FontIcon Glyph="&#xEC4A;" FontSize="32" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/>
                     <TextBlock Text="SYSTEM" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Center"/>
                   </StackPanel>
                 </Border>
               </Grid>
-
-              <Button Grid.Row="2" HorizontalAlignment="Left" CornerRadius="18" Padding="14,7"
-                      BorderThickness="0" Background="{ThemeResource AccentCyanBrush}" Foreground="#081320">
-                <StackPanel Orientation="Horizontal" Spacing="6">
-                  <TextBlock Text="Open Weather Layer" FontFamily="{ThemeResource BodyFontFamily}"/>
-                  <FontIcon Glyph="&#xE76C;"/>
-                </StackPanel>
-              </Button>
             </Grid>
           </Border>
 
@@ -286,7 +293,7 @@
           <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource SecondaryCardStyle}">
             <StackPanel Spacing="6">
               <TextBlock Text="CPU" Style="{StaticResource MicroLabelStyle}"/>
-              <ctrl:AnalogGauge x:Name="GaugeCpu" Value="72" Label="" GaugeColor="#4CC3FF" Height="74"/>
+              <ctrl:AnalogGauge x:Name="GaugeCpu" Value="72" Label="" GaugeColor="#4CC3FF" Height="68"/>
               <TextBlock Text="Core utilization" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </Border>
@@ -294,7 +301,7 @@
           <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource SecondaryCardStyle}">
             <StackPanel Spacing="6">
               <TextBlock Text="RAM" Style="{StaticResource MicroLabelStyle}"/>
-              <ctrl:AnalogGauge x:Name="GaugeRam" Value="58" Label="" GaugeColor="#2FD0C8" Height="74"/>
+              <ctrl:AnalogGauge x:Name="GaugeRam" Value="58" Label="" GaugeColor="#2FD0C8" Height="68"/>
               <TextBlock Text="Memory pressure" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </Border>
@@ -302,7 +309,7 @@
           <Border Grid.Row="0" Grid.Column="2" Style="{StaticResource SecondaryCardStyle}">
             <StackPanel Spacing="6">
               <TextBlock Text="GPU" Style="{StaticResource MicroLabelStyle}"/>
-              <ctrl:AnalogGauge x:Name="GaugeGpu" Value="45" Label="" GaugeColor="#6A83FF" Height="74"/>
+              <ctrl:AnalogGauge x:Name="GaugeGpu" Value="45" Label="" GaugeColor="#6A83FF" Height="68"/>
               <TextBlock Text="Render workload" Foreground="{ThemeResource LabelBrush}"/>
             </StackPanel>
           </Border>
@@ -375,7 +382,7 @@
 
               <TextBlock Text="OPERATION" Style="{StaticResource SectionTitleStyle}"/>
 
-              <Grid Grid.Row="1" Margin="0,8,0,0" ColumnSpacing="8" Padding="8,6" Background="#0A1522">
+              <Grid Grid.Row="1" Margin="0,8,0,0" ColumnSpacing="8" Padding="8,5" Background="#060C14">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="*"/>
                   <ColumnDefinition Width="70"/>
@@ -388,51 +395,51 @@
                 <TextBlock Grid.Column="3" Text="UPTIME" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Right"/>
               </Grid>
 
-              <Grid Grid.Row="2" Margin="0,2,0,0" ColumnSpacing="8" Padding="8,6">
+              <Grid Grid.Row="2" Margin="0,1,0,0" ColumnSpacing="8" Padding="8,5">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="*"/>
                   <ColumnDefinition Width="70"/>
                   <ColumnDefinition Width="56"/>
                   <ColumnDefinition Width="76"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Core API" Foreground="{ThemeResource ValueBrush}"/>
-                <TextBlock Grid.Column="1" Text="12,450" HorizontalAlignment="Right" Foreground="{ThemeResource ValueBrush}"/>
-                <TextBlock Grid.Column="2" Text="5" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                <TextBlock Grid.Column="3" Text="99.98%" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
+                <TextBlock Text="Core API" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="1" Text="12,450" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="2" Text="5" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                <TextBlock Grid.Column="3" Text="99.98%" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
               </Grid>
 
-              <Grid Grid.Row="3" Margin="0,2,0,0" ColumnSpacing="8" Padding="8,6" Background="#08121E">
+              <Grid Grid.Row="3" Margin="0,1,0,0" ColumnSpacing="8" Padding="8,5" Background="#060C14">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="*"/>
                   <ColumnDefinition Width="70"/>
                   <ColumnDefinition Width="56"/>
                   <ColumnDefinition Width="76"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Deploy Service" Foreground="{ThemeResource ValueBrush}"/>
-                <TextBlock Grid.Column="1" Text="12,980" HorizontalAlignment="Right" Foreground="{ThemeResource ValueBrush}"/>
-                <TextBlock Grid.Column="2" Text="3" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
-                <TextBlock Grid.Column="3" Text="99.99%" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
+                <TextBlock Text="Deploy Service" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="1" Text="12,980" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="2" Text="3" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                <TextBlock Grid.Column="3" Text="99.99%" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
               </Grid>
 
-              <Grid Grid.Row="4" Margin="0,2,0,0" ColumnSpacing="8" Padding="8,6">
+              <Grid Grid.Row="4" Margin="0,1,0,0" ColumnSpacing="8" Padding="8,5">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="*"/>
                   <ColumnDefinition Width="70"/>
                   <ColumnDefinition Width="56"/>
                   <ColumnDefinition Width="76"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Cache Layer" Foreground="{ThemeResource ValueBrush}"/>
-                <TextBlock Grid.Column="1" Text="8,320" HorizontalAlignment="Right" Foreground="{ThemeResource ValueBrush}"/>
-                <TextBlock Grid.Column="2" Text="0" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
-                <TextBlock Grid.Column="3" Text="99.97%" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
+                <TextBlock Text="Cache Layer" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="1" Text="8,320" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="2" Text="0" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource AccentGreenBrush}"/>
+                <TextBlock Grid.Column="3" Text="99.97%" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
               </Grid>
             </Grid>
           </Border>
 
-          <Border Grid.Column="1" Style="{StaticResource SupportCardStyle}">
+          <Border Grid.Column="1" Style="{StaticResource SecondaryCardStyle}">
             <StackPanel Spacing="8">
               <TextBlock Text="READINESS" Style="{StaticResource SectionTitleStyle}"/>
-              <ProgressBar Value="80" Height="8" Foreground="{ThemeResource AccentCyanBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
+              <ProgressBar Value="80" Height="10" Foreground="{ThemeResource AccentCyanBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
               <TextBlock Text="80% completed" Foreground="{ThemeResource LabelBrush}"/>
               <TextBlock Text="Code Freeze -> Production" Style="{StaticResource MicroLabelStyle}"/>
               <ctrl:WorkflowCard x:Name="OpWorkflowCard" Visibility="Collapsed"/>
