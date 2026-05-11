@@ -22,8 +22,8 @@
     <SolidColorBrush x:Key="HeaderSubtitleBrush" Color="#99AABD"/>
     
     <!-- TEXT AND LABEL COLORS -->
-    <SolidColorBrush x:Key="LabelBrush" Color="#A5B5CC"/>
-    <SolidColorBrush x:Key="ValueBrush" Color="#F5F7FA"/>
+    <SolidColorBrush x:Key="LabelBrush" Color="#AABBCC"/>
+    <SolidColorBrush x:Key="ValueBrush" Color="#EEF2FF"/>
     <SolidColorBrush x:Key="CardTitleBrush" Color="#C2D2E8"/>
     
     <!-- HERO ACCENT COLORS (Primary Cards) -->
@@ -58,6 +58,11 @@
     <SolidColorBrush x:Key="MaterialButtonBrush" Color="#2A213449"/>
     <SolidColorBrush x:Key="MaterialButtonDangerBrush" Color="#2E4E2A31"/>
     <SolidColorBrush x:Key="MaterialButtonDangerStrokeBrush" Color="#588D6670"/>
+    <SolidColorBrush x:Key="GlassHeroBrush" Color="#381A3B60"/>
+    <SolidColorBrush x:Key="GlassSecondaryBrush" Color="#26122A40"/>
+    <SolidColorBrush x:Key="MatteCardBrush" Color="#121D2F"/>
+    <SolidColorBrush x:Key="SidebarActiveBrush" Color="#1A223A57"/>
+    <SolidColorBrush x:Key="HeroCyanGlassBrush" Color="#20376894"/>
     
     <!-- SECTION AND LAYOUT COLORS -->
     <SolidColorBrush x:Key="SectionHeaderBrush" Color="#D6E3F5"/>

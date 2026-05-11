@@ -7,67 +7,70 @@
     Background="Transparent">
 
   <Page.Resources>
-    <!-- Sidebar icon-only button -->
-    <Style x:Key="SidebarIconButtonStyle" TargetType="Button">
+    <Style x:Key="NavButtonStyle" TargetType="Button">
+      <Setter Property="Height" Value="56"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="CornerRadius" Value="14"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Foreground" Value="{ThemeResource LabelBrush}"/>
       <Setter Property="HorizontalAlignment" Value="Stretch"/>
       <Setter Property="HorizontalContentAlignment" Value="Center"/>
       <Setter Property="VerticalContentAlignment" Value="Center"/>
-      <Setter Property="Padding" Value="0,10"/>
-      <Setter Property="Margin" Value="6,0,6,6"/>
-      <Setter Property="BorderThickness" Value="0"/>
-      <Setter Property="CornerRadius" Value="12"/>
-      <Setter Property="Background" Value="Transparent"/>
-      <Setter Property="BorderBrush" Value="Transparent"/>
-      <Setter Property="Foreground" Value="{ThemeResource LabelBrush}"/>
     </Style>
 
-    <!-- Pipeline table header cell -->
-    <Style x:Key="TblHeaderStyle" TargetType="TextBlock">
+    <Style x:Key="SectionTitleStyle" TargetType="TextBlock">
+      <Setter Property="FontFamily" Value="{ThemeResource DisplayFontFamily}"/>
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="Foreground" Value="{ThemeResource HeaderTitleBrush}"/>
+    </Style>
+
+    <Style x:Key="MicroLabelStyle" TargetType="TextBlock">
       <Setter Property="FontFamily" Value="{ThemeResource MonoFontFamily}"/>
-      <Setter Property="FontSize" Value="9"/>
-      <Setter Property="CharacterSpacing" Value="120"/>
+      <Setter Property="FontSize" Value="10"/>
+      <Setter Property="CharacterSpacing" Value="80"/>
       <Setter Property="Foreground" Value="{ThemeResource LabelBrush}"/>
     </Style>
 
-    <!-- Pipeline table data cell -->
-    <Style x:Key="TblCellStyle" TargetType="TextBlock">
-      <Setter Property="FontFamily" Value="{ThemeResource BodyFontFamily}"/>
-      <Setter Property="FontSize" Value="12"/>
-      <Setter Property="Foreground" Value="{ThemeResource ValueBrush}"/>
-      <Setter Property="VerticalAlignment" Value="Center"/>
+    <Style x:Key="PrimaryCardStyle" TargetType="Border">
+      <Setter Property="CornerRadius" Value="20"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="BorderBrush" Value="{ThemeResource MaterialStrokeSoftBrush}"/>
+      <Setter Property="Background" Value="{ThemeResource GlassHeroBrush}"/>
+      <Setter Property="Padding" Value="20,18"/>
     </Style>
 
-    <!-- Activity metric card shell -->
-    <Style x:Key="ActivityCardStyle" TargetType="Border">
+    <Style x:Key="SecondaryCardStyle" TargetType="Border">
       <Setter Property="CornerRadius" Value="16"/>
       <Setter Property="BorderThickness" Value="1"/>
       <Setter Property="BorderBrush" Value="{ThemeResource MaterialStrokeSoftBrush}"/>
-      <Setter Property="Background" Value="#0C1523"/>
+      <Setter Property="Background" Value="{ThemeResource GlassSecondaryBrush}"/>
       <Setter Property="Padding" Value="14,12"/>
     </Style>
 
-    <!-- Panel shell -->
-    <Style x:Key="PanelStyle" TargetType="Border">
-      <Setter Property="CornerRadius" Value="18"/>
+    <Style x:Key="SupportCardStyle" TargetType="Border">
+      <Setter Property="CornerRadius" Value="12"/>
       <Setter Property="BorderThickness" Value="1"/>
       <Setter Property="BorderBrush" Value="{ThemeResource MaterialStrokeSoftBrush}"/>
-      <Setter Property="Background" Value="#0C1523"/>
-      <Setter Property="Padding" Value="16,14"/>
+      <Setter Property="Background" Value="{ThemeResource MatteCardBrush}"/>
+      <Setter Property="Padding" Value="12,10"/>
     </Style>
   </Page.Resources>
 
-  <Grid Padding="10,8,10,8">
-    <Rectangle Opacity="0.018" Fill="{ThemeResource GlobalNoiseBrush}"/>
+  <Grid Padding="12,10,12,10">
+    <Rectangle Opacity="0.016" Fill="{ThemeResource GlobalNoiseBrush}"/>
 
-    <Grid ColumnSpacing="10">
+    <Grid ColumnSpacing="14">
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="62"/>
+        <ColumnDefinition Width="84"/>
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
 
-      <!-- 笊絶武笊・SIDEBAR (62px icon-only) 笊絶武笊・-->
-      <Border Grid.Column="0" CornerRadius="18"
-              BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
+      <Border Grid.Column="0"
+              CornerRadius="18"
+              BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
+              BorderThickness="1"
               Background="{ThemeResource MaterialPanelStrongBrush}">
         <Grid>
           <Grid.RowDefinitions>
@@ -75,590 +78,344 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
-          <!-- Logo -->
-          <Border Margin="10,14,10,10" CornerRadius="12" Width="38" Height="38"
-                  Background="#1A3A6080" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                  HorizontalAlignment="Center">
-            <TextBlock Text="U" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="20"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"
+
+          <Border Width="44" Height="44" Margin="0,14,0,12"
+                  CornerRadius="14"
+                  HorizontalAlignment="Center"
+                  BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
+                  BorderThickness="1"
+                  Background="{ThemeResource GlassSecondaryBrush}">
+            <TextBlock Text="U"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="{ThemeResource DisplayFontFamily}"
+                       FontSize="22"
                        Foreground="{ThemeResource AccentCyanBrush}"/>
           </Border>
-          <!-- Nav icons -->
-          <StackPanel Grid.Row="1" Margin="0,4,0,4">
-            <Button Style="{StaticResource SidebarIconButtonStyle}" Click="OnNavDashboard"
-                    Background="#182A4A" BorderThickness="1" BorderBrush="{ThemeResource AccentCyanBrush}">
-              <FontIcon Glyph="&#xE8F1;" FontSize="18" Foreground="{ThemeResource AccentCyanBrush}"/>
+
+          <StackPanel Grid.Row="1" Margin="8,0,8,0" Spacing="8">
+            <Grid>
+              <Rectangle Width="3" RadiusX="1.5" RadiusY="1.5"
+                         HorizontalAlignment="Left" Fill="{ThemeResource AccentCyanBrush}"/>
+              <Button Style="{StaticResource NavButtonStyle}"
+                      Click="OnNavDashboard"
+                      Background="{ThemeResource SidebarActiveBrush}"
+                      BorderBrush="{ThemeResource AccentCyanBrush}">
+                <FontIcon Glyph="&#xE8F1;" FontSize="22" Foreground="{ThemeResource AccentCyanBrush}"/>
+              </Button>
+            </Grid>
+
+            <Button x:Name="BtnNavWeather" Style="{StaticResource NavButtonStyle}" Click="OnNavWeather" ToolTipService.ToolTip="Weather">
+              <FontIcon Glyph="&#xE706;" FontSize="22"/>
             </Button>
-            <Button x:Name="BtnNavWeather" Style="{StaticResource SidebarIconButtonStyle}" Click="OnNavWeather">
-              <FontIcon Glyph="&#xE706;" FontSize="18"/>
+            <Button Style="{StaticResource NavButtonStyle}" ToolTipService.ToolTip="Systems">
+              <FontIcon Glyph="&#xE7C1;" FontSize="22"/>
             </Button>
-            <Button Style="{StaticResource SidebarIconButtonStyle}">
-              <FontIcon Glyph="&#xE9CE;" FontSize="18"/>
+            <Button Style="{StaticResource NavButtonStyle}" ToolTipService.ToolTip="Workflows">
+              <FontIcon Glyph="&#xE8A5;" FontSize="22"/>
             </Button>
-            <Button Style="{StaticResource SidebarIconButtonStyle}">
-              <FontIcon Glyph="&#xE7C1;" FontSize="18"/>
+            <Button Style="{StaticResource NavButtonStyle}" ToolTipService.ToolTip="Logs">
+              <FontIcon Glyph="&#xE9D2;" FontSize="22"/>
             </Button>
-            <Button Style="{StaticResource SidebarIconButtonStyle}">
-              <FontIcon Glyph="&#xE7BA;" FontSize="18"/>
-            </Button>
-            <Button Style="{StaticResource SidebarIconButtonStyle}">
-              <FontIcon Glyph="&#xE713;" FontSize="18"/>
+            <Button Style="{StaticResource NavButtonStyle}" ToolTipService.ToolTip="Settings">
+              <FontIcon Glyph="&#xE713;" FontSize="22"/>
             </Button>
           </StackPanel>
-          <!-- Session + profile -->
-          <StackPanel Grid.Row="2" Margin="0,0,0,14" HorizontalAlignment="Center" Spacing="4">
-            <FontIcon Glyph="&#xE77B;" FontSize="20" Foreground="{ThemeResource LabelBrush}"
-                      HorizontalAlignment="Center"/>
-            <TextBlock x:Name="TxtSessionId" Text="---" FontFamily="{ThemeResource MonoFontFamily}"
-                       FontSize="9" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+
+          <StackPanel Grid.Row="2" Margin="0,0,0,14" Spacing="4" HorizontalAlignment="Center">
+            <FontIcon Glyph="&#xE77B;" FontSize="20" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="TxtSessionId" Text="---" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Center"/>
           </StackPanel>
         </Grid>
       </Border>
 
-      <!-- 笊絶武笊・MAIN CONTENT 笊絶武笊・-->
       <Grid Grid.Column="1">
         <Grid.RowDefinitions>
-          <RowDefinition Height="44"/>    <!-- Header -->
-          <RowDefinition Height="10"/>
-          <RowDefinition Height="*"/>     <!-- Body -->
+          <RowDefinition Height="54"/>
+          <RowDefinition Height="12"/>
+          <RowDefinition Height="226"/>
+          <RowDefinition Height="14"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="14"/>
+          <RowDefinition Height="196"/>
         </Grid.RowDefinitions>
 
-        <!-- 笏笏 Header bar 笏笏 -->
         <Border Grid.Row="0" CornerRadius="14"
                 BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                Background="#0C1523" Padding="16,0">
-          <Grid ColumnSpacing="12">
+                Background="{ThemeResource GlassSecondaryBrush}" Padding="16,0">
+          <Grid ColumnSpacing="14">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="Auto"/>
               <ColumnDefinition Width="*"/>
               <ColumnDefinition Width="Auto"/>
               <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="DASHBOARD" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="20"
-                       VerticalAlignment="Center" Foreground="{ThemeResource HeaderTitleBrush}"/>
-            <Border Grid.Column="1" CornerRadius="8" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
-                    BorderThickness="1" Background="#0A1828" Padding="10,0" VerticalAlignment="Center" Height="28">
-              <TextBlock Text="Search system, logs, workflow..." Foreground="{ThemeResource LabelBrush}"
-                         FontSize="12" VerticalAlignment="Center"/>
+
+            <TextBlock Text="DASHBOARD"
+                       VerticalAlignment="Center"
+                       FontFamily="{ThemeResource DisplayFontFamily}"
+                       FontSize="22"
+                       Foreground="{ThemeResource HeaderTitleBrush}"/>
+
+            <Border Grid.Column="1" Height="34" VerticalAlignment="Center"
+                    CornerRadius="10"
+                    BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
+                    Background="{ThemeResource MatteCardBrush}">
+              <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <FontIcon Glyph="&#xE721;" Foreground="{ThemeResource LabelBrush}" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="Search systems, pipelines, incidents" Margin="8,0,0,0"
+                           VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+              </Grid>
             </Border>
-            <!-- Weather mini widget -->
+
             <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
               <ctrl:WeatherAnimation x:Name="WxAnim" Condition="partly_cloudy" Width="22" Height="22"/>
-              <TextBlock x:Name="TxtWeatherTemp" Text="22C" FontFamily="{ThemeResource DisplayFontFamily}"
-                         FontSize="16" Foreground="{ThemeResource ValueBrush}" VerticalAlignment="Center"/>
-              <TextBlock x:Name="TxtWeatherDesc" Text="Tokyo" Foreground="{ThemeResource LabelBrush}"
-                         FontSize="11" VerticalAlignment="Center"/>
+              <TextBlock x:Name="TxtWeatherTemp" Text="22C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16" Foreground="{ThemeResource ValueBrush}"/>
+              <TextBlock x:Name="TxtWeatherDesc" Text="Tokyo" Foreground="{ThemeResource LabelBrush}" FontSize="11"/>
               <TextBlock x:Name="TxtCardWeather" Text="" Visibility="Collapsed"/>
             </StackPanel>
-            <Border Grid.Column="3" CornerRadius="8" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
-                    BorderThickness="1" Background="#0A1828" Padding="10,0" Height="28" VerticalAlignment="Center">
-              <TextBlock Text="Operator: Takuya" Foreground="{ThemeResource ValueBrush}" FontSize="12"
-                         VerticalAlignment="Center"/>
+
+            <Border Grid.Column="3" Height="32" VerticalAlignment="Center"
+                    CornerRadius="10" BorderThickness="1"
+                    BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
+                    Background="{ThemeResource MatteCardBrush}" Padding="12,0">
+              <TextBlock Text="Operator: Takuya" VerticalAlignment="Center" Foreground="{ThemeResource ValueBrush}"/>
             </Border>
           </Grid>
         </Border>
 
-        <!-- 笏笏 Body: Hero(260px) + Right panels 笏笏 -->
-        <Grid Grid.Row="2" ColumnSpacing="10">
+        <Grid Grid.Row="2" ColumnSpacing="14">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="258"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.32*"/>
+            <ColumnDefinition Width="0.86*"/>
           </Grid.ColumnDefinitions>
 
-          <!-- 笊絶武笊・HERO PANEL 笊絶武笊・-->
-          <Border Grid.Column="0" CornerRadius="20"
-              BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1">
-            <Border.Background>
-              <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#0D1C35" Offset="0"/>
-                <GradientStop Color="#0A1422" Offset="1"/>
-              </LinearGradientBrush>
-            </Border.Background>
-            <Grid Padding="18,18,18,16">
+          <Border Grid.Column="0" Style="{StaticResource PrimaryCardStyle}" Tapped="OnCardWeatherTapped">
+            <Grid>
               <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
               </Grid.RowDefinitions>
-              <!-- Visual + Title + Desc + Button -->
-              <StackPanel Spacing="0" VerticalAlignment="Center">
-                <!-- Glow sphere visual -->
-                <Grid Width="110" Height="110" HorizontalAlignment="Center" Margin="0,0,0,16">
-                  <Ellipse Width="110" Height="110">
-                    <Ellipse.Fill>
-                      <RadialGradientBrush>
-                        <GradientStop Color="#604CC3FF" Offset="0"/>
-                        <GradientStop Color="#202FD0C8" Offset="0.5"/>
-                        <GradientStop Color="#00000000" Offset="1"/>
-                      </RadialGradientBrush>
-                    </Ellipse.Fill>
-                  </Ellipse>
-                  <Ellipse Width="76" Height="76">
-                    <Ellipse.Fill>
-                      <RadialGradientBrush>
-                        <GradientStop Color="#804CC3FF" Offset="0"/>
-                        <GradientStop Color="#303A8FD0" Offset="0.6"/>
-                        <GradientStop Color="#00000000" Offset="1"/>
-                      </RadialGradientBrush>
-                    </Ellipse.Fill>
-                  </Ellipse>
-                  <FontIcon Glyph="&#xE9CE;" FontSize="42"
-                            HorizontalAlignment="Center" VerticalAlignment="Center"
-                            Foreground="{ThemeResource AccentCyanBrush}"/>
-                </Grid>
-                <TextBlock Text="Unlimited Access to" FontFamily="{ThemeResource DisplayFontFamily}"
-                           FontSize="16" Foreground="{ThemeResource LabelBrush}"
-                           HorizontalAlignment="Center" Margin="0,0,0,2"/>
-                <TextBlock Text="URMS Control" FontFamily="{ThemeResource DisplayFontFamily}"
-                           FontSize="22" Foreground="{ThemeResource HeaderTitleBrush}" TextWrapping="Wrap"
-                           HorizontalAlignment="Center" TextAlignment="Center" Margin="0,0,0,10"/>
-                <TextBlock Text="Intelligent monitoring, automated deployment, and unified resource management."
-                           FontFamily="{ThemeResource BodyFontFamily}" FontSize="11.5"
-                           Foreground="{ThemeResource HeroSubBrush}" TextWrapping="Wrap"
-                           HorizontalAlignment="Center" TextAlignment="Center" Margin="0,0,0,16"/>
-                <Button HorizontalAlignment="Center" CornerRadius="20" Padding="20,8"
-                        Background="{ThemeResource AccentCyanBrush}" BorderThickness="0">
-                  <StackPanel Orientation="Horizontal" Spacing="6">
-                    <TextBlock Text="Open Console" FontSize="12" Foreground="#0A1828"
-                               FontFamily="{ThemeResource BodyFontFamily}"/>
-                    <FontIcon Glyph="&#xE76C;" FontSize="11" Foreground="#0A1828"/>
-                  </StackPanel>
-                </Button>
-              </StackPanel>
-              <!-- CPU / RAM / GPU gauges at bottom -->
-              <Grid Grid.Row="1" ColumnSpacing="8" Margin="0,14,0,0">
+
+              <TextBlock Text="SYSTEM" Style="{StaticResource MicroLabelStyle}"/>
+
+              <Grid Grid.Row="1" Margin="0,10,0,6">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="*"/>
-                  <ColumnDefinition Width="*"/>
-                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <ctrl:AnalogGauge x:Name="GaugeCpu" Grid.Column="0" Value="72" Label="CPU"
-                                  GaugeColor="#4CC3FF" Height="64"/>
-                <ctrl:AnalogGauge x:Name="GaugeRam" Grid.Column="1" Value="58" Label="RAM"
-                                  GaugeColor="#2FD0C8" Height="64"/>
-                <ctrl:AnalogGauge x:Name="GaugeGpu" Grid.Column="2" Value="45" Label="GPU"
-                                  GaugeColor="#6A83FF" Height="64"/>
+                <StackPanel Spacing="4" VerticalAlignment="Center">
+                  <TextBlock Text="Unified Operations" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="26" Foreground="{ThemeResource HeaderTitleBrush}"/>
+                  <TextBlock x:Name="TxtCardSchedule" Text="Workflow health"
+                             FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" CharacterSpacing="80"
+                             Foreground="{ThemeResource LabelBrush}"/>
+                  <TextBlock Text="98.4" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="56" Foreground="{ThemeResource ValueBrush}"/>
+                  <TextBlock Text="All critical systems nominal" FontFamily="{ThemeResource BodyFontFamily}" FontSize="14" Foreground="{ThemeResource LabelBrush}"/>
+                </StackPanel>
+                <Border Grid.Column="1" Width="124" Height="124" CornerRadius="62"
+                        Background="{ThemeResource HeroCyanGlassBrush}" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1">
+                  <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="2">
+                    <FontIcon Glyph="&#xEC4A;" FontSize="30" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="SYSTEM" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Center"/>
+                  </StackPanel>
+                </Border>
+              </Grid>
+
+              <Button Grid.Row="2" HorizontalAlignment="Left" CornerRadius="18" Padding="14,7"
+                      BorderThickness="0" Background="{ThemeResource AccentCyanBrush}" Foreground="#081320">
+                <StackPanel Orientation="Horizontal" Spacing="6">
+                  <TextBlock Text="Open Weather Layer" FontFamily="{ThemeResource BodyFontFamily}"/>
+                  <FontIcon Glyph="&#xE76C;"/>
+                </StackPanel>
+              </Button>
+            </Grid>
+          </Border>
+
+          <Border Grid.Column="1" Style="{StaticResource SecondaryCardStyle}">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+
+              <TextBlock Text="System Health Score" Style="{StaticResource SectionTitleStyle}"/>
+
+              <StackPanel Grid.Row="1" Margin="0,10,0,0" Spacing="4" VerticalAlignment="Center">
+                <TextBlock Text="98.4" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="48" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock x:Name="TxtOpHealth" Text="NOMINAL" FontFamily="{ThemeResource MonoFontFamily}" FontSize="12" Foreground="{ThemeResource AccentCyanBrush}"/>
+                <TextBlock x:Name="TxtOpAlerts" Text="Alerts: 0" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource LabelBrush}"/>
+                <TextBlock x:Name="TxtOpTasks" Text="Running Tasks: 2" FontFamily="{ThemeResource MonoFontFamily}" FontSize="11" Foreground="{ThemeResource LabelBrush}"/>
+              </StackPanel>
+
+              <Border Grid.Row="2" CornerRadius="10" Padding="8,6"
+                      BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
+                      Background="{ThemeResource MatteCardBrush}">
+                <TextBlock Text="Target reliability: 95.0" Style="{StaticResource MicroLabelStyle}"/>
+              </Border>
+            </Grid>
+          </Border>
+        </Grid>
+
+        <Grid Grid.Row="4" ColumnSpacing="10" RowSpacing="10">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+
+          <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource SecondaryCardStyle}">
+            <StackPanel Spacing="6">
+              <TextBlock Text="CPU" Style="{StaticResource MicroLabelStyle}"/>
+              <ctrl:AnalogGauge x:Name="GaugeCpu" Value="72" Label="" GaugeColor="#4CC3FF" Height="74"/>
+              <TextBlock Text="Core utilization" Foreground="{ThemeResource LabelBrush}"/>
+            </StackPanel>
+          </Border>
+
+          <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource SecondaryCardStyle}">
+            <StackPanel Spacing="6">
+              <TextBlock Text="RAM" Style="{StaticResource MicroLabelStyle}"/>
+              <ctrl:AnalogGauge x:Name="GaugeRam" Value="58" Label="" GaugeColor="#2FD0C8" Height="74"/>
+              <TextBlock Text="Memory pressure" Foreground="{ThemeResource LabelBrush}"/>
+            </StackPanel>
+          </Border>
+
+          <Border Grid.Row="0" Grid.Column="2" Style="{StaticResource SecondaryCardStyle}">
+            <StackPanel Spacing="6">
+              <TextBlock Text="GPU" Style="{StaticResource MicroLabelStyle}"/>
+              <ctrl:AnalogGauge x:Name="GaugeGpu" Value="45" Label="" GaugeColor="#6A83FF" Height="74"/>
+              <TextBlock Text="Render workload" Foreground="{ThemeResource LabelBrush}"/>
+            </StackPanel>
+          </Border>
+
+          <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource SecondaryCardStyle}">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
+              <TextBlock Text="NETWORK" Style="{StaticResource MicroLabelStyle}"/>
+              <Canvas Grid.Row="1" x:Name="NetWaveCanvas" Height="56" Margin="0,8,0,0"/>
+            </Grid>
+          </Border>
+
+          <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource SecondaryCardStyle}">
+            <StackPanel Spacing="8">
+              <TextBlock x:Name="TxtCardTask" Text="TASK QUEUE" Style="{StaticResource MicroLabelStyle}"/>
+              <TextBlock Text="850" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="36" Foreground="{ThemeResource ValueBrush}"/>
+              <ProgressBar x:Name="BarTaskPct" Value="62" Height="8"
+                           Foreground="{ThemeResource AccentCyanBrush}"
+                           Background="{ThemeResource ProgressTrackBrush}"/>
+              <TextBlock Text="On track for release" Foreground="{ThemeResource LabelBrush}"/>
+            </StackPanel>
+          </Border>
+
+          <Border Grid.Row="1" Grid.Column="2" Style="{StaticResource SecondaryCardStyle}">
+            <StackPanel Spacing="8">
+              <TextBlock Text="STORAGE" Style="{StaticResource MicroLabelStyle}"/>
+
+              <Grid ColumnSpacing="6">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="30"/><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/></Grid.ColumnDefinitions>
+                <TextBlock Text="C:" VerticalAlignment="Center" Foreground="{ThemeResource ValueBrush}" FontSize="11"/>
+                <ProgressBar Grid.Column="1" x:Name="BarDiskC" Height="6" Foreground="{ThemeResource AccentCyanBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
+                <TextBlock Grid.Column="2" x:Name="TxtDiskC" Text="--" HorizontalAlignment="Right" Foreground="{ThemeResource LabelBrush}" FontSize="10"/>
+              </Grid>
+
+              <Grid ColumnSpacing="6">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="30"/><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/></Grid.ColumnDefinitions>
+                <TextBlock Text="D:" VerticalAlignment="Center" Foreground="{ThemeResource ValueBrush}" FontSize="11"/>
+                <ProgressBar Grid.Column="1" x:Name="BarDiskD" Height="6" Foreground="{ThemeResource AccentTealBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
+                <TextBlock Grid.Column="2" x:Name="TxtDiskD" Text="--" HorizontalAlignment="Right" Foreground="{ThemeResource LabelBrush}" FontSize="10"/>
+              </Grid>
+
+              <Grid ColumnSpacing="6">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="30"/><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/></Grid.ColumnDefinitions>
+                <TextBlock Text="NAS" VerticalAlignment="Center" Foreground="{ThemeResource ValueBrush}" FontSize="11"/>
+                <ProgressBar Grid.Column="1" x:Name="BarDiskNas" Height="6" Foreground="{ThemeResource AccentPurpleBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
+                <TextBlock Grid.Column="2" x:Name="TxtDiskNas" Text="--" HorizontalAlignment="Right" Foreground="{ThemeResource LabelBrush}" FontSize="10"/>
+              </Grid>
+            </StackPanel>
+          </Border>
+        </Grid>
+
+        <Grid Grid.Row="6" ColumnSpacing="10">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="0.7*"/>
+          </Grid.ColumnDefinitions>
+
+          <Border Grid.Column="0" Style="{StaticResource SupportCardStyle}">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+
+              <TextBlock Text="OPERATION" Style="{StaticResource SectionTitleStyle}"/>
+
+              <Grid Grid.Row="1" Margin="0,8,0,0" ColumnSpacing="8" Padding="8,6" Background="#0A1522">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="70"/>
+                  <ColumnDefinition Width="56"/>
+                  <ColumnDefinition Width="76"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="PIPELINE" Style="{StaticResource MicroLabelStyle}"/>
+                <TextBlock Grid.Column="1" Text="RUNS" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Right"/>
+                <TextBlock Grid.Column="2" Text="ERR" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="3" Text="UPTIME" Style="{StaticResource MicroLabelStyle}" HorizontalAlignment="Right"/>
+              </Grid>
+
+              <Grid Grid.Row="2" Margin="0,2,0,0" ColumnSpacing="8" Padding="8,6">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="70"/>
+                  <ColumnDefinition Width="56"/>
+                  <ColumnDefinition Width="76"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Core API" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="1" Text="12,450" HorizontalAlignment="Right" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="2" Text="5" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                <TextBlock Grid.Column="3" Text="99.98%" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
+              </Grid>
+
+              <Grid Grid.Row="3" Margin="0,2,0,0" ColumnSpacing="8" Padding="8,6" Background="#08121E">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="70"/>
+                  <ColumnDefinition Width="56"/>
+                  <ColumnDefinition Width="76"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Deploy Service" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="1" Text="12,980" HorizontalAlignment="Right" Foreground="{ThemeResource ValueBrush}"/>
+                <TextBlock Grid.Column="2" Text="3" HorizontalAlignment="Center" Foreground="{ThemeResource LabelBrush}"/>
+                <TextBlock Grid.Column="3" Text="99.99%" HorizontalAlignment="Right" Foreground="{ThemeResource AccentCyanBrush}"/>
               </Grid>
             </Grid>
           </Border>
 
-          <!-- 笊絶武笊・RIGHT PANELS 笊絶武笊・-->
-          <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-              <RowDefinition Height="148"/>   <!-- System Activity -->
-              <RowDefinition Height="10"/>
-              <RowDefinition Height="48"/>    <!-- Stats strip -->
-              <RowDefinition Height="10"/>
-              <RowDefinition Height="*"/>     <!-- Pipeline + Score -->
-            </Grid.RowDefinitions>
-
-            <!-- 笏笏 System Activity (3 sparkline cards) 笏笏 -->
-            <Border Grid.Row="0" Style="{StaticResource PanelStyle}">
-              <Grid>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="Auto"/>
-                  <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <!-- Section header -->
-                <Grid Grid.Row="0" Margin="0,0,0,10">
-                  <TextBlock Text="System Activity" FontFamily="{ThemeResource DisplayFontFamily}"
-                             FontSize="14" Foreground="{ThemeResource HeaderTitleBrush}"/>
-                  <Border HorizontalAlignment="Right" CornerRadius="6" Padding="8,3"
-                          Background="#1A2A3A">
-                    <TextBlock Text="Today" FontFamily="{ThemeResource MonoFontFamily}" FontSize="10"
-                               Foreground="{ThemeResource LabelBrush}"/>
-                  </Border>
-                </Grid>
-                <!-- 3 metric cards -->
-                <Grid Grid.Row="1" ColumnSpacing="10">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                  </Grid.ColumnDefinitions>
-                  <!-- WORKFLOW RUNS (NetWaveCanvas sparkline) -->
-                  <Border Grid.Column="0" Style="{StaticResource ActivityCardStyle}">
-                    <Grid>
-                      <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                      </Grid.RowDefinitions>
-                      <TextBlock Grid.Row="0" Text="WORKFLOW RUNS" Style="{StaticResource TblHeaderStyle}"
-                                 Margin="0,0,0,4"/>
-                      <Canvas Grid.Row="1" x:Name="NetWaveCanvas"/>
-                      <TextBlock Grid.Row="2" x:Name="TxtCardSchedule" Text="8,835"
-                                 FontFamily="{ThemeResource DisplayFontFamily}" FontSize="28"
-                                 Foreground="{ThemeResource ValueBrush}" Margin="0,4,0,2"/>
-                      <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="12">
-                        <StackPanel>
-                          <TextBlock Text="Goal" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="9" Foreground="{ThemeResource LabelBrush}"/>
-                          <TextBlock Text="8,000" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
-                        </StackPanel>
-                        <StackPanel>
-                          <TextBlock Text="Average" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="9" Foreground="{ThemeResource LabelBrush}"/>
-                          <TextBlock Text="9,450" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
-                        </StackPanel>
-                      </StackPanel>
-                    </Grid>
-                  </Border>
-                  <!-- DEPLOY TIME (static sparkline) -->
-                  <Border Grid.Column="1" Style="{StaticResource ActivityCardStyle}">
-                    <Grid>
-                      <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                      </Grid.RowDefinitions>
-                      <TextBlock Grid.Row="0" Text="DEPLOY TIME" Style="{StaticResource TblHeaderStyle}"
-                                 Margin="0,0,0,4"/>
-                      <!-- static sparkline decoration -->
-                      <Canvas Grid.Row="1">
-                        <Path Data="M 0,30 L 16,22 L 32,28 L 48,14 L 64,20 L 80,10 L 96,16 L 112,8 L 128,14 L 144,8 L 160,18"
-                              Stroke="#302FD0C8" StrokeThickness="5" StrokeLineJoin="Round" Fill="Transparent"/>
-                        <Path Data="M 0,30 L 16,22 L 32,28 L 48,14 L 64,20 L 80,10 L 96,16 L 112,8 L 128,14 L 144,8 L 160,18"
-                              Stroke="#A02FD0C8" StrokeThickness="1.5" StrokeLineJoin="Round" Fill="Transparent"/>
-                      </Canvas>
-                      <TextBlock Grid.Row="2" Text="1h 48m" FontFamily="{ThemeResource DisplayFontFamily}"
-                                 FontSize="28" Foreground="{ThemeResource ValueBrush}" Margin="0,4,0,2"/>
-                      <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="12">
-                        <StackPanel>
-                          <TextBlock Text="Goal" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="9" Foreground="{ThemeResource LabelBrush}"/>
-                          <TextBlock Text="1h 30m" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
-                        </StackPanel>
-                        <StackPanel>
-                          <TextBlock Text="Average" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="9" Foreground="{ThemeResource LabelBrush}"/>
-                          <TextBlock Text="1h 17m" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
-                        </StackPanel>
-                      </StackPanel>
-                    </Grid>
-                  </Border>
-                  <!-- TASKS DONE (BarTaskPct) -->
-                  <Border Grid.Column="2" Style="{StaticResource ActivityCardStyle}">
-                    <Grid>
-                      <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                      </Grid.RowDefinitions>
-                      <TextBlock Grid.Row="0" x:Name="TxtCardTask" Text="TASKS DONE"
-                                 Style="{StaticResource TblHeaderStyle}" Margin="0,0,0,4"/>
-                      <!-- task progress as sparkline -->
-                      <Grid Grid.Row="1" VerticalAlignment="Center">
-                        <ProgressBar x:Name="BarTaskPct" Value="62" Height="6" Margin="0,17,0,0"
-                                     Foreground="{ThemeResource AccentCyanBrush}"
-                                     Background="{ThemeResource ProgressTrackBrush}"/>
-                      </Grid>
-                      <TextBlock Grid.Row="2" Text="850" FontFamily="{ThemeResource DisplayFontFamily}"
-                                 FontSize="28" Foreground="{ThemeResource ValueBrush}" Margin="0,4,0,2"/>
-                      <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="12">
-                        <StackPanel>
-                          <TextBlock Text="Goal" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="9" Foreground="{ThemeResource LabelBrush}"/>
-                          <TextBlock Text="600" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
-                        </StackPanel>
-                        <StackPanel>
-                          <TextBlock Text="Average" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="9" Foreground="{ThemeResource LabelBrush}"/>
-                          <TextBlock Text="748" FontFamily="{ThemeResource MonoFontFamily}"
-                                     FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
-                        </StackPanel>
-                      </StackPanel>
-                    </Grid>
-                  </Border>
-                </Grid>
-              </Grid>
-            </Border>
-
-            <!-- 笏笏 Stats strip 笏笏 -->
-            <Border Grid.Row="2" CornerRadius="16"
-                    BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                  Background="#0C1523" Padding="16,0">
-              <Grid ColumnSpacing="16">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="*"/>
-                  <ColumnDefinition Width="1"/>
-                  <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
-                  <Border CornerRadius="8" Width="32" Height="32" Background="#1A3050">
-                    <FontIcon Glyph="&#xE72A;" FontSize="15" Foreground="{ThemeResource AccentCyanBrush}"
-                              HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                  </Border>
-                  <StackPanel>
-                    <TextBlock Text="Weekly releases" FontFamily="{ThemeResource MonoFontFamily}"
-                               FontSize="9" Foreground="{ThemeResource LabelBrush}"/>
-                    <TextBlock Text="56 deployments" FontFamily="{ThemeResource DisplayFontFamily}"
-                               FontSize="14" Foreground="{ThemeResource ValueBrush}"/>
-                  </StackPanel>
-                </StackPanel>
-                <Rectangle Grid.Column="1" Width="1" Fill="{ThemeResource MaterialStrokeSoftBrush}"/>
-                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
-                  <Border CornerRadius="8" Width="32" Height="32" Background="#1A3050">
-                    <FontIcon Glyph="&#xE8AB;" FontSize="15" Foreground="{ThemeResource AccentTealBrush}"
-                              HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                  </Border>
-                  <StackPanel>
-                    <TextBlock Text="Total releases delivered" FontFamily="{ThemeResource MonoFontFamily}"
-                               FontSize="9" Foreground="{ThemeResource LabelBrush}"/>
-                    <TextBlock Text="236 deployments" FontFamily="{ThemeResource DisplayFontFamily}"
-                               FontSize="14" Foreground="{ThemeResource ValueBrush}"/>
-                  </StackPanel>
-                </StackPanel>
-              </Grid>
-            </Border>
-
-            <!-- 笏笏 Bottom: Pipeline table + Score/Readiness 笏笏 -->
-            <Grid Grid.Row="4" ColumnSpacing="10">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="224"/>
-              </Grid.ColumnDefinitions>
-
-              <!-- PIPELINE TABLE -->
-              <Border Grid.Column="0" Style="{StaticResource PanelStyle}">
-                <Grid>
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="0"/>
-                  </Grid.RowDefinitions>
-                  <!-- Table title -->
-                  <Grid Grid.Row="0" Margin="0,0,0,10">
-                    <TextBlock Text="Top Active Pipelines" FontFamily="{ThemeResource DisplayFontFamily}"
-                               FontSize="14" Foreground="{ThemeResource HeaderTitleBrush}"/>
-                    <StackPanel Orientation="Horizontal" Spacing="4" HorizontalAlignment="Right">
-                      <TextBlock Text="View all" FontFamily="{ThemeResource BodyFontFamily}"
-                                 FontSize="12" Foreground="{ThemeResource AccentCyanBrush}"
-                                 VerticalAlignment="Center"/>
-                      <FontIcon Glyph="&#xE76C;" FontSize="10" Foreground="{ThemeResource AccentCyanBrush}"/>
-                    </StackPanel>
-                  </Grid>
-                  <!-- Table header -->
-                  <Grid Grid.Row="1" ColumnSpacing="8" Margin="0,0,0,8"
-                        Background="#081018" Padding="8,6">
-                    <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="*"/>
-                      <ColumnDefinition Width="64"/>
-                      <ColumnDefinition Width="64"/>
-                      <ColumnDefinition Width="56"/>
-                      <ColumnDefinition Width="70"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="PIPELINE" Style="{StaticResource TblHeaderStyle}"/>
-                    <TextBlock Grid.Column="1" Text="RUNS" Style="{StaticResource TblHeaderStyle}" TextAlignment="Right"/>
-                    <TextBlock Grid.Column="2" Text="TREND" Style="{StaticResource TblHeaderStyle}" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="3" Text="ERRORS" Style="{StaticResource TblHeaderStyle}" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="4" Text="UPTIME" Style="{StaticResource TblHeaderStyle}" TextAlignment="Right"/>
-                  </Grid>
-                  <!-- Table rows -->
-                  <StackPanel Grid.Row="2" Spacing="2">
-                    <!-- Row 1 -->
-                    <Grid ColumnSpacing="8" Padding="8,7" Background="#06101C">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition Width="56"/>
-                        <ColumnDefinition Width="70"/>
-                      </Grid.ColumnDefinitions>
-                      <TextBlock Grid.Column="0" Text="Core API" Style="{StaticResource TblCellStyle}"/>
-                      <TextBlock Grid.Column="1" Text="12,450" Style="{StaticResource TblCellStyle}" TextAlignment="Right"/>
-                      <TextBlock Grid.Column="2" Text="竊・32%" FontSize="12" TextAlignment="Center"
-                                 Foreground="{ThemeResource AccentGreenBrush}" VerticalAlignment="Center"/>
-                      <TextBlock Grid.Column="3" Text="5" Style="{StaticResource TblCellStyle}" TextAlignment="Center"/>
-                      <TextBlock Grid.Column="4" Text="99.98%" Style="{StaticResource TblCellStyle}" TextAlignment="Right"/>
-                    </Grid>
-                    <!-- Row 2 -->
-                    <Grid ColumnSpacing="8" Padding="8,7">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition Width="56"/>
-                        <ColumnDefinition Width="70"/>
-                      </Grid.ColumnDefinitions>
-                      <TextBlock Grid.Column="0" Text="Web Platform" Style="{StaticResource TblCellStyle}"/>
-                      <TextBlock Grid.Column="1" Text="16,300" Style="{StaticResource TblCellStyle}" TextAlignment="Right"/>
-                      <TextBlock Grid.Column="2" Text="竊・26%" FontSize="12" TextAlignment="Center"
-                                 Foreground="{ThemeResource AccentGreenBrush}" VerticalAlignment="Center"/>
-                      <TextBlock Grid.Column="3" Text="8" Style="{StaticResource TblCellStyle}" TextAlignment="Center"/>
-                      <TextBlock Grid.Column="4" Text="99.95%" Style="{StaticResource TblCellStyle}" TextAlignment="Right"/>
-                    </Grid>
-                    <!-- Row 3 -->
-                    <Grid ColumnSpacing="8" Padding="8,7" Background="#06101C">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition Width="56"/>
-                        <ColumnDefinition Width="70"/>
-                      </Grid.ColumnDefinitions>
-                      <TextBlock Grid.Column="0" Text="Deploy Service" Style="{StaticResource TblCellStyle}"/>
-                      <TextBlock Grid.Column="1" Text="12,980" Style="{StaticResource TblCellStyle}" TextAlignment="Right"/>
-                      <TextBlock Grid.Column="2" Text="竊・13%" FontSize="12" TextAlignment="Center"
-                                 Foreground="{ThemeResource AccentGreenBrush}" VerticalAlignment="Center"/>
-                      <TextBlock Grid.Column="3" Text="3" Style="{StaticResource TblCellStyle}" TextAlignment="Center"/>
-                      <TextBlock Grid.Column="4" Text="99.99%" Style="{StaticResource TblCellStyle}" TextAlignment="Right"/>
-                    </Grid>
-                    <!-- Row 4 -->
-                    <Grid ColumnSpacing="8" Padding="8,7">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition Width="56"/>
-                        <ColumnDefinition Width="70"/>
-                      </Grid.ColumnDefinitions>
-                      <TextBlock Grid.Column="0" Text="Data Services" Style="{StaticResource TblCellStyle}"/>
-                      <TextBlock Grid.Column="1" Text="10,984" Style="{StaticResource TblCellStyle}" TextAlignment="Right"/>
-                      <TextBlock Grid.Column="2" Text="竊・11%" FontSize="12" TextAlignment="Center"
-                                 Foreground="{ThemeResource AccentAmberBrush}" VerticalAlignment="Center"/>
-                      <TextBlock Grid.Column="3" Text="12" Style="{StaticResource TblCellStyle}" TextAlignment="Center"/>
-                      <TextBlock Grid.Column="4" Text="99.90%" Style="{StaticResource TblCellStyle}" TextAlignment="Right"/>
-                    </Grid>
-                    <!-- Row 5 -->
-                    <Grid ColumnSpacing="8" Padding="8,7" Background="#06101C">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition Width="56"/>
-                        <ColumnDefinition Width="70"/>
-                      </Grid.ColumnDefinitions>
-                      <TextBlock Grid.Column="0" Text="URMS Agent" Style="{StaticResource TblCellStyle}"/>
-                      <TextBlock Grid.Column="1" Text="5,578" Style="{StaticResource TblCellStyle}" TextAlignment="Right"/>
-                      <TextBlock Grid.Column="2" Text="竊・8%" FontSize="12" TextAlignment="Center"
-                                 Foreground="{ThemeResource AccentAmberBrush}" VerticalAlignment="Center"/>
-                      <TextBlock Grid.Column="3" Text="14" Style="{StaticResource TblCellStyle}" TextAlignment="Center"/>
-                      <TextBlock Grid.Column="4" Text="99.93%" Style="{StaticResource TblCellStyle}" TextAlignment="Right"/>
-                    </Grid>
-                  </StackPanel>
-                  <!-- OpWorkflowCard (hidden, required for code-behind) -->
-                  <ctrl:WorkflowCard x:Name="OpWorkflowCard" Grid.Row="3" Visibility="Collapsed"/>
-                </Grid>
-              </Border>
-
-              <!-- SCORE + READINESS PANEL -->
-              <StackPanel Grid.Column="1" Spacing="10">
-                <!-- System Health Score -->
-                <Border Style="{StaticResource PanelStyle}">
-                  <StackPanel Spacing="6">
-                    <TextBlock Text="System Health Score" FontFamily="{ThemeResource DisplayFontFamily}"
-                               FontSize="14" Foreground="{ThemeResource HeaderTitleBrush}"/>
-                    <TextBlock x:Name="TxtOpHealth" Text="Optimized and running smoothly"
-                               FontFamily="{ThemeResource BodyFontFamily}" FontSize="11"
-                               Foreground="{ThemeResource HeroSubBrush}" TextWrapping="Wrap"/>
-                    <Grid ColumnSpacing="12" Margin="0,6,0,0">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                      </Grid.ColumnDefinitions>
-                      <StackPanel>
-                        <TextBlock Text="98.4" FontFamily="{ThemeResource DisplayFontFamily}"
-                                   FontSize="44" Foreground="{ThemeResource ValueBrush}" LineHeight="48"/>
-                        <TextBlock Text="Target:  95.0 reliability" FontFamily="{ThemeResource MonoFontFamily}"
-                                   FontSize="10" Foreground="{ThemeResource LabelBrush}"/>
-                      </StackPanel>
-                      <ctrl:AnalogGauge x:Name="GaugeCpu2" Grid.Column="1" Value="98" Label="" GaugeColor="#4CC3FF"
-                                        Width="60" Height="60" Visibility="Collapsed"/>
-                    </Grid>
-                    <StackPanel Spacing="3">
-                      <TextBlock x:Name="TxtOpAlerts" Text="Alerts: 0"
-                                 FontFamily="{ThemeResource MonoFontFamily}" FontSize="11"
-                                 Foreground="{ThemeResource AccentAmberBrush}"/>
-                      <TextBlock x:Name="TxtOpTasks" Text="Running Tasks: 2"
-                                 FontFamily="{ThemeResource MonoFontFamily}" FontSize="11"
-                                 Foreground="{ThemeResource LabelBrush}"/>
-                    </StackPanel>
-                  </StackPanel>
-                </Border>
-                <!-- Release Readiness -->
-                <Border Style="{StaticResource PanelStyle}">
-                  <StackPanel Spacing="8">
-                    <Grid>
-                      <TextBlock Text="Release Readiness" FontFamily="{ThemeResource DisplayFontFamily}"
-                                 FontSize="13" Foreground="{ThemeResource HeaderTitleBrush}"/>
-                      <TextBlock Text="80%  completed" HorizontalAlignment="Right"
-                                 FontFamily="{ThemeResource MonoFontFamily}" FontSize="11"
-                                 Foreground="{ThemeResource AccentCyanBrush}"/>
-                    </Grid>
-                    <ProgressBar Value="80" Height="7" CornerRadius="4"
-                                 Foreground="{ThemeResource AccentCyanBrush}"
-                                 Background="{ThemeResource ProgressTrackBrush}"/>
-                    <Grid>
-                      <TextBlock Text="Code Freeze" FontFamily="{ThemeResource MonoFontFamily}"
-                                 FontSize="10" Foreground="{ThemeResource LabelBrush}"/>
-                      <TextBlock Text="Production" HorizontalAlignment="Right"
-                                 FontFamily="{ThemeResource MonoFontFamily}" FontSize="10"
-                                 Foreground="{ThemeResource LabelBrush}"/>
-                    </Grid>
-                    <!-- Task progress (BarTaskPct referenced in code-behind, also shown here) -->
-                    <Rectangle Height="1" Fill="{ThemeResource MaterialStrokeSoftBrush}" Margin="0,4,0,4"/>
-                    <TextBlock x:Name="TxtCardTask2" Text="TASK QUEUE" FontFamily="{ThemeResource MonoFontFamily}"
-                               FontSize="9" CharacterSpacing="120" Foreground="{ThemeResource LabelBrush}"/>
-                  </StackPanel>
-                </Border>
-                <!-- Storage -->
-                <Border Style="{StaticResource PanelStyle}">
-                  <StackPanel Spacing="8">
-                    <TextBlock Text="Storage" FontFamily="{ThemeResource DisplayFontFamily}"
-                               FontSize="13" Foreground="{ThemeResource HeaderTitleBrush}"/>
-                    <Grid ColumnSpacing="6">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"/><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/>
-                      </Grid.ColumnDefinitions>
-                      <TextBlock Text="C:" VerticalAlignment="Center" Foreground="{ThemeResource ValueBrush}" FontSize="11"/>
-                      <ProgressBar Grid.Column="1" x:Name="BarDiskC" Height="5"
-                                   Foreground="{ThemeResource AccentCyanBrush}"
-                                   Background="{ThemeResource ProgressTrackBrush}"/>
-                      <TextBlock Grid.Column="2" x:Name="TxtDiskC" Text="--" HorizontalAlignment="Right"
-                                 VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}" FontSize="10"/>
-                    </Grid>
-                    <Grid ColumnSpacing="6">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"/><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/>
-                      </Grid.ColumnDefinitions>
-                      <TextBlock Text="D:" VerticalAlignment="Center" Foreground="{ThemeResource ValueBrush}" FontSize="11"/>
-                      <ProgressBar Grid.Column="1" x:Name="BarDiskD" Height="5"
-                                   Foreground="{ThemeResource AccentTealBrush}"
-                                   Background="{ThemeResource ProgressTrackBrush}"/>
-                      <TextBlock Grid.Column="2" x:Name="TxtDiskD" Text="--" HorizontalAlignment="Right"
-                                 VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}" FontSize="10"/>
-                    </Grid>
-                    <Grid ColumnSpacing="6">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"/><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/>
-                      </Grid.ColumnDefinitions>
-                      <TextBlock Text="NAS" VerticalAlignment="Center" Foreground="{ThemeResource ValueBrush}" FontSize="11"/>
-                      <ProgressBar Grid.Column="1" x:Name="BarDiskNas" Height="5"
-                                   Foreground="{ThemeResource AccentPurpleBrush}"
-                                   Background="{ThemeResource ProgressTrackBrush}"/>
-                      <TextBlock Grid.Column="2" x:Name="TxtDiskNas" Text="--" HorizontalAlignment="Right"
-                                 VerticalAlignment="Center" Foreground="{ThemeResource LabelBrush}" FontSize="10"/>
-                    </Grid>
-                  </StackPanel>
-                </Border>
-              </StackPanel>
-            </Grid>
-
-          </Grid>
+          <Border Grid.Column="1" Style="{StaticResource SupportCardStyle}">
+            <StackPanel Spacing="8">
+              <TextBlock Text="READINESS" Style="{StaticResource SectionTitleStyle}"/>
+              <ProgressBar Value="80" Height="8" Foreground="{ThemeResource AccentCyanBrush}" Background="{ThemeResource ProgressTrackBrush}"/>
+              <TextBlock Text="80% completed" Foreground="{ThemeResource LabelBrush}"/>
+              <TextBlock Text="Code Freeze -> Production" Style="{StaticResource MicroLabelStyle}"/>
+              <ctrl:WorkflowCard x:Name="OpWorkflowCard" Visibility="Collapsed"/>
+              <ctrl:AnalogGauge x:Name="GaugeCpu2" Value="98" Label="" GaugeColor="#4CC3FF" Visibility="Collapsed"/>
+            </StackPanel>
+          </Border>
         </Grid>
-
-        <!-- Hidden x:Names required by code-behind -->
-
-
       </Grid>
     </Grid>
   </Grid>
