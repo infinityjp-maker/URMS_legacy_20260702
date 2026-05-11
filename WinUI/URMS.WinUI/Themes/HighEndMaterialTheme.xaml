@@ -38,6 +38,11 @@
     <SolidColorBrush x:Key="AccentPurpleBrush" Color="#6A83FF"/>
     <SolidColorBrush x:Key="AccentRedBrush" Color="#D59CA6"/>
     <SolidColorBrush x:Key="AccentTealBrush" Color="#2FD0C8"/>
+    <!-- AccentSubBrush = #2FD0C8 (same as AccentTeal, semantic alias for sub-accent usage) -->
+    <SolidColorBrush x:Key="AccentSubBrush" Color="#2FD0C8"/>
+    <!-- Semantic text aliases -->
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#F5F7FA"/>
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#C5CBD8"/>
     
     <!-- CARD STYLING COLORS -->
     <SolidColorBrush x:Key="CardBackgroundBrush" Color="#0B0F18"/>

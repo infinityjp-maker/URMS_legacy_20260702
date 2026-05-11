@@ -226,6 +226,37 @@ URMS.WinUI は、運用・監視・実行・設定を 1 つのプロダクト級
 - OPERATION LAYER は Recent Logs / Events / Operations のリスト性を担保する。
 - カラーリングは青黒 + 高コントラスト白文字を採用し、情報の見やすさを優先する。
 
+### 9.4.3 No-Scroll 1-Page Fixed Layout (2026-05-11 規約)
+- **スクロール禁止**: DashboardPage.xaml の最上位レイアウトに ScrollViewer を使用してはならない。
+- **固定行高レイアウト**: Grid.RowDefinitions で全レイヤーを固定高に収める。
+  - Header band: 48px
+  - SYSTEM LAYER: 200px
+  - SUBSYSTEM LAYER: * (残余)
+  - OPERATION LAYER: 216px
+  - レイヤー間 gap: SYSTEM→SUBSYSTEM=24px, SUBSYSTEM→OPERATION=28px
+- **サイドバー幅**: 80px 固定、コンテンツ間スペース 14px
+- **カードサイズ規約**:
+  - SYSTEM (主役): MinHeight 除去、コンテンツを200px行に収める
+  - SUBSYSTEM (準主役): * 行を 2 等分
+  - OPERATION (脇役): 216px 行に収める
+
+### 9.4.4 Sidebar Icon+Label Rules (2026-05-11 規約)
+- サイドバー幅: 80px
+- ボタンコンテンツ: FontIcon (18px) + TextBlock (8px) の縦2段
+- メニュー項目: Dashboard / Weather / Systems / Workflows / Logs / Settings
+- アクティブ状態: BorderBrush=AccentCyanBrush, Foreground=AccentCyanBrush
+- 非アクティブ: LabelBrush / MaterialStrokeSoftBrush
+
+### 9.4.5 WeatherPage 構造 (2026-05-11 規約)
+- ファイル: Pages/WeatherPage.xaml + Pages/WeatherPage.xaml.cs
+- 遷移元: DashboardPage.CardWeather Tapped / Sidebar Weather ボタン Click
+- レイアウト (スクロールなし):
+  - Header: 48px
+  - 主役 (現在地): 260px — IsPrimaryTone=True, Liquid Glass
+  - 準主役 (他都市 3枚): 160px — MaterialIntensity 1.25
+  - 脇役 (週間予報 7枚): * — MaterialIntensity 0.72
+- 戻り遷移: Frame.GoBack() or Frame.Navigate(DashboardPage)
+
 ### 9.5 フェーズ 4: 完了報告
 - Todo すべてを完了状態に。
 - Git ステータス clean（意図した変更がすべてコミット済み）。

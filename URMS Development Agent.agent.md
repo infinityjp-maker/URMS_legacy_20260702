@@ -63,6 +63,33 @@
 	- Section gap 60
 	- Card margin: hero +16, secondary +8, support +4
 
+### No-Scroll 1-Page Fixed Layout Rules (2026-05-11)
+- **ScrollViewer 禁止**: DashboardPage.xaml / WeatherPage.xaml のトップレベルレイアウトに ScrollViewer を使用しない。
+- **固定行高 Grid**: Grid.RowDefinitions で Header/SYSTEM/SUBSYSTEM/OPERATION の高さを明示する。
+  - Header: 48px, SYSTEM: 200px, SUBSYSTEM: *(残余), OPERATION: 216px
+  - Gap: SYSTEM→SUBSYSTEM 24px (Row Height), SUBSYSTEM→OPERATION 28px (Row Height)
+- **サイドバー規約**:
+  - 幅: 80px 固定 (ColumnDefinition Width="80")
+  - ColumnSpacing=14 (sidebar to content)
+  - ボタン: FontIcon (18px) + TextBlock (8px) 縦2段 (SidebarIconButtonStyle)
+  - メニュー順: Dashboard / Weather / Systems / Workflows / Logs / Settings
+  - アクティブ状態: BorderBrush=AccentCyanBrush, Foreground=AccentCyanBrush
+- **カードサイズ規約** (Alienware 3440×1440 最適化):
+  - SYSTEM (主役): 200px 行内に収める、IsPrimaryTone=True、MaterialIntensity 1.85～1.9
+  - SUBSYSTEM (準主役): * 行を 2 等分、MaterialIntensity 1.05～1.08
+  - OPERATION (脇役): 216px 行内に収める、MaterialIntensity 0.72
+
+### WeatherPage Rules (2026-05-11)
+- ファイル: Pages/WeatherPage.xaml + Pages/WeatherPage.xaml.cs
+- 遷移トリガー: DashboardPage の CardWeather.Tapped + Sidebar Weather ボタン Click
+- レイアウト (スクロールなし 7行 Grid):
+  - Row 0: Header 48px
+  - Row 2: 主役 (現在地) 260px — IsPrimaryTone=True
+  - Row 4: 準主役 (他都市 3枚) 160px — MaterialIntensity 1.25
+  - Row 6: 脇役 (週間予報 7枚) * — MaterialIntensity 0.72
+- 戻り: Frame.GoBack() or Frame.Navigate(DashboardPage)
+- x:Name 必須: WxMainAnim, TxtMainTemp, TxtMainDesc, TxtMainLocation, TxtHumidity, TxtWind, TxtFeelsLike, TxtUvIndex, TxtTempHigh, TxtTempLow
+
 ### Global Tone Rules
 - Deep blue-black background (#05070B baseline) and 1.5% noise baseline.
 - Use blue-white highlights and keep glow restrained.
@@ -72,9 +99,12 @@
 
 ### Sidebar and Top-Bar Rules
 - Dashboard must keep left sidebar + right main pane composition.
-- Sidebar baseline width is 214px.
+- Sidebar width: 80px (icon+label 2-stack design). Do NOT revert to 214px wide text-only design.
+- Sidebar menu order: Dashboard / Weather / Systems / Workflows / Logs / Settings.
+- Active item uses AccentCyanBrush for border and foreground.
 - Top command bar must contain title, search surface, and operator display.
 - Sidebar is navigation-only and must not include dashboard card data logic.
+- WeatherPage navigation is enabled from both CardWeather tap and Sidebar Weather button.
 
 ## Prohibitions
 - No high-emission neon overuse.

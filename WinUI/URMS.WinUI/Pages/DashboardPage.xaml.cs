@@ -196,5 +196,18 @@ namespace URMS.WinUI.Pages
 
         private void OnWinCloseClick(object sender, RoutedEventArgs e)
             => MainWindow.CurrentWindow?.CloseWindow();
+
+        // ── Sidebar navigation ──────────────────────────────────────
+        private void OnNavDashboard(object sender, RoutedEventArgs e)
+        {
+            // Already on Dashboard — no-op
+        }
+
+        private void OnNavWeather(object sender, RoutedEventArgs e)
+            => Frame.Navigate(typeof(WeatherPage));
+
+        // ── CardWeather tap → WeatherPage ──────────────────────────
+        private void OnCardWeatherTapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
+            => Frame.Navigate(typeof(WeatherPage));
     }
 }
