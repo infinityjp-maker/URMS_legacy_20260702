@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Background="Transparent">
 
-  <Grid Height="68" Background="Transparent">
+  <Grid Height="68" Background="{ThemeResource MaterialPanelStrongBrush}">
     <Border Margin="12,8,12,0" CornerRadius="16" BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MaterialPanelStrongBrush}">
       <Grid>
         <Rectangle RadiusX="16" RadiusY="16" Opacity="0.03" Fill="{ThemeResource GlobalNoiseBrush}"/>
@@ -38,9 +38,6 @@
           <Border Grid.Column="0" Width="48" Height="48" VerticalAlignment="Center" CornerRadius="18"
                   BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
                   Background="{ThemeResource GlassHeroBrush}">
-            <Border.Shadow>
-              <ThemeShadow/>
-            </Border.Shadow>
             <Image Width="32" Height="32" Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
           </Border>
 

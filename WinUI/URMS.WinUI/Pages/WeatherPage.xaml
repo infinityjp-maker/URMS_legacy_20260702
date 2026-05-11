@@ -8,8 +8,8 @@
 
   <Page.Resources>
     <Style x:Key="WxNavButtonStyle" TargetType="Button">
-      <Setter Property="Height" Value="56"/>
-      <Setter Property="Padding" Value="0"/>
+      <Setter Property="Height" Value="64"/>
+      <Setter Property="Padding" Value="12,8"/>
       <Setter Property="CornerRadius" Value="14"/>
       <Setter Property="BorderThickness" Value="1"/>
       <Setter Property="BorderBrush" Value="Transparent"/>
@@ -32,7 +32,7 @@
       <Setter Property="BorderThickness" Value="1"/>
       <Setter Property="BorderBrush" Value="{ThemeResource MaterialStrokeSoftBrush}"/>
       <Setter Property="Background" Value="{ThemeResource GlassHeroBrush}"/>
-      <Setter Property="Padding" Value="18,16"/>
+      <Setter Property="Padding" Value="20,18"/>
     </Style>
 
     <Style x:Key="WxSecondaryStyle" TargetType="Border">
@@ -40,19 +40,28 @@
       <Setter Property="BorderThickness" Value="1"/>
       <Setter Property="BorderBrush" Value="{ThemeResource MaterialStrokeSoftBrush}"/>
       <Setter Property="Background" Value="{ThemeResource GlassSecondaryBrush}"/>
-      <Setter Property="Padding" Value="12,10"/>
+      <Setter Property="Padding" Value="10,8"/>
     </Style>
 
     <Style x:Key="WxSupportStyle" TargetType="Border">
-      <Setter Property="CornerRadius" Value="11"/>
+      <Setter Property="CornerRadius" Value="12"/>
       <Setter Property="BorderThickness" Value="1"/>
       <Setter Property="BorderBrush" Value="{ThemeResource MaterialStrokeSoftBrush}"/>
       <Setter Property="Background" Value="{ThemeResource MatteCardBrush}"/>
       <Setter Property="Padding" Value="10,8"/>
     </Style>
+
+    <Style x:Key="WxCityButtonStyle" TargetType="Button">
+      <Setter Property="CornerRadius" Value="16"/>
+      <Setter Property="Padding" Value="10,8"/>
+      <Setter Property="Background" Value="{ThemeResource GlassSecondaryBrush}"/>
+      <Setter Property="BorderBrush" Value="{ThemeResource MaterialStrokeSoftBrush}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    </Style>
   </Page.Resources>
 
-  <Grid Padding="12">
+  <Grid x:Name="RootGrid" Padding="12" Opacity="0">
     <Rectangle Opacity="0.016" Fill="{ThemeResource GlobalNoiseBrush}"/>
 
     <Grid ColumnSpacing="12">
@@ -73,23 +82,24 @@
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
 
-          <Border Width="44" Height="44" Margin="0,14,0,12"
-                  CornerRadius="14"
+          <Border Width="56" Height="56" Margin="0,14,0,8"
+                  CornerRadius="16"
                   HorizontalAlignment="Center"
                   BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
                   BorderThickness="1"
-                  Background="{ThemeResource GlassSecondaryBrush}">
-            <TextBlock Text="U"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontFamily="{ThemeResource DisplayFontFamily}"
-                       FontSize="22"
-                       Foreground="{ThemeResource AccentCyanBrush}"/>
+                  Background="{ThemeResource GlassHeroBrush}">
+            <Image Width="36" Height="36" Stretch="Uniform" Source="ms-appx:///Assets/images/urms_logo.png"/>
           </Border>
+
+          <TextBlock Grid.Row="0" Margin="0,0,0,8" VerticalAlignment="Bottom"
+                     HorizontalAlignment="Center" Text="NAV" Style="{StaticResource WxLabelStyle}"/>
 
           <StackPanel Grid.Row="1" Margin="8,0,8,0" Spacing="8">
             <Button Style="{StaticResource WxNavButtonStyle}" Click="OnNavDashboard" ToolTipService.ToolTip="Dashboard">
-              <FontIcon Glyph="&#xE8F1;" FontSize="22"/>
+              <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <FontIcon Glyph="&#xE8F1;" FontSize="22" HorizontalAlignment="Center"/>
+                <TextBlock Text="DASH" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
+              </StackPanel>
             </Button>
 
             <Grid>
@@ -98,21 +108,36 @@
               <Button Style="{StaticResource WxNavButtonStyle}"
                       Background="{ThemeResource SidebarActiveBrush}"
                       BorderBrush="{ThemeResource AccentCyanBrush}">
-                <FontIcon Glyph="&#xE706;" FontSize="22" Foreground="{ThemeResource AccentCyanBrush}"/>
+                <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                  <FontIcon Glyph="&#xE706;" FontSize="22" Foreground="{ThemeResource AccentCyanBrush}" HorizontalAlignment="Center"/>
+                  <TextBlock Text="WTHR" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
+                </StackPanel>
               </Button>
             </Grid>
 
             <Button Style="{StaticResource WxNavButtonStyle}" ToolTipService.ToolTip="Systems">
-              <FontIcon Glyph="&#xE7C1;" FontSize="22"/>
+              <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <FontIcon Glyph="&#xE7C1;" FontSize="22" HorizontalAlignment="Center"/>
+                <TextBlock Text="SYS" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
+              </StackPanel>
             </Button>
             <Button Style="{StaticResource WxNavButtonStyle}" ToolTipService.ToolTip="Workflows">
-              <FontIcon Glyph="&#xE8A5;" FontSize="22"/>
+              <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <FontIcon Glyph="&#xE8A5;" FontSize="22" HorizontalAlignment="Center"/>
+                <TextBlock Text="FLOW" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
+              </StackPanel>
             </Button>
             <Button Style="{StaticResource WxNavButtonStyle}" ToolTipService.ToolTip="Logs">
-              <FontIcon Glyph="&#xE9D2;" FontSize="22"/>
+              <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <FontIcon Glyph="&#xE9D2;" FontSize="22" HorizontalAlignment="Center"/>
+                <TextBlock Text="LOG" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
+              </StackPanel>
             </Button>
             <Button Style="{StaticResource WxNavButtonStyle}" ToolTipService.ToolTip="Settings">
-              <FontIcon Glyph="&#xE713;" FontSize="22"/>
+              <StackPanel Spacing="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <FontIcon Glyph="&#xE713;" FontSize="22" HorizontalAlignment="Center"/>
+                <TextBlock Text="SET" Style="{StaticResource WxLabelStyle}" HorizontalAlignment="Center"/>
+              </StackPanel>
             </Button>
           </StackPanel>
 
@@ -123,7 +148,7 @@
 
       <Grid Grid.Column="1">
         <Grid.RowDefinitions>
-          <RowDefinition Height="68"/>
+          <RowDefinition Height="60"/>
           <RowDefinition Height="12"/>
           <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -136,20 +161,14 @@
               <ColumnDefinition Width="Auto"/>
               <ColumnDefinition Width="*"/>
               <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
-              <Border Width="48" Height="48" CornerRadius="18"
-                      BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}"
-                      Background="{ThemeResource GlassHeroBrush}">
-                <Border.Shadow>
-                  <ThemeShadow/>
-                </Border.Shadow>
-                <TextBlock Text="U" HorizontalAlignment="Center" VerticalAlignment="Center"
-                           FontFamily="{ThemeResource DisplayFontFamily}" FontSize="26"
-                           Foreground="{ThemeResource AccentCyanBrush}"/>
-              </Border>
-              <TextBlock Text="WEATHER" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="26" Foreground="{ThemeResource HeaderTitleBrush}"/>
+            <StackPanel Orientation="Vertical" Spacing="0" VerticalAlignment="Center">
+              <TextBlock Text="WEATHER" Style="{StaticResource WxLabelStyle}"/>
+              <TextBlock Text="Regional and Global Conditions"
+                         FontFamily="{ThemeResource DisplayFontFamily}" FontSize="18"
+                         Foreground="{ThemeResource HeaderTitleBrush}"/>
             </StackPanel>
 
             <Border Grid.Column="1" Width="420" Height="36" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12"
@@ -164,207 +183,223 @@
               </Grid>
             </Border>
 
-            <Button Grid.Column="2" Click="OnNavDashboard" Height="34" VerticalAlignment="Center" CornerRadius="10" Padding="12,0"
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+              <ctrl:WeatherAnimation x:Name="WxHeaderAnim" Condition="partly_cloudy" Width="16" Height="16"/>
+              <TextBlock Text="22°C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="10" Foreground="{ThemeResource ValueBrush}"/>
+              <TextBlock Text="Tokyo" FontSize="10" Foreground="{ThemeResource LabelBrush}"/>
+            </StackPanel>
+
+            <Button Grid.Column="3" Click="OnNavDashboard" Height="30" VerticalAlignment="Center" CornerRadius="10" Padding="12,0"
                     BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}" Foreground="{ThemeResource ValueBrush}">
               <StackPanel Orientation="Horizontal" Spacing="6">
                 <FontIcon Glyph="&#xE72B;"/>
-                <TextBlock Text="Back"/>
+                <TextBlock Text="Back" FontSize="10"/>
               </StackPanel>
             </Button>
           </Grid>
         </Border>
 
-        <Grid Grid.Row="2" ColumnSpacing="12">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.05*"/>
-            <ColumnDefinition Width="0.95*"/>
-            <ColumnDefinition Width="1.1*"/>
-          </Grid.ColumnDefinitions>
+        <Grid Grid.Row="2" RowSpacing="12">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
 
-          <Grid Grid.Column="0" RowSpacing="10">
-            <Grid.RowDefinitions>
-              <RowDefinition Height="*"/>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+          <Grid Grid.Row="0" ColumnSpacing="14">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="1.3*"/>
+              <ColumnDefinition Width="0.9*"/>
+            </Grid.ColumnDefinitions>
 
-            <Border Grid.Row="0" Style="{StaticResource WxPrimaryStyle}">
-              <Grid>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="Auto"/>
-                  <RowDefinition Height="Auto"/>
-                  <RowDefinition Height="Auto"/>
-                  <RowDefinition Height="*"/>
-                  <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+            <Grid Grid.Column="0" RowSpacing="12">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
 
-                <TextBlock x:Name="TxtMainLocation" Text="Tokyo, Minato-ku" Style="{StaticResource WxLabelStyle}" Foreground="#AABBCC"/>
-
-                <Grid Grid.Row="1" Margin="0,10,0,6">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                  </Grid.ColumnDefinitions>
-                  <ctrl:WeatherAnimation x:Name="WxMainAnim" Width="88" Height="88" Condition="partly_cloudy"/>
-                  <TextBlock x:Name="TxtMainTemp" Grid.Column="1" Text="22C"
-                             FontFamily="{ThemeResource DisplayFontFamily}" FontSize="58"
-                             VerticalAlignment="Center" Margin="8,0,0,0" Foreground="#F8FDFF"/>
-                </Grid>
-
-                <TextBlock x:Name="TxtMainDesc" Grid.Row="2" Text="Partly Cloudy"
-                           FontFamily="{ThemeResource DisplayFontFamily}" FontSize="15"
-                           Foreground="#AABBCC" Margin="0,0,0,10"/>
-
-                <Grid Grid.Row="3" Margin="0,0,0,8">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                  </Grid.ColumnDefinitions>
-                  <StackPanel>
-                    <TextBlock Text="WIND" Style="{StaticResource WxLabelStyle}"/>
-                    <TextBlock x:Name="TxtWind" Text="12 km/h" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16" Foreground="{ThemeResource ValueBrush}"/>
-                  </StackPanel>
-                  <StackPanel Grid.Column="1">
-                    <TextBlock Text="HUMID" Style="{StaticResource WxLabelStyle}"/>
-                    <TextBlock x:Name="TxtHumidity" Text="68%" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16" Foreground="{ThemeResource ValueBrush}"/>
-                  </StackPanel>
-                  <StackPanel Grid.Column="2">
-                    <TextBlock Text="UV" Style="{StaticResource WxLabelStyle}"/>
-                    <TextBlock x:Name="TxtUvIndex" Text="4" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16" Foreground="{ThemeResource ValueBrush}"/>
-                  </StackPanel>
-                </Grid>
-
-                <Grid Grid.Row="4">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                  </Grid.ColumnDefinitions>
-                  <StackPanel>
-                    <TextBlock Text="HIGH" Style="{StaticResource WxLabelStyle}"/>
-                    <TextBlock x:Name="TxtTempHigh" Text="26C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16" Foreground="{ThemeResource ValueBrush}"/>
-                  </StackPanel>
-                  <StackPanel Grid.Column="1">
-                    <TextBlock Text="LOW" Style="{StaticResource WxLabelStyle}"/>
-                    <TextBlock x:Name="TxtTempLow" Text="17C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16" Foreground="{ThemeResource ValueBrush}"/>
-                  </StackPanel>
-                  <StackPanel Grid.Column="2">
-                    <TextBlock Text="FEELS" Style="{StaticResource WxLabelStyle}"/>
-                    <TextBlock x:Name="TxtFeelsLike" Text="20C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16" Foreground="{ThemeResource ValueBrush}"/>
-                  </StackPanel>
-                </Grid>
-              </Grid>
-            </Border>
-
-            <StackPanel Grid.Row="1" Spacing="8">
-              <Border Style="{StaticResource WxSecondaryStyle}">
+              <Border Grid.Row="0" Style="{StaticResource WxPrimaryStyle}">
+                <Border.Shadow>
+                  <ThemeShadow/>
+                </Border.Shadow>
                 <Grid>
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Text="New York" Foreground="{ThemeResource ValueBrush}" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16"/>
-                  <TextBlock Grid.Column="1" Text="14C" Foreground="{ThemeResource AccentCyanBrush}" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="20"/>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                  </Grid.RowDefinitions>
+
+                  <TextBlock x:Name="TxtMainLocation" Text="Tokyo, Minato-ku" Style="{StaticResource WxLabelStyle}"/>
+
+                  <Grid Grid.Row="1" Margin="0,8,0,8">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="Auto"/>
+                      <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ctrl:WeatherAnimation x:Name="WxMainAnim" Width="48" Height="48" Condition="partly_cloudy"/>
+                    <TextBlock x:Name="TxtMainTemp" Grid.Column="1" Text="22°C"
+                               FontFamily="{ThemeResource DisplayFontFamily}" FontSize="64"
+                               VerticalAlignment="Center" Margin="10,0,0,0" Foreground="{ThemeResource ValueBrush}"/>
+                  </Grid>
+
+                  <TextBlock x:Name="TxtMainDesc" Grid.Row="2" Text="Workflow-safe weather state"
+                             FontFamily="{ThemeResource BodyFontFamily}" FontSize="14"
+                             Foreground="{ThemeResource LabelBrush}" Margin="0,0,0,8"/>
+
+                  <StackPanel Grid.Row="3" Spacing="6">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                      <TextBlock Text="WIND" Style="{StaticResource WxLabelStyle}"/>
+                      <TextBlock x:Name="TxtWind" Text="12 km/h" Foreground="{ThemeResource ValueBrush}"/>
+                      <TextBlock Text="HUMID" Style="{StaticResource WxLabelStyle}"/>
+                      <TextBlock x:Name="TxtHumidity" Text="68%" Foreground="{ThemeResource ValueBrush}"/>
+                      <TextBlock Text="UV" Style="{StaticResource WxLabelStyle}"/>
+                      <TextBlock x:Name="TxtUvIndex" Text="4" Foreground="{ThemeResource ValueBrush}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                      <TextBlock Text="HIGH" Style="{StaticResource WxLabelStyle}"/>
+                      <TextBlock x:Name="TxtTempHigh" Text="26°C" Foreground="{ThemeResource ValueBrush}"/>
+                      <TextBlock Text="LOW" Style="{StaticResource WxLabelStyle}"/>
+                      <TextBlock x:Name="TxtTempLow" Text="17°C" Foreground="{ThemeResource ValueBrush}"/>
+                      <TextBlock Text="FEELS" Style="{StaticResource WxLabelStyle}"/>
+                      <TextBlock x:Name="TxtFeelsLike" Text="20°C" Foreground="{ThemeResource ValueBrush}"/>
+                    </StackPanel>
+                  </StackPanel>
                 </Grid>
               </Border>
 
-              <Border Style="{StaticResource WxSecondaryStyle}">
+              <StackPanel Grid.Row="1" Spacing="8">
+                <Button x:Name="CityNewYorkButton" Style="{StaticResource WxCityButtonStyle}"
+                        Tag="New York" Click="OnCityCardClicked"
+                        PointerEntered="OnCardPointerEntered" PointerExited="OnCardPointerExited">
+                  <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <TextBlock Text="New York" Foreground="{ThemeResource ValueBrush}" FontFamily="{ThemeResource MonoFontFamily}" FontSize="13"/>
+                    <TextBlock Grid.Column="1" Text="14°C" Foreground="{ThemeResource AccentCyanBrush}" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="22"/>
+                  </Grid>
+                </Button>
+
+                <Button x:Name="CityCaliforniaButton" Style="{StaticResource WxCityButtonStyle}"
+                        Tag="California" Click="OnCityCardClicked"
+                        PointerEntered="OnCardPointerEntered" PointerExited="OnCardPointerExited">
+                  <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <TextBlock Text="California" Foreground="{ThemeResource ValueBrush}" FontFamily="{ThemeResource MonoFontFamily}" FontSize="13"/>
+                    <TextBlock Grid.Column="1" Text="26°C" Foreground="{ThemeResource AccentAmberBrush}" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="22"/>
+                  </Grid>
+                </Button>
+              </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1" RowSpacing="12">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
+
+              <Border Grid.Row="0" Style="{StaticResource WxSupportStyle}">
                 <Grid>
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                  <TextBlock Text="California" Foreground="{ThemeResource ValueBrush}" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="16"/>
-                  <TextBlock Grid.Column="1" Text="26C" Foreground="{ThemeResource AccentAmberBrush}" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="20"/>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+                  <TextBlock Text="NEXT 7 DAYS" Style="{StaticResource WxLabelStyle}"/>
+                  <ToggleSwitch Grid.Row="1" x:Name="ForecastRangeToggle" Header="Show 7 days"
+                                Margin="0,6,0,6" IsOn="False" Toggled="OnToggleForecastRange"/>
+                  <StackPanel Grid.Row="2" Spacing="6">
+                        <Button x:Name="ForecastRow1" Tag="Tomorrow" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
+                          BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Tomorrow" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="23°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                    </Button>
+                        <Button x:Name="ForecastRow2" Tag="Mon" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
+                          BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Mon" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="21°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                    </Button>
+                        <Button x:Name="ForecastRow3" Tag="Tue" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
+                          BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Tue" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="20°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                    </Button>
+                        <Button x:Name="ForecastRow4" Tag="Wed" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
+                          BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Wed" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="18°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                    </Button>
+                        <Button x:Name="ForecastRow5" Tag="Thu" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
+                          BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}">
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Thu" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="19°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                    </Button>
+                        <Button x:Name="ForecastRow6" Tag="Fri" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
+                          BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}" Visibility="Collapsed">
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Fri" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="22°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                    </Button>
+                        <Button x:Name="ForecastRow7" Tag="Sat" Click="OnForecastRowClicked" CornerRadius="12" Padding="10,6"
+                          BorderThickness="1" BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" Background="{ThemeResource MatteCardBrush}" Visibility="Collapsed">
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><FontIcon Glyph="&#xE706;" FontSize="20" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="Sat" Margin="8,0,0,0" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="2" Text="24°C" FontSize="16" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                    </Button>
+                  </StackPanel>
                 </Grid>
               </Border>
-            </StackPanel>
+
+              <Border Grid.Row="1" Style="{StaticResource WxSecondaryStyle}">
+                <Grid>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+                  <TextBlock Text="WORLD OVERVIEW" Style="{StaticResource WxLabelStyle}"/>
+                  <Canvas Grid.Row="1" x:Name="WxMapCanvas" Height="58" Margin="0,8,0,8">
+                    <Rectangle Canvas.Left="12" Canvas.Top="8" Width="220" Height="42" Fill="#17344E" RadiusX="14" RadiusY="14"/>
+                    <Ellipse Canvas.Left="180" Canvas.Top="22" Width="10" Height="10" Fill="{ThemeResource AccentCyanBrush}"/>
+                  </Canvas>
+                  <StackPanel Grid.Row="2" Spacing="6">
+                    <Button Height="40" Tag="Tokyo" Click="OnWorldCityClicked" Style="{StaticResource WxCityButtonStyle}" Background="{ThemeResource SidebarActiveBrush}" BorderBrush="{ThemeResource AccentCyanBrush}">
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Tokyo" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource AccentCyanBrush}"/><TextBlock Grid.Column="1" Text="22°C" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource AccentCyanBrush}"/></Grid>
+                    </Button>
+                    <Button Height="40" Tag="Seoul" Click="OnWorldCityClicked" Style="{StaticResource WxCityButtonStyle}">
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Seoul" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="19°C" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                    </Button>
+                    <Button Height="40" Tag="Singapore" Click="OnWorldCityClicked" Style="{StaticResource WxCityButtonStyle}">
+                      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Singapore" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="31°C" FontFamily="{ThemeResource MonoFontFamily}" Foreground="{ThemeResource ValueBrush}"/></Grid>
+                    </Button>
+                  </StackPanel>
+                </Grid>
+              </Border>
+            </Grid>
           </Grid>
 
-          <Border Grid.Column="1" CornerRadius="16"
-                  BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                  Background="{ThemeResource GlassSecondaryBrush}" Padding="12,12">
+          <Border Grid.Row="1" Style="{StaticResource WxSupportStyle}">
             <Grid>
               <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
               </Grid.RowDefinitions>
-              <TextBlock Text="NEXT 7 DAYS" Style="{StaticResource WxLabelStyle}"/>
-              <StackPanel Grid.Row="1" Margin="0,10,0,0" Spacing="8">
-                <Border Style="{StaticResource WxSupportStyle}"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Tomorrow" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="23C" Foreground="{ThemeResource ValueBrush}"/></Grid></Border>
-                <Border Style="{StaticResource WxSupportStyle}"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Mon" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="21C" Foreground="{ThemeResource ValueBrush}"/></Grid></Border>
-                <Border Style="{StaticResource WxSupportStyle}"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Tue" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="20C" Foreground="{ThemeResource ValueBrush}"/></Grid></Border>
-                <Border Style="{StaticResource WxSupportStyle}"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Wed" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="18C" Foreground="{ThemeResource ValueBrush}"/></Grid></Border>
-                <Border Style="{StaticResource WxSupportStyle}"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Thu" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="19C" Foreground="{ThemeResource ValueBrush}"/></Grid></Border>
-                <Border Style="{StaticResource WxSupportStyle}"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Fri" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="22C" Foreground="{ThemeResource ValueBrush}"/></Grid></Border>
-                <Border Style="{StaticResource WxSupportStyle}"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Sat" Foreground="{ThemeResource ValueBrush}"/><TextBlock Grid.Column="1" Text="24C" Foreground="{ThemeResource ValueBrush}"/></Grid></Border>
-              </StackPanel>
+              <TextBlock Text="OVERVIEW" Style="{StaticResource WxLabelStyle}"/>
+              <Canvas Grid.Row="1" x:Name="WxOverviewCanvas" Height="140" Margin="0,8,0,0">
+                <Rectangle Canvas.Left="0" Canvas.Top="62" Width="1020" Height="2" Fill="{ThemeResource AccentCyanBrush}"/>
+                <Ellipse x:Name="WxOverviewLine" Canvas.Left="640" Canvas.Top="34" Width="8" Height="8" Fill="{ThemeResource AccentCyanBrush}"/>
+                <Rectangle x:Name="WxOverviewFill" Canvas.Left="0" Canvas.Top="64" Width="1020" Height="26" Fill="#1A4CC3FF"/>
+              </Canvas>
+              <Grid Grid.Row="2" Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Sun" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="Mon" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="2" Text="Tue" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="3" Text="Wed" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="4" Text="Thu" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="5" Text="Fri" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="6" Text="Sat" FontSize="10" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
+              </Grid>
             </Grid>
           </Border>
-
-          <Grid Grid.Column="2" RowSpacing="10">
-            <Grid.RowDefinitions>
-              <RowDefinition Height="1.05*"/>
-              <RowDefinition Height="0.95*"/>
-            </Grid.RowDefinitions>
-
-            <Border Grid.Row="0" CornerRadius="12"
-                    BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                    Background="{ThemeResource MatteCardBrush}" Padding="14,12">
-              <Grid>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="Auto"/>
-                  <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="WORLD OVERVIEW" Style="{StaticResource WxLabelStyle}"/>
-                <Canvas Grid.Row="1" x:Name="WxMapCanvas" Margin="0,10,0,0">
-                  <Rectangle Canvas.Left="10" Canvas.Top="20" Width="130" Height="70" Fill="#17344E" RadiusX="20" RadiusY="20"/>
-                  <Rectangle Canvas.Left="160" Canvas.Top="10" Width="90" Height="80" Fill="#17344E" RadiusX="16" RadiusY="16"/>
-                  <Rectangle Canvas.Left="270" Canvas.Top="14" Width="150" Height="70" Fill="#17344E" RadiusX="18" RadiusY="18"/>
-                  <Rectangle Canvas.Left="315" Canvas.Top="120" Width="80" Height="45" Fill="#17344E" RadiusX="14" RadiusY="14"/>
-
-                  <Ellipse Canvas.Left="358" Canvas.Top="68" Width="12" Height="12" Fill="{ThemeResource AccentCyanBrush}"/>
-                  <Border Canvas.Left="348" Canvas.Top="46" CornerRadius="5" Background="#AA17324D"
-                          BorderBrush="{ThemeResource AccentCyanBrush}" BorderThickness="1" Padding="6,2">
-                    <StackPanel>
-                      <TextBlock Text="Tokyo" FontFamily="{ThemeResource MonoFontFamily}" FontSize="9" Foreground="{ThemeResource ValueBrush}"/>
-                      <TextBlock Text="22C" FontFamily="{ThemeResource DisplayFontFamily}" FontSize="10" Foreground="{ThemeResource AccentCyanBrush}"/>
-                    </StackPanel>
-                  </Border>
-                </Canvas>
-              </Grid>
-            </Border>
-
-            <Border Grid.Row="1" CornerRadius="12"
-                    BorderBrush="{ThemeResource MaterialStrokeSoftBrush}" BorderThickness="1"
-                    Background="{ThemeResource MatteCardBrush}" Padding="14,10">
-              <Grid>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="Auto"/>
-                  <RowDefinition Height="*"/>
-                  <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="OVERVIEW" Style="{StaticResource WxLabelStyle}"/>
-                <Canvas Grid.Row="1" x:Name="WxOverviewCanvas">
-                  <Rectangle Canvas.Left="0" Canvas.Top="50" Width="560" Height="2" Fill="#404CC3FF"/>
-                  <Ellipse x:Name="WxOverviewLine" Canvas.Left="360" Canvas.Top="26" Width="8" Height="8" Fill="{ThemeResource AccentCyanBrush}"/>
-                  <Rectangle x:Name="WxOverviewFill" Canvas.Left="0" Canvas.Top="52" Width="560" Height="24" Fill="#1A4CC3FF"/>
-                </Canvas>
-                <Grid Grid.Row="2" Margin="0,4,0,0">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                  </Grid.ColumnDefinitions>
-                  <TextBlock Text="Sun" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  <TextBlock Grid.Column="1" Text="Mon" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  <TextBlock Grid.Column="2" Text="Tue" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  <TextBlock Grid.Column="3" Text="Wed" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  <TextBlock Grid.Column="4" Text="Thu" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  <TextBlock Grid.Column="5" Text="Fri" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                  <TextBlock Grid.Column="6" Text="Sat" Foreground="{ThemeResource LabelBrush}" HorizontalAlignment="Center"/>
-                </Grid>
-              </Grid>
-            </Border>
-          </Grid>
         </Grid>
       </Grid>
     </Grid>

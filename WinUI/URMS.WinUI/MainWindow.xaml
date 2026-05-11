@@ -19,7 +19,7 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <Grid x:Name="AppTitleBar" Grid.Row="0" Background="Transparent">
+    <Grid x:Name="AppTitleBar" Grid.Row="0" Background="{ThemeResource MaterialPanelStrongBrush}">
       <controls:HeaderControl x:Name="HeaderHost"
                               DoubleTapped="OnHeaderDoubleTapped"
                               MinimizeClicked="OnHeaderMinimizeClicked"

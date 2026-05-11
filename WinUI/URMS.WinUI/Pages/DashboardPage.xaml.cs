@@ -5,9 +5,11 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
+using Microsoft.UI.Xaml.Media.Animation;
 using Windows.UI;
 using URMS.WinUI.Services;
 using URMS.WinUI.ViewModels;
+using System.Threading.Tasks;
 
 namespace URMS.WinUI.Pages
 {
@@ -37,6 +39,7 @@ namespace URMS.WinUI.Pages
         {
             App.RecordDashboardLoaded(); // フェーズ4: 起動時間計測
             Apply();
+            StartPageFadeIn();
             InitNetWave();
             InitOperationLayer();
             _vm.StartRefresh(DispatcherQueue.GetForCurrentThread());
@@ -58,11 +61,17 @@ namespace URMS.WinUI.Pages
             switch (e.PropertyName)
             {
                 case nameof(DashboardViewModel.CpuUsage):
-                    GaugeCpu.Value = _vm.CpuUsage; break;
+                    GaugeCpu.Value = _vm.CpuUsage;
+                    TxtCpuSummary.Text = $"Core utilization: {_vm.CpuUsage:F0}%";
+                    break;
                 case nameof(DashboardViewModel.RamUsage):
-                    GaugeRam.Value = _vm.RamUsage; break;
+                    GaugeRam.Value = _vm.RamUsage;
+                    TxtRamSummary.Text = $"Memory pressure: {_vm.RamUsage:F0}%";
+                    break;
                 case nameof(DashboardViewModel.GpuUsage):
-                    GaugeGpu.Value = _vm.GpuUsage; break;
+                    GaugeGpu.Value = _vm.GpuUsage;
+                    TxtGpuSummary.Text = $"Render workload: {_vm.GpuUsage:F0}%";
+                    break;
                 case nameof(DashboardViewModel.DiskC):
                     BarDiskC.Value = _vm.DiskC; break;
                 case nameof(DashboardViewModel.DiskCText):
@@ -96,6 +105,9 @@ namespace URMS.WinUI.Pages
             GaugeCpu.Value = 0;
             GaugeRam.Value = 0;
             GaugeGpu.Value = 0;
+            TxtCpuSummary.Text = "Core utilization: --";
+            TxtRamSummary.Text = "Memory pressure: --";
+            TxtGpuSummary.Text = "Render workload: --";
 
             BarTaskPct.Value = 62;
 
@@ -109,6 +121,13 @@ namespace URMS.WinUI.Pages
             TxtOpHealth.Text = "NOMINAL";
             TxtOpAlerts.Text = "0";
             TxtOpTasks.Text = "2 active";
+            TxtOpStateCore.Text = "NORMAL";
+            TxtOpStateDeploy.Text = "NORMAL";
+            TxtOpStateCache.Text = "NORMAL";
+            TxtOpStateCore.Foreground = new SolidColorBrush(Color.FromArgb(255, 95, 212, 255));
+            TxtOpStateDeploy.Foreground = new SolidColorBrush(Color.FromArgb(255, 95, 212, 255));
+            TxtOpStateCache.Foreground = new SolidColorBrush(Color.FromArgb(255, 95, 212, 255));
+            TxtReadinessEta.Text = "ETA: 4h 20m";
             OpWorkflowCard.CurrentStep = 0;
         }
 
@@ -130,6 +149,55 @@ namespace URMS.WinUI.Pages
             TxtOpHealth.Text = _workflowStep >= 4 ? "ELEVATED" : "NOMINAL";
             TxtOpAlerts.Text = $"Alerts: {(_workflowStep >= 4 ? 2 : 0)}";
             TxtOpTasks.Text = $"Running Tasks: {2 + _workflowStep}";
+
+            var coreBlocked = _workflowStep == 5;
+            var deployDegraded = _workflowStep >= 4;
+
+            TxtOpStateCore.Text = coreBlocked ? "BLOCKED" : "NORMAL";
+            TxtOpStateDeploy.Text = deployDegraded ? "DEGRADED" : "NORMAL";
+            TxtOpStateCache.Text = "NORMAL";
+
+            var cyan = new SolidColorBrush(Color.FromArgb(255, 95, 212, 255));
+            var amber = new SolidColorBrush(Color.FromArgb(255, 255, 178, 58));
+            var red = new SolidColorBrush(Color.FromArgb(255, 213, 156, 166));
+
+            TxtOpStateCore.Foreground = coreBlocked ? red : cyan;
+            TxtOpStateDeploy.Foreground = deployDegraded ? amber : cyan;
+            TxtOpStateCache.Foreground = cyan;
+            TxtReadinessEta.Text = _workflowStep >= 4 ? "ETA: delayed by dependency" : "ETA: 4h 20m";
+        }
+
+        private void StartPageFadeIn()
+        {
+            var animation = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = TimeSpan.FromMilliseconds(400)
+            };
+            var storyboard = new Storyboard();
+            storyboard.Children.Add(animation);
+            Storyboard.SetTarget(animation, RootGrid);
+            Storyboard.SetTargetProperty(animation, "Opacity");
+            storyboard.Begin();
+        }
+
+        private Task FadeOutAsync()
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            var animation = new DoubleAnimation
+            {
+                From = 1,
+                To = 0,
+                Duration = TimeSpan.FromMilliseconds(400)
+            };
+            var storyboard = new Storyboard();
+            storyboard.Children.Add(animation);
+            Storyboard.SetTarget(animation, RootGrid);
+            Storyboard.SetTargetProperty(animation, "Opacity");
+            storyboard.Completed += (_, _) => tcs.TrySetResult(true);
+            storyboard.Begin();
+            return tcs.Task;
         }
 
         private void InitNetWave()
@@ -203,11 +271,17 @@ namespace URMS.WinUI.Pages
             // Already on Dashboard — no-op
         }
 
-        private void OnNavWeather(object sender, RoutedEventArgs e)
-            => Frame.Navigate(typeof(WeatherPage));
+        private async void OnNavWeather(object sender, RoutedEventArgs e)
+        {
+            await FadeOutAsync();
+            Frame.Navigate(typeof(WeatherPage));
+        }
 
         // ── CardWeather tap → WeatherPage ──────────────────────────
-        private void OnCardWeatherTapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
-            => Frame.Navigate(typeof(WeatherPage));
+        private async void OnCardWeatherTapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            await FadeOutAsync();
+            Frame.Navigate(typeof(WeatherPage));
+        }
     }
 }
