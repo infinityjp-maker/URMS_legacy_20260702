@@ -1,0 +1,25 @@
+*** Add File: .github/workflows/selfheal-validate-pr-bridge.yml
++name: selfheal-validate-pr-bridge
++on:
++  push:
++    branches: [ 'validate/**' ]
++  create:
++    branches: [ 'validate/**' ]
++permissions:
++  contents: write
++jobs:
++  create-pr:
++    runs-on: ubuntu-latest
++    steps:
++      - name: Create PR from validate branch
++        env:
++          REPO: ${{ github.repository }}
++          BRANCH: ${{ github.ref_name }}
++        run: |
++          gh auth status || true
++          echo "Creating PR from $BRANCH to main"
++          gh pr create --repo "$REPO" --head "$BRANCH" --base main --title "[self-heal][validate-run] run validation for $BRANCH" --body "Auto-created PR to trigger pull_request validation for $BRANCH"
++      - name: Fire repository_dispatch to selfheal workflow
++        run: |
++          echo "Attempting repository_dispatch to kick selfheal workflow"
++          gh api repos/${{ github.repository }}/dispatches -f event_type='selfheal-validate' || true
