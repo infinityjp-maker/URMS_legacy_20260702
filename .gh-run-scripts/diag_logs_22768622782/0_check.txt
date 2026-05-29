@@ -1,0 +1,35 @@
+﻿2026-03-06T14:52:54.2538115Z Current runner version: '2.332.0'
+2026-03-06T14:52:54.2564412Z ##[group]Runner Image Provisioner
+2026-03-06T14:52:54.2565236Z Hosted Compute Agent
+2026-03-06T14:52:54.2565804Z Version: 20260213.493
+2026-03-06T14:52:54.2566456Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-06T14:52:54.2567131Z Build Date: 2026-02-13T00:28:41Z
+2026-03-06T14:52:54.2568010Z Worker ID: {143e80c8-9382-4dd5-a5f6-0af43983c2ca}
+2026-03-06T14:52:54.2568640Z Azure Region: westus
+2026-03-06T14:52:54.2569262Z ##[endgroup]
+2026-03-06T14:52:54.2570730Z ##[group]Operating System
+2026-03-06T14:52:54.2571315Z Ubuntu
+2026-03-06T14:52:54.2571848Z 24.04.3
+2026-03-06T14:52:54.2572352Z LTS
+2026-03-06T14:52:54.2572777Z ##[endgroup]
+2026-03-06T14:52:54.2573337Z ##[group]Runner Image
+2026-03-06T14:52:54.2573891Z Image: ubuntu-24.04
+2026-03-06T14:52:54.2574368Z Version: 20260302.42.1
+2026-03-06T14:52:54.2575629Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-06T14:52:54.2577048Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+2026-03-06T14:52:54.2578242Z ##[endgroup]
+2026-03-06T14:52:54.2579279Z ##[group]GITHUB_TOKEN Permissions
+2026-03-06T14:52:54.2581391Z Contents: read
+2026-03-06T14:52:54.2582004Z Metadata: read
+2026-03-06T14:52:54.2582470Z Packages: read
+2026-03-06T14:52:54.2583016Z ##[endgroup]
+2026-03-06T14:52:54.2585120Z Secret source: Actions
+2026-03-06T14:52:54.2585822Z Prepare workflow directory
+2026-03-06T14:52:54.2909641Z Prepare all required actions
+2026-03-06T14:52:54.3050310Z Complete job name: check
+2026-03-06T14:52:54.3836475Z ##[group]Run echo "diagnostic ok"
+2026-03-06T14:52:54.3838335Z [36;1mecho "diagnostic ok"[0m
+2026-03-06T14:52:54.4827517Z shell: /usr/bin/bash -e {0}
+2026-03-06T14:52:54.4828765Z ##[endgroup]
+2026-03-06T14:52:54.5056691Z diagnostic ok
+2026-03-06T14:52:54.5177451Z Cleaning up orphan processes

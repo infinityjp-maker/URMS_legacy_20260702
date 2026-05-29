@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-03-07T10:20:00Z",
+  "validation_branch": "validate/selfheal-072035d-fromfix",
+  "attempts": [
+    {
+      "method": "push-trigger",
+      "status": "no_run_found",
+      "details": "Pushed empty commits and polled workflow id 241703246 for branch validate/selfheal-072035d-fromfix; no run observed within 1200s timeout"
+    }
+  ],
+  "conclusion": "FAILURE",
+  "reason": "No workflow run detected for validation branch within timeout; treat as validation failure",
+  "available_artifacts": [
+    ".gh-run-scripts/diag_logs_22768622782.zip",
+    ".gh-run-scripts/logs_22767337049.zip"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "diagnostic_branch": "diag/gha-minimal-check-20260306232900",
+  "run": {
+    "id": 22768622782,
+    "html_url": "https://github.com/infinityjp-maker/URMS/actions/runs/22768622782",
+    "logs_url": "https://api.github.com/repos/infinityjp-maker/URMS/actions/runs/22768622782/logs",
+    "conclusion": "success"
+  },
+  "errors_found": [],
+  "root_cause": "正常動作",
+  "summary": "GitHub Actions はこの最小ワークフローで正常にジョブを生成・実行しました。self-heal の run‑level failure はワークフロー/実行環境側の問題である可能性が高いです.",
+  "generated_at": "2026-03-06T23:52:00Z"
+}
+
+{
+  "dispatched_at": "2026-03-06T23:29:03.5926187+09:00",
+  "branch": "diag/gha-minimal-check-20260306232900",
+  "error": "NO_RUN_DETECTED",
+  "generated_at": "2026-03-06T23:39:04.6035237+09:00"
+}
