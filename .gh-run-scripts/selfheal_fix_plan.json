@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-03-07T00:00:00Z",
+  "source": ".gh-run-scripts/selfheal_yaml_history.json",
+  "extracted": {
+    "yaml_not_found_shas": [
+      "a676ddc0052b225cdfb04648d90a35b339f13ac8",
+      "d7a4aaa9993551eb02d517e7962049ec75d4df7b",
+      "920e38e9b35491191a3486b29cab1c7db2932aca",
+      "191f994e87e5e9fc670209d1261e874be881c3be",
+      "64fb5fbbf4c0b4e555f57f58e0471027751defed",
+      "e06ca1fb48d2f7bfc7a1c2a8ed627f2321de2893"
+    ],
+    "on_push_missing_shas": [],
+    "workflow_dispatch_presence": {
+      "c821bc27bd556db4705803207768421e33cbab9d": true
+    },
+    "concurrency_present": {
+      "c821bc27bd556db4705803207768421e33cbab9d": false
+    },
+    "permissions_present": {
+      "c821bc27bd556db4705803207768421e33cbab9d": false
+    },
+    "job_level_if_present": {
+      "c821bc27bd556db4705803207768421e33cbab9d": false
+    },
+    "step_level_if_present": {
+      "c821bc27bd556db4705803207768421e33cbab9d": true
+    },
+    "invalid_keys_detected": []
+  },
+  "root_cause_hypotheses": [
+    {
+      "id": "cause-1",
+      "title": "Workflow snapshot / trigger mismatch at event time",
+      "explanation": "Runs exist whose head SHA's workflow file could not be retrieved (yaml not found). If a run was created while the workflow file was being added/renamed/removed, GitHub can record the run but not schedule jobs (jobs=0). This matches the observed runs whose head_sha lacked a saved workflow."
+    },
+    {
+      "id": "cause-2",
+      "title": "Transient GitHub Actions backend job-scheduling/log retention failure",
+      "explanation": "Some runs show 404 when retrieving logs while a minimal diagnostic workflow succeeded earlier. This pattern indicates occasional platform-side failures where the run record exists but job scheduling or log packaging fails, producing jobs=0 and logs 404."
+    }
+  ],
+  "recommended_minimal_patches": [
+    {
+      "id": "patch-1",
+      "title": "Add an early diagnostic job that always runs and uploads an artifact",
+      "summary": "Create a small first job `selfheal-diagnostic` that runs immediately, prints the `github.sha`/`github.event` and uploads a small artifact. This provides an auditable, minimal indicator that jobs were scheduled and logs collected even when the main job fails to run.",
+      "yaml_snippet": "jobs:\n  selfheal-diagnostic:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: echo \"diag: ${{ github.sha }} ${{ github.event_name }}\" > diag.txt\n      - uses: actions/upload-artifact@v4\n        with:\n          name: selfheal-diagnostic-${{ github.sha }}\n          path: diag.txt",
+      "risk": "Low (adds small job and artifact storage)",
+      "rollout_steps": [
+        "Add the job to the top of the workflow (before long E2E steps).",
+        "Monitor for presence of diagnostic artifacts on subsequent runs to confirm job scheduling."
+      ]
+    },
+    {
+      "id": "patch-2",
+      "title": "Explicitly declare `permissions` required",
+      "summary": "Add an explicit `permissions:` block to avoid relying on defaults and to make the workflow's required tokens explicit (reduces failure modes caused by permissions drift).",
+      "yaml_snippet": "permissions:\n  contents: read\n  actions: read",
+      "risk": "Very low",
+      "rollout_steps": [
+        "Add `permissions` at workflow top-level.",
+        "Verify diagnostic job can still upload artifact and any GH CLI steps continue to work."
+      ]
+    },
+    {
+      "id": "patch-3",
+      "title": "Add `concurrency` to avoid overlapping runs and race conditions",
+      "summary": "Declare `concurrency` to cancel overlapping self-heal runs and avoid in-flight workflow updates interfering with triggers.",
+      "yaml_snippet": "concurrency:\n  group: triage-dashboard-e2e-selfheal-${{ github.ref }}\n  cancel-in-progress: true",
+      "risk": "Low (may cancel runs intentionally)",
+      "rollout_steps": [
+        "Add `concurrency` at workflow top-level.",
+        "Observe behavior over several scheduled runs to ensure expected cancellations."
+      ]
+    },
+    {
+      "id": "patch-4",
+      "title": "Upload the workflow file as an artifact for forensic debugging",
+      "summary": "Add a step that saves the resolved workflow YAML (the file in .github/workflows) and uploads it as an artifact; this makes it straightforward to compare the workflow that actually ran with repository history when investigating jobs=0.",
+      "yaml_snippet": "- name: Save workflow YAML\n  run: cp .github/workflows/triage-dashboard-e2e-selfheal.yml ./workflow-snapshot.yml || true\n- uses: actions/upload-artifact@v4\n  with:\n    name: selfheal-workflow-snapshot-${{ github.sha }}\n    path: workflow-snapshot.yml",
+      "risk": "Low (adds small artifact)",
+      "rollout_steps": [
+        "Add step early in the job to capture the workflow file.",
+        "Use artifacts during incident investigations to correlate run metadata to workflow content."
+      ]
+    }
+  ],
+  "notes": "Patches are intentionally minimal and forensic-first: make failures visible, reduce race conditions, and provide evidence for GitHub Support. If jobs=0 persists after these patches, collect failing run ids and open a GitHub Support ticket including the diagnostic artifacts and workflow snapshots.",
+  "generated_by": "self-heal 恒久パッチ設計エージェント"
+}

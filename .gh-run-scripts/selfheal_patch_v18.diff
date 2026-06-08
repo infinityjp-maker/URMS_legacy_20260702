@@ -1,0 +1,22 @@
+*** Add File: .github/workflows/selfheal-validation-announce.yml
++name: selfheal-validation-announce
++on:
++  push:
++    branches: [ 'validate/**' ]
++  workflow_dispatch: {}
++  repository_dispatch:
++    types: ['selfheal-validate']
++permissions:
++  contents: write
++jobs:
++  announce:
++    runs-on: ubuntu-latest
++    steps:
++      - name: Announce validation
++        run: |
++          echo "validation-announced: ${{ github.ref }} ${{ github.sha }}" > validation_announced.txt
++      - name: Upload announce artifact
++        uses: actions/upload-artifact@v4
++        with:
++          name: validation-announced-${{ github.sha }}
++          path: validation_announced.txt

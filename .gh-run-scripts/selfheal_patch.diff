@@ -1,0 +1,61 @@
+*** Begin Patch
+*** Add File: .gh-run-scripts/selfheal_patch.diff
++--- a/.github/workflows/triage-dashboard-e2e-selfheal.yml
+++++ b/.github/workflows/triage-dashboard-e2e-selfheal.yml
++@@
++ name: triage-dashboard-e2e-selfheal
++ on:
++   push:
++     branches: [ main ]
++   schedule:
++     - cron: "0 18 * * *"
++   workflow_dispatch:
+++permissions:
+++  contents: read
+++  actions: read
+++concurrency:
+++  group: triage-dashboard-e2e-selfheal-${{ github.ref }}
+++  cancel-in-progress: true
++ jobs:
++-  selfheal:
+++  selfheal-diagnostic:
+++    name: selfheal-diagnostic
+++    runs-on: ubuntu-latest
+++    steps:
+++      - name: Checkout
+++        uses: actions/checkout@v4
+++        with:
+++          fetch-depth: 0
+++      - name: Diagnostic - write meta
+++        run: |
+++          echo "diag: ${{ github.sha }} ${{ github.event_name }}" > diag.txt
+++          echo "workflow_path: .github/workflows/triage-dashboard-e2e-selfheal.yml" >> diag.txt
+++      - name: Upload diagnostic artifact
+++        uses: actions/upload-artifact@v4
+++        with:
+++          name: selfheal-diagnostic-${{ github.sha }}
+++          path: diag.txt
+++
++   selfheal:
++     name: selfheal
++     runs-on: ubuntu-latest
++     env:
++       AUTO_FIX_MODE: ${{ github.event.inputs.AUTO_FIX_MODE || 'dry-run' }}
++     steps:
++-      - uses: actions/checkout@v4
+-        with:
+-          fetch-depth: 0
++      - uses: actions/checkout@v4
++        with:
++          fetch-depth: 0
++      - name: Save workflow snapshot
++        run: |
++          mkdir -p .github/actions-runs || true
++          cp .github/workflows/triage-dashboard-e2e-selfheal.yml workflow-snapshot.yml || true
++      - name: Upload workflow snapshot
++        uses: actions/upload-artifact@v4
++        with:
++          name: selfheal-workflow-snapshot-${{ github.sha }}
++          path: workflow-snapshot.yml
++*** End Patch
++

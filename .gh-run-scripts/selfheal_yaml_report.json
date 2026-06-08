@@ -1,0 +1,27 @@
+{
+  "head_sha": "a676ddc0052b225cdfb04648d90a35b339f13ac8",
+  "retrieved": true,
+  "saved_paths": {
+    "triage-dashboard-e2e-selfheal.yml": ".gh-run-scripts/selfheal_at_a676ddc0052b225cdfb04648d90a35b339f13ac8.yml",
+    "triage-dashboard-e2-selfheal.yml": ".gh-run-scripts/selfheal_e2_at_a676ddc0052b225cdfb04648d90a35b339f13ac8.yml (404 or missing)"
+  },
+  "checks": {
+    "on_push": true,
+    "on_workflow_dispatch": true,
+    "on_schedule": true,
+    "permissions_present": false,
+    "concurrency_present": false,
+    "job_level_if": false,
+    "step_level_if_present": true,
+    "jobs_selfheal_present": true,
+    "invalid_keys_found": false
+  },
+  "yaml_issues": [],
+  "probable_causes_for_jobs0": [
+    "YAML at this SHA is present and includes 'push'/'workflow_dispatch' so YAML misconfiguration is unlikely.",
+    "Transient GitHub Actions backend issue where the run record exists but jobs were not scheduled or logs not retained (matches observed HTTP 404).",
+    "A mismatch between the event timing and workflow content (e.g., run created while workflow update was in-flight) could produce runs with no jobs."
+  ],
+  "recommended_minimal_patch": "(DO NOT APPLY)\n1) Add an early diagnostic step that always runs and uploads a tiny artifact to make job scheduling visible.\n2) Add explicit 'permissions: contents: read' and an explicit 'concurrency' policy to reduce overlapping-run races.\n3) If issue persists, collect failing run ids and open GitHub Support ticket with the run ids and this saved YAML.",
+  "generated_at": "2026-03-07T00:00:00Z"
+}
