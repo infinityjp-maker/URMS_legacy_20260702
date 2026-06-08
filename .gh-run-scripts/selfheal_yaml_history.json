@@ -1,0 +1,138 @@
+{
+  "workflow_id": 241703246,
+  "generated_at": "2026-03-07T00:00:00Z",
+  "runs_analyzed": [
+    {
+      "runId": 22767788255,
+      "head_sha": "c821bc27bd556db4705803207768421e33cbab9d",
+      "created_at": "2026-03-06T14:30:53Z",
+      "conclusion": "failure",
+      "yaml_found": true,
+      "saved_paths": [".gh-run-scripts/selfheal_at_c821bc27bd556db4705803207768421e33cbab9d.yml"],
+      "checks": {
+        "on_push": true,
+        "on_workflow_dispatch": true,
+        "on_schedule": true,
+        "permissions": false,
+        "concurrency": false,
+        "job_level_if": false,
+        "step_level_if": true,
+        "jobs_selfheal": true
+      },
+      "issues": [],
+      "probable_causes_for_jobs0_or_logs404": [
+        "No obvious YAML misconfiguration at this SHA; jobs=0/logs404 more likely due to run being created for a different commit's workflow or a transient Actions backend issue."
+      ],
+      "recommended_minimal_patch": "Add an explicit small diagnostic step that always runs and uploads an artifact; add explicit 'permissions: contents: read' and optional 'concurrency' to reduce interference."
+    },
+    {
+      "runId": 22767642958,
+      "head_sha": "c821bc27bd556db4705803207768421e33cbab9d",
+      "created_at": "2026-03-06T14:27:05Z",
+      "conclusion": "failure",
+      "yaml_found": true,
+      "saved_paths": [".gh-run-scripts/selfheal_at_c821bc27bd556db4705803207768421e33cbab9d.yml"],
+      "checks": {
+        "on_push": true,
+        "on_workflow_dispatch": true,
+        "on_schedule": true,
+        "permissions": false,
+        "concurrency": false,
+        "job_level_if": false,
+        "step_level_if": true,
+        "jobs_selfheal": true
+      },
+      "issues": [],
+      "probable_causes_for_jobs0_or_logs404": [
+        "YAML at this SHA appears valid; jobs=0 likely caused by the run being associated with a different workflow content at event emission time or by platform-side missing job scheduling."
+      ],
+      "recommended_minimal_patch": "As above: small diagnostic artifact step; consider logging the workflow file SHA in job logs and include a short early failure guard to surface runner provisioning errors."
+    },
+    {
+      "runId": 22767337049,
+      "head_sha": "a676ddc0052b225cdfb04648d90a35b339f13ac8",
+      "created_at": "2026-03-06T14:18:59Z",
+      "conclusion": "failure",
+      "yaml_found": false,
+      "saved_paths": [],
+      "checks": {},
+      "issues": ["workflow YAML not present in local git for this head_sha"],
+      "probable_causes_for_jobs0_or_logs404": [
+        "Run references a head_sha whose workflow file content could not be retrieved locally; if that commit's workflow lacked the push trigger or had a malformed 'on:' the run might record but create zero jobs." 
+      ],
+      "recommended_minimal_patch": "Retrieve the workflow file at this exact commit (git show or raw.githubusercontent) and verify 'on:' contains push; if missing, ensure future commits include push trigger or avoid triggering runs during mid-change."
+    },
+    {
+      "runId": 22763110804,
+      "head_sha": "d7a4aaa9993551eb02d517e7962049ec75d4df7b",
+      "created_at": "2026-03-06T12:17:48Z",
+      "conclusion": "failure",
+      "yaml_found": false,
+      "saved_paths": [],
+      "checks": {},
+      "issues": ["workflow YAML not present in local git for this head_sha"],
+      "probable_causes_for_jobs0_or_logs404": ["Same as above: missing workflow snapshot at that SHA or transient Actions backend issue."],
+      "recommended_minimal_patch": "Fetch raw workflow at that head_sha and inspect; add diagnostic job to future workflows."
+    },
+    {
+      "runId": 22763040460,
+      "head_sha": "920e38e9b35491191a3486b29cab1c7db2932aca",
+      "created_at": "2026-03-06T12:15:34Z",
+      "conclusion": "failure",
+      "yaml_found": false,
+      "saved_paths": [],
+      "checks": {},
+      "issues": ["workflow YAML not present in local git for this head_sha"],
+      "probable_causes_for_jobs0_or_logs404": ["Missing workflow snapshot or workflow at that commit lacked needed trigger."],
+      "recommended_minimal_patch": "Fetch and inspect workflow at that SHA; if it lacks 'push', backfill minimal trigger or re-run on valid commit."
+    },
+    {
+      "runId": 22744207751,
+      "head_sha": "920e38e9b35491191a3486b29cab1c7db2932aca",
+      "created_at": "2026-03-06T01:06:28Z",
+      "conclusion": "failure",
+      "yaml_found": false,
+      "saved_paths": [],
+      "checks": {},
+      "issues": ["workflow YAML not present in local git for this head_sha"],
+      "probable_causes_for_jobs0_or_logs404": ["This run previously investigated showed jobs array empty while the workflow at that commit lacked a push trigger."],
+      "recommended_minimal_patch": "Inspect commit history around this SHA; ensure any transitional commits do not remove triggers."
+    },
+    {
+      "runId": 22744041624,
+      "head_sha": "191f994e87e5e9fc670209d1261e874be881c3be",
+      "created_at": "2026-03-06T01:00:49Z",
+      "conclusion": "failure",
+      "yaml_found": false,
+      "saved_paths": [],
+      "checks": {},
+      "issues": ["workflow YAML not present in local git for this head_sha"],
+      "probable_causes_for_jobs0_or_logs404": ["Missing workflow snapshot or transient Actions issue."],
+      "recommended_minimal_patch": "Fetch workflow at this SHA and inspect."
+    },
+    {
+      "runId": 22743947171,
+      "head_sha": "64fb5fbbf4c0b4e555f57f58e0471027751defed",
+      "created_at": "2026-03-06T00:57:38Z",
+      "conclusion": "failure",
+      "yaml_found": false,
+      "saved_paths": [],
+      "checks": {},
+      "issues": ["workflow YAML not present in local git for this head_sha"],
+      "probable_causes_for_jobs0_or_logs404": ["Missing workflow snapshot or transient Actions issue."],
+      "recommended_minimal_patch": "Fetch workflow at this SHA and inspect."
+    },
+    {
+      "runId": 22732509280,
+      "head_sha": "e06ca1fb48d2f7bfc7a1c2a8ed627f2321de2893",
+      "created_at": "2026-03-05T19:12:20Z",
+      "conclusion": "failure",
+      "yaml_found": false,
+      "saved_paths": [],
+      "checks": {},
+      "issues": ["workflow YAML not present in local git for this head_sha"],
+      "probable_causes_for_jobs0_or_logs404": ["This scheduled run and associated workflow snapshot could differ; fetch and inspect to confirm."],
+      "recommended_minimal_patch": "Fetch workflow at this SHA via raw.githubusercontent.com and inspect; if malformed, revert or patch in new commit."
+    }
+  ]
+}

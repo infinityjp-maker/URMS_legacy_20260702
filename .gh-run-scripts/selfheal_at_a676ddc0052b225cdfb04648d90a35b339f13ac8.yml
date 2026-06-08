@@ -1,50 +1,11 @@
 name: triage-dashboard-e2e-selfheal
 on:
   push:
-    branches: [ main, 'validate/**' ]
-  pull_request:
-    branches: [ main, 'validate/**' ]
-  repository_dispatch:
-    types: [ "selfheal-validate" ]
+    branches: [ main ]
   schedule:
     - cron: "0 18 * * *"
   workflow_dispatch:
-    inputs:
-      AUTO_FIX_MODE:
-        description: 'Auto fix mode for self-heal runs'
-        required: false
-        default: 'dry-run'
-permissions:
-  contents: write
-  actions: read
-  id-token: write
-  checks: write
-concurrency:
-  group: triage-dashboard-e2e-selfheal-${{ github.ref }}
-  cancel-in-progress: true
 jobs:
-  selfheal-diagnostic:
-    name: selfheal-diagnostic
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Diagnostic - write meta
-        run: |
-          echo "diag: ${{ github.sha }} ${{ github.event_name }}" > diag.txt
-          echo "workflow_path: .github/workflows/triage-dashboard-e2e-selfheal.yml" >> diag.txt
-      - name: Diagnostic - create validation ready marker
-        run: |
-          mkdir -p .github/actions-runs || true
-          echo "validation_ready: ${{ github.sha }}" > .github/actions-runs/validation_ready.txt
-      - name: Upload diagnostic artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: selfheal-diagnostic-${{ github.sha }}
-          path: diag.txt
-
   selfheal:
     name: selfheal
     runs-on: ubuntu-latest
@@ -54,26 +15,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Validation start marker
-        run: |
-          echo "start:${{ github.sha }}" > start_marker.txt
-      - name: Upload start marker
-        uses: actions/upload-artifact@v4
-        with:
-          name: selfheal-start-marker-${{ github.sha }}
-          path: start_marker.txt
-      - name: Save workflow snapshot
-        run: |
-          mkdir -p .github/actions-runs || true
-          cp .github/workflows/triage-dashboard-e2e-selfheal.yml workflow-snapshot.yml || true
-      - name: Upload workflow snapshot
-        uses: actions/upload-artifact@v4
-        with:
-          name: selfheal-workflow-snapshot-${{ github.sha }}
-          path: workflow-snapshot.yml
-      - name: Pre-test sleep to stabilize runner
-        run: |
-          sleep 5
       - uses: actions/setup-node@v4
         with:
           node-version: 20
