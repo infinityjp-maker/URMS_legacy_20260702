@@ -66,6 +66,17 @@ jobs:
           path: |
             selfheal_report.json
             .github/actions-runs/selfheal-patch/**
+      - name: Write validation marker
+        if: always()
+        run: |
+          echo "run:${{ github.run_id }}" > selfheal_validation_marker.txt
+          echo "sha:${{ github.sha }}" >> selfheal_validation_marker.txt
+          echo "event:${{ github.event_name }}" >> selfheal_validation_marker.txt
+      - name: Upload validation marker
+        uses: actions/upload-artifact@v4
+        with:
+          name: selfheal-validation-marker-${{ github.sha }}
+          path: selfheal_validation_marker.txt
       - name: Act on selfheal report (dry-run/commit)
         if: always()
         run: |
