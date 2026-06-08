@@ -1,0 +1,5 @@
+﻿2026-03-06T14:52:54.3836407Z ##[group]Run echo "diagnostic ok"
+2026-03-06T14:52:54.3838314Z [36;1mecho "diagnostic ok"[0m
+2026-03-06T14:52:54.4827475Z shell: /usr/bin/bash -e {0}
+2026-03-06T14:52:54.4828753Z ##[endgroup]
+2026-03-06T14:52:54.5056638Z diagnostic ok

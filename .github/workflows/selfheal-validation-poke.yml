@@ -1,0 +1,19 @@
+name: selfheal-validation-poke
+on:
+  workflow_dispatch: {}
+  repository_dispatch:
+    types: ['selfheal-validate']
+permissions:
+  contents: read
+jobs:
+  poke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Poke marker
+        run: |
+          echo "validation-poke: ${{ github.event_name }} ${{ github.sha }}" > validation_poke.txt
+      - name: Upload poke artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-poke-${{ github.sha }}
+          path: validation_poke.txt

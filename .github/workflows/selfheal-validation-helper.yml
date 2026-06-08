@@ -1,0 +1,21 @@
+name: selfheal-validation-helper
+on:
+  push:
+    branches: [ 'validate/**' ]
+  repository_dispatch:
+    types: ['selfheal-validate']
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  validate-listener:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create validation marker
+        run: |
+          echo "validation-helper: ${{ github.sha }}" > validation_helper.txt
+      - name: Upload validation marker
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-helper-${{ github.sha }}
+          path: validation_helper.txt

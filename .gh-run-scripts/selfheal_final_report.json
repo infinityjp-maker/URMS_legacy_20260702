@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-03-07T00:00:00Z",
+  "validation_report_found": false,
+  "validation_report_path": ".gh-run-scripts/selfheal_validation_report.json",
+  "summary": {
+    "status": "FAILURE",
+    "reason": "validation report file not found",
+    "extracted": {
+      "runId": null,
+      "head_sha": null,
+      "conclusion": null,
+      "jobs": null,
+      "error_lines": null,
+      "logs_zip_available": null
+    }
+  },
+  "available_artifacts": [
+    " .gh-run-scripts/diag_logs_22768622782.zip",
+    " .gh-run-scripts/logs_22767337049.zip"
+  ],
+  "diagnosis_and_recommendations": [
+    {
+      "hypothesis": "Validation run report was never generated because the validation workflow did not complete or the collection script failed",
+      "actions": [
+        "Retry validation using push-trigger (empty commit + push) and poll for a longer window",
+        "Ensure the workflow on the target branch includes a 'workflow_dispatch' trigger if programmatic dispatch is desired",
+        "Verify that the validation collection script uploads/writes '.gh-run-scripts/selfheal_validation_report.json' at end-of-run and has error handling/logging",
+        "If runs appear with jobs=0 or logs missing, collect run ids and workflow snapshots and escalate to GitHub Support with artifacts"
+      ]
+    },
+    {
+      "hypothesis": "Workflow file at the run's head_sha differed (missing diagnostic steps or triggers), causing dispatch/polling mismatch",
+      "actions": [
+        "When a failing run is observed, save the workflow file content for that run's head_sha (raw.githubusercontent.com/<sha>/... )",
+        "Add an early diagnostic job to the workflow that uploads a tiny artifact proving job start (already proposed in patch)"
+      ]
+    }
+  ],
+  "notes": "No validation report was available to parse. The JSON above describes the failure to locate the report and next recommended steps. Use existing diagnostic artifact zips to inspect logs if needed."
+}

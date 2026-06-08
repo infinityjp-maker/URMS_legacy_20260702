@@ -1,0 +1,19 @@
+*** Add File: .github/workflows/selfheal-validation-create.yml
++name: selfheal-validation-create
++on:
++  create:
++    branches: ['validate/**']
++permissions:
++  contents: read
++jobs:
++  on-create:
++    runs-on: ubuntu-latest
++    steps:
++      - name: Create create-marker
++        run: |
++          echo "validation-create: ${{ github.ref }} ${{ github.sha }}" > validation_create.txt
++      - name: Upload create marker
++        uses: actions/upload-artifact@v4
++        with:
++          name: validation-create-${{ github.ref }}-${{ github.sha }}
++          path: validation_create.txt
