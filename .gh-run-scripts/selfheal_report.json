@@ -1,0 +1,28 @@
+{
+  "workflow_id": 241703246,
+  "recent_analysis": {
+    "pushed_trigger": {
+      "pushed_at": "2026-03-06T23:17:01Z",
+      "commit": "a676ddc",
+      "note": ".github/selfheal_trigger.txt was created and pushed to main to trigger push-based workflows."
+    },
+    "latest_run": {
+      "id": 22767337049,
+      "html_url": "https://github.com/infinityjp-maker/URMS/actions/runs/22767337049",
+      "logs_url": "https://api.github.com/repos/infinityjp-maker/URMS/actions/runs/22767337049/logs",
+      "created_at": "2026-03-06T14:18:59Z",
+      "conclusion": "failure",
+      "status": "completed"
+    },
+    "jobs": {
+      "total_count": 0,
+      "jobs": []
+    },
+    "logs_downloadable": false,
+    "logs_error": "HTTP 404 when requesting logs archive; jobs array empty",
+    "root_cause_class": "GitHub Actions の内部エラー",
+    "root_cause_explanation": "Workflow run exists for main, but job list is empty and logs archive returns 404. This indicates job-level execution or logs availability is missing on GitHub Actions side (not a YAML/test artifact).",
+    "suggested_minimal_patch": "Retry run via push or manual dispatch; if persistent, escalate to GitHub Support. Consider running a short diagnostic job on a branch first."
+  },
+  "generated_at": "2026-03-06T23:20:00Z"
+}

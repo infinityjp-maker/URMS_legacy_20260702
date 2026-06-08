@@ -1,0 +1,71 @@
+* Host raw.githubusercontent.com:443 was resolved.
+* IPv6: (none)
+* IPv4: 185.199.108.133, 185.199.111.133, 185.199.110.133, 185.199.109.133
+*   Trying 185.199.108.133:443...
+* schannel: disabled automatic use of client certificate
+* ALPN: curl offers http/1.1
+* ALPN: server accepted http/1.1
+* Established connection to raw.githubusercontent.com (185.199.108.133 port 443) from 192.168.255.100 port 63953 
+* using HTTP/1.x
+> HEAD /infinityjp-maker/URMS/a676ddc0052b225cdfb04648d90a35b339f13ac8/.github/workflows/triage-dashboard-e2e-selfheal.yml HTTP/1.1
+> Host: raw.githubusercontent.com
+> User-Agent: curl/8.16.0
+> Accept: */*
+> 
+* schannel: remote party requests renegotiation
+* schannel: renegotiating SSL/TLS connection
+* schannel: SSL/TLS connection renegotiated
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Connection: keep-alive
+< Content-Length: 3954
+< Cache-Control: max-age=300
+< Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+< Content-Type: text/plain; charset=utf-8
+< ETag: "b4e910ba83ca114976252b5362fb110ff69e8edfb2bb64217abbcfd552668e28"
+< Strict-Transport-Security: max-age=31536000
+< X-Content-Type-Options: nosniff
+< X-Frame-Options: deny
+< X-XSS-Protection: 1; mode=block
+< X-GitHub-Request-Id: 641A:19CE46:20D47F:4750D5:69AAF5DF
+< Accept-Ranges: bytes
+< Date: Fri, 06 Mar 2026 15:42:23 GMT
+< Via: 1.1 varnish
+< X-Served-By: cache-itm1220051-ITM
+< X-Cache: MISS
+< X-Cache-Hits: 0
+< X-Timer: S1772811743.132495,VS0,VE249
+< Vary: Authorization,Accept-Encoding
+< Access-Control-Allow-Origin: *
+< Cross-Origin-Resource-Policy: cross-origin
+< X-Fastly-Request-ID: 3e8b5b78660382ce730b14f3eff5ac8e5388386c
+< Expires: Fri, 06 Mar 2026 15:47:23 GMT
+< Source-Age: 0
+< 
+* Connection #0 to host raw.githubusercontent.com:443 left intact
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 3954
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: "b4e910ba83ca114976252b5362fb110ff69e8edfb2bb64217abbcfd552668e28"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+X-GitHub-Request-Id: 641A:19CE46:20D47F:4750D5:69AAF5DF
+Accept-Ranges: bytes
+Date: Fri, 06 Mar 2026 15:42:23 GMT
+Via: 1.1 varnish
+X-Served-By: cache-itm1220051-ITM
+X-Cache: MISS
+X-Cache-Hits: 0
+X-Timer: S1772811743.132495,VS0,VE249
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+Cross-Origin-Resource-Policy: cross-origin
+X-Fastly-Request-ID: 3e8b5b78660382ce730b14f3eff5ac8e5388386c
+Expires: Fri, 06 Mar 2026 15:47:23 GMT
+Source-Age: 0
+
